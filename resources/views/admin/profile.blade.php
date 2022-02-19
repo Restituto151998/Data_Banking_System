@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Dashboard Page!') }}
+                    {{ __('Profile Page!') }}
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->truncate(); //for cleaning earlier data to avoid duplicate entries
+        DB::table('users')->delete(); //for cleaning earlier data to avoid duplicate entries
         DB::table('users')->insert([
     'name' => 'admin',
     'email' => 'admin@admin',
