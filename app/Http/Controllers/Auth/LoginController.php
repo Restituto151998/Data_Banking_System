@@ -39,7 +39,6 @@ class LoginController extends Controller
     case 'STAFF':
       return '/staff_dashboard';
       break; 
-
     default:
       return '/home'; 
     break;

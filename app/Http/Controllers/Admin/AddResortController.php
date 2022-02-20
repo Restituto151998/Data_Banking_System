@@ -25,21 +25,16 @@ class AddResortController extends Controller
            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
    
           ]);
-   
-        
 
           $resort_name = $request->input('resort_name');
           $id = $request->user()->id;
-          
 
           $resort_description = $request->input('resort_description');
    
           $imagePath = $request->file('image')->store('public/storage');
    
           $save = new Resort;
-
-      
-          
+   
           $save->resort_description = $resort_description;
           $save->resort_name = $resort_name;
           $save->imagePath = $imagePath;
@@ -55,7 +50,7 @@ class AddResortController extends Controller
 
           ]);
 
-          return redirect('add_resort')->with('status', 'Image Has been uploaded');
+          return redirect('add_resort')->with('status', 'Resort Successfully Added!');
           
       }
 }

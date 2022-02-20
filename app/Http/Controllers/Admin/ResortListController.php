@@ -11,9 +11,7 @@ class ResortListController extends Controller
 {
   
     public function resortList() {
-      $resortList = DB::table('resort_lists')->select('resort_name','assigned_staff','status')->get();
+        $resortList = DB::table('resort_lists')->select('resort_name', 'assigned_staff', 'status')->get();
         return view('admin.resort_list')->with('resort_lists', $resortList);
-      }
-
-    
+    } 
 }
