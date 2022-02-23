@@ -30,19 +30,26 @@ class LoginController extends Controller
      */
     
   public function redirectTo() {
-  $type = Auth::user()->type; 
-    
-  switch ($type) {
-    case 'ADMIN':
-      return '/admin_dashboard';
+  $type = Auth::user()->type;
+
+  if (Auth::user()->status == 'disable') {
+    return '/forbidden';
+  }else{
+    switch ($type) {
+      case 'ADMIN':
+        return '/admin_dashboard';
+        break;
+      case 'STAFF':
+        return '/staff_dashboard';
+        break; 
+      default:
+        return '/login'; 
       break;
-    case 'STAFF':
-      return '/staff_dashboard';
-      break; 
-    default:
-      return '/home'; 
-    break;
+    }
+    
   }
+    
+
 }
    
 

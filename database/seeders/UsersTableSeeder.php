@@ -21,12 +21,14 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
     'name' => 'admin',
     'email' => 'admin@admin',
+    'status' => 'enable',
     'type' => 'ADMIN',
     'password' => Hash::make('password'),
   ]);
         DB::table('users')->insert([
     'name' => 'staff',
     'email' => 'staff@staff',
+    'status' => 'enable',
     'type' => 'STAFF',
     'password' => Hash::make('password'),
   ]);

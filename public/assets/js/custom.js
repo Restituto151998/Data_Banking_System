@@ -24,5 +24,5 @@ $(document).ready(function() {
     }
     $("#password, #password2").keyup(checkPasswordMatch);
 
-
+    
 });

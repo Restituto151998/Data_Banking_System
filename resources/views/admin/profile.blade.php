@@ -1,7 +1,7 @@
 @extends('admin.side_navbar')
 
 @section('profile')
-     <div>
+    <div>
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
             <div class="main-content">
@@ -14,7 +14,7 @@
                                     <div class="col-12">
                                         <div class="card card-primary">
                                             <div class="card-header">
-                                               <h4>PROFILE PAGE</h4>
+                                                <h4>PROFILE PAGE</h4>
                                             </div>
                                             <div class="card-body">
                                                 This is a profile page
@@ -28,4 +28,4 @@
                 </div>
             </div>
         </div>
-@endsection
+    @endsection

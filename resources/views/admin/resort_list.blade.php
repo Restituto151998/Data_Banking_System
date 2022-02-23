@@ -1,9 +1,20 @@
 @extends('admin.side_navbar')
 
 @section('resortList')
+
     <div class="main-wrapper main-wrapper-1">
+
         <!-- Main Content -->
         <div class="main-content">
+            @if (session()->has('message'))
+                <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                    {{ session()->get('message') }}
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-0">
@@ -18,25 +29,105 @@
                                                 <h2>Resort List </h2>
                                             </div>
                                             <div class="container">
-                                                @foreach ($resort_lists as $resort)
-                                                    <table class="table">
-                                                        <thead class="thead-dark">
-                                                            <tr>
-                                                                <th scope="col">Resort Name</th>
-                                                                <th scope="col">Assigned Staff</th>
-                                                                <th scope="col">Status</th>
-                                                                <th scope="col">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
+                                                <table class="table">
+                                                    <thead class="table bg-primary">
+                                                        <tr>
+                                                            <th scope="col" class="text-white">Resort Name</th>
+                                                            <th scope="col" class="text-white">Assigned Staff</th>
+                                                            <th scope="col" class="text-white">Status</th>
+                                                            <th scope="col" class="text-white">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($resort_lists as $resort)
                                                             <tr>
                                                                 <td>{{ $resort->resort_name }}</td>
                                                                 <td>{{ $resort->assigned_staff }}</td>
                                                                 <td>{{ $resort->status }}</td>
+                                                                <td>
+                                                                    <a href="{{ route('admin.resort_list', $resort->id) }}"
+                                                                        data-toggle="modal"
+                                                                        data-target="#exampleModalCenter{{ $resort->id }}"><i
+                                                                            data-feather="edit"></i> </a> | <a
+                                                                        href="{{ url('resort_list/voda_krasna') }}"><i
+                                                                            data-feather="eye"></i> </a>
+                                                                </td>
                                                             </tr>
-                                                        </tbody>
-                                                    </table>
-                                                @endforeach
+                                                            {{-- MODAL --}}
+                                                            <div class="modal fade"
+                                                                id="exampleModalCenter{{ $resort->id }}" tabindex="-1"
+                                                                role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                                aria-hidden="true">
+                                                                <form method="post"
+                                                                    action="{{ route('admin.resort_list') }}">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <div class="modal-dialog modal-dialog-centered"
+                                                                        role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title"
+                                                                                    id="exampleModalCenterTitle">
+                                                                                    Modal title</h5>
+                                                                                <a type="button" href="/resort_list"
+                                                                                    aria-label="Close"><span class="w-25"
+                                                                                        aria-hidden="true">&times;</span></a>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="formGroupExampleInput"
+                                                                                    name="resort_id"
+                                                                                    value="{{ $resort->id }}" hidden>
+                                                                                <div class="row mt-5">
+                                                                                    <div class="col-md-12">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="formGroupExampleInput"
+                                                                                            name="resort_name"
+                                                                                            value="{{ $resort->resort_name }}">
+                                                                                        <label
+                                                                                            for="formGroupExampleInput">Resort
+                                                                                            Name</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row mt-5">
+                                                                                    <div class="col-md-12">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="formGroupExampleInput"
+                                                                                            name="assigned_staff"
+                                                                                            value="{{ $resort->assigned_staff }}">
+                                                                                        <label
+                                                                                            for="formGroupExampleInput">Assigned
+                                                                                            Staff</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row mt-5">
+                                                                                    <div class="col-md-12">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="formGroupExampleInput"
+                                                                                            name="status"
+                                                                                            value="{{ $resort->status }}">
+                                                                                        <label
+                                                                                            for="formGroupExampleInput">Status
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary">Save
+                                                                                    changes</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
