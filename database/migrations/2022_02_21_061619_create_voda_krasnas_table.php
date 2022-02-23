@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('voda_krasnas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('type');
-            $table->string('status');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('full_name');
+            $table->string('gender');
+            $table->string('address');
+            $table->integer('phone_number');
+            $table->string('nationality');
+            $table->string('tempartaure');
+            $table->string('time_use');
+            $table->string('purpose');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('voda_krasnas');
     }
 };
