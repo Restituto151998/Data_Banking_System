@@ -15,7 +15,8 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -25,9 +26,9 @@
     <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
-
+    <link rel="stylesheet" href="./assets/css/data.css">
     <!-- Template CSS -->
-
+    
     <link rel="stylesheet" href="./assets/css/components.css">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -47,7 +48,7 @@
         @yield('editUser')
 
         <div id="#app" class="navbar-bg"></div>
-        <nav class="navbar navbar-expand-lg main-navbar sticky">
+        <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
             <div class="form-inline mr-auto">
                 <ul class="navbar-nav mr-3">
                     <li>
@@ -56,9 +57,9 @@
                         </a>
                     </li>
                 </ul>
-                <div class="text-white h3 pt-2">
+                {{-- <div class="text-white h3 pt-2" style="font-family: 'Righteous';">
                     Alcoy Data Banking
-                </div>
+                </div> --}}
             </div>
             <ul class="navbar-nav navbar-right">
                 <!-- Authentication Links -->
@@ -91,15 +92,15 @@
                 @endguest
             </ul>
         </nav>
-        <div class="main-sidebar sidebar-style-1 ">
-            <aside id="sidebar-wrapper bg-primary">
-                <div class="sidebar-brand bg-primary">
-                    <a href=""> <img alt="image" src="assets/img/alcoyLogo.png" class="header-logo rounded-circle" /> <span
-                            class="text-white h3 pt-2" class="logo-name">ALCOY</span>
+        <div class="main-sidebar sidebar-style-1" style="background:#21791A;" >
+            <aside id="sidebar-wrapper" > 
+                <div class="sidebar-brand" style="background:#21791A;">
+                    <a href=""> <img alt="image" src="assets/img/logo.png" class="header-logo rounded-circle" /> <span
+                        class="text-white h3 pt-2" style="font-family: 'Righteous';">ALCOY</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
-                    <li class="menu-header">Main</li>
+                    {{-- <li class="menu-header">Main</li> --}}
                     <li class="dropdown">
                         <a href="/admin_dashboard" class="nav-link"><i
                                 data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
@@ -129,7 +130,7 @@
         </div>
     @endauth
 
-    <main class="py-4">
+    <main class="py-4 ">
         @yield('content')
     </main>
 

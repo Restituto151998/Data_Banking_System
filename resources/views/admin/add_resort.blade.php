@@ -9,13 +9,10 @@
                     <div class="col-12">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <h4 class="m-0">Add Resort</h4>
                                 <div class="row mt-4">
-                                    <div class="col-12">
-                                        <div class="card card-primary">
-
+                                    <div class="col-10">
                                             <div class="card-body">
-                                                <div class="card-header text-center font-weight-bold">
+                                                <div class="add-resort-header">
                                                     <h2>Add Resort</h2>
                                                 </div>
                                                 @if (session('status'))
@@ -28,7 +25,14 @@
                                                         action="{{ url('add_resort') }}">
                                                         @csrf
                                                         <div class="row">
-
+                                                            <div class="row mt-5">
+                                                                <div class="col-md-12">
+                                                                    <input type="text" class="form-control"
+                                                                        id="formGroupExampleInput" name="resort_name"
+                                                                        placeholder="Resort Name">
+                                                                    <label for="formGroupExampleInput">Resort Name</label>
+                                                                </div>
+                                                            </div>
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <input type="file" name="image"
@@ -37,14 +41,6 @@
                                                                         <div class="alert alert-danger mt-1 mb-1">
                                                                             {{ $message }}</div>
                                                                     @enderror
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-5">
-                                                                <div class="col-md-12">
-                                                                    <input type="text" class="form-control"
-                                                                        id="formGroupExampleInput" name="resort_name"
-                                                                        placeholder="Resort Name">
-                                                                    <label for="formGroupExampleInput">Resort Name</label>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-5">
@@ -57,14 +53,13 @@
                                                             </div>
                                                             <div class="col-md-12 mt-5">
                                                                 <button type="submit" class="btn btn-primary"
-                                                                    id="submit">Submit</button>
+                                                                    id="submit">Add</button>
                                                             </div>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
