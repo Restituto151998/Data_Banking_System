@@ -9,12 +9,12 @@ class Type {
 
   public function handle($request, Closure $next, String $type) {
     if (!Auth::check()) // This isnt necessary, it should be part of your 'auth' middleware
-      return redirect('/home');
+      return redirect('/login');
 
     $user = Auth::user();
     if($user->type == $type)
       return $next($request);
 
-    return redirect('/home');
+    return redirect('/login');
   }
 }

@@ -54,7 +54,6 @@ return [
     |
     */
     'DB' => Illuminate\Support\Facades\DB::class,
-
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL'),

@@ -1,4 +1,4 @@
-@extends('admin.resorts.resort_nav')
+@extends('sideNav.resort_nav')
 
 @section('voda')
     <div class="main-wrapper main-wrapper-1">
@@ -13,6 +13,7 @@
                                 <div class="col-12">
                                     <div class="card card-primary">
                                         <div class="card-body">
+                                            <div>
                                             <table class="table">
                                                 <thead class="thead-dark">
 
@@ -36,15 +37,22 @@
                                                             <td>{{ $resort->address }}</td>
                                                             <td>{{ $resort->phone_number }}</td>
                                                             <td>{{ $resort->nationality }}</td>
-                                                            <td>{{ $resort->tempartaure }}</td>
+                                                            <td>{{ $resort->temperature }}</td>
                                                             <td>{{ $resort->time_use }}</td>
                                                             <td>{{ $resort->purpose }}</td>
 
                                                         </tr>
+                                                  
+                                                        @endforeach
                                                 </tbody>
-                                                @endforeach
+                                            
                                             </table>
                                         </div>
+
+                                       <span class="float-right">{!! $resort_lists->links() !!}</span>     
+                                        </div>
+                                       
+                                     
                                     </div>
                                 </div>
                             </div>

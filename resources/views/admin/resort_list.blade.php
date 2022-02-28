@@ -1,4 +1,4 @@
-@extends('admin.side_navbar')
+@extends('sideNav.side_navbar')
 
 @section('resortList')
 
@@ -92,11 +92,11 @@
                                                                                 </div>
                                                                                 <div class="row mt-5">
                                                                                     <div class="col-md-12">
-                                                                                        <input type="text"
+                                                                                        <input type="email"
                                                                                             class="form-control"
                                                                                             id="formGroupExampleInput"
-                                                                                            name="assigned_staff"
-                                                                                            value="{{ $resort->assigned_staff }}">
+                                                                                            name="assigned_staff" 
+                                                                                            value="{{ $resort->assigned_staff }}" required>
                                                                                         <label
                                                                                             for="formGroupExampleInput">Assigned
                                                                                             Staff</label>

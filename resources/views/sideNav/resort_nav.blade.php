@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <head>
     <meta charset="utf-8">
@@ -9,6 +8,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <script src="{{ asset('../../js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,18 +34,18 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/custom.css">
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/alcoyLogo.png" />
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
 </head>
 
 <body>
-
+<div id="#app"></div>
     @auth
-        @yield('voda')
-        @yield('dashboard')
-        @yield('profile')
-        @yield('addResort')
-        @yield('addUser')
-        @yield('resortList')
-        @yield('editUser')
+    @yield('voda')
+    @yield('search')
+    @yield('editUser')
+    
 
         <div id="#app" class="navbar-bg"></div>
         <nav class="navbar navbar-expand-lg main-navbar sticky">
@@ -126,16 +127,17 @@
                         <a href="/resort_list" class="nav-link"><i
                                 data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
                     </li>
+
                 </ul>
             </aside>
         </div>
     @endauth
 
     <main class="py-4">
-       
-        @yield('content')
+     
+   
     </main>
-
+    @yield('content')
 
 
     <!-- General JS Scripts -->
@@ -155,6 +157,7 @@
     <script src="{{ asset('../assets/js/scripts.js') }}"></script>
     <!-- Custom JS File -->
     <script src="{{ asset('../assets/js/custom.js') }}"></script>
+
 </body>
 
 </html>

@@ -1,0 +1,108 @@
+@extends('sideNav.side_navbar')
+
+@section('addResort')
+    <div>
+        <div class="main-wrapper main-wrapper-1">
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="{{ route('admin.add_user') }}"> Back</a>
+                </div>
+                @if (session()->has('message_fail'))
+                    <div class="alert alert-danger alert-dismissible fade  show" role="alert">
+                        {{ session()->get('message_fail') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <h4 class="m-0">Add Users</h4>
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <div class="card card-primary">
+
+                                            <div class="card-body">
+                                                <div class="card-header text-center font-weight-bold">
+                                                    <h2>Add Users</h2>
+                                                </div>
+                                                @if (session('status'))
+                                                    <div class="alert alert-success">
+                                                        {{ session('status') }}
+                                                    </div>
+                                                @endif
+                                                <div class="card-body">
+                                                    <form action="{{ route('admin.add_user') }}" method="post"
+                                                        id="form_add_user">
+                                                        @csrf
+
+                                                        <div class="row">
+
+                                                            <div class="mb-3 row">
+                                                                <label for="" class="col-sm-2 col-form-label">Name</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="name" class="form-control" name="name"
+                                                                        required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="inputPassword"
+                                                                    class="col-sm-2 col-form-label">Email</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="email" class="form-control" name="email"
+                                                                        required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="to_assigned" class="col-sm-2 col-form-label">Assign To:</label>
+                                                                <div class="col-sm-10">
+
+                                                                    <select class="custom-select" id="inputGroupSelect01"
+                                                                        name="assigned_staff">
+
+                                                                        <option selected>Choose resort...</option>
+                                                                        @foreach ($resorts as $resort)
+                                                                    
+                                                                            <option value="{{ $resort->resort_name }}">
+                                                                                {{ $resort->resort_name }}
+                                                                            </option>                                                                                                                                                  
+                                                                        @endforeach
+
+                                                                    </select>
+                                                                    @foreach ($resorts as $resort)
+                                                                    <input type="text " name="id" value="{{ $resort->id }}" hidden>
+                                                                    @endforeach
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="inputPassword"
+                                                                    class="col-sm-2 col-form-label">Password</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="password" class="form-control"
+                                                                        name="password" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 mt-5">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -4,6 +4,13 @@ $(window).on("load", function () {
   $(".loader").fadeOut("slow");
 });
 
+
+
+
+  $('#resort_button').on('submit', function(){
+      $('#resort_button').attr('disabled','true');
+  });
+
 feather.replace();
 // Global
 $(function () {

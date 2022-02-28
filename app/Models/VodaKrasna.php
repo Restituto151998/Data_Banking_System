@@ -16,7 +16,7 @@ class VodaKrasna extends Model
         'address',
         'phone_number',
         'nationality',
-        'tempartaure',
+        'temperature',
         'time_use',
         'purpose',
     ];

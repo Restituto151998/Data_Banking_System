@@ -9,27 +9,56 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Input;
+use App\Models\ResortList;
+use App\Models\Resort;
 
 class AddUserController extends Controller
  {
+    //display users
+
     public function show() {
-        if ( Auth::user()->status == 'disable' ) {
-            return view( 'admin.forbidden' );
+        if ( Auth::check() ) {
+            if ( Auth::user()->status == 'disable' ) {
+                return view( 'admin.forbidden' );
+            }
+
+            $users = User::paginate( 5 );
+
+            return view( 'admin.add_user' )->with( 'users', $users );
         }
-
-        $users = DB::table( 'users' )->select( 'id', 'name', 'email', 'status',  'password', 'type', )->get();
-        return view( 'admin.add_user' )->with( 'users', $users );
-
     }
 
-    public function addUser( Request $request ) {
+    public function search() {
+        $search = Input::get ( 'search' );
+        $users = User::where( 'name', 'LIKE', '%'.$search.'%' )->orWhere( 'email', 'LIKE', '%'.$search.'%' )->paginate( 5 );
+        if ( count( $users ) > 0 )
+        return view( 'resorts.search' )->with( 'users', $users )->withQuery ( $search );
+        else
+        return view( 'resorts.search' )->with( 'error', 'No Result Found!' );
+    }
+
+    //redirect add_users
+
+    public function redirectToAddUser() {
+        //functionalities of dropdown resort
+        $resort = DB::table( 'resorts' )->select( 'id', 'resort_name' )->get();
+        return view( 'admin.add_users' )->with( 'resorts', $resort );
+    }
+
+    //saving the user
+
+    public function saveUser( Request $request ) {
+        $resort_assigned_staff = $request->input('assigned_staff');
+        $resort_status = 'closed';
+        $resort_id = $request->input('id');
 
         $validatedData = $request->validate( [
             'name' => 'required',
             'email' => 'required',
-            'status' => 'required',
-            'type' => 'required',
-            'password' => 'required|',
+            'password' => 'required',
         ] );
 
         $email = $request->input( 'email' );
@@ -37,82 +66,112 @@ class AddUserController extends Controller
         $validator = Validator::make(
             array(
                 'email' => $email
+               
             ),
             array(
                 'email' => 'required|email|unique:users'
+              
             )
         );
+      
 
         if ( $validator->fails() )
  {
-            return redirect()->back()->with( 'message_fail', 'Duplicate email please try again.' );
+            return redirect()->back()->with( 'message_fail', 'Duplicate email please try another.' );
         }
-
+        
         $save = new User;
         $status = 'enable';
         $name = $request->input( 'name' );
         $email = $request->input( 'email' );
+        $assigned_staff = $request->input( 'assigned_staff' );
         $type = 'STAFF';
         $password = Hash::make( $request->input( 'password' ) );
 
         $save->name = $name;
+
         $save->type = $type;
         $save->email = $email;
         $save->status = $status;
         $save->password = $password;
+     
 
-        $save->save();
+        if (ResortList::where('resort_name', '=', Input::get('assigned_staff'))->exists()) {
+            return redirect()->back()->with( 'message_fail', 'Resort has already staff.' );
+         }
+         $save->save();
+        ResortList::create( [
+            'user_id' => $save->id,
+            'resort_id' => $resort_id,
+            'resort_name' =>$resort_assigned_staff,
+            'assigned_staff' => $save->name,
+            'status' => $resort_status,
 
-        return back()->with( 'message_success', 'user successfully added!' );
+        ] );
 
+        return redirect( '/add_user' )->with( 'message_success', 'Added Successfully' );
     }
+
+    //edit user
 
     public function editUser( $id )
  {
-        $user = User::find( $id );
 
-        return view( 'admin.add_user_edit', compact( 'user' ) );
+        if ( Auth::check() ) {
+            $user = User::find( $id );
+
+            return view( 'admin.add_user_edit', compact( 'user' ) );
+        }
     }
+
+    //update user
 
     public function updateUser( Request $request )
  {
-        $updateData = $request->validate( [
-            'name' => 'required|max:255',
-            'email' => 'required|max:255',
-            'password' => 'required|max:255',
-        ] );
-        $user = User::find( $request->id );
 
-        $name = $request->input( 'name' );
-        $email = $request->input( 'email' );
-        $password = Hash::make( $request->input( 'password' ) );
+        if ( Auth::check() ) {
+            $updateData = $request->validate( [
+                'name' => 'required|max:255',
+                'email' => 'required|max:255',
+                'password' => 'required|max:255',
+            ] );
+            $user = User::find( $request->id );
 
-        $user->name = $name;
-        $user->email = $email;
-        $user->password = $password;
+            $name = $request->input( 'name' );
+            $email = $request->input( 'email' );
+            $password = Hash::make( $request->input( 'password' ) );
 
-        $user->save();
+            $user->name = $name;
+            $user->email = $email;
+            $user->password = $password;
 
-        //  User::whereId( $request->id )->update( $updateData );
+            $user->save();
 
-        return redirect( '/add_user' )->with( 'message', 'Successfully Updated!' );
+            //  User::whereId( $request->id )->update( $updateData );
 
+            return redirect( '/add_user' )->with( 'message', 'Successfully Updated!' );
+        }
     }
+
+    //change status of the user
 
     public function changeUserStatus( $id )
  {
-        $user = DB::table( 'users' )->select( 'status' )->where( 'id', '=', $id )->first();
 
-        if ( $user->status == 'enable' ) {
-            $status = 'disable';
-        } else {
-            $status = 'enable';
+        if ( Auth::check() ) {
+            $user = DB::table( 'users' )->select( 'status' )->where( 'id', '=', $id )->first();
+
+            if ( $user->status == 'enable' ) {
+                $status = 'disable';
+            } else {
+                $status = 'enable';
+            }
+
+            $updateStatus = array( 'status' => $status );
+            DB::table( 'users' )->where( 'id', $id )->update( $updateStatus );
+
+            return redirect( '/add_user' )->with( 'status', 'User status has been updated successfully.' );
         }
-
-        $updateStatus = array( 'status' => $status );
-        DB::table( 'users' )->where( 'id', $id )->update( $updateStatus );
-
-        return redirect( '/add_user' )->with( 'status', 'User status has been updated successfully.' );
     }
 
 }

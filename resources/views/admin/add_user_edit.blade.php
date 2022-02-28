@@ -1,4 +1,4 @@
-@extends('admin.resorts.resort_nav')
+@extends('sideNav.resort_nav')
 
 @section('editUser')
 
@@ -37,6 +37,8 @@
                                                     <input type="text" class="form-control" name="password"
                                                         value="{{ $user->password }}" disabled>
                                                 </div>
+                                            
+                                                  
                                                 <div class="form-group">
                                                     <label for="password">New Password</label>
                                                     <input type="password" class="form-control" name="password">

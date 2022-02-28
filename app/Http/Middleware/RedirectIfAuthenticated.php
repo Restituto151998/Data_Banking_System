@@ -6,6 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ResortList;
 
 class RedirectIfAuthenticated
 {
@@ -18,11 +19,9 @@ class RedirectIfAuthenticated
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle($request, Closure $next, $guard = null) {
-        if (Auth::guard($guard)->check()) {
+        if (Auth::guard($guard)->check()  && Auth::user()->status == 'enable') {
           $type = Auth::user()->type; 
-
-          
-      
+             
           switch ($type) {
             case 'ADMIN':
                return redirect('/admin/dashboard');

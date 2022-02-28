@@ -1,4 +1,4 @@
-@extends('admin.side_navbar')
+@extends('sideNav.side_navbar')
 
 @section('addResort')
     <div>
@@ -28,7 +28,14 @@
                                                         action="{{ url('add_resort') }}">
                                                         @csrf
                                                         <div class="row">
-
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                           
+                                                            <img id="preview-image-before-upload" src="/assets/img/no_image.png"
+                                                            alt="preview image" style="max-height: 250px;">
+                                                                </div>
+                                                            </div>
+                                                     
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <input type="file" name="image"
@@ -39,6 +46,7 @@
                                                                     @enderror
                                                                 </div>
                                                             </div>
+                                                          
                                                             <div class="row mt-5">
                                                                 <div class="col-md-12">
                                                                     <input type="text" class="form-control"
@@ -57,7 +65,7 @@
                                                             </div>
                                                             <div class="col-md-12 mt-5">
                                                                 <button type="submit" class="btn btn-primary"
-                                                                    id="submit">Submit</button>
+                                                                    >Submit</button>
                                                             </div>
                                                         </div>
                                                     </form>

@@ -12,48 +12,46 @@ use Illuminate\Support\Facades\Auth;
 class AddResortController extends Controller
  {
     public function addResort() {
-        if ( Auth::user()->status == 'disable' ) {
-            return view( 'admin.forbidden' );
+
+        if ( Auth::check() )
+ {
+
+            if ( Auth::user()->status == 'disable' ) {
+                return view( 'admin.forbidden' );
+            }
+            return view( 'admin.add_resort' );
         }
-        return view( 'admin.add_resort' );
     }
 
     public function save( Request $request )
  {
 
-        $assigned_staff = 'no assigned staff!';
-        $status = 'closed';
+        if ( Auth::check() ) {
+         
 
-        $validatedData = $request->validate( [
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            $validatedData = $request->validate( [
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
-        ] );
+            ] );
 
-        $resort_name = $request->input( 'resort_name' );
-        $id = $request->user()->id;
+            $resort_name = $request->input( 'resort_name' );
+        
 
-        $resort_description = $request->input( 'resort_description' );
+            $resort_description = $request->input( 'resort_description' );
 
-        $imagePath = $request->file( 'image' )->store( 'public/storage' );
+            $imagePath = $request->file( 'image' )->store( 'public/storage' );
 
-        $save = new Resort;
+            $save = new Resort;
 
-        $save->resort_description = $resort_description;
-        $save->resort_name = $resort_name;
-        $save->imagePath = $imagePath;
+            $save->resort_description = $resort_description;
+            $save->resort_name = $resort_name;
+            $save->imagePath = $imagePath;
 
-        $save->save();
+            $save->save();
 
-        ResortList::create( [
-            'user_id' => $id,
-            'resort_id' => $save->id,
-            'resort_name' =>$resort_name,
-            'assigned_staff' => $assigned_staff,
-            'status' => $status,
-
-        ] );
-
-        return redirect( 'add_resort' )->with( 'status', 'Resort Successfully Added!' );
-
+     
+            return redirect( 'add_resort' )->with( 'status', 'Resort Successfully Added!' );
+        }
+        
     }
 }

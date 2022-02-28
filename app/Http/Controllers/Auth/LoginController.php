@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Admin\AdminController;
+use App\Models\ResortList;
 
 class LoginController extends Controller
 {
@@ -30,8 +32,7 @@ class LoginController extends Controller
      */
     
   public function redirectTo() {
-  $type = Auth::user()->type;
-
+  $type = Auth::user()->type; 
   if (Auth::user()->status == 'disable') {
     return '/forbidden';
   }else{

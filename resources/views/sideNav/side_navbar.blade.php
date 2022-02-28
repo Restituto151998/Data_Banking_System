@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<meta name="csrf-token" content="{{ csrf_token() }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,14 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
@@ -26,10 +21,7 @@
     <link rel="stylesheet"
         href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
-    <!-- Template CSS -->
-
     <link rel="stylesheet" href="./assets/css/components.css">
-    <!-- Custom style CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
@@ -37,7 +29,6 @@
 
 <body>
     <div id="app"></div>
-
     @auth
         @yield('dashboard')
         @yield('profile')
@@ -46,7 +37,6 @@
         @yield('resortList')
         @yield('editUser')
 
-        <div id="#app" class="navbar-bg"></div>
         <nav class="navbar navbar-expand-lg main-navbar sticky">
             <div class="form-inline mr-auto">
                 <ul class="navbar-nav mr-3">
@@ -76,9 +66,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="dropdown-item" href="{{ url()->previous() }}"
                                 onclick="event.preventDefault();
-                                                                                                                                    document.getElementById('logout-form').submit();">
+                                                                                                                                            document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -129,26 +119,67 @@
         </div>
     @endauth
 
-    <main class="py-4">
+    <body class="py-4">
         @yield('content')
-    </main>
+    </body>
 
-    <!-- General JS Scripts -->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
-
     <script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
-    <!-- JS Libraies -->
     <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script> --}}
-
-    {{-- <script src="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script> --}}
     <script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <!-- Page Specific JS File -->
-    {{-- <script src="{{ asset('assets/js/page/datatables.js') }}"></script> --}}
-
-    <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
-    <!-- Custom JS File -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script>     
+        $(document).ready(function() {
+            $('#add_resort').submit(function(e) {
+                if ($(this).data('submitted') === true) {
+                    alert('Form is already submitted, waiting response.');
+                    e.preventDefault();
+                } else {
+                    $(this).data('submitted', true);
+                }
+            });
+            $('#form_add_user').submit(function(e) {
+                if ($(this).data('submitted') === true) {
+                    alert('Form is already submitted, waiting response.');
+                    e.preventDefault();
+                } else {
+                    $(this).data('submitted', true);
+                }
+            });
+
+
+
+           
+            $('#image').change(function(){
+            
+            let reader = new FileReader();
+         
+            reader.onload = (e) => { 
+         
+              $('#preview-image-before-upload').attr('src', e.target.result); 
+            }
+         
+            reader.readAsDataURL(this.files[0]); 
+           
+           });
+
+           $('#profile').change(function(){
+            
+            let reader = new FileReader();
+         
+            reader.onload = (e) => { 
+         
+              $('#preview-profile-image').attr('src', e.target.result); 
+            }
+
+         $('#change_profile').attr('disabled', false);
+            reader.readAsDataURL(this.files[0]); 
+           
+           });
+        });
+
+    </script>
 </body>
+
 </html>
