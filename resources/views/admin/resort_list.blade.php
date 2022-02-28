@@ -21,21 +21,21 @@
                         <div class="card-body">
                             <div class="row mt-4">
                                 <div class="col-12">
-                                    <div class="card card-primary">
+                                    {{-- <div class="card card-primary"> --}}
                                         <div class="card-header">
                                         </div>
                                         <div class="card-body">
-                                            <div class="card-header text-center font-weight-bold">
+                                            {{-- <div class="card-header text-center font-weight-bold">
                                                 <h2>Resort List </h2>
-                                            </div>
+                                            </div> --}}
                                             <div class="container">
-                                                <table class="table">
-                                                    <thead class="table bg-primary">
+                                                <table class="table" style="background-color: white;">
+                                                    <thead class="table" style="font-family: 'Righteous'; font-size:24px; text-align:center;">
                                                         <tr>
-                                                            <th scope="col" class="text-white">Resort Name</th>
-                                                            <th scope="col" class="text-white">Assigned Staff</th>
-                                                            <th scope="col" class="text-white">Status</th>
-                                                            <th scope="col" class="text-white">Action</th>
+                                                            <th scope="col" class="text-black" style="background-color: white">Resort Name</th>
+                                                            <th scope="col" class="text-black" style="background-color: white">Assigned Staff</th>
+                                                            <th scope="col" class="text-black" style="background-color: white">Status</th>
+                                                            <th scope="col" class="text-black" style="background-color: white">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -129,7 +129,6 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

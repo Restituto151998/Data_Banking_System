@@ -11,7 +11,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
@@ -36,8 +37,8 @@
         @yield('addUser')
         @yield('resortList')
         @yield('editUser')
+        <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
 
-        <nav class="navbar navbar-expand-lg main-navbar sticky">
             <div class="form-inline mr-auto">
                 <ul class="navbar-nav mr-3">
                     <li>
@@ -46,9 +47,9 @@
                         </a>
                     </li>
                 </ul>
-                <div class="text-white h3 pt-2">
+                {{-- <div class="text-white h3 pt-2" style="font-family: 'Righteous';">
                     Alcoy Data Banking
-                </div>
+                </div> --}}
             </div>
             <ul class="navbar-nav navbar-right">
                 <!-- Authentication Links -->
@@ -81,11 +82,11 @@
                 @endguest
             </ul>
         </nav>
-        <div class="main-sidebar sidebar-style-1 ">
-            <aside id="sidebar-wrapper bg-primary">
-                <div class="sidebar-brand bg-primary">
-                    <a href=""> <img alt="image" src="assets/img/alcoyLogo.png" class="header-logo rounded-circle" /> <span
-                            class="text-white h3 pt-2" class="logo-name">ALCOY</span>
+        <div class="main-sidebar sidebar-style-1">
+            <aside id="sidebar-wrapper" > 
+                <div class="sidebar-brand" style="background:#21791A;" >
+                    <a href=""> <img alt="image" src="assets/img/logo.png" class="header-logo rounded-circle" /> <span
+                        class="text-white" >ALCOY</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
@@ -118,8 +119,8 @@
             </aside>
         </div>
     @endauth
-
     <body class="py-4">
+
         @yield('content')
     </body>
 

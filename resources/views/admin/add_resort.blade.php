@@ -9,13 +9,10 @@
                     <div class="col-12">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <h4 class="m-0">Add Resort</h4>
                                 <div class="row mt-4">
-                                    <div class="col-12">
-                                        <div class="card card-primary">
-
+                                    <div class="col-10">
                                             <div class="card-body">
-                                                <div class="card-header text-center font-weight-bold">
+                                                <div class="add-resort-header">
                                                     <h2>Add Resort</h2>
                                                 </div>
                                                 @if (session('status'))
@@ -28,6 +25,7 @@
                                                         action="{{ url('add_resort') }}">
                                                         @csrf
                                                         <div class="row">
+
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                            
@@ -35,7 +33,7 @@
                                                             alt="preview image" style="max-height: 250px;">
                                                                 </div>
                                                             </div>
-                                                     
+                                                
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <input type="file" name="image"
@@ -47,14 +45,6 @@
                                                                 </div>
                                                             </div>
                                                           
-                                                            <div class="row mt-5">
-                                                                <div class="col-md-12">
-                                                                    <input type="text" class="form-control"
-                                                                        id="formGroupExampleInput" name="resort_name"
-                                                                        placeholder="Resort Name">
-                                                                    <label for="formGroupExampleInput">Resort Name</label>
-                                                                </div>
-                                                            </div>
                                                             <div class="row mt-5">
                                                                 <div class="form-group">
                                                                     <label for="formGroupExampleInput">Description</label>
@@ -72,7 +62,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

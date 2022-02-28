@@ -1,8 +1,8 @@
 @extends('sideNav.side_navbar')
 
 @section('profile')
-    <div>
-        <div class="main-wrapper main-wrapper-1">
+    <<div>
+        <div class="main-wrapper main-wrapper-1"> -->
             <!-- Main Content -->
             <div class="main-content">
                 <div class="row">
@@ -93,5 +93,5 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     @endsection

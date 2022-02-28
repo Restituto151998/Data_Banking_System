@@ -95,11 +95,11 @@
         </nav>
 
         <div class="main-sidebar sidebar-style-1 ">
-            <aside id="sidebar-wrapper bg-primary">
-                <div class="sidebar-brand bg-primary">
-                    <a href=""> <img alt="image" src="../../assets/img/alcoyLogo.png" class="header-logo rounded-circle" />
-                        <span class="text-white h3 pt-2" class="logo-name">ALCOY</span>
-                    </a>
+            <aside id="sidebar-wrapper ">
+                <div class="sidebar-brand ">
+                    {{-- <a href=""> <img alt="image" src="../../assets/img/alcoyLogo.png" class="header-logo rounded-circle" />
+                        <span class="text-white" class="logo-name">ALCOY</span>
+                    </a> --}}
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
