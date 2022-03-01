@@ -17,7 +17,7 @@ class SideNavbarController extends Controller
             return view( 'admin.side_navbar' );
 
         }
-        return view( 'admin.forbidden' );
+        return view( 'error_code.forbidden' );
 
     }
 }

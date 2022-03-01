@@ -1,3 +1,6 @@
+
+@if(Auth::user()->status == 'disable');
+{{ Auth::logout(); }}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,3 +32,5 @@
 </body>
 
 </html>
+
+@endif

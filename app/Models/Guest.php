@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Resort;
 
-class VodaKrasna extends Model
+class Guest extends Model
 {
     protected $guarded = [];
 
@@ -20,4 +21,9 @@ class VodaKrasna extends Model
         'time_use',
         'purpose',
     ];
+
+    public function resort()
+    {
+        return $this->belongsTo(Resort::class);
+    }
 }

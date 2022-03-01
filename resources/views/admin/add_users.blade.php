@@ -58,24 +58,27 @@
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
-                                                                <label for="to_assigned" class="col-sm-2 col-form-label">Assign To:</label>
+                                                                <label for="to_assigned"
+                                                                    class="col-sm-2 col-form-label">Assign To:</label>
                                                                 <div class="col-sm-10">
 
                                                                     <select class="custom-select" id="inputGroupSelect01"
-                                                                        name="assigned_staff">
+                                                                    name="assigned_staff" >
+                                                               
 
-                                                                        <option selected>Choose resort...</option>
+                                                                        <option name="id"  selected>Choose resort...</option>
                                                                         @foreach ($resorts as $resort)
-                                                                    
-                                                                            <option value="{{ $resort->resort_name }}">
+                                                                       
+                                                                            <option value="{{ json_encode($resort) }}">
+                                                                              
                                                                                 {{ $resort->resort_name }}
-                                                                            </option>                                                                                                                                                  
+
+                                                                            </option>
+                                              
                                                                         @endforeach
 
                                                                     </select>
-                                                                    @foreach ($resorts as $resort)
-                                                                    <input type="text " name="id" value="{{ $resort->id }}" hidden>
-                                                                    @endforeach
+
 
                                                                 </div>
                                                             </div>

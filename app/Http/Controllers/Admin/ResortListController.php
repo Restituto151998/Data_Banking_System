@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ResortList;
+use App\Models\Guest;
 use Illuminate\Http\Input;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class ResortListController extends Controller
     public function show() {
         if ( Auth::check() ) {
             if ( Auth::user()->status == 'disable' ) {
-                return view( 'admin.forbidden' );
+                return view( 'error_code.forbidden' );
             }
             $resortList = ResortList::paginate(5);
             return view( 'admin.resort_list' )->with( 'resort_lists', $resortList );
@@ -31,13 +32,20 @@ class ResortListController extends Controller
         }
     }
 
-    public function resortList() {
-        if ( Auth::check() ) {
+    public function guest($id) {
+  
+            $guests = Guest::where('resort_id', $id)->get();
+            return view( 'resorts.resort_guest' )->with('guests', $guests );
 
-            $resortList = DB::table( 'voda_krasnas' )->select( 'full_name', 'gender', 'address', 'phone_number', 'nationality', 'temperature', 'time_use', 'purpose' )->paginate(5);
-            return view( 'resorts.voda_krasna' )->with( 'resort_lists', $resortList );
+        
 
-        }
+    }
+    public function printPreview() {
+       
+            $resortList = Guest::all();
+            return view( 'resorts.resort_guest' )->with( 'resort_lists', $resortList );
+
+        
     }
 
     public function update( Request $request )

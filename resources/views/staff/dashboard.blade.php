@@ -1,4 +1,4 @@
-@extends('staff.side_navbar')
+@extends('sideNav.side_navbar')
 
 @section('content')
 <div class="container">

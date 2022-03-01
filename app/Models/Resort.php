@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Guest;
 
 class Resort extends Model
 {
@@ -15,4 +16,9 @@ class Resort extends Model
         'imagePath',
         'resort_description',
     ];
+
+    public function guests()
+    {
+        return $this->hasMany(Guest::class);
+    }
 }

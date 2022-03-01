@@ -37,6 +37,7 @@
         @yield('addUser')
         @yield('resortList')
         @yield('editUser')
+        @yield('register')
         <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
 
             <div class="form-inline mr-auto">
@@ -47,9 +48,9 @@
                         </a>
                     </li>
                 </ul>
-                {{-- <div class="text-white h3 pt-2" style="font-family: 'Righteous';">
+                <div class="text-white h3 pt-2">
                     Alcoy Data Banking
-                </div> --}}
+                </div>
             </div>
             <ul class="navbar-nav navbar-right">
                 <!-- Authentication Links -->
@@ -69,7 +70,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url()->previous() }}"
                                 onclick="event.preventDefault();
-                                                                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                                                                            document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -83,42 +84,57 @@
             </ul>
         </nav>
         <div class="main-sidebar sidebar-style-1">
-            <aside id="sidebar-wrapper" > 
-                <div class="sidebar-brand" style="background:#21791A;" >
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand" style="background:#21791A;">
                     <a href=""> <img alt="image" src="assets/img/logo.png" class="header-logo rounded-circle" /> <span
-                        class="text-white" >ALCOY</span>
+                            class="text-white">{{ __('Alcoy') }}</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
+                    @if (Auth::user()->type == 'ADMIN')
                     <li class="dropdown">
                         <a href="/admin_dashboard" class="nav-link"><i
                                 data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
                     </li>
-
+                    @endif
+                    @if (Auth::user()->type == 'STAFF')
+                    <li class="dropdown">
+                        <a href="/staff_dashboard" class="nav-link"><i
+                                data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
+                    </li>
+                    @endif
                     <li class="dropdown">
                         <a href="/profile" class="nav-link"><i
                                 data-feather="user"></i><span>{{ __('Profile') }}</span></a>
                     </li>
-
+                    @if(Auth::user()->type == "STAFF")
+                    <li class="dropdown">
+                        <a href="/staff_register" class="nav-link"><i
+                                data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
+                    </li>
+                    @endif
+                    @if (Auth::user()->type == 'ADMIN')
                     <li class="dropdown">
                         <a href="/add_resort" class="nav-link"><i
                                 data-feather="image"></i><span>{{ __('Add Resort') }}</span></a>
                     </li>
-
+                   
                     <li class="dropdown">
                         <a href="/add_user" class="nav-link"><i
                                 data-feather="users"></i><span>{{ __('Add User') }}</span></a>
                     </li>
-
-                    <li class="dropdown">
-                        <a href="/resort_list" class="nav-link"><i
-                                data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
-                    </li>
+             
+                        <li class="dropdown">
+                            <a href="/resort_list" class="nav-link"><i
+                                    data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
+                        </li>
+                    @endif
                 </ul>
             </aside>
         </div>
     @endauth
+
     <body class="py-4">
 
         @yield('content')
@@ -130,7 +146,7 @@
     <script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <script>     
+    <script>
         $(document).ready(function() {
             $('#add_resort').submit(function(e) {
                 if ($(this).data('submitted') === true) {
@@ -151,33 +167,33 @@
 
 
 
-           
-            $('#image').change(function(){
-            
-            let reader = new FileReader();
-         
-            reader.onload = (e) => { 
-         
-              $('#preview-image-before-upload').attr('src', e.target.result); 
-            }
-         
-            reader.readAsDataURL(this.files[0]); 
-           
-           });
 
-           $('#profile').change(function(){
-            
-            let reader = new FileReader();
-         
-            reader.onload = (e) => { 
-         
-              $('#preview-profile-image').attr('src', e.target.result); 
-            }
+            $('#image').change(function() {
 
-         $('#change_profile').attr('disabled', false);
-            reader.readAsDataURL(this.files[0]); 
-           
-           });
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+
+                    $('#preview-image-before-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]);
+
+            });
+
+            $('#profile').change(function() {
+
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+
+                    $('#preview-profile-image').attr('src', e.target.result);
+                }
+
+                $('#change_profile').attr('disabled', false);
+                reader.readAsDataURL(this.files[0]);
+
+            });
         });
 
     </script>

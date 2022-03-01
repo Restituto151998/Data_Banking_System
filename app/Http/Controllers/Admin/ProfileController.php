@@ -11,7 +11,7 @@ class ProfileController extends Controller
     public function profile() {
         if ( Auth::check() ) {
             if ( Auth::user()->status == 'disable' ) {
-                return view( 'admin.forbidden' );
+                return view( 'error_code.forbidden' );
             }
             return view( 'admin.profile' );
         }

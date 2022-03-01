@@ -29,6 +29,7 @@
                                                 <h2>Resort List </h2>
                                             </div> --}}
                                             <div class="container">
+                                                
                                                 <table class="table" style="background-color: white;">
                                                     <thead class="table" style="font-family: 'Righteous'; font-size:24px; text-align:center;">
                                                         <tr>
@@ -49,7 +50,7 @@
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalCenter{{ $resort->id }}"><i
                                                                             data-feather="edit"></i> </a> | <a
-                                                                        href="{{ url('resort_list/voda_krasna') }}"><i
+                                                                        href="{{ route('resorts.resort_guest',$resort->resort_id ) }}"><i
                                                                             data-feather="eye"></i> </a>
                                                                 </td>
                                                             </tr>

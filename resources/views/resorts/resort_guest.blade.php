@@ -4,11 +4,14 @@
     <div class="main-wrapper main-wrapper-1">
         <!-- Main Content -->
         <div class="main-content">
+            <a href="{{ url('/resort_list/resort_guest/print_preview') }}" class="print float-right" >print<i
+                data-feather="printer" ></i></a>
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-0">
+                   
                         <div class="card-body">
-                            <h4 class="m-0">Voda Krasna</h4>
+                            <h4 class="m-0">Sample </h4>
                             <div class="row mt-4">
                                 <div class="col-12">
                                     <div class="card card-primary">
@@ -30,16 +33,16 @@
                                                 </thead>
 
                                                 <tbody>
-                                                    @foreach ($resort_lists as $resort)
+                                                    @foreach ($guests as $guest)
                                                         <tr>
-                                                            <td>{{ $resort->full_name }}</td>
-                                                            <td>{{ $resort->gender }}</td>
-                                                            <td>{{ $resort->address }}</td>
-                                                            <td>{{ $resort->phone_number }}</td>
-                                                            <td>{{ $resort->nationality }}</td>
-                                                            <td>{{ $resort->temperature }}</td>
-                                                            <td>{{ $resort->time_use }}</td>
-                                                            <td>{{ $resort->purpose }}</td>
+                                                            <td>{{ $guest->full_name }}</td>
+                                                            <td>{{ $guest->gender }}</td>
+                                                            <td>{{ $guest->address }}</td>
+                                                            <td>{{ $guest->phone_number }}</td>
+                                                            <td>{{ $guest->nationality }}</td>
+                                                            <td>{{ $guest->temperature }}</td>
+                                                            <td>{{ $guest->time_use }}</td>
+                                                            <td>{{ $guest->purpose }}</td>
 
                                                         </tr>
                                                   
@@ -49,7 +52,7 @@
                                             </table>
                                         </div>
 
-                                       <span class="float-right">{!! $resort_lists->links() !!}</span>     
+                                       {{-- <span class="float-right">{!! $resort_lists->links() !!}</span>      --}}
                                         </div>
                                        
                                      
@@ -57,6 +60,7 @@
                                 </div>
                             </div>
                         </div>
+                     
                     </div>
                 </div>
             </div>

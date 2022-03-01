@@ -22,10 +22,10 @@ class AddUserController extends Controller
     public function show() {
         if ( Auth::check() ) {
             if ( Auth::user()->status == 'disable' ) {
-                return view( 'admin.forbidden' );
+                return view( 'error_code.forbidden' );
             }
 
-            $users = User::paginate( 5 );
+            $users = User::paginate(5);
 
             return view( 'admin.add_user' )->with( 'users', $users );
         }
@@ -44,16 +44,15 @@ class AddUserController extends Controller
 
     public function redirectToAddUser() {
         //functionalities of dropdown resort
-        $resort = DB::table( 'resorts' )->select( 'id', 'resort_name' )->get();
-        return view( 'admin.add_users' )->with( 'resorts', $resort );
+        $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name' )->get();
+        return view( 'admin.add_users' )->with( 'resorts', $resorts );
     }
 
     //saving the user
 
     public function saveUser( Request $request ) {
-        $resort_assigned_staff = $request->input('assigned_staff');
         $resort_status = 'closed';
-        $resort_id = $request->input('id');
+        $resort = json_decode($request->assigned_staff);
 
         $validatedData = $request->validate( [
             'name' => 'required',
@@ -102,8 +101,8 @@ class AddUserController extends Controller
          $save->save();
         ResortList::create( [
             'user_id' => $save->id,
-            'resort_id' => $resort_id,
-            'resort_name' =>$resort_assigned_staff,
+            'resort_id' => $resort->id,
+            'resort_name' =>$resort->resort_name,
             'assigned_staff' => $save->name,
             'status' => $resort_status,
 
@@ -153,8 +152,8 @@ class AddUserController extends Controller
         }
     }
 
+    
     //change status of the user
-
     public function changeUserStatus( $id )
  {
 

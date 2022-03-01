@@ -19,15 +19,21 @@ class RedirectIfAuthenticated
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle($request, Closure $next, $guard = null) {
-        if (Auth::guard($guard)->check()  && Auth::user()->status == 'enable') {
+        if (Auth::guard($guard)->check()) {
           $type = Auth::user()->type; 
+
+          if(Auth::user()->status == 'disable'){
+            
+    Auth::logout();
+          
+          }
              
           switch ($type) {
             case 'ADMIN':
-               return redirect('/admin/dashboard');
+               return redirect('/admin_dashboard');
                break;
             case 'STAFF':
-               return redirect('/staff/dashboard');
+               return redirect('/staff_dashboard');
                break; 
       
             default:
