@@ -44,6 +44,12 @@
                                                                     @enderror
                                                                 </div>
                                                             </div>
+                                                            <div class="row mt-5">
+                                                                <div class="form-group">
+                                                                    <label for="formGroupExampleInput">Resort Name</label>
+                                                                    <input name="resort_name" class="form-control">
+                                                                </div>
+                                                            </div>
                                                           
                                                             <div class="row mt-5">
                                                                 <div class="form-group">

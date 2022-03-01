@@ -34,7 +34,8 @@ class LoginController extends Controller
   public function redirectTo() {
   $type = Auth::user()->type; 
   if (Auth::user()->status == 'disable') {
-    return '/forbidden';
+    // return '/forbidden';  
+Auth::logout();
   }else{
     switch ($type) {
       case 'ADMIN':
@@ -50,7 +51,6 @@ class LoginController extends Controller
     
   }
     
-
 }
    
 

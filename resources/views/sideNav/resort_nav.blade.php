@@ -14,16 +14,23 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+    </script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('../assets/css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/bundles/summernote/summernote-bs4.css') }}">
-    <link rel="stylesheet" href="{{ asset('../assets/bundles/datatables/datatables.min.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('../assets/bundles/datatables/datatables.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
@@ -36,19 +43,20 @@
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/alcoyLogo.png" />
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  
+
 </head>
 
 <body>
-<div id="#app"></div>
+    <div id="#app"></div>
     @auth
-    @yield('voda')
-    @yield('search')
-    @yield('editUser')
-    
+        @yield('voda')
+        @yield('search')
+        @yield('editUser')
+        @yield('lionarch')
+
 
         <div id="#app" class="navbar-bg"></div>
-        <nav class="navbar navbar-expand-lg main-navbar sticky">
+        <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
             <div class="form-inline mr-auto">
                 <ul class="navbar-nav mr-3">
                     <li>
@@ -78,9 +86,8 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -96,10 +103,10 @@
 
         <div class="main-sidebar sidebar-style-1 ">
             <aside id="sidebar-wrapper ">
-                <div class="sidebar-brand ">
-                    {{-- <a href=""> <img alt="image" src="../../assets/img/alcoyLogo.png" class="header-logo rounded-circle" />
-                        <span class="text-white" class="logo-name">ALCOY</span>
-                    </a> --}}
+                <div class="sidebar-brand " style="background:#21791A;">
+                    <a href=""> <img alt="image" src="../../assets/img/alcoyLogo.png" class="header-logo rounded-circle" />
+                        <span class="text-white " class="logo-name">{{ __('Alcoy') }}</span>
+                    </a>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
@@ -134,8 +141,8 @@
     @endauth
 
     <main class="py-4">
-     
-   
+
+
     </main>
     @yield('content')
 
@@ -157,7 +164,14 @@
     <script src="{{ asset('../assets/js/scripts.js') }}"></script>
     <!-- Custom JS File -->
     <script src="{{ asset('../assets/js/custom.js') }}"></script>
+    <script src="{{ asset('../assets/js/jquery.printPage.js') }}"></script>
+    <script>
+        
+        $(document).ready(function() {
+            $('.print').printPage();
+        });
 
+    </script>
 </body>
 
 </html>

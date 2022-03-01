@@ -14,8 +14,10 @@ class DashboardController extends Controller
     
 
     public function index() {
-        if ( Auth::check() ) {
+        if ( Auth::check() && Auth::user()->status == 'enable') {
             return view( 'staff.dashboard' );
         }
+        Auth::logout();
+       
     }
 }

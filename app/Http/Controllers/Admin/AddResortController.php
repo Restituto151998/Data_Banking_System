@@ -17,7 +17,7 @@ class AddResortController extends Controller
  {
 
             if ( Auth::user()->status == 'disable' ) {
-                return view( 'admin.forbidden' );
+                return view( 'error_code.forbidden' );
             }
             return view( 'admin.add_resort' );
         }

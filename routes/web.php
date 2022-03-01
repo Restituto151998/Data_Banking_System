@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,16 +46,21 @@ Route::get('/add_user/{id}/edit', [App\Http\Controllers\Admin\AddUserController:
 Route::put('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'updateUser']);
 
 Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'show'])->name('admin.resort_list');
-Route::get('/resort_list/voda_krasna', [App\Http\Controllers\Admin\ResortListController::class, 'resortList'])->name('resorts.voda_krasna');
 
-
+//GuestList
+Route::get('/resort_list/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
+//Print
+ Route::get('/resort_list/resort_guest/print_preview', [App\Http\Controllers\Admin\ResortListController::class, 'printPreview']);
+//changeStatus
 Route::get('/status_update/{id}', [App\Http\Controllers\Admin\AddUserController::class, 'changeUserStatus']);
 
 Route::get('/resort_list/{id}/edit', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.edit_resort_list');
 Route::put('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'update']);
 
-Route::get('/forbidden', [App\Http\Controllers\HomeController::class, 'forbidden'])->name('admin.forbidden');
+Route::get('/forbidden', [App\Http\Controllers\HomeController::class, 'forbidden'])->name('error_code.forbidden');
 
 
 ////checking for user type = staff
-// Route::get('/staff_dashboard', [App\Http\Controllers\Staff\DashboardController::class, 'index'])->middleware('type:STAFF');
+Route::get('/staff_dashboard', [App\Http\Controllers\Staff\DashboardController::class, 'index'])->middleware('type:STAFF');
+Route::get('/staff_register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'index'])->name('staff.staff_register');
+Route::post('/register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'register']);

@@ -6,10 +6,13 @@ $(window).on("load", function () {
 
 
 
+//changeStatus
+  // $('#resort_button').on('submit', function(){
+  //     $('#resort_button').attr('disabled','true');
+  // });
 
-  $('#resort_button').on('submit', function(){
-      $('#resort_button').attr('disabled','true');
-  });
+
+
 
 feather.replace();
 // Global
