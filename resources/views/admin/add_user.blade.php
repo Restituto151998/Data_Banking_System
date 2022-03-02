@@ -1,7 +1,6 @@
 @extends('sideNav.side_navbar')
 
 @section('addUser')
-
     <div>
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
@@ -29,25 +28,21 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
-                                    <a class="btn btn-primary " href="{{ route('admin.add_users') }}">+ Add User</a>
                                     <form class="form-inline" action="/add_user/search" method="POST" role="search">
                                         {{ csrf_field() }}
-                                        <input class="form-control " type="search" placeholder="Search" name="search"
-                                            aria-label="Search">
-                                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                                        <input class="form-control" style="width: 900px" type="search"
+                                            placeholder="Search" name="search" aria-label="Search">
+                                        &emsp; <button class="btn btn-outline-success my-2 my-sm-0"
+                                            type="submit">Search</button>
                                     </form>
-
                                 </div>
-
-                                <div class="row mt-4">
+                                <div class="row">
                                     <div class="col-12">
-                                        <div class="card card-primary">
                                             <div class="card-header">
                                             </div>
                                             <div class="card-body">
                                                 <table class="table">
-
-                                                    <thead class="table bg-primary ">
+                                                    <thead class="table" style="background-color: #21791A; text-align:center">
                                                         <tr>
                                                             <th scope="col" class="text-white">Name</th>
                                                             <th scope="col" class="text-white">Email Address</th>
@@ -58,9 +53,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
-
-
                                                         @foreach ($users as $user)
                                                             <tr>
                                                                 <td>{{ $user->name }}</td>
@@ -85,6 +77,8 @@
                                                     </tbody>
                                                     @endforeach
                                                 </table>
+                                                <a class="btn" style="background-color:#21791A; color:white"
+                                                    href="{{ route('admin.add_users') }}">+ Add New User</a>
                                             </div>
                                         </div>
                                         <span class="float-right"> {!! $users->links() !!}</span>
@@ -95,5 +89,4 @@
                     </div>
                 </div>
             </div>
-        </div>
     @endsection

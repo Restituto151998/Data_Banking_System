@@ -5,9 +5,9 @@
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
             <div class="main-content">
-                <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('admin.add_user') }}"> Back</a>
-                </div>
+                {{-- <div class="pull-right">
+                    <a class="btn btn-danger text-white" href="{{ route('admin.add_user') }}"> Back</a>
+                </div> --}}
                 @if (session()->has('message_fail'))
                     <div class="alert alert-danger alert-dismissible fade  show" role="alert">
                         {{ session()->get('message_fail') }}
@@ -21,15 +21,13 @@
                     <div class="col-12">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <h4 class="m-0">Add Users</h4>
+                                <div class="pull-right">
+                                    <a class="btn btn-danger text-white" href="{{ route('admin.add_user') }}"> Back</a>
+                                </div>
                                 <div class="row mt-4">
                                     <div class="col-12">
-                                        <div class="card card-primary">
-
                                             <div class="card-body">
-                                                <div class="card-header text-center font-weight-bold">
-                                                    <h2>Add Users</h2>
-                                                </div>
+                                                <h4 style="text-align: center; color:black">Add User</h4>
                                                 @if (session('status'))
                                                     <div class="alert alert-success">
                                                         {{ session('status') }}
@@ -43,7 +41,7 @@
                                                         <div class="row">
 
                                                             <div class="mb-3 row">
-                                                                <label for="" class="col-sm-2 col-form-label">Name</label>
+                                                                <label for="" class="col-sm-2 col-form-label">Name:</label>
                                                                 <div class="col-sm-10">
                                                                     <input type="name" class="form-control" name="name"
                                                                         required>
@@ -51,7 +49,7 @@
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="inputPassword"
-                                                                    class="col-sm-2 col-form-label">Email</label>
+                                                                    class="col-sm-2 col-form-label">Email:</label>
                                                                 <div class="col-sm-10">
                                                                     <input type="email" class="form-control" name="email"
                                                                         required>
@@ -84,7 +82,7 @@
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="inputPassword"
-                                                                    class="col-sm-2 col-form-label">Password</label>
+                                                                    class="col-sm-2 col-form-label">Password:</label>
                                                                 <div class="col-sm-10">
                                                                     <input type="password" class="form-control"
                                                                         name="password" required>
@@ -92,7 +90,7 @@
                                                             </div>
                                                             <div class="col-md-12 mt-5">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary">Submit</button>
+                                                                    class="btn text-white" style="background-color: green">Add User</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -103,7 +101,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
