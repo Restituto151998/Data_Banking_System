@@ -54,6 +54,7 @@
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($users as $user)
+                                                        @if (Auth::user()->type != $user->type)
                                                             <tr>
                                                                 <td>{{ $user->name }}</td>
                                                                 <td>{{ $user->email }}</td>
@@ -63,7 +64,7 @@
                                                                 <td>
                                                                     @if ($user->status == 'enable')
                                                                         <a href="{{ url('status_update', $user->id) }}"
-                                                                            class="btn btn-success btn-sm text-white">enable</a>
+                                                                            class="btn btn-sm text-white" style="background-color: green">enable</a>
                                                                     @else
                                                                         <a href="{{ url('status_update', $user->id) }}"
                                                                             class="btn btn-danger btn-sm text-white">disable</a>

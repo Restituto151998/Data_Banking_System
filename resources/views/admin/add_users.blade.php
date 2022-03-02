@@ -22,7 +22,7 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <div class="pull-right">
-                                    <a class="btn btn-danger text-white" href="{{ route('admin.add_user') }}"> Back</a>
+                                    <a class="btn text-white"  style="background-color:red" href="{{ route('admin.add_user') }}"> Back</a>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12">
