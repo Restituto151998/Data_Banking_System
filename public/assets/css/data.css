@@ -1,28 +1,22 @@
-    /* input#email.form-control {
+     input#email.form-control {
         border-top-left-radius: 2%;
         color: #21791A;
-    } */
-/*     
+    } 
+    
     #login {
-        position: absolute; */
-        /* width: 291px;
-    height: 382px; */
-        /* max-width: 370px;
+        position: absolute; 
+         width: 291px;
+    height: 382px; 
+         max-width: 370px;
         height: 380px;
         background: #F4EBEB;
         border-radius: 100px 0px;
-        box-shadow: 0 0 0 0; */
-        /* margin-top: 56px; */
+        box-shadow: 0 0 0 0; 
+     margin-top: 56px;
     }
     
-    /* .bg {
-        background-color: #21791A;
-    }
-    
-    .container {
-        position: relative;
-        height: 450px;
-        margin-top: 8%;
+    .bg {
+        background: #21791A;
     }
     
     .login-logo {
@@ -58,27 +52,12 @@
         border-color: transparent !important;
     }
     
+    a#navbarDropdown.nav-link.dropdown-toggle::after{
+        display: none;
+      }
+    
     .login-btn:hover {
         background: #21791A;
         transition: 0.7s;
     }
     
-    .main-sidebar {
-        background: #21791A;
-    }
-    
-    .main-sidebar .sidebar-menu li a span {
-        margin-top: 3px;
-        width: 100%;
-        color: white;
-        font-family: 'Righteous';
-    }
-    
-    .main-sidebar .sidebar-brand a .logo-name {
-        vertical-align: middle;
-        font-size: 32px;
-    } */
-    /* .td {
-        color: black;
-        text-align: center;
-    } */

@@ -12,15 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class AddResortController extends Controller
  {
     public function addResort() {
-
-        if ( Auth::check() )
- {
-
-            if ( Auth::user()->status == 'disable' ) {
-                return view( 'error_code.forbidden' );
-            }
             return view( 'admin.add_resort' );
-        }
+        
     }
 
     public function save( Request $request )

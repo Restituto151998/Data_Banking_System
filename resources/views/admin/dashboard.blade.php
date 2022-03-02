@@ -15,7 +15,7 @@
             function drawChart() {
 
                 var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
+                    ['Nationality', 'count'],
                     <?php
                     echo $chartData; ?>
                 ]);
@@ -33,28 +33,15 @@
 
             function barChart() {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Density", {
-                        role: "style"
-                    }],
-                    ["Copper", 8.94, "#b87333"],
-                    ["Silver", 10.49, "silver"],
-                    ["Gold", 19.30, "gold"],
-                    ["Platinum", 21.45, "color: #e5e4e2"]
+                    ['resort_id', 'guest'],
+
+                    <?php echo $barData; ?>
                 ]);
 
-                var view = new google.visualization.DataView(data);
-                view.setColumns([0, 1,
-                    {
-                        calc: "stringify",
-                        sourceColumn: 1,
-                        type: "string",
-                        role: "annotation"
-                    },
-                    2
-                ]);
+         
 
                 var options = {
-                    title: "Numbers of tourist in a month",
+                    title: 'Number of tourists in every resort',
                     bar: {
                         groupWidth: "95%"
                     },
@@ -63,7 +50,7 @@
                     },
                 };
                 var chart = new google.visualization.ColumnChart(document.getElementById("barGraph"));
-                chart.draw(view, options);
+                chart.draw(data, options);
             }
 
         </script>

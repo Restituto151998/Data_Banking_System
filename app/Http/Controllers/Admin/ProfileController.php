@@ -35,4 +35,13 @@ class ProfileController extends Controller
     
         //    return redirect('image-upload-preview')->with('status', 'Image Has been uploaded successfully in laravel 8');
     }
+    public function uploadProfile(Request $request)
+    {
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();           
+            $request->image->storeAs('images',$filename,'public');
+            Auth()->user()->update(['image'=>$filename]);
+        }
+        return redirect()->back()->with('status', 'Successfully uploaded!');
+    }
 }

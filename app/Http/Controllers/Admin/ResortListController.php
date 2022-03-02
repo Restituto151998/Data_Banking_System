@@ -33,20 +33,17 @@ class ResortListController extends Controller
     }
 
     public function guest($id) {
-  
+        $resort = ResortList::where( 'id',  '=', $id )->first();
             $guests = Guest::where('resort_id', $id)->get();
-            return view( 'resorts.resort_guest' )->with('guests', $guests );
-
-        
-
+            return view( 'resorts.resort_guest' )->with('guests', $guests )->withDetails( $resort );
     }
-    public function printPreview() {
+
+
+    // public function printPreview($id) {
        
-            $resortList = Guest::all();
-            return view( 'resorts.resort_guest' )->with( 'resort_lists', $resortList );
-
-        
-    }
+    //         $resortList = Guest::where('resort_id')->get();
+    //         return view( 'resorts.resort_guest' )->with( 'guests', $guests );   
+    // }
 
     public function update( Request $request )
  {
@@ -59,6 +56,26 @@ class ResortListController extends Controller
             ResortList::whereId( $request->resort_id )->update( $updateData );
 
             return redirect()->back()->with( 'message', 'Successfully Updated!' );
+        }
+    }
+
+
+    public function changeResortStatus( $id )
+ {
+
+        if ( Auth::check() ) {
+            $user = DB::table( 'resort_lists' )->select( 'status' )->where( 'id', '=', $id )->first();
+
+            if ( $user->status == 'closed' ) {
+                $status = 'open';
+            } else {
+                $status = 'closed';
+            }
+
+            $updateStatus = array( 'status' => $status );
+            DB::table( 'resort_lists' )->where( 'id', $id )->update( $updateStatus );
+
+            return redirect( '/resort_list' )->with( 'status', 'Resort status has been updated successfully.' );
         }
     }
 

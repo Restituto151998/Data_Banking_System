@@ -4,14 +4,24 @@
     <div class="main-wrapper main-wrapper-1">
         <!-- Main Content -->
         <div class="main-content">
-            <a href="{{ url('/resort_list/resort_guest/print_preview') }}" class="print float-right" >print<i
+            @if(isset($details))
+    
+            <a href="{{ route('resorts.resort_guest',$details->resort_id) }}" class="print float-right" >print<i
                 data-feather="printer" ></i></a>
+
+                @endif
             <div class="row">
-                <div class="col-12">
+                <div class="co-12">
                     <div class="card mb-0">
                    
                         <div class="card-body">
-                            <h4 class="m-0">Sample </h4>
+                            @if(Auth::user()->type == 'STAFF')
+                            <h4 class="m-0">{{ Auth::user()->resortList->resort_name }} </h4>
+                            @endif
+                            @if(Auth::user()->type == 'ADMIN')
+                            <h4 class="m-0">{{ $details->resort_name }} </h4>
+                            @endif
+                         
                             <div class="row mt-4">
                                 <div class="col-12">
                                     <div class="card card-primary">

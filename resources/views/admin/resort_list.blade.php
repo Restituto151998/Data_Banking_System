@@ -6,6 +6,15 @@
 
         <!-- Main Content -->
         <div class="main-content">
+            @if (session()->has('status'))
+                    <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                        {{ session()->get('status') }}
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
             @if (session()->has('message'))
                 <div class="alert alert-success alert-dismissible fade  show" role="alert">
                     {{ session()->get('message') }}
@@ -44,7 +53,16 @@
                                                             <tr>
                                                                 <td>{{ $resort->resort_name }}</td>
                                                                 <td>{{ $resort->assigned_staff }}</td>
-                                                                <td>{{ $resort->status }}</td>
+                                                                {{-- <td>{{ $resort->status }}</td> --}}
+                                                                <td>
+                                                                    @if ($resort->status == 'open')
+                                                                    <a href="{{ url('resorts_status_update', $resort->id) }}"
+                                                                        class="btn btn-success btn-sm text-white">Open</a>
+                                                                @else
+                                                                    <a href="{{ url('resorts_status_update', $resort->id) }}"
+                                                                        class="btn btn-danger btn-sm text-white">Closed</a>
+                                                                @endif
+                                                                </td>
                                                                 <td>
                                                                     <a href="{{ route('admin.resort_list', $resort->id) }}"
                                                                         data-toggle="modal"

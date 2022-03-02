@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
+    <link rel="stylesheet" href="./assets/css/data.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
 
@@ -65,9 +66,13 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
+                            @if(Auth::user()->image)
+                            <img src="{{ asset('storage/images/'.Auth::user()->image) }}" class="rounded-circle" style="width:30px; height: 30px;" alt="img">
+                            @endif
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            
                             <a class="dropdown-item" href="{{ url()->previous() }}"
                                 onclick="event.preventDefault();
                                                                                                                                                             document.getElementById('logout-form').submit();">
@@ -107,13 +112,18 @@
                     <li class="dropdown">
                         <a href="/profile" class="nav-link"><i
                                 data-feather="user"></i><span>{{ __('Profile') }}</span></a>
+                    </li>  @if(Auth::user()->type == "STAFF")
+                    <li class="dropdown">
+                        <a href="/resort_guest/{{Auth::user()->resortList->resort_id}}" class="nav-link"><i
+                                data-feather="list"></i><span>{{ Auth::user()->resortList->resort_name }}</span></a>
                     </li>
-                    @if(Auth::user()->type == "STAFF")
                     <li class="dropdown">
                         <a href="/staff_register" class="nav-link"><i
                                 data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
                     </li>
                     @endif
+            
+                  
                     @if (Auth::user()->type == 'ADMIN')
                     <li class="dropdown">
                         <a href="/add_resort" class="nav-link"><i
