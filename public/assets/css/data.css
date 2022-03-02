@@ -1,52 +1,53 @@
     input#email.form-control {
-        border-top-left-radius: 2%;
-        color: #21791A;
+        background-color: green;
     } 
     
     #login {
-        position: absolute; 
-         width: 291px;
-    height: 382px; 
-         max-width: 370px;
-        height: 380px;
+        position: relative; 
+        /* width: 291px;
+        height: 382px;  */
+        max-width: 321px;
+        height: 382px;
         background: #F4EBEB;
         border-radius: 100px 0px;
         box-shadow: 0 0 0 0; 
-     margin-top: 56px;
+        margin-top: 88px;
     }
     
-    .bg {
+    /* .bg {
         background: #21791A;
-    }
+    } */
     
     .login-logo {
         max-width: 39%;
         max-height: 30%;
-        margin-left: 113px;
-        margin-top: -69px;
+        margin-left: 102px;        
+        margin-top: -56px;
     }
     
     .text-login {
         color: green;
-        margin-left: 133px;
-        margin-top: 7px;
+        margin-left: 113px;
+        margin-top: 12px;
     }
     
-    .text-login,
+    /* .text-login,
     .text-username,
     .text-password,
     .logo-name {
         font-family: 'Righteous';
-    }
+    } */
     
     .login-btn {
         position: absolute;
-        max-width: 131px;
+        /* max-width: 131px; */
+        /* text-align: center; */
         height: 40px;
-        margin-left: 86px;
+        margin-top: 14px;
+        margin-left: 55px;
         border-radius: 100px 0px;
         font-size: larger;
-        font-family: 'Righteous';
+        /* font-family: 'Righteous'; */
         background: #21791A;
         color: #F4EBEB;
         border-color: transparent !important;
@@ -56,8 +57,8 @@
         display: none;
       }
     
-    .login-btn:hover {
+    /* .login-btn:hover {
         background: #21791A;
         transition: 0.7s;
     }
-    
+     */
