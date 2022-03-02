@@ -46,11 +46,17 @@ Route::get('/add_user/{id}/edit', [App\Http\Controllers\Admin\AddUserController:
 Route::put('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'updateUser']);
 
 Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'show'])->name('admin.resort_list');
+//changeStatusResort
+ Route::get('/resorts_status_update/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'changeResortStatus']);
+
+ //uploadProfile
+ Route::post('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'uploadProfile']);
 
 //GuestList
 Route::get('/resort_list/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
+Route::get('/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest']);
 //Print
- Route::get('/resort_list/resort_guest/print_preview', [App\Http\Controllers\Admin\ResortListController::class, 'printPreview']);
+// Route::get('/resort_list/resort_guest/print_preview/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'printPreview']);
 //changeStatus
 Route::get('/status_update/{id}', [App\Http\Controllers\Admin\AddUserController::class, 'changeUserStatus']);
 

@@ -9,19 +9,19 @@
                     <div class="alert alert-success alert-dismissible fade  show" role="alert">
                         {{ session()->get('status') }}
 
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
-                @if (session()->has('message_success'))
-                    <div class="alert alert-success alert-dismissible fade  show" role="alert">
-                        {{ session()->get('message_success') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if (session()->has('message_success'))
+                <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                    {{ session()->get('message_success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
 
                 <div class="row">
                     <div class="col-12">
@@ -74,15 +74,15 @@
                                                                             data-feather="edit"></i> </a>
                                                                 </td>
                                                             </tr>
-                                                    </tbody>
+                                                        @endif
                                                     @endforeach
                                                 </table>
                                                 <a class="btn" style="background-color:#21791A; color:white"
                                                     href="{{ route('admin.add_users') }}">+ Add New User</a>
                                             </div>
                                         </div>
-                                        <span class="float-right"> {!! $users->links() !!}</span>
                                     </div>
+                                    <span class="float-right"> {!! $users->links() !!}</span>
                                 </div>
                             </div>
                         </div>

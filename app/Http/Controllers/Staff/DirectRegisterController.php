@@ -35,10 +35,10 @@ class DirectRegisterController extends Controller
         $save->time_use = $time_use;
         $save->purpose = $purpose;
 
-        dd($save->save());
+        $save->save();
 
         
-
+return back()->with('status', 'Guest Successfully Registered!');
 
     }
 }
