@@ -20,7 +20,9 @@ use Illuminate\Pagination\Paginator;
 |
 */
 
-
+//online registration
+Route::get('/resort-alcoy-registration', [App\Http\Controllers\GuestController::class, 'redirectTo'])->name('online_registration.guest_registration');
+Route::post('/guest_register', [App\Http\Controllers\GuestController::class, 'onlineRegister']);
 
 Auth::routes();
 
@@ -65,8 +67,11 @@ Route::put('/resort_list', [App\Http\Controllers\Admin\ResortListController::cla
 
 Route::get('/forbidden', [App\Http\Controllers\HomeController::class, 'forbidden'])->name('error_code.forbidden');
 
+Route::get('/generate_qrcode', [App\Http\Controllers\Admin\QrCodeController::class, 'qrCode'])->name('resorts.generate_qrcode');
 
 ////checking for user type = staff
 Route::get('/staff_dashboard', [App\Http\Controllers\Staff\DashboardController::class, 'index'])->middleware('type:STAFF');
 Route::get('/staff_register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'index'])->name('staff.staff_register');
 Route::post('/register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'register']);
+
+

@@ -34,10 +34,9 @@ class AddUserController extends Controller
     public function search() {
         $search = Input::get ( 'search' );
         $users = User::where( 'name', 'LIKE', '%'.$search.'%' )->orWhere( 'email', 'LIKE', '%'.$search.'%' )->paginate( 5 );
-        if ( count( $users ) > 0 )
+
         return view( 'resorts.search' )->with( 'users', $users )->withQuery ( $search );
-        else
-        return view( 'resorts.search' )->with( 'error', 'No Result Found!' );
+
     }
 
     //redirect add_users
@@ -159,7 +158,7 @@ class AddUserController extends Controller
         $updateStatus = array( 'status' => $status );
         DB::table( 'users' )->where( 'id', $id )->update( $updateStatus );
 
-        return redirect( '/add_user' )->with( 'status', 'User status has been updated successfully.' );
+        return back()->with( 'status', 'User status has been updated successfully.' );
 
     }
 

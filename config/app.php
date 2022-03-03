@@ -141,7 +141,6 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-       
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -178,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        SimpleSoftwareIO\Qrcode\QrCodeServiceProvider::class,
+
     ],
 
     /*
@@ -191,9 +193,7 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // ...
-        
-    ])->toArray(),
-
+    'aliases' => Facade::defaultAliases()->merge( [
+        'QrCode' => SimpleSoftwareIO\Qrcode\Facades\QrCode::class,
+    ] )->toArray(),
 ];
