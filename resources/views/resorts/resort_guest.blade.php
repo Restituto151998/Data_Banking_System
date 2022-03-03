@@ -18,9 +18,9 @@
                             @if(Auth::user()->type == 'STAFF')
                             <h4 class="m-0">{{ Auth::user()->resortList->resort_name }} </h4>
                             @endif
-                            @if(Auth::user()->type == 'ADMIN')
+                            {{-- @if(Auth::user()->type == 'ADMIN')
                             <h4 class="m-0">{{ $details->resort_name }} </h4>
-                            @endif
+                            @endif --}}
                          
                             <div class="row mt-4">
                                 <div class="col-12">

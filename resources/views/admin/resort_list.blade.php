@@ -41,8 +41,8 @@
                                                 </div> --}}
                                                  <!-- Search-->
                                                 <div class="container">
-
-                                                    <div class="main w-75 mb-5">
+                                                    
+                                                    <div class="main w-100 mb-5 justify-align-center">
                                                        
                                                         <div class="input-group">
                                                           <input type="text" class="border border-success form-control" placeholder="Search">
@@ -53,7 +53,7 @@
                                                           </div>
                                                         </div>
                                                     </div>
-                                                
+                                                    
                                                     <table class="table" style="background-color: white; text-align:center;">
                                                         <thead class="table" style="font-size:20px;">
                                                             <tr>

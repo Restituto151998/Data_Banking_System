@@ -23,11 +23,5 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function forbidden(){
-       
-        return view('error_code.forbidden');
-    }
-
-
   
 }
