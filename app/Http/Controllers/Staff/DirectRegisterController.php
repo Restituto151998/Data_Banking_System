@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Guest;
 
+
 class DirectRegisterController extends Controller
 {
     public function index(){
@@ -13,6 +14,8 @@ class DirectRegisterController extends Controller
     }
 
     public function register(Request $request){
+
+
         $resort_id = $request->user()->resortList->resort_id;
         $full_name = $request->input('full_name');
         $gender = $request->input('gender');

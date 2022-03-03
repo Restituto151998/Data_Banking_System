@@ -40,6 +40,7 @@
         @yield('resortList')
         @yield('editUser')
         @yield('register')
+        @yield('qr-code')
         <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
 
             <div class="form-inline mr-auto">
@@ -141,6 +142,12 @@
                                     data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
                         </li>
                     @endif
+                    <li class="dropdown">
+                        <a href="/generate_qrcode" class="nav-link"><i
+                                data-feather="code"></i><span>{{ __('QRcode') }}</span></a>
+                    </li>
+                    
+
                 </ul>
             </aside>
         </div>

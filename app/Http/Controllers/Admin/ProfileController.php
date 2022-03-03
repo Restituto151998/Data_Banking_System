@@ -38,10 +38,12 @@ class ProfileController extends Controller
     public function uploadProfile(Request $request)
     {
         if($request->hasFile('image')){
-            $filename = $request->image->getClientOriginalName();           
+            $filename = $request->image->getClientOriginalName();
+  
             $request->image->storeAs('images',$filename,'public');
+         
             Auth()->user()->update(['image'=>$filename]);
         }
-        return redirect()->back()->with('status', 'Successfully uploaded!');
+        return back()->with('status', 'Successfully uploaded!');
     }
 }
