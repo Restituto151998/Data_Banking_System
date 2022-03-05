@@ -108,7 +108,7 @@
         <div class="main-sidebar sidebar-style-1 ">
             <aside id="sidebar-wrapper ">
                 <div class="sidebar-brand " style="background:#21791A;">
-                    <a href=""> <img alt="image" src="../../assets/img/alcoyLogo.png" class="header-logo rounded-circle" />
+                    <a href=""> <img alt="image" src="../../assets/img/logo.png" class="header-logo rounded-circle" />
                         <span class="text-white " class="logo-name">{{ __('Alcoy') }}</span>
                     </a>
                 </div>

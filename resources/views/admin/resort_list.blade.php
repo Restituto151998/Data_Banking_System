@@ -40,10 +40,8 @@
                                                     <h2>Resort List </h2>
                                                 </div> --}}
                                                  <!-- Search-->
-                                                <div class="container">
-                                                    
+                                                <div class="container">    
                                                     <div class="main w-100 mb-5 justify-align-center">
-                                                       
                                                         <div class="input-group">
                                                           <input type="text" class="border border-success form-control" placeholder="Search">
                                                           <div class="input-group-append">
