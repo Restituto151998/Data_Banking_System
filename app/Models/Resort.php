@@ -21,4 +21,5 @@ class Resort extends Model
     {
         return $this->hasMany(Guest::class);
     }
+   
 }

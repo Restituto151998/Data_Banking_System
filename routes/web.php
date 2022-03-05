@@ -44,13 +44,15 @@ Route::get('/add_users', [App\Http\Controllers\Admin\AddUserController::class, '
 Route::post('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'saveUser']);
 Route::any('/add_user/search', [App\Http\Controllers\Admin\AddUserController::class, 'search']);
 
+
 Route::get('/add_user/{id}/edit', [App\Http\Controllers\Admin\AddUserController::class, 'editUser'])->name('admin.add_user_edit');
 Route::put('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'updateUser']);
 
 Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'show'])->name('admin.resort_list');
 //changeStatusResort
  Route::get('/resorts_status_update/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'changeResortStatus']);
-
+ //searchResort
+ Route::any('/resort_list/search', [App\Http\Controllers\Admin\ResortListController::class, 'searchResortList']);
  //uploadProfile
  Route::post('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'uploadProfile']);
 
@@ -70,8 +72,12 @@ Route::get('/forbidden', [App\Http\Controllers\HomeController::class, 'forbidden
 Route::get('/generate_qrcode', [App\Http\Controllers\Admin\QrCodeController::class, 'qrCode'])->name('resorts.generate_qrcode');
 
 ////checking for user type = staff
-Route::get('/staff_dashboard', [App\Http\Controllers\Staff\DashboardController::class, 'index'])->middleware('type:STAFF');
+Route::get('/staff_dashboard', [App\Http\Controllers\Staff\DashboardController::class, 'dashboard'])->middleware('type:STAFF');
 Route::get('/staff_register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'index'])->name('staff.staff_register');
 Route::post('/register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'register']);
+
+//profileEdit
+Route::get('/profile/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'editUserInformation'])->name('admin.profile.test');
+Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'updateUserInformation']);
 
 

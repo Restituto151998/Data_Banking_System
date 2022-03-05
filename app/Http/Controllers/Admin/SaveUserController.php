@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SaveUserController extends Controller
-{
+class SaveUserController extends Controller {
     public function saveUser( Request $request ) {
-     
+
         $validatedData = $request->validate( [
             'name' => 'required',
             'email' => 'required',
@@ -26,8 +25,7 @@ class SaveUserController extends Controller
             )
         );
 
-        if ( $validator->fails() )
- {
+        if ( $validator->fails() ) {
             return redirect()->back()->with( 'message_fail', 'Duplicate email please try again.' );
         }
 
@@ -47,7 +45,6 @@ class SaveUserController extends Controller
 
         $save->save();
 
-
-return redirect('/add_user')->with( 'message_success', 'Added Successfully' );
+        return redirect( '/add_user' )->with( 'message_success', 'Added Successfully' );
     }
 }

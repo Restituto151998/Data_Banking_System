@@ -54,6 +54,7 @@
         @yield('search')
         @yield('editUser')
         @yield('lionarch')
+        @yield('resort_search')
 
 
         <div id="#app" class="navbar-bg"></div>

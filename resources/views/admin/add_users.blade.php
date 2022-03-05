@@ -62,9 +62,10 @@
 
                                                                     <select class="custom-select" id="inputGroupSelect01"
                                                                     name="assigned_staff" >
-                                                               
+                                                                    
 
                                                                         <option name="id"  selected>Choose resort...</option>
+                                                                     
                                                                         @foreach ($resorts as $resort)
                                                                        
                                                                             <option value="{{ json_encode($resort) }}">

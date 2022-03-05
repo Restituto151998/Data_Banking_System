@@ -20,15 +20,9 @@ class AddUserController extends Controller
     //display users
 
     public function show() {
-        if ( Auth::check() ) {
-            if ( Auth::user()->status == 'disable' ) {
-                return view( 'error_code.forbidden' );
-            }
 
-            $users = User::paginate( 5 );
-
-            return view( 'admin.add_user' )->with( 'users', $users );
-        }
+        $users = User::paginate( 5 );
+        return view( 'admin.add_user' )->with( 'users', $users );
     }
 
     public function search() {
@@ -39,7 +33,7 @@ class AddUserController extends Controller
 
     }
 
-    //redirect add_users
+    //     //redirect add_users
 
     public function redirectToAddUser() {
         //functionalities of dropdown resort
@@ -47,11 +41,15 @@ class AddUserController extends Controller
         return view( 'admin.add_users' )->with( 'resorts', $resorts );
     }
 
-    //saving the user
+    //     //saving the user
 
     public function saveUser( Request $request ) {
         $resort_status = 'closed';
         $resort = json_decode( $request->assigned_staff );
+
+        if ( empty( $resort->resort_name ) ) {
+            return redirect()->back()->with( 'message_fail', 'Please choose a resort.' );
+        }
 
         $validatedData = $request->validate( [
             'name' => 'required',
@@ -61,7 +59,7 @@ class AddUserController extends Controller
 
         $email = $request->input( 'email' );
 
-        $validator = Validator::make(
+        $emailValidator = Validator::make(
             array(
                 'email' => $email
 
@@ -72,7 +70,7 @@ class AddUserController extends Controller
             )
         );
 
-        if ( $validator->fails() )
+        if ( $emailValidator->fails() )
  {
             return redirect()->back()->with( 'message_fail', 'Duplicate email please try another.' );
         }
@@ -92,12 +90,12 @@ class AddUserController extends Controller
         $save->status = $status;
         $save->password = $password;
 
-        if ( ResortList::where( 'resort_name', '=',$assigned_staff  )->exists() ) {
+        if ( ResortList::where( 'resort_name', '=', $assigned_staff )->exists() ) {
             return redirect()->back()->with( 'message_fail', 'Resort has already staff.' );
         }
-       
+
         $save->save();
-        
+
         ResortList::create( [
             'user_id' => $save->id,
             'resort_id' => $resort->id,

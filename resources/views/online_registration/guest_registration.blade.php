@@ -10,15 +10,23 @@
 
 <body>
     <div class="container">
-        @if (session()->has('status'))
-        <div class="alert alert-success alert-dismissible fade  show" role="alert">
-            {{ session()->get('status') }}
 
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+        {{-- <div>
+            @foreach ($resorts as $image)
+            {{ $image->imagePath}}
+                <img src="{{ asset('storage/'.$image->imagePath)}}" alt="images" srcset="">
+            @endforeach
+        </div> --}}
+
+        @if (session()->has('status'))
+            <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                {{ session()->get('status') }}
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row justify-content-center">
             <div class="col-md-8 mt-5">
                 <div class="card">
@@ -39,9 +47,11 @@
                                                 {{ $resort->resort_name }}
 
                                             </option>
+
                                         @endforeach
                                     </select>
                                 </div>
+
                             </div>
 
                             <div class="form-group">

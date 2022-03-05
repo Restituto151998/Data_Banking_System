@@ -25,12 +25,5 @@ class UsersTableSeeder extends Seeder
     'type' => 'ADMIN',
     'password' => Hash::make('password'),
   ]);
-        DB::table('users')->insert([
-    'name' => 'staff',
-    'email' => 'staff@staff',
-    'status' => 'enable',
-    'type' => 'STAFF',
-    'password' => Hash::make('password'),
-  ]);
     }
 }

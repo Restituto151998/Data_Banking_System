@@ -20,17 +20,13 @@
                     </button>
                 </div>
             @endif
-
-
-            {{-- <button class="btn btn-primary float-right"  href="/add_users">+ Add User</button> --}}
             <div class="row">
-
                 <div class="col-12">
                     <div class="card mb-0">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <a class="btn btn-primary " href="{{ route('admin.add_users') }}">+ Add User</a>
-                                <form class="form-inline" action="/add_user/search" method="POST" role="search">
+                                <form class="form-inline" action="/add_user" method="POST" role="search">
                                     {{ csrf_field() }}
                                     <input class="form-control" type="search" placeholder="Search" name="search"
                                         aria-label="Search">

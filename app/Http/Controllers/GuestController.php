@@ -11,8 +11,9 @@ class GuestController extends Controller
 
 
 public function redirectTo(){
-    $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name' )->get();
-    return view('online_registration.guest_registration')->with( 'resorts', $resorts );
+    $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
+    $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
+    return view('online_registration.guest_registration')->with( 'resorts', $resorts )->with('resorts', $image);
 }
 
   public function onlineRegister(Request $request){

@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Models\ResortList;
 
 class LoginController extends Controller
-{
+ {
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -26,41 +26,43 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    
-  public function redirectTo() {
-  $type = Auth::user()->type; 
-  if (Auth::user()->status == 'disable') {
-    // return '/forbidden';  
-Auth::logout();
-  }else{
-    switch ($type) {
-      case 'ADMIN':
-        return '/admin_dashboard';
-        break;
-      case 'STAFF':
-        return '/staff_dashboard';
-        break; 
-      default:
-        return '/login'; 
-      break;
+    * Where to redirect users after login.
+    *
+    * @var string
+    */
+
+    public function redirectTo() {
+        $type = Auth::user()->type;
+        
+        if ( Auth::user()->status == 'disable' ) {
+            Auth::logout();
+        } else {
+            switch ( $type ) {
+                case 'ADMIN':
+                return '/admin_dashboard';
+                break;
+                case 'STAFF':
+                return '/staff_dashboard';
+                break;
+
+                default:
+                return '/login';
+
+                break;
+            }
+
+        }
+
     }
-    
-  }
-    
-}
-   
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    * Create a new controller instance.
+    *
+    * @return void
+    */
+
     public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+ {
+        $this->middleware( 'guest' )->except( 'logout' );
     }
 }
