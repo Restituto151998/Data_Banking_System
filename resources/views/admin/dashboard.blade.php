@@ -1,8 +1,7 @@
 @extends('sideNav.side_navbar')
 
-@section('dashboard')
+@section('adminDashboard')
     <html>
-
     <head>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
@@ -69,8 +68,8 @@
                     <div class="col-sm-4">
                         <div class="card bg-warning">
                             <div class="card-body text-center">
-                                <h5 class="card-title">Numbers of tourist in all resorts a day</h5>
-                                <h3>43</h3>
+                                <h5 class="card-title">Number of Guests</h5>
+                                <h3>{{ $numberOfGuest }}</h3>
 
                             </div>
                         </div>
@@ -78,8 +77,8 @@
                     <div class="col-sm-4">
                         <div class="card bg-info">
                             <div class="card-body text-center">
-                                <h5 class="card-title">Numbers of tourist in all resorts a month</h5>
-                                <h3>960</h3>
+                                <h5 class="card-title">Number of Staffs</h5>
+                                <h3>{{ $numberOfUser }}</h3>
 
                             </div>
                         </div>
@@ -87,8 +86,8 @@
                     <div class="col-sm-4">
                         <div class="card bg-success">
                             <div class="card-body text-center">
-                                <h5 class="card-title">Numbers of tourist in all resorts a year</h5>
-                                <h3>11,520</h3>
+                                <h5 class="card-title">Number of Resorts </h5>
+                                <h3>{{ $numberOfResort }}</h3>
 
                             </div>
                         </div>
@@ -124,6 +123,7 @@
             </div>
         </div>
     </body>
+    </html>
 
 
 @endsection

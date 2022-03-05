@@ -6,14 +6,14 @@
             <!-- Main Content -->
             <div class="main-content">
                 @if (session()->has('status'))
-                <div class="alert alert-success alert-dismissible fade  show" role="alert">
-                    {{ session()->get('status') }}
+                    <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                        {{ session()->get('status') }}
 
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
@@ -28,10 +28,12 @@
                                                     @csrf
                                                     <div class="form-group">
 
-                                                        <img id="preview-profile-image"
-                                                            src="{{ asset('storage/images/' . Auth::user()->image) }}"
-                                                            alt="preview image" style="width:200px; height: 200px;"
-                                                            class="rounded-circle">
+                                                        @if (Auth::user()->image)
+                                                            <img id="preview-profile-image"
+                                                                src="{{ asset('storage/images/' . Auth::user()->image) }}"
+                                                                alt="preview image" style="width:200px; height: 200px;"
+                                                                class="rounded-circle">
+                                                        @endif
 
                                                         <label for="profile">
                                                             <i data-feather="camera"
@@ -47,8 +49,9 @@
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn  text-center text-white" style="background-color:  #21791A"
-                                                            id="change_profile" disabled>Change Profile</button>
+                                                        <button type="submit" class="btn  text-center text-white"
+                                                            style="background-color:  #21791A" id="change_profile"
+                                                            disabled>Change Profile</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -83,12 +86,45 @@
                                                     </div>
                                                 </div>
                                                 <div class="row ">
-                                                    <div class="form-group">
-                                                        <button class="btn w-50"
+                                                    {{-- <div class="form-group">
+                                                        <button class="btn w-50" {{ $resort->id }}
                                                             style="background-color:#21791A; color:white">Edit
                                                             Information</button>
-                                                    </div>
+                                                    </div> --}}
+
+                                                    <a type="button" href="{{ route('admin.profile.test', ['id'=> Auth::user()->id]) }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{Auth::user()->id}}">
+                                                        Edit Informations
+                                                      </a>
                                                 </div>
+                                                 {{-- MODAL --}}
+                                    
+                                                 <div class="modal fade" id="exampleModal{{Auth::user()->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="exampleModalLabel">Edit Information</h5>
+                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post"
+                                                                action="{{ route('admin.profile') }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                            <input type="text" value="{{Auth::user()->id}}" hidden>
+                                                            <input type="text" value="{{Auth::user()->name}}" name="name">
+                                                            <input type="text" value="{{Auth::user()->email}}" name="email">
+                                                            <input type="text" value="{{Auth::user()->password}}" name="password">
+
+                                                          
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                          <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </form>
+                                                      </div>
+                                                    </div>
+                                                  </div>
                                             </center>
                                         </div>
                                     </div>

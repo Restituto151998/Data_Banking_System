@@ -107,10 +107,13 @@
                                                                 <div class="col-sm-10">
 
                                                                     <select class="custom-select" id="inputGroupSelect01"
+
                                                                     name="assigned_staff" style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white" >
                                                                
 
+
                                                                         <option name="id"  selected>Choose resort...</option>
+                                                                     
                                                                         @foreach ($resorts as $resort)
                                                                        
                                                                             <option value="{{ json_encode($resort) }}">

@@ -64,6 +64,32 @@
                                                         <button class="btn w-25"
                                                             style="background-color:#21791A; color:white">Add</button>
                                                     </div>
+
+                                                    @if (session('status'))
+                                                        <div class="alert alert-success">
+                                                            {{ session('status') }}
+                                                        </div>
+                                                        @endif
+                                                <div class="card-body">
+                                                        <div class="form-group">
+                                                            <label for="resortName">Resort Name:</label>
+                                                            <input type="name" class="form-control" name="resort_name" placeholder="Enter resort name" required>
+                                                           
+                                                          </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label for="formGroupExampleInput">Description:</label>
+                                                                <textarea name="resort_description" class="form-control"
+                                                                    id="exampleFormControlTextarea1" rows="3" placeholder="Enter resort description" required></textarea>
+                                                                   
+                                                            </div>
+                                                        </div>
+                                                        <div class="row ">
+                                                            <div class="form-group">
+                                                                <button class="btn w-25"
+                                                                style="background-color:#21791A; color:white">Add</button>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,5 +101,4 @@
                 </div>
             </div>
         </div>
-        {{-- dfgfdgdfgfd --}}
     @endsection

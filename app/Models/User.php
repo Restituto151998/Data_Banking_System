@@ -24,6 +24,7 @@ class User extends Authenticatable
         'type',
         'status',
         'password',
+        'image',
     ];
 
     /**
@@ -48,4 +49,6 @@ class User extends Authenticatable
     public function resortList(){
         return $this->hasOne('App\Models\ResortList');
     }
+    
+    
 }

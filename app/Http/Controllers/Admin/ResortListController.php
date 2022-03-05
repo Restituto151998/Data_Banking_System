@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ResortList;
 use App\Models\Guest;
-use Illuminate\Http\Input;
+// use Illuminate\Http\Input;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class ResortListController extends Controller
  {
@@ -27,6 +28,7 @@ class ResortListController extends Controller
  {
         if ( Auth::check() ) {
             $resort = ResortList::where( 'id',  '=', $id )->first();
+         dd($resort);
 
             return view( 'admin.resort_list' )->with( 'resort_lists', $resort );
         }
@@ -47,7 +49,6 @@ class ResortListController extends Controller
 
     public function update( Request $request )
  {
-        if ( Auth::check() ) {
             $updateData = $request->validate( [
                 'resort_name' => 'required|max:255',
                 'assigned_staff' => 'required|max:255',
@@ -56,7 +57,7 @@ class ResortListController extends Controller
             ResortList::whereId( $request->resort_id )->update( $updateData );
 
             return redirect()->back()->with( 'message', 'Successfully Updated!' );
-        }
+        
     }
 
 
@@ -77,6 +78,16 @@ class ResortListController extends Controller
 
             return redirect( '/resort_list' )->with( 'status', 'Resort status has been updated successfully.' );
         }
+    }
+
+
+
+    public function searchResortList() {
+       
+        $search = Input::get ( 'search' );
+        $resort_lists = ResortList::where( 'resort_name', 'LIKE', '%'.$search.'%' )->orWhere( 'assigned_staff', 'LIKE', '%'.$search.'%' )->paginate( 5 );
+        return view( 'resorts.resort_search' )->with( 'resort_lists',  $resort_lists  )->withQuery ( $search );
+
     }
 
 }
