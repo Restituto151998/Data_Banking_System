@@ -45,8 +45,6 @@
                                             <div class="main w-100 mb-5 justify-align-center">
                                                 <form class="d-flex " action="/resort_list/search" method="POST"
                                                     role="search">
-
-
                                                     {{ csrf_field() }}
                                                     <div class="input-group">
                                                         <input type="search" class="border border-success form-control w-75"
