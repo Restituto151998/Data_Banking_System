@@ -27,20 +27,37 @@
                     <div class="col-12">
                         <div class="card mb-0">
                             <div class="card-body">
+                                <h4 style="text-align: center; color:black">Data Banking System Users</h4>
                                 <div class="d-flex justify-content-between">
-                                    <form class="form-inline" action="/add_user/search" method="POST" role="search">
-                                        {{ csrf_field() }}
-                                        <input class="form-control" style="width: 900px" type="search"
-                                            placeholder="Search" name="search" aria-label="Search">
-                                        &emsp; <button class="btn btn-outline-success my-2 my-sm-0"
-                                            type="submit">Search</button>
+                                    <form class="form-inline mt-4" action="/add_user/search" method="POST" role="search">
+                                        <div class="row ml-2">
+                                            <div class="col d-flex">
+                                                {{ csrf_field() }}
+                                                <input class="form-control border border-success" style="width: 500px;" type="search"
+                                                    placeholder="Search" name="search" aria-label="Search">
+                                                    &ensp;<button class="btn btn-outline-success"
+                                                    type="submit">Search</button>
+                                            </div>
+                                            <div class="col ml-5">
+                                                <a class="btn btn-outline-success text-success p-2" href="{{ route('admin.add_users') }}">+ Add New User</a>
+                                            </div>
+                                        </div>
+                                        
                                     </form>
+                                    {{-- <div class="input-group">
+                                        <input type="text" class="border border-success form-control" placeholder="Search">
+                                        <div class="input-group-append">
+                                          <button class="btn btn-success" type="button">
+                                            <i class="fa fa-search"></i>
+                                          </button>
+                                        </div>
+                                      </div> --}}
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                             <div class="card-header">
                                             </div>
-                                            <div class="card-body">
+                                            <div class="card-body text-center">
                                                 <table class="table">
                                                     <thead class="table" style="background-color: #21791A; text-align:center">
                                                         <tr>
@@ -78,8 +95,7 @@
                                                         @endif
                                                     @endforeach
                                                 </table>
-                                                <a class="btn" style="background-color:#21791A; color:white"
-                                                    href="{{ route('admin.add_users') }}">+ Add New User</a>
+                                                
                                             </div>
                                         </div>
                                     </div>
