@@ -1,0 +1,53 @@
+    /* .container {
+        background-color: white;
+        margin-top: 156px;
+    } */
+    
+    #register {
+        position: relative;
+        /* width: 291px;
+    height: 382px;  */
+        height: 730px;
+        background: #F4EBEB;
+        border-radius: 100px 0px;
+        box-shadow: 0 0 0 0;
+        margin-top: 88px;
+    }
+    /* #register_content {
+        margin-left: 30px;
+    } */
+    
+    .register-logo {
+        max-width: 39%;
+        max-height: 30%;
+        margin-left: 102px;
+        margin-top: -59px;
+    }
+    
+    .text-register {
+        color: green;
+        margin-left: 49px;
+        margin-top: 12px;
+    }
+    
+    .card-header {
+        /* color: green; */
+        background-color: #F4EBEB;
+        margin-left: -22px;
+        border-bottom: #F4EBEB;
+    }
+    
+    .card-body {
+        padding: 0 0 0 0;
+        margin-bottom: 20%;
+    }
+    
+    .login-btn {
+        height: 40px;
+        margin-top: 20px;
+        border-radius: 100px 0px;
+        font-size: larger;
+        background: #21791A;
+        color: #F4EBEB;
+        border-color: transparent !important;
+    }

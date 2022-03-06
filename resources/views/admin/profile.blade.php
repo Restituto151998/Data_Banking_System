@@ -22,7 +22,6 @@
                                     <div class="col-3">
                                         <div class="row">
                                             <div class="col text-center">
-
                                                 <form action="{{ url('/profile') }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
@@ -45,8 +44,6 @@
                                                             <div class="alert alert-danger mt-1 mb-1">
                                                                 {{ $message }}</div>
                                                         @enderror
-
-
                                                     </div>
                                                     <div class="form-group">
                                                         <button type="submit" class="btn  text-center text-white"
@@ -55,14 +52,11 @@
                                                     </div>
                                                 </form>
                                             </div>
-
                                         </div>
                                     </div>
-
                                     <div class="col-9">
                                         <h4 style="text-align: center; color:black">Profile Information</h4>
                                         <div class="card-body">
-
                                             <div class="row ">
                                                 <div class="form-group col-6 text-center">
                                                     <input type="text" value="{{ Auth::user()->name }} " disabled>
@@ -72,17 +66,13 @@
                                                     <input type="text" value="{{ Auth::user()->email }} " disabled>
                                                     <label class="small mb-1" for="name">Email Address</label>
                                                 </div>
-                                            </div>
-                                            
-
+                                            </div>                                          
                                             <div>
                                                 <a href="{{ route('auth.passwords.changePassword')}}">
                                                     Change password?
                                                 </a>
                                             </div>
                                             <div class="row ">
-
-
                                                 <a type="button"
                                                     href="{{ route('admin.profile.test', ['id' => Auth::user()->id]) }}"
                                                     class="btn btn-success" data-bs-toggle="modal"
@@ -90,7 +80,6 @@
                                                     Edit Informations
                                                 </a>
                                             </div>
-
                                             <div class="modal fade" id="exampleModal{{ Auth::user()->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
@@ -109,9 +98,7 @@
                                                                 <input type="text" value="{{ Auth::user()->name }}"
                                                                     name="name">
                                                                 <input type="text" value="{{ Auth::user()->email }}"
-                                                                    name="email">
-                                                     
-
+                                                                    name="email">                                                    
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"

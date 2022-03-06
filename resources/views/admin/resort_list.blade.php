@@ -6,7 +6,6 @@
             @if (session()->has('status'))
                 <div class="alert alert-success alert-dismissible fade  show" role="alert">
                     {{ session()->get('status') }}
-
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -29,17 +28,17 @@
                                 <div class="col-12">
                                     <div class="card-header">
                                     </div>
-                                    <h3 style="text-align: center; color:black">Resort List</h3>
+                                    <h4 style="text-align: center; color:black">Resort List</h4>
                                     <div class="card-body">
                                         <div class="container">
                                             <div class="main w-100 mb-5 justify-align-center">
                                                 <form class="d-flex " action="/resort_list/search" method="POST"
                                                     role="search">
                                                     {{ csrf_field() }}
-                                                    <div class="input-group">
+                                                    <div class="input-group ml-4">
                                                         <input type="search" class="border border-success form-control w-75"
                                                             name='search' placeholder="Search">
-                                                        <div class="input-group-append">
+                                                        <div class="input-group-append mr-4">
                                                             <button class="btn btn-success" type="submit">
                                                                 <i class="fa fa-search"></i>
                                                             </button>

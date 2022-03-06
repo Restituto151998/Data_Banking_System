@@ -4,12 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="container">
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
         <div>
             @foreach ($resorts as $image)
@@ -18,82 +13,210 @@
             @endforeach
         </div>
 
-        @if (session()->has('status'))
-            <div class="alert alert-success alert-dismissible fade  show" role="alert">
-                {{ session()->get('status') }}
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-        <div class="row justify-content-center">
-            <div class="col-md-8 mt-5">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
-                    <form method="post" enctype="multipart/form-data" id="add_guest"
-                        action="{{ url('/guest_register') }}">
-                        @csrf
-                        <div class="card-body">
-                            <div class="mb-3 row">
-                                <label for="to_assigned" class="col-sm-2 col-form-label">Please Select A Resort:</label>
-                                <div class="col-sm-10">
-                                    <select class="custom-select" id="inputGroupSelect01" name="resort">
-                                        <option selected>Choose resort...</option>
-                                        @foreach ($resorts as $resort)
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
 
-                                            <option value="{{ json_encode($resort) }}">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
-                                                {{ $resort->resort_name }}
+    {{-- CSS --}}
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <link rel="stylesheet" href="./assets/css/register.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
+    {{-- <link rel="stylesheet" href="./assets/css/data.css"> --}}
+   <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
+</head>
 
-                                            </option>
+<body style="background-color:#21791A">
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4"
+                    id="register">
+                    @if (session()->has('status'))
+                        <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                            {{ session()->get('status') }}
 
-                                        @endforeach
-                                    </select>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    <div class="container">
+                        <div class="row">
+                            <div class="col" id="register_content">
+                                {{-- <div class="card"> --}}
+                                <div class="inline-block">
+                                    <!-- <div class="card-header justify-content-center pt-4"> -->
+                                    <div>
+                                        <img alt="image" src="assets/img/logo.png"
+                                            class="register-logo rounded-circle" />
+                                        <h3 class="text-register">Welcome to Alcoy</h3>
+                                    </div>
                                 </div>
 
+                                <div class="card-header">{{ __('Register') }}</div>
+                                <form method="post" enctype="multipart/form-data" id="add_guest"
+                                    action="{{ url('/guest_register') }}">
+                                    @csrf
+                                    <div class="card-body ">
+                                        <div class="row mb-2">
+                                            <div class="col d-flex" style="width:500px">
+                                                {{-- <label for="to_assigned"
+                                                    class="col-form-label text-black sm font-weight-bold">Please Select
+                                                    A
+                                                    Resort:</label> --}}
+                                                    <strong><label><i data-feather="check-square" class="mt-3"></i>
+                                                    </label></strong>
+                                                </button>
+                                                {{-- <div class="col-sm-10"> --}}
+                                                <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    name="resort">
+                                                    <option selected>Choose resort...</option>
+                                                    @foreach ($resorts as $resort)
+                                                        <option value="{{ json_encode($resort) }}">
+                                                            {{ $resort->resort_name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group  mb-2">
+                                            <div class="input-group-append">
+                                                <strong><label><i data-feather="user" class="mt-2"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <input type="text"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    class="form-control ml-4" name="full_name" placeholder="Full name"
+                                                    tabindex="1" required autocomplete="full_name" autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <div class="input-group-append">
+                                                <strong><label><i data-feather="users" class="mt-2"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <input type="text"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    class="form-control ml-4" name="gender" placeholder="Gender"
+                                                    tabindex="1" required autocomplete="gender" autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <div class="input-group-append">
+                                                <strong><label><i data-feather="navigation" class="mt-2"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <input type="text"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    class="form-control ml-4" name="address" placeholder="Address"
+                                                    tabindex="1" required autocomplete="address" autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <div class="input-group-append">
+                                                <strong><label><i data-feather="phone" class="mt-2"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <input type="text"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    class="form-control ml-4" name="phone_number"
+                                                    placeholder="Phone number" tabindex="1" required
+                                                    autocomplete="phone_number" autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <div class="input-group-append">
+                                                <strong><label><i data-feather="flag" class="mt-2"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <input type="text"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    class="form-control ml-4" name="nationality"
+                                                    placeholder="Nationality" tabindex="1" required
+                                                    autocomplete="nationality" autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <div class="input-group-append">
+                                                <strong><label><i data-feather="thermometer" class="mt-2"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <input type="text"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    class="form-control ml-4" name="temperature"
+                                                    placeholder="Temperature" tabindex="1" required
+                                                    autocomplete="temperature" autofocus>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="form-group mb-2">
+                                            <div class="input-group-append">
+                                                <strong><label><i data-feather="clock" class="mt-2"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <input type="text"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    class="form-control ml-4" name="time_use" placeholder="Time use"
+                                                    tabindex="1" required autocomplete="time_use" autofocus>
+                                            </div>
+                                        </div> --}}
+                                        <div class="row mb-2">
+                                            <div class="col d-flex" style="width:500px">
+                                                    <strong><label><i data-feather="clock" class="mt-3"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    name="time_use"  tabindex="1" required autocomplete="time_use" autofocus>
+                                                    <option selected>Choose time use...</option>
+                                                    <option value="1">Daytime use</option>
+                                                    <option value="2">Nighttime use</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <div class="input-group-append">
+                                                <strong><label><i data-feather="activity" class="mt-2"></i>
+                                                    </label></strong>
+                                                </button>
+                                                <input type="text"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    class="form-control ml-4" name="purpose" placeholder="Purpose"
+                                                    tabindex="1" required autocomplete="purpose" autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-5">
+                                            <div class="text-center">
+                                                <button type="submit" class="w-50 login-btn">Register</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div class="form-group">
-                                <label for="">Full Name</label>
-                                <input type="text" name="full_name">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Gender</label>
-                                <input type="text" name="gender">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Address</label>
-                                <input type="text" name="address">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Phone Number</label>
-                                <input type="text" name="phone_number">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Nationality</label>
-                                <input type="text" name="nationality">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Temperature</label>
-                                <input type="text" name="temperature">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Time Use</label>
-                                <input type="text" name="time_use">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Purpose</label>
-                                <input type="text" name="purpose">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">register</button>
-                            </div>
-                    </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
+<script src="{{ asset('assets/js/app.min.js') }}"></script>
+<script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
+<script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 
 </html>

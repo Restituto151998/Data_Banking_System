@@ -27,7 +27,6 @@
                                                                     <div class="alert alert-danger mt-1 mb-1">
                                                                         {{ $message }}</div>
                                                                 @enderror
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -44,36 +43,40 @@
                                                 </div>
                                             @endif
                                             <div class="card-body">
-                                                <div class="form-group d-flex">
-                                                    <strong><label for="resortName">Resort Name:</label></strong>
-                                                    <input type="name"
-                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                        class="form-control" name="resort_name"
-                                                        placeholder="Enter resort name">
+                                                <div class="row">
+                                                    <div class="col text-center">
+                                                        <input type="text"
+                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            class="form-control ml-2 text-center" name="resort_name"
+                                                            placeholder="Enter resort name" required>
+                                                        <strong><label class="col-form-label mb-1 text-black">Resort Name:</label></strong>
+                                                    </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="form-group d-flex">
-                                                        <strong><label for="formGroupExampleInput">Description:</label></strong>
-                                                        <textarea name="resort_description" style="background-color:white; border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white" class="form-control"
-                                                            id="exampleFormControlTextarea1" rows="3"
-                                                            placeholder="Enter resort description"></textarea>
+                                                    <div class="col text-center">
+                                                        <textarea name="resort_description"
+                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            class="form-control ml-2 text-center"
+                                                            placeholder="Enter resort description" required></textarea>
+                                                            <strong><label class="col-form-label mb-1 text-black">Resort Description:</label></strong>
+                                                    </div>
+                                                    <div>
+                                                        <div class="row">
+                                                            <div class="col text-center">
+                                                                <div class="form-group">
+                                                                    <button class="btn w-25"
+                                                                        style="background-color:#21791A; color:white">Add</button>                       
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="row ">
-                                                    <div class="form-group">
-                                                        <button class="btn w-25"
-                                                            style="background-color:#21791A; color:white">Add</button>
-                                                    </div>
-
-            
                                             </div>
                                         </div>
                                     </div>
+                                </form>
                             </div>
                         </div>
-                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    @endsection
+            @endsection

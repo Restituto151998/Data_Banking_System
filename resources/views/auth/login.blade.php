@@ -13,7 +13,6 @@
                             <!-- <div class="card-header justify-content-center pt-4"> -->
                             <div>
                                 <img alt="image" src="assets/img/logo.png" class="login-logo rounded-circle" />
-                        
                                 <h2 class="text-login">Login</h2>
                             </div>
                         </div>
@@ -22,7 +21,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <div class="input-group-append">
-                                        <strong><label><i data-feather="mail"></i> </label></strong>
+                                        <strong><label><i data-feather="mail" class="mt-3"></i> </label></strong>
                                         </button>
                                         <input id="email" type="email"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
@@ -32,9 +31,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-
                                     <div class="input-group-append">
-                                        <strong><label><i data-feather="key"></i> </label></strong>
+                                        <strong><label><i data-feather="key" class="mt-3"></i> </label></strong>
                                         <input id="password"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                             type="password" class="form-control @error('password') is-invalid @enderror"
