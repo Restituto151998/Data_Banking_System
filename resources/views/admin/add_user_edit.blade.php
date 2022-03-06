@@ -16,9 +16,6 @@
                                 <h4 style="text-align: center; color:black">Edit User</h4>
                                 <div class="row mt-4">
                                     <div class="col-12 mb-3">
-                                        {{-- <div class="card card-primary"> --}}
-                                            {{-- <div class="card-header">
-                                            </div> --}}
                                             <form method="post" action="{{ route('admin.add_user') }}">
                                                 @csrf
                                                 @method('PUT')
