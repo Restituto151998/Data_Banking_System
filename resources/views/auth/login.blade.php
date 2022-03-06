@@ -13,8 +13,6 @@
                             <!-- <div class="card-header justify-content-center pt-4"> -->
                             <div>
                                 <img alt="image" src="assets/img/logo.png" class="login-logo rounded-circle" />
-                                <!-- <span class="text-success h3 pt-2">Login</span> -->
-                                <!-- <img src="{{ asset('/img/logo.png') }}"> -->
                                 <h2 class="text-login">Login</h2>
                             </div>
                         </div>
@@ -22,29 +20,23 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-
                                     <div class="input-group-append">
-                                        <strong><label><i data-feather="mail"></i> </label></strong>
+                                        <strong><label><i data-feather="mail" class="mt-3"></i> </label></strong>
                                         </button>
                                         <input id="email" type="email"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            class="form-control ml-2 text-center @error('email') is-invalid @enderror" name="email" placeholder="Email Address"
                                             tabindex="1" value="{{ old('email') }}" required autocomplete="email"
                                             autofocus>
-
                                     </div>
-
-
                                 </div>
-
                                 <div class="form-group">
-
                                     <div class="input-group-append">
-                                        <strong><label><i data-feather="key"></i> </label></strong>
+                                        <strong><label><i data-feather="key" class="mt-3"></i> </label></strong>
                                         <input id="password"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                            type="password" class="form-control @error('email') is-invalid @enderror"
-                                            name="password" tabindex="2" required autocomplete="current-password">
+                                            type="password" class="form-control ml-2 text-center @error('email') is-invalid @enderror"
+                                            name="password" placeholder="Password" tabindex="2" required autocomplete="current-password">
                                     </div>
                                     @error('email')
 

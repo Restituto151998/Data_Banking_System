@@ -7,14 +7,14 @@
         <div class="main-content">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-8 mt-5">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">{{ __('Qr-code') }}</div>
                             <div class="card-body text-center mb-3">
                                 <img style="width: 50%" src="data:image/png;base64, {!! base64_encode(
     QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('http://127.0.0.1:8000/resort-alcoy-registration'),
 ) !!} ">
-<p>Qr-code for online registration.</p>
+<p>Please scan the QR-Code to register.</p>
                             </div>
                             <a href="data:image/png;base64, {!! base64_encode(
     QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('http://127.0.0.1:8000/resort-alcoy-registration'),
