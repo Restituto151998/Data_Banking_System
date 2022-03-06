@@ -62,70 +62,67 @@
                                     <div class="col-9">
                                         <h4 style="text-align: center; color:black">Profile Information</h4>
                                         <div class="card-body">
-                                            <center>
-                                                <div class="row ">
-                                                    <div class="form-group col-6 text-center">
-                                                        <span
-                                                            style="font-size: 20px;color:black">{{ Auth::user()->name }}</span>
-                                                        <hr style="color: #21791A">
-                                                        <label for="name">Name</label>
-                                                    </div>
-                                                    <div class="form-group col-6 ">
-                                                        <span
-                                                            style="font-size: 20px; color:black">{{ Auth::user()->email }}</span>
-                                                        <hr style="color: #21791A">
-                                                        <label class="small mb-1" for="name">Email Address</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group">
-                                                        <span
-                                                            style="font-size: 15px; color:black">{{ Auth::user()->password }}</span>
-                                                        <hr style="color: #21791A">
-                                                        <label for="password">Password</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row ">
-                                                    {{-- <div class="form-group">
-                                                        <button class="btn w-50" {{ $resort->id }}
-                                                            style="background-color:#21791A; color:white">Edit
-                                                            Information</button>
-                                                    </div> --}}
 
-                                                    <a type="button" href="{{ route('admin.profile.test', ['id'=> Auth::user()->id]) }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{Auth::user()->id}}">
-                                                        Edit Informations
-                                                      </a>
+                                            <div class="row ">
+                                                <div class="form-group col-6 text-center">
+                                                    <input type="text" value="{{ Auth::user()->name }} " disabled>
+                                                    <label for="name">Name</label>
                                                 </div>
-                                                 {{-- MODAL --}}
-                                    
-                                                 <div class="modal fade" id="exampleModal{{Auth::user()->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                      <div class="modal-content">
+                                                <div class="form-group col-6 ">
+                                                    <input type="text" value="{{ Auth::user()->email }} " disabled>
+                                                    <label class="small mb-1" for="name">Email Address</label>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <div>
+                                                <a href="{{ route('auth.passwords.changePassword')}}">
+                                                    Change password?
+                                                </a>
+                                            </div>
+                                            <div class="row ">
+
+
+                                                <a type="button"
+                                                    href="{{ route('admin.profile.test', ['id' => Auth::user()->id]) }}"
+                                                    class="btn btn-success" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal{{ Auth::user()->id }}">
+                                                    Edit Informations
+                                                </a>
+                                            </div>
+
+                                            <div class="modal fade" id="exampleModal{{ Auth::user()->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
                                                         <div class="modal-header">
-                                                          <h5 class="modal-title" id="exampleModalLabel">Edit Information</h5>
-                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit
+                                                                Information</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form method="post"
-                                                                action="{{ route('admin.profile') }}">
+                                                            <form method="post" action="{{ route('admin.profile') }}">
                                                                 @csrf
                                                                 @method('PUT')
-                                                            <input type="text" value="{{Auth::user()->id}}" hidden>
-                                                            <input type="text" value="{{Auth::user()->name}}" name="name">
-                                                            <input type="text" value="{{Auth::user()->email}}" name="email">
-                                                            <input type="text" value="{{Auth::user()->password}}" name="password">
+                                                                <input type="text" value="{{ Auth::user()->id }}" hidden>
+                                                                <input type="text" value="{{ Auth::user()->name }}"
+                                                                    name="name">
+                                                                <input type="text" value="{{ Auth::user()->email }}"
+                                                                    name="email">
+                                                     
 
-                                                          
                                                         </div>
                                                         <div class="modal-footer">
-                                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                          <button type="submit" class="btn btn-primary">Save changes</button>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save
+                                                                changes</button>
                                                         </div>
-                                                    </form>
-                                                      </div>
+                                                        </form>
                                                     </div>
-                                                  </div>
-                                            </center>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

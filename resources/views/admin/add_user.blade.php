@@ -109,10 +109,7 @@
                                                     @endif
                                                 </tbody>
                                             </table>
-                                            <span class="float-right"> {!! $users->links() !!}</span>
-                                            <a class="btn" style="background-color:#21791A; color:white"
-                                                href="{{ route('admin.add_users') }}">+ Add New User</a>
-
+                                            <span class="float-right"> {!! $users->links() !!}</span>                                     
                                         </div>
                                     </div>
                                 </div>

@@ -40,7 +40,7 @@ class ProfileController extends Controller
         $updateData = $request->validate( [
             'name' => 'required|max:255',
             'email' => 'required|max:255',
-            'password' => 'required|max:255',
+            
         ] );
 
         User::whereId( Auth::user()->id )->update( $updateData );

@@ -11,12 +11,12 @@
 <body>
     <div class="container">
 
-        {{-- <div>
+        <div>
             @foreach ($resorts as $image)
             {{ $image->imagePath}}
                 <img src="{{ asset('storage/'.$image->imagePath)}}" alt="images" srcset="">
             @endforeach
-        </div> --}}
+        </div>
 
         @if (session()->has('status'))
             <div class="alert alert-success alert-dismissible fade  show" role="alert">
