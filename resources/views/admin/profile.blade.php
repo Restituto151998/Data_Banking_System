@@ -22,7 +22,6 @@
                                     <div class="col-3">
                                         <div class="row">
                                             <div class="col text-center">
-
                                                 <form action="{{ url('/profile') }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
@@ -45,8 +44,6 @@
                                                             <div class="alert alert-danger mt-1 mb-1">
                                                                 {{ $message }}</div>
                                                         @enderror
-
-
                                                     </div>
                                                     <div class="form-group">
                                                         <button type="submit" class="btn  text-center text-white"
@@ -55,104 +52,64 @@
                                                     </div>
                                                 </form>
                                             </div>
-
                                         </div>
                                     </div>
-
                                     <div class="col-9">
                                         <h4 style="text-align: center; color:black">Profile Information</h4>
                                         <div class="card-body">
-                                            {{-- <center> --}}
-                                                <div class="row ">
-                                                    <div class="form-group col-6 text-center text-black">
-                                                        <span
-                                                            style="font-size: 20px;color:black">{{ Auth::user()->name }}</span>
-                                                        <hr style="color: #21791A">
-                                                        <strong><label for="name">Name</label></strong>
-                                                    </div>
-                                                    <div class="form-group col-6 text-center text-black">
-                                                        <span
-                                                            style="font-size: 20px; color:black">{{ Auth::user()->email }}</span>
-                                                        <hr style="color: #21791A">
-                                                        <strong><label for="name">Email Address</label></strong>
-                                                    </div>
+                                            <div class="row ">
+                                                <div class="form-group col-6 text-center">
+                                                    <input type="text" value="{{ Auth::user()->name }} " disabled>
+                                                    <label for="name">Name</label>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="form-group text-center text-black">
-                                                        <span
-                                                            style="font-size: 15px; color:black">{{ Auth::user()->password }}</span>
-                                                        <hr style="color: #21791A">
-                                                        <strong><label for="password">Password</label><strong>
-                                                    </div>
+                                                <div class="form-group col-6 ">
+                                                    <input type="text" value="{{ Auth::user()->email }} " disabled>
+                                                    <label class="small mb-1" for="name">Email Address</label>
                                                 </div>
-                                                
-                                                <div class="row">
-                                                    <div class="col text-center">
-                                                        <a type="button"
-                                                        href="{{ route('admin.profile.test', ['id' => Auth::user()->id]) }}"
-                                                        class="btn w-5 text-center text-white"
-                                                        style="background-color:  #21791A" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal{{ Auth::user()->id }}">
-                                                        Edit Informations
-                                                    </a>
-                                                    </div>
-                                                </div>
-                                        
-                                                {{-- MODAL --}}
-                                                <div class="modal fade" id="exampleModal{{ Auth::user()->id }}"
-                                                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Edit
-                                                                    Information</h5>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="post"
-                                                                    action="{{ route('admin.profile') }}">
-                                                                    @csrf
-                                                                    @method('PUT')
-                                                                    <div class="row">
-                                                                    <input type="text" value="{{ Auth::user()->id }}"
-                                                                    hidden>
-                                                                    <div class="col text-center">
-                                                                        <input type="text" value="{{ Auth::user()->name }}"
-                                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                            class="form-control ml-2 text-center" name="name" required>
-                                                                        <label class="col-form-label mb-1">Name:</label>
-                                                                    </div>
-                                                                    <div class="col text-center">
-                                                                        <input type="text" value="{{ Auth::user()->email}}"
-                                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                            class="form-control ml-2 text-center" name="email" required>
-                                                                        <label class="col-form-label mb-1">Email:</label>
-                                                                    </div>
-                                                                    <div calss="row">
-                                                                        <div class="col text-center">
-                                                                            <input type="password" value="{{ Auth::user()->password}}"
-                                                                                style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                                class="form-control ml-2 text-center" name="password" required>
-                                                                            <label class="col-form-label mb-1">Password:</label>
-                                                                        </div>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col text-center">
-                                                                    <div class="modal-footer-center">
-                                                                        <button type="submit" class="btn text-white" style="background-color:  #21791A">Save
-                                                                            changes</button>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                            
-                                                            </form>
+                                            </div>                                          
+                                            <div>
+                                                <a href="{{ route('auth.passwords.changePassword')}}">
+                                                    Change password?
+                                                </a>
+                                            </div>
+                                            <div class="row ">
+                                                <a type="button"
+                                                    href="{{ route('admin.profile.test', ['id' => Auth::user()->id]) }}"
+                                                    class="btn btn-success" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal{{ Auth::user()->id }}">
+                                                    Edit Informations
+                                                </a>
+                                            </div>
+                                            <div class="modal fade" id="exampleModal{{ Auth::user()->id }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit
+                                                                Information</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
                                                         </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="{{ route('admin.profile') }}">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <input type="text" value="{{ Auth::user()->id }}" hidden>
+                                                                <input type="text" value="{{ Auth::user()->name }}"
+                                                                    name="name">
+                                                                <input type="text" value="{{ Auth::user()->email }}"
+                                                                    name="email">                                                    
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save
+                                                                changes</button>
+                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
-                                            {{-- </center> --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

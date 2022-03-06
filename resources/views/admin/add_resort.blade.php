@@ -65,11 +65,9 @@
                                                             <div class="col text-center">
                                                                 <div class="form-group">
                                                                     <button class="btn w-25"
-                                                                        style="background-color:#21791A; color:white">Add</button>
-                                                                    
+                                                                        style="background-color:#21791A; color:white">Add</button>                       
                                                                 </div>
-                                                            </div>
-                                                            
+                                                            </div>                                                            
                                                         </div>
                                                     </div>
                                                 </div>

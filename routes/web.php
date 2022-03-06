@@ -80,4 +80,7 @@ Route::post('/register', [App\Http\Controllers\Staff\DirectRegisterController::c
 Route::get('/profile/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'editUserInformation'])->name('admin.profile.test');
 Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'updateUserInformation']);
 
+//changepassword
+Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'redirectTo'])->name('auth.passwords.changePassword');
+Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'updatePassword']);;
 

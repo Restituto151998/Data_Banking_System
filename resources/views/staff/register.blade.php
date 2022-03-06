@@ -5,7 +5,9 @@
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
             <div class="main-content">
-                @if (Auth::user()->resortList->status != 'closed')
+                @if (Auth::user()->resortList->status == 'closed')
+                <span>This tab is restricted to use. to use it. you may request the admin to open this resort.</span>
+                @else
                 @if (session()->has('status'))
                     <div class="alert alert-success alert-dismissible fade  show" role="alert">
                         {{ session()->get('status') }}
@@ -69,8 +71,8 @@
                         </div>
                     </div>
                 </div>
-                @endif
-                <span>This tab is restricted to use. to use it. you may request the admin to open this resort.</span>
+              @endif
+             
             </div>
         </div>
 

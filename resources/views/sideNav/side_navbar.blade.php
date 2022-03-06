@@ -158,7 +158,7 @@
     @endauth
 
     <body class="py-4">
-
+    
         @yield('content')
     </body>
 
