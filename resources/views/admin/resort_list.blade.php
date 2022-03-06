@@ -159,7 +159,7 @@
                                                                                             {{-- </div> --}}
                                                                                             {{-- <div class="row mt-5"> --}}
                                                                                             <div class="col text-center">
-                                                                                                <input type="email" class="form-control text-center"
+                                                                                                <input type="text" class="form-control text-center"
                                                                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                                                     id="formGroupExampleInput"
                                                                                                     name="assigned_staff"
