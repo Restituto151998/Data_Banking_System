@@ -80,7 +80,7 @@
 
                             <a class="dropdown-item" href="{{ url()->previous() }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                                                                                                    document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -150,15 +150,11 @@
                         <a href="/generate_qrcode" class="nav-link"><i
                                 data-feather="code"></i><span>{{ __('QRcode') }}</span></a>
                     </li>
-
-
                 </ul>
             </aside>
         </div>
     @endauth
-
     <body class="py-4">
-
         @yield('content')
     </body>
 
@@ -203,9 +199,7 @@
             $('#profile').change(function() {
 
                 let reader = new FileReader();
-
                 reader.onload = (e) => {
-
                     $('#preview-profile-image').attr('src', e.target.result);
                 }
 
@@ -216,7 +210,6 @@
             });
 
         });
-
     </script>
 </body>
 
