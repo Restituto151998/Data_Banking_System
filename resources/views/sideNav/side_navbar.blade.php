@@ -31,6 +31,7 @@
 </head>
 
 <body>
+    <div class="loader"></div>
     <div id="app"></div>
     @auth
         @yield('adminDashboard')
@@ -42,9 +43,7 @@
         @yield('editUser')
         @yield('register')
         @yield('qr-code')
-
         <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
-
             <div class="form-inline mr-auto">
                 <ul class="navbar-nav mr-3">
                     <li>
@@ -75,15 +74,12 @@
                                     style="width:30px; height: 30px;" alt="img">
                             @endif
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                             <a class="dropdown-item" href="{{ url()->previous() }}"
-                                onclick="event.preventDefault();
-                                                                                                                                                                                    document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault();                                                                                                                                                            document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -128,8 +124,6 @@
                                     data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
                         </li>
                     @endif
-
-
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
                             <a href="/add_resort" class="nav-link"><i
@@ -138,12 +132,12 @@
 
                         <li class="dropdown">
                             <a href="/add_user" class="nav-link"><i
-                                    data-feather="users"></i><span>{{ __('Add User') }}</span></a>
+                                    data-feather="users"></i><span>{{ __('Users') }}</span></a>
                         </li>
 
                         <li class="dropdown">
                             <a href="/resort_list" class="nav-link"><i
-                                    data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
+                                    data-feather="list"></i><span>{{ __('Resort Assignee') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">
@@ -157,7 +151,6 @@
     <body class="py-4">
         @yield('content')
     </body>
-
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
@@ -182,33 +175,24 @@
                     $(this).data('submitted', true);
                 }
             });
-
             $('#image').change(function() {
-
                 let reader = new FileReader();
-
                 reader.onload = (e) => {
-
                     $('#preview-image-before-upload').attr('src', e.target.result);
                 }
-
                 reader.readAsDataURL(this.files[0]);
-
             });
-
             $('#profile').change(function() {
-
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     $('#preview-profile-image').attr('src', e.target.result);
                 }
-
-
                 reader.readAsDataURL(this.files[0]);
                 $('#change_profile').attr('disabled', false);
-
             });
-
+            $('#password').change( function(){
+                $('#change-password').attr('hidden', false);
+            });
         });
     </script>
 </body>

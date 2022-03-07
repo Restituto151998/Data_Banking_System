@@ -44,13 +44,13 @@
                                                             <input type="name"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" name="name" required>
-                                                            <strong><label for="" class="col-form-label mb-1 text-black">Name:</label></strong>
+                                                            <strong><label for="" class="col-form-label mb-1 text-black">Name</label></strong>
                                                         </div>
                                                         <div class="col">
                                                             <input type="email"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" name="email" required>
-                                                            <strong><label for="inputPassword" class="col-form-label mb-1 text-black">Email:</label></strong>
+                                                            <strong><label for="inputPassword" class="col-form-label mb-1 text-black">Email</label></strong>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -70,14 +70,14 @@
                                                             </select>
 
                                                             <strong><label for="to_assigned" class="col-form-label mb-1 text-black">Assign
-                                                                To:</label></strong>
+                                                                To</label></strong>
                                                         </div>
                                                         <div class="col">
                                                             <input type="password"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" name="password" required>
                                                             <strong><label for="inputPassword"
-                                                                class="col-form-label mb-1 text-black">Password:</label></strong>
+                                                                class="col-form-label mb-1 text-black">Password</label></strong>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 mt-4">

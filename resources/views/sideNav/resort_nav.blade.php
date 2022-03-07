@@ -46,8 +46,15 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
-
+<style>
+    @media print{
+   .print{
+       display:none;
+   }
+}
+</style>
 <body>
+    <div class="loader"></div>
     <div id="#app"></div>
     @auth
         @yield('voda')
@@ -158,6 +165,10 @@
                                     data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
                         </li>
                     @endif
+                    <li class="dropdown">
+                        <a href="/generate_qrcode" class="nav-link"><i
+                                data-feather="code"></i><span>{{ __('QRcode') }}</span></a>
+                    </li>
                 </ul>
             </aside>
         </div>
@@ -192,7 +203,17 @@
         
         $(document).ready(function() {
             $('.print').printPage();
+
+            // $('#password').change( function(){
+            //     
+            // });
+            $('#btn-password').on('click', function(){
+                $('#change-password').attr('hidden', false);
+                $('#btn-password').attr('hidden', true);
+            });
         });
+
+
 
     </script>
 </body>

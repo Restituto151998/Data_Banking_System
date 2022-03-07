@@ -22,7 +22,14 @@
                         </button>
                     </div>
                 @endif
-
+                @if (session()->has('message'))
+                <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                    {{ session()->get('message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
@@ -55,27 +62,9 @@
                                                                 </div>
                                                                 
                                                             </div>
-                                                        </div>
-                                                        
-
+                                                        </div>                                                     
                                                     </form>
-                                                </div>
-                                            
-                                                {{-- <div class="row ml-2">
-                                                                    <div class="col d-flex">
-                                                                        {{ csrf_field() }}
-                                                                        <input class="form-control border border-success" style="width: 680px;" type="search"
-                                                                            placeholder="Search" name="search" aria-label="Search">
-                                                                            &ensp;<button class="btn btn-outline-success"
-                                                                            type="submit">Search</button>
-                                                                    </div>
-                                                                    <div class="col ml-5">
-                                                                        <span class="float-right"> {!! $users->links() !!}</span>
-                                                                    <a class="btn" style="background-color:#21791A; color:white"
-                                                                        href="{{ route('admin.add_users') }}">+ Add New User</a>
-                                                                    </div>
-                                                                </div> --}}
-                                                
+                                                </div>                                                                                                      
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="card-header">
@@ -143,8 +132,6 @@
                                                     </div>
                                                 </div>
                                             </div>    
-                                        {{-- </div> --}}
-                                    {{-- </div> --}}
                                 </div>
                             </div>
                         </div>

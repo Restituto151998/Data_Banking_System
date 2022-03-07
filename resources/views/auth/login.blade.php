@@ -25,8 +25,8 @@
                                         </button>
                                         <input id="email" type="email"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                            class="form-control ml-2 text-center @error('email') is-invalid @enderror" name="email" placeholder="Email Address"
-                                            tabindex="1" value="{{ old('email') }}" required autocomplete="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            tabindex="1" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Addres"
                                             autofocus>
                                     </div>
                                 </div>
@@ -35,8 +35,8 @@
                                         <strong><label><i data-feather="key" class="mt-3"></i> </label></strong>
                                         <input id="password"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                            type="password" class="form-control ml-2 text-center @error('email') is-invalid @enderror"
-                                            name="password" placeholder="Password" tabindex="2" required autocomplete="current-password">
+                                            type="password" class="form-control @error('password') is-invalid @enderror"
+                                            name="password" tabindex="2" required autocomplete="current-password" placeholder="Password">
                                     </div>
                                     @error('email')
 
@@ -51,13 +51,7 @@
                                     </button>
                                 </div>
                             </form>
-                            {{-- @if (Session::has('message'))
-                            <div class="alert alert-success">
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif --}}
-                        </div>
-                        {{-- </div> --}}
+                        </div>                  
                     </div>
                 </div>
             </div>

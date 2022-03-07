@@ -121,20 +121,42 @@ class AddUserController extends Controller
 
     public function updateUser( Request $request )
  {
+        if ( !empty( $request->new_password ) ) {
+            if ( $request->new_password == $request->confirm_password ) {
+                $updateData = $request->validate( [
+                    'name' => [ 'required' ],
+                    'email' => [ 'required' ],
+                    'new_password' => [ 'required' ],
+                    'confirm_password' => [ 'same:new_password' ],
+                ] );
+                $user = User::find( $request->id );
+
+                $name = $request->input( 'name' );
+                $email = $request->input( 'email' );
+                $password = Hash::make( $request->input('new_password') );
+
+                $user->name = $name;
+                $user->email = $email;
+                $user->password = $password;
+
+                $user->save();
+           
+            }else{
+                return back()->with( 'error', 'password doesnt match!' );
+            }
+        }
+
         $updateData = $request->validate( [
             'name' => 'required|max:255',
             'email' => 'required|max:255',
-            'password' => 'required|max:255',
         ] );
         $user = User::find( $request->id );
 
         $name = $request->input( 'name' );
         $email = $request->input( 'email' );
-        $password = Hash::make( $request->input( 'password' ) );
 
         $user->name = $name;
         $user->email = $email;
-        $user->password = $password;
 
         $user->save();
         return redirect( '/add_user' )->with( 'message', 'Successfully Updated!' );
