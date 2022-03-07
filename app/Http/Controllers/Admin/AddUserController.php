@@ -78,13 +78,18 @@ class AddUserController extends Controller
         $save = new User;
         $status = 'enable';
         $name = $request->input( 'name' );
+        $address = $request->input( 'address' );
+        $phone_number = $request->input( 'phone_number' );
+        $gender = $request->input( 'gender' );
         $email = $request->input( 'email' );
         $assigned_staff = $resort->resort_name;
         $type = 'STAFF';
         $password = Hash::make( $request->input( 'password' ) );
 
         $save->name = $name;
-
+        $save->address = $address;
+        $save->phone_number = $phone_number;
+        $save->gender = $gender;
         $save->type = $type;
         $save->email = $email;
         $save->status = $status;
@@ -125,6 +130,9 @@ class AddUserController extends Controller
             if ( $request->new_password == $request->confirm_password ) {
                 $updateData = $request->validate( [
                     'name' => [ 'required' ],
+                    'address' => [ 'required' ],
+                    'phone_number' => [ 'required' ],
+                    'gender' => [ 'required' ],
                     'email' => [ 'required' ],
                     'new_password' => [ 'required' ],
                     'confirm_password' => [ 'same:new_password' ],
@@ -132,10 +140,16 @@ class AddUserController extends Controller
                 $user = User::find( $request->id );
 
                 $name = $request->input( 'name' );
+                $address = $request->input( 'address' );
+                $phone_number = $request->input( 'phone_number' );
+                $gender = $request->input( 'gender' );
                 $email = $request->input( 'email' );
                 $password = Hash::make( $request->input('new_password') );
 
                 $user->name = $name;
+                $user->address = $address;
+                $user->phone_number = $phone_number;
+                $user->gender = $gender;
                 $user->email = $email;
                 $user->password = $password;
 
@@ -149,14 +163,25 @@ class AddUserController extends Controller
         $updateData = $request->validate( [
             'name' => 'required|max:255',
             'email' => 'required|max:255',
+            'address' =>'required|max:255',
+            'phone_number' =>'required|max:255',
+            'gender' =>'required|max:255',
         ] );
         $user = User::find( $request->id );
 
         $name = $request->input( 'name' );
         $email = $request->input( 'email' );
+        $address = $request->input( 'address' );
+        $phone_number = $request->input( 'phone_number' );
+        $gender = $request->input( 'gender' );
+
 
         $user->name = $name;
         $user->email = $email;
+        $user->address = $address;
+        $user->phone_number = $phone_number;
+        $user->gender = $gender;
+
 
         $user->save();
         return redirect( '/add_user' )->with( 'message', 'Successfully Updated!' );
