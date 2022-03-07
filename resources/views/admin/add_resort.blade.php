@@ -49,7 +49,7 @@
                                                             style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                             class="form-control ml-2 text-center" name="resort_name"
                                                             placeholder="Enter resort name" required>
-                                                        <strong><label class="col-form-label mb-1 text-black">Resort Name:</label></strong>
+                                                        <strong><label class="col-form-label mb-1 text-black">Resort Name</label></strong>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -58,7 +58,7 @@
                                                             style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                             class="form-control ml-2 text-center"
                                                             placeholder="Enter resort description" required></textarea>
-                                                            <strong><label class="col-form-label mb-1 text-black">Resort Description:</label></strong>
+                                                            <strong><label class="col-form-label mb-1 text-black">Resort Description</label></strong>
                                                     </div>
                                                     <div>
                                                         <div class="row">
