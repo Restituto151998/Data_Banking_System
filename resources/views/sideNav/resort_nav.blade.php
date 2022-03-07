@@ -54,6 +54,7 @@
 }
 </style>
 <body>
+    <div class="loader"></div>
     <div id="#app"></div>
     @auth
         @yield('voda')
@@ -202,7 +203,17 @@
         
         $(document).ready(function() {
             $('.print').printPage();
+
+            // $('#password').change( function(){
+            //     
+            // });
+            $('#btn-password').on('click', function(){
+                $('#change-password').attr('hidden', false);
+                $('#btn-password').attr('hidden', true);
+            });
         });
+
+
 
     </script>
 </body>

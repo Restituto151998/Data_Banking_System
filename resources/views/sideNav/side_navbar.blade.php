@@ -31,6 +31,7 @@
 </head>
 
 <body>
+    <div class="loader"></div>
     <div id="app"></div>
     @auth
         @yield('adminDashboard')
@@ -128,8 +129,6 @@
                                     data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
                         </li>
                     @endif
-
-
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
                             <a href="/add_resort" class="nav-link"><i
@@ -138,20 +137,18 @@
 
                         <li class="dropdown">
                             <a href="/add_user" class="nav-link"><i
-                                    data-feather="users"></i><span>{{ __('Add User') }}</span></a>
+                                    data-feather="users"></i><span>{{ __('Users') }}</span></a>
                         </li>
 
                         <li class="dropdown">
                             <a href="/resort_list" class="nav-link"><i
-                                    data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
+                                    data-feather="list"></i><span>{{ __('Resort Assignee') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">
                         <a href="/generate_qrcode" class="nav-link"><i
                                 data-feather="code"></i><span>{{ __('QRcode') }}</span></a>
                     </li>
-
-
                 </ul>
             </aside>
         </div>
@@ -161,6 +158,7 @@
     
         @yield('content')
     </body>
+
 
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
@@ -213,6 +211,11 @@
                 reader.readAsDataURL(this.files[0]);
                 $('#change_profile').attr('disabled', false);
 
+            });
+
+
+            $('#password').change( function(){
+                $('#change-password').attr('hidden', false);
             });
 
         });

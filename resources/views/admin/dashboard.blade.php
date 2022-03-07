@@ -2,6 +2,7 @@
 
 @section('adminDashboard')
     <html>
+
     <head>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
@@ -34,10 +35,11 @@
                 var data = google.visualization.arrayToDataTable([
                     ['resort_id', 'guest'],
 
-                    <?php echo $barData; ?>
+                    <?php
+                    echo $barData; ?>
                 ]);
 
-         
+
 
                 var options = {
                     title: 'Number of tourists in every resort',
@@ -56,14 +58,9 @@
     </head>
 
     <body>
-
+        <div class="loader"></div>
         <div class="main-wrapper main-wrapper-1">
-
-
-            <!-- Main Content -->
-            <div class="main-content">
-
-
+            <div class="main-content">        
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="card bg-warning">
@@ -123,6 +120,7 @@
             </div>
         </div>
     </body>
+
     </html>
 
 

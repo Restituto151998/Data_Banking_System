@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-        <div>
+        {{-- <div>
             @foreach ($resorts as $image)
             {{ $image->imagePath}}
                 <img src="{{ asset('storage/'.$image->imagePath)}}" alt="images" srcset="">
             @endforeach
-        </div>
+        </div> --}}
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="./assets/css/register.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
-    {{-- <link rel="stylesheet" href="./assets/css/data.css"> --}}
+    <link rel="stylesheet" href="./assets/css/data.css">
    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
 
