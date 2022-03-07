@@ -20,6 +20,9 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete(); //for cleaning earlier data to avoid duplicate entries
         DB::table('users')->insert([
     'name' => 'admin',
+    'address'=> 'Alcoy',
+    'phone_number'=>'09123456789',
+    'gender'=>'male',
     'email' => 'admin@admin',
     'status' => 'enable',
     'type' => 'ADMIN',
