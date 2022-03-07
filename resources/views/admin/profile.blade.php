@@ -58,28 +58,59 @@
                                         <h4 style="text-align: center; color:black">Profile Information</h4>
                                         <div class="card-body">
                                             <div class="row ">
-                                                <div class="form-group col-6 text-center">
-                                                    <input type="text" value="{{ Auth::user()->name }} " disabled>
-                                                    <label for="name">Name</label>
+                                                    <div class="col text-center">
+                                                        <input type="text" value="{{ Auth::user()->name }}"
+                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            class="form-control ml-2 text-center" disabled>
+                                                        <strong><label class="col-form-label mb-1 text-black">Name</label></strong>
+                                                    </div>
+                                                    <div class="col text-center">
+                                                        <input type="text" value="{{ Auth::user()->email }} "
+                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            class="form-control ml-2 text-center" disabled>
+                                                        <strong><label class="col-form-label mb-1 text-black">Email Address</label></strong>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group col-6 ">
-                                                    <input type="text" value="{{ Auth::user()->email }} " disabled>
-                                                    <label class="small mb-1" for="name">Email Address</label>
+                                                <div class="row">
+                                                    <div class="col text-center">
+                                                        <input type="number"
+                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            class="form-control ml-2 text-center" disabled>
+                                                        <strong><label class="col-form-label mb-1 text-black">Phone Number</label></strong>
+                                                    </div>
+                                                    <div class="col text-center">
+                                                        <input type="text"
+                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            class="form-control ml-2 text-center" disabled>
+                                                        <strong><label class="col-form-label mb-1 text-black">Gender</label></strong>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col text-center">
+                                                        <input type="text"
+                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            class="form-control ml-2 text-center" disabled>
+                                                        <strong><label class="col-form-label mb-1 text-black">Address</label></strong>
+                                                    </div>
                                                 </div>
                                             </div>                                          
-                                            <div>
-                                                <a href="{{ route('auth.passwords.changePassword')}}">
-                                                    Change password?
-                                                </a>
-                                            </div>
                                             <div class="row ">
+                                                <div class="col text-center mt-3">
                                                 <a type="button"
                                                     href="{{ route('admin.profile.test', ['id' => Auth::user()->id]) }}"
-                                                    class="btn btn-success" data-bs-toggle="modal"
+                                                    class="btn text-white" style="background-color:  #21791A" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal{{ Auth::user()->id }}">
                                                     Edit Informations
                                                 </a>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col text-center mt-4 mb-5">
+                                                <a href="{{ route('auth.passwords.changePassword')}}">
+                                                    Change password?
+                                                </a>
+                                            </div>
+                                        </div>
                                             <div class="modal fade" id="exampleModal{{ Auth::user()->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
@@ -95,17 +126,50 @@
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <input type="text" value="{{ Auth::user()->id }}" hidden>
-                                                                <input type="text" value="{{ Auth::user()->name }}"
-                                                                    name="name">
-                                                                <input type="text" value="{{ Auth::user()->email }}"
-                                                                    name="email">                                                    
+                                                                <div class="row">
+                                                                    <div class="col text-center">
+                                                                        <input type="text" value="{{ Auth::user()->name }}"
+                                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                            class="form-control ml-2 text-center" name="name" placeholder="Profile name" required>
+                                                                        <strong><label class="col-form-label mb-1 text-black">Name</label></strong>
+                                                                    </div>
+                                                                    <div class="col text-center">
+                                                                        <input type="value" value="{{ Auth::user()->email }}"
+                                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                            class="form-control ml-2 text-center" name="email" placeholder="Email address" required>
+                                                                        <strong><label class="col-form-label mb-1 text-black">Email Adress</label></strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col text-center">
+                                                                        <input type="number"
+                                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                            class="form-control ml-2 text-center" placeholder="Phone number" required>
+                                                                        <strong><label class="col-form-label mb-1 text-black">Phone Number</label></strong>
+                                                                    </div>
+                                                                    <div class="col text-center">
+                                                                        <input type="text"
+                                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                            class="form-control ml-2 text-center" placeholder="Gender" required>
+                                                                        <strong><label class="col-form-label mb-1 text-black">Gender</label></strong>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col text-center">
+                                                                        <input type="text"
+                                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                            class="form-control ml-2 text-center"placeholder="Address" required>
+                                                                        <strong><label class="col-form-label mb-1 text-black">Address</label></strong>
+                                                                    </div>
+                                                                </div>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Save
-                                                                changes</button>
-                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-center mb-5">
+                                                                    <button type="submit"  class="btn text-white" style="background-color:  #21791A">Save
+                                                                        changes</button>
+                                                                </div>
+                                                            </div>
+                                                       
                                                         </form>
                                                     </div>
                                                 </div>
