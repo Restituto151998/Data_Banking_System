@@ -16,7 +16,10 @@ class DashboardController extends Controller
         $this->middleware( 'auth' );
     }
 
-    public function dashboard() {    
+    public function dashboard() {  
+        if(Auth::user()->status == 'disable'){
+            return redirect('/forbidden');
+        }  
           $result = DB::select( DB::raw( 'select count(nationality) as count ,guests.nationality from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" GROUP BY guests.nationality;' ) );
         $data = '';
         foreach ( $result as $val ) {

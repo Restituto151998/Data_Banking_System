@@ -4,7 +4,7 @@
 
     <div class="main-wrapper main-wrapper-1">
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content">        
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">

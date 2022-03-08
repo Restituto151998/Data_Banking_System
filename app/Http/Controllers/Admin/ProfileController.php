@@ -9,7 +9,13 @@ use App\Models\User;
 
 class ProfileController extends Controller
  {
+    public function __construct() {
+        $this->middleware( 'auth' );
+    }
     public function profile() {
+        if(Auth::user()->status == 'disable'){
+            return redirect('/forbidden');
+        } 
         return view( 'admin.profile' );
 
     }
@@ -40,6 +46,9 @@ class ProfileController extends Controller
         $updateData = $request->validate( [
             'name' => 'required|max:255',
             'email' => 'required|max:255',
+            'address' => 'required|max:255',
+            'phone_number' => 'required|max:255',
+            'gender' => 'required|max:255',
             
         ] );
 

@@ -1,10 +1,17 @@
-
-@if(Auth::user()->status == 'disable');
-{{ Auth::logout(); }}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <script type="text/javascript">
+        function disableBack() {
+            window.history.forward();
+        }
+        setTimeout("disableBack()", 0);
+        window.onunload = function() {
+            null
+        };
+
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -23,14 +30,19 @@
 </head>
 
 <body>
+    @guest
     <div class="text-center" style="margin-top: 30%">
-        <h2>404 | FORBIDDEN</h2>
+        <h2>403 | FORBIDDEN</h2>
+        <p style="margin-left: 20%; margin-right: 20%">A 403 error indicates that the system you're trying to reach
+            can't be
+            found. You might see a 403 error because of a problem with your account was disabled by the admin. please
+            tell
+            your admin for this sunction. </p>
+
+        <span class="text-center">Go back to <a href="/login">Login</a></span>
     </div>
-    <p style="margin-left: 20%; margin-right: 20%">A 404 error indicates that the system you're trying to reach can't be
-        found. You might see a 404 error because of a problem with your account was disabled by the admin. please tell
-        your admin for this sunction. </p>
+    @endguest
+
 </body>
 
 </html>
-
-@endif

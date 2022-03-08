@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Crypt;
 
 class AddResortController extends Controller
  {
+    public function __construct() {
+        $this->middleware( 'auth' );
+    }
+
     public function addResort() {
         return view( 'admin.add_resort' );
 

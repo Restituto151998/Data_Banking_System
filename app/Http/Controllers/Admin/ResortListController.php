@@ -13,25 +13,25 @@ use Illuminate\Support\Facades\Input;
 
 class ResortListController extends Controller
  {
+    public function __construct() {
+        $this->middleware( 'auth' );
+    }
 
     public function show() {
-        if ( Auth::check() ) {
-            if ( Auth::user()->status == 'disable' ) {
-                return view( 'error_code.forbidden' );
-            }
-            $resortList = ResortList::paginate( 5 );
-            return view( 'admin.resort_list' )->with( 'resort_lists', $resortList );
+        if ( Auth::user()->status == 'disable' ) {
+            return redirect( '/forbidden' );
         }
+        $resortList = ResortList::paginate( 5 );
+        return view( 'admin.resort_list' )->with( 'resort_lists', $resortList );
+
     }
 
     public function edit( $id )
  {
-        if ( Auth::check() ) {
-            $resort = ResortList::where( 'id',  '=', $id )->first();
-            dd( $resort );
+        $resort = ResortList::where( 'id',  '=', $id )->first();
+        dd( $resort );
 
-            return view( 'admin.resort_list' )->with( 'resort_lists', $resort );
-        }
+        return view( 'admin.resort_list' )->with( 'resort_lists', $resort );
     }
 
     public function guest( $id ) {
@@ -60,21 +60,19 @@ class ResortListController extends Controller
 
     public function changeResortStatus( $id )
  {
+        $user = DB::table( 'resort_lists' )->select( 'status' )->where( 'id', '=', $id )->first();
 
-        if ( Auth::check() ) {
-            $user = DB::table( 'resort_lists' )->select( 'status' )->where( 'id', '=', $id )->first();
-
-            if ( $user->status == 'closed' ) {
-                $status = 'open';
-            } else {
-                $status = 'closed';
-            }
-
-            $updateStatus = array( 'status' => $status );
-            DB::table( 'resort_lists' )->where( 'id', $id )->update( $updateStatus );
-
-            return redirect( '/resort_list' )->with( 'status', 'Resort status has been updated successfully.' );
+        if ( $user->status == 'closed' ) {
+            $status = 'open';
+        } else {
+            $status = 'closed';
         }
+
+        $updateStatus = array( 'status' => $status );
+        DB::table( 'resort_lists' )->where( 'id', $id )->update( $updateStatus );
+
+        return redirect( '/resort_list' )->with( 'status', 'Resort status has been updated successfully.' );
+
     }
 
     public function searchResortList() {

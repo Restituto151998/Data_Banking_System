@@ -17,6 +17,9 @@ use App\Models\Resort;
 
 class AddUserController extends Controller
  {
+    public function __construct() {
+        $this->middleware( 'auth' );
+    }
     //display users
 
     public function show() {

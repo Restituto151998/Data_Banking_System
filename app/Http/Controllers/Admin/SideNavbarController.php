@@ -13,11 +13,9 @@ class SideNavbarController extends Controller
     }
 
     public function sideNavbar() {
-        if ( Auth::check() && Auth::user()->status == 'enable' ) {
-            return view( 'admin.side_navbar' );
-
+        if(Auth::user()->status == 'disable'){
+            return redirect('/forbidden');
         }
-        return view( 'error_code.forbidden' );
-
+            return view( 'admin.side_navbar' );
     }
 }

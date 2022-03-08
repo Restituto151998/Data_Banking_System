@@ -35,7 +35,7 @@ class LoginController extends Controller
         $type = Auth::user()->type;
         
         if ( Auth::user()->status == 'disable' ) {
-            Auth::logout();
+            return '/forbidden';
         } else {
             switch ( $type ) {
                 case 'ADMIN':
@@ -44,10 +44,8 @@ class LoginController extends Controller
                 case 'STAFF':
                 return '/staff_dashboard';
                 break;
-
                 default:
                 return '/login';
-
                 break;
             }
 
