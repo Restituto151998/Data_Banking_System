@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Input;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +24,17 @@ use Illuminate\Pagination\Paginator;
 Route::get('/resort-alcoy-registration', [App\Http\Controllers\GuestController::class, 'redirectTo'])->name('online_registration.guest_registration');
 Route::post('/guest_register', [App\Http\Controllers\GuestController::class, 'onlineRegister']);
 
+
+Route::get('/forbidden', [App\Http\Controllers\HomeController::class, 'forbidden'])->name('error_code.forbidden');
+
 Auth::routes();
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+    Route::get('/', function () {
+        return redirect('/login');
+    });
+
+
+  
 
 Route::get('/side_navbar', [App\Http\Controllers\Admin\SideNavbarController::class, 'sideNavbar'])->middleware('type:ADMIN');
 
@@ -59,15 +65,12 @@ Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::cla
 //GuestList
 Route::get('/resort_list/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
 Route::get('/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest']);
-//Print
-// Route::get('/resort_list/resort_guest/print_preview/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'printPreview']);
+
 //changeStatus
 Route::get('/status_update/{id}', [App\Http\Controllers\Admin\AddUserController::class, 'changeUserStatus']);
 
 Route::get('/resort_list/{id}/edit', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.edit_resort_list');
 Route::put('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'update']);
-
-Route::get('/forbidden', [App\Http\Controllers\HomeController::class, 'forbidden'])->name('error_code.forbidden');
 
 Route::get('/generate_qrcode', [App\Http\Controllers\Admin\QrCodeController::class, 'qrCode'])->name('resorts.generate_qrcode');
 

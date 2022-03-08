@@ -6,8 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SaveUserController extends Controller {
-    public function saveUser( Request $request ) {
 
+    public function __construct() {
+        $this->middleware( 'auth' );
+    }
+
+    public function saveUser( Request $request ) {
+        if(Auth::user()->status == 'disable'){
+            return redirect('/forbidden');
+        }
         $validatedData = $request->validate( [
             'name' => 'required',
             'email' => 'required',

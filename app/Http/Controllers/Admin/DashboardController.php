@@ -10,7 +10,14 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
  {
+    public function __construct() {
+        $this->middleware( 'auth' );
+    }
+
     public function dashboard() {
+        if(Auth::user()->status == 'disable'){
+            return redirect('/forbidden');
+        }
 
         $result1 = DB::select( DB::raw( 'select count(resorts.id) as guest,resorts.resort_name from guests INNER JOIN resorts ON guests.resort_id = resorts.id GROUP BY resorts.resort_name;' ) );
         $data1 = '';

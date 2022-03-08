@@ -25,7 +25,7 @@
                                         </button>
                                         <input id="email" type="email"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            class="form-control" name="email"
                                             tabindex="1" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Addres"
                                             autofocus>
                                     </div>
@@ -35,7 +35,7 @@
                                         <strong><label><i data-feather="key" class="mt-3"></i> </label></strong>
                                         <input id="password"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                            type="password" class="form-control @error('password') is-invalid @enderror"
+                                            type="password" class="form-control"
                                             name="password" tabindex="2" required autocomplete="current-password" placeholder="Password">
                                     </div>
                                     @error('email')
