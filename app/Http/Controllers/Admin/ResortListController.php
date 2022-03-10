@@ -36,7 +36,7 @@ class ResortListController extends Controller
 
     public function guest( $id ) {
         $resort = ResortList::where( 'id',  '=', $id )->first();
-        $guests = Guest::where( 'resort_id', $id )->paginate( 15 );
+        $guests = Guest::where( 'resort_id', $id )->get();
         return view( 'resorts.resort_guest' )->with( 'guests', $guests )->withDetails( $resort );
     }
 
