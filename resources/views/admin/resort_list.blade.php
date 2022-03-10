@@ -4,20 +4,13 @@
     <div class="main-wrapper main-wrapper-1">
         <div class="main-content">
             @if (session()->has('status'))
-                <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
                     {{ session()->get('status') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
             @endif
             @if (session()->has('message'))
-                <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
                     {{ session()->get('message') }}
-
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
             @endif
             <div class="row">
@@ -35,10 +28,10 @@
                                                 <form class="d-flex " action="/resort_list/search" method="POST"
                                                     role="search">
                                                     {{ csrf_field() }}
-                                                    <div class="input-group ml-4">
+                                                    <div class="input-group">
                                                         <input type="search" class="border border-success form-control w-75"
                                                             name='search' placeholder="Search">
-                                                        <div class="input-group-append mr-4">
+                                                        <div class="input-group-append">
                                                             <button class="btn btn-success" type="submit">
                                                                 <i class="fa fa-search"></i>
                                                             </button>
@@ -46,16 +39,17 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                            <table class="table" style="background-color: white; text-align:center;">
-                                                <thead class="table" style="font-size:20px;">
+                                            <table class="table text-center">
+                                                <thead class="table"
+                                                    style="background-color: #21791A; text-align:center">
                                                     <tr>
-                                                        <th scope="col" class="text-black" style="background-color: white">
+                                                        <th scope="col" class="text-white">
                                                             Resort Name</th>
-                                                        <th scope="col" class="text-black" style="background-color: white">
+                                                        <th scope="col" class="text-white">
                                                             Assigned Staff</th>
-                                                        <th scope="col" class="text-black" style="background-color: white">
+                                                        <th scope="col" class="text-white">
                                                             Status</th>
-                                                        <th scope="col" class="text-black" style="background-color: white">
+                                                        <th scope="col" class="text-white">
                                                             Action</th>
                                                     </tr>
                                                 </thead>

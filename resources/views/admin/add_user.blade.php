@@ -5,27 +5,18 @@
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
                 @if (session()->has('status'))
-                    <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
                         {{ session()->get('status') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 @endif
                 @if (session()->has('message_success'))
-                    <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                    <div id="alert_message" class="alert alert-success  alert-dismissible fade w-25 show sticky" role="alert">
                         {{ session()->get('message_success') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 @endif
                 @if (session()->has('message'))
-                    <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                    <div id="alert_message" class="alert alert-success  alert-dismissible fade w-25 show sticky" role="alert">
                         {{ session()->get('message') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 @endif
                 <div class="row">
@@ -49,7 +40,8 @@
                                                     <div class="row mr-3">
                                                         <div class="col">
                                                             <span class="float-right"> {!! $users->links() !!}</span>
-                                                            <a class="btn p-2" style="background-color:#21791A; color:white"
+                                                            <a class="btn p-2"
+                                                                style="background-color:#21791A; color:white"
                                                                 href="{{ route('admin.add_users') }}">+ Add New User</a>
                                                             </button>
                                                         </div>

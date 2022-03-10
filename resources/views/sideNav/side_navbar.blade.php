@@ -2,11 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-<script type="text/javascript">
-        function disableBack() { window.history.forward(); }
+    <script type="text/javascript">
+        function disableBack() {
+            window.history.forward();
+        }
         setTimeout("disableBack()", 0);
-        window.onunload = function () { null };
-</script>
+        window.onunload = function() {
+            null
+        };
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/data.css">
@@ -52,7 +57,7 @@
             <div class="form-inline mr-auto">
                 <ul class="navbar-nav mr-3">
                     <li>
-                        <a href="/" data-toggle="sidebar" class="nav-link nav-link-lgcollapse-btn ">
+                        <a href="/" data-toggle="sidebar" id="click_me" class="nav-link nav-link-lgcollapse-btn ">
                             <i data-feather="align-justify"></i>
                         </a>
                     </li>
@@ -98,7 +103,7 @@
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand" style="background:#21791A;">
                     <a href=""> <img alt="image" src="assets/img/logo.png" class="header-logo rounded-circle" /> <span
-                            class="text-white">{{ __('Alcoy') }}</span>
+                            class="text-white" id="alcoy">{{ __('Alcoy') }}</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
@@ -153,10 +158,12 @@
             </aside>
         </div>
     @endauth
+
     <body class="py-4">
         @yield('content')
     </body>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
@@ -195,10 +202,22 @@
                 reader.readAsDataURL(this.files[0]);
                 $('#change_profile').attr('disabled', false);
             });
-            $('#password').change( function(){
+            $('#password').change(function() {
                 $('#change-password').attr('hidden', false);
             });
+
+            setTimeout(function() {
+                $("#alert_message").remove();
+            }, 3000); // 5 secs duration for update profile
+
+            $('#click_me').on('click', function(){
+                $('#alcoy').attr('hidden', true);
+            })
+     
+
+
         });
+
     </script>
 </body>
 

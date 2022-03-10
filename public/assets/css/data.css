@@ -1,19 +1,18 @@
     input#email.form-control {
         background-color: green;
-    } 
+    }
     
     #login {
-        position: relative; 
+        position: relative;
         /* width: 291px;
         height: 382px;  */
         max-width: 321px;
         height: 382px;
         background: #F4EBEB;
         border-radius: 100px 0px;
-        box-shadow: 0 0 0 0; 
+        box-shadow: 0 0 0 0;
         margin-top: 88px;
     }
-    
     /* .bg {
         background: #21791A;
     } */
@@ -21,7 +20,7 @@
     .login-logo {
         max-width: 39%;
         max-height: 30%;
-        margin-left: 102px;        
+        margin-left: 102px;
         margin-top: -56px;
     }
     
@@ -30,7 +29,6 @@
         margin-left: 113px;
         margin-top: 12px;
     }
-    
     /* .text-login,
     .text-username,
     .text-password,
@@ -53,12 +51,17 @@
         border-color: transparent !important;
     }
     
-    a#navbarDropdown.nav-link.dropdown-toggle::after{
+    a#navbarDropdown.nav-link.dropdown-toggle::after {
         display: none;
-      }
-    
+    }
     /* .login-btn:hover {
         background: #21791A;
         transition: 0.7s;
     }
      */
+    
+    #alert_message {
+        z-index: 1;
+        margin-top: 80px;
+        margin-left: 55%;
+    }
