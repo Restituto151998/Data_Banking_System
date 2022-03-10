@@ -16,7 +16,10 @@ return array(
     'App\\Http\\Controllers\\Admin\\ResortListController' => $baseDir . '/app/Http/Controllers/Admin/ResortListController.php',
     'App\\Http\\Controllers\\Admin\\SaveUserController' => $baseDir . '/app/Http/Controllers/Admin/SaveUserController.php',
     'App\\Http\\Controllers\\Admin\\SideNavbarController' => $baseDir . '/app/Http/Controllers/Admin/SideNavbarController.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\Auth\\ChangePasswordController' => $baseDir . '/app/Http/Controllers/Auth/ChangePasswordController.php',
+=======
+>>>>>>> f9a2ba66af8c041fb3dc69cdb4e0fead0b5f95bc
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -1961,6 +1964,10 @@ return array(
     'Illuminate\\Support\\Facades\\Gate' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Facades/Gate.php',
     'Illuminate\\Support\\Facades\\Hash' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Facades/Hash.php',
     'Illuminate\\Support\\Facades\\Http' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Facades/Http.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Support\\Facades\\Input' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Facades/Input.php',
+>>>>>>> f9a2ba66af8c041fb3dc69cdb4e0fead0b5f95bc
     'Illuminate\\Support\\Facades\\Lang' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Facades/Lang.php',
     'Illuminate\\Support\\Facades\\Log' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Facades/Log.php',
     'Illuminate\\Support\\Facades\\Mail' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Facades/Mail.php',
