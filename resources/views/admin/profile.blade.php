@@ -6,20 +6,13 @@
             <!-- Main Content -->
             <div class="main-content">
                 @if (session()->has('status'))
-                    <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                    <div id="alert_message" class="alert alert-success alert-dismissible fade w-25 show sticky" role="alert">
                         {{ session()->get('status') }}
-
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 @endif
                 @if (session()->has('message'))
-                    <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
                         {{ session()->get('message') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 @endif
                 <div class="row">
@@ -34,14 +27,12 @@
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group">
-
                                                         @if (Auth::user()->image)
                                                             <img id="preview-profile-image"
                                                                 src="{{ asset('storage/images/' . Auth::user()->image) }}"
                                                                 alt="preview image" style="width:200px; height: 200px;"
                                                                 class="rounded-circle">
                                                         @endif
-
                                                         <label for="profile">
                                                             <i data-feather="camera"
                                                                 style="margin-left:-50px; margin-top:90px; position: absolute"></i>
@@ -191,7 +182,6 @@
                                                                 changes</button>
                                                         </div>
                                                     </div>
-
                                                     </form>
                                                 </div>
                                             </div>

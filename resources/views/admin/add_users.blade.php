@@ -5,11 +5,8 @@
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
                 @if (session()->has('message_fail'))
-                    <div class="alert alert-danger alert-dismissible fade  show" role="alert">
+                    <div id="alert_message" class="alert alert-danger alert-dismissible fade w-25 show sticky" role="alert">
                         {{ session()->get('message_fail') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 @endif
                 <div class="row">
@@ -37,40 +34,41 @@
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" name="name" required>
                                                             <strong><label for=""
-                                                                    class="col-form-label mb-1 text-black">Name:</label></strong>
+                                                                    class="col-form-label mb-1 text-black">Name</label></strong>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="address"
+                                                            <input type="email"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center" name="address" required>
+                                                                class="form-control ml-2 text-center" name="email" required>
                                                             <strong><label for="inputPassword"
-                                                                    class="col-form-label mb-1 text-black">Address:</label></strong>
+                                                                    class="col-form-label mb-1 text-black">Email
+                                                                    Address</label></strong>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <input type="phone_number"
+                                                            <input type="number"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" name="phone_number"
                                                                 required>
                                                             <strong><label for="" class="col-form-label mb-1 text-black">Phone
-                                                                    Number:</label></strong>
+                                                                    Number</label></strong>
                                                         </div>
                                                         <div class="col">
                                                             <input type="gender"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" name="gender" required>
                                                             <strong><label for="inputPassword"
-                                                                    class="col-form-label mb-1 text-black">Gender:</label></strong>
+                                                                    class="col-form-label mb-1 text-black">Gender</label></strong>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <input type="email"
+                                                            <input type="password"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center" name="email" required>
+                                                                class="form-control ml-2 text-center" name="password" required>
                                                             <strong><label for="inputPassword"
-                                                                    class="col-form-label mb-1 text-black">Email:</label></strong>
+                                                                    class="col-form-label mb-1 text-black">Password</label></strong>
                                                         </div>
                                                         <div class="col">
                                                             <select class="custom-select text-center" id="inputGroupSelect01"
@@ -85,27 +83,24 @@
                                                             </select>
                                                             <strong><label for="to_assigned"
                                                                     class="col-form-label mb-1 text-black">Assign
-                                                                    To:</label></strong>
+                                                                    To</label></strong>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <div class="col">
-                                                                <input type="password"
-                                                                    style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                    class="form-control ml-2 text-center" name="password"
-                                                                    required>
-                                                                <strong><label for="inputPassword"
-                                                                        class="col-form-label mb-1 text-black">Password:</label></strong>
-                                                            </div>
+                                                            <input type="text"
+                                                                style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                class="form-control ml-2 text-center" name="address" required>
+                                                            <strong><label for="inputPassword"
+                                                                    class="col-form-label mb-1 text-black">Address</label></strong>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12 mt-4">
-                                                        <button type="submit" class="btn text-white"
-                                                            style="background-color:  #21791A">Add User</button>
-                                                    </div>
-                                                </form>
                                             </div>
+                                            <div class="col-md-12 mt-4">
+                                                <button type="submit" class="btn text-white w-50"
+                                                    style="background-color:  #21791A">Add User</button>
+                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -114,6 +109,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     @endauth
 @endsection

@@ -14,6 +14,12 @@
                 </div>
             @endif
                 <div class="row">
+                    @if (session('status'))
+                        <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
+                            role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <div class="col-12">
                         <div class="card mb-0">
                             <div class="card-body">
@@ -45,11 +51,6 @@
                                             <h4 style="text-align: center; color:black">Add Resort</h4>
                                             <div class="card-body">
                                             </div>
-                                            @if (session('status'))
-                                                <div class="alert alert-success">
-                                                    {{ session('status') }}
-                                                </div>
-                                            @endif
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col text-center">
@@ -74,7 +75,7 @@
                                                         <div class="row">
                                                             <div class="col text-center">
                                                                 <div class="form-group">
-                                                                    <button class="btn w-25"
+                                                                    <button class="btn w-50"
                                                                         style="background-color:#21791A; color:white">Add</button>
                                                                 </div>
                                                             </div>
