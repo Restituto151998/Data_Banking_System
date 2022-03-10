@@ -162,7 +162,7 @@
                    
                     <li class="dropdown">
                         <a href="/add_user" class="nav-link"><i
-                                data-feather="users"></i><span>{{ __('Add User') }}</span></a>
+                                data-feather="users"></i><span>{{ __('Users') }}</span></a>
                     </li>
              
                         <li class="dropdown">

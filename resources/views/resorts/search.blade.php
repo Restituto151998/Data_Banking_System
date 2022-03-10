@@ -83,7 +83,7 @@
                                                     </thead>
                                                     <tbody class="text-center">
                                                         @if (isset($users))
-                                                            @forelse ($users as $user)
+                                                            @foreach ($users as $user)
                                                                 @if (Auth::user()->type != $user->type)
                                                                     <tr>
                                                                         <td>{{ $user->name }}</td>
@@ -106,22 +106,15 @@
                                                                                     data-feather="edit"></i> </a>
                                                                         </td>
                                                                 @endif
-                                                            @empty
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td class="text-center"><img
-                                                                        src="../../assets/img/no_data.PNG" alt=""
-                                                                        srcset=""><br>
-                                                                    <p>No results found.</p>
-                                                                </td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                </tr>
-                                                            @endforelse
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
+                                                @empty($user)
+                                                    <div class="text-center"><img src="../../assets/img/no_data.PNG" alt=""
+                                                            srcset=""><br>
+                                                        <p>No results found.</p>
+                                                    </div>
+                                                @endempty
                                                 <span class="float-right"> {!! $users->links() !!}</span>
                                                 @endif
                                             </div>
