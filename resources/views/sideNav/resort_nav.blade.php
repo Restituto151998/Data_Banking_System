@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="{{ asset('../assets/bundles/datatables/datatables.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- Template CSS -->
 
     <link rel="stylesheet" href="../../assets/css/components.css">
@@ -201,6 +201,7 @@
 
     <!-- Template JS File -->
     <script src="{{ asset('../assets/js/scripts.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- Custom JS File -->
     <script src="{{ asset('../assets/js/custom.js') }}"></script>
     <script src="{{ asset('../assets/js/jquery.printPage.js') }}"></script>

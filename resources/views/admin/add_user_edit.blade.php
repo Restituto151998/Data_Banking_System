@@ -5,11 +5,8 @@
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
                 @if (session()->has('error'))
-                    <div class="alert alert-danger alert-dismissible fade  show" role="alert">
+                    <div id="alert_message" class="alert alert-danger alert-dismissible fade  w-25 show sticky" role="alert">
                         {{ session()->get('error') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 @endif
                 <div class="row">
@@ -55,7 +52,6 @@
                                                             Number</label></strong>
                                                 </div>
                                                 <div class="col text-center">
-
                                                     <input type="gender"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                         class="form-control text-center" name="gender"
@@ -76,7 +72,6 @@
                                             </div>
                                             <div class="row mb-3" id="change-password" hidden="true">
                                                 <div class="col text-center">
-
                                                     <input type="password"
                                                         style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                         class="form-control text-center" name="new_password">
@@ -92,7 +87,7 @@
                                                 </div>
                                             </div>
                                             <div class="col text-center mt-3">
-                                                <button type="submit" class="btn text-white"
+                                                <button type="submit" class="btn text-white w-50"
                                                     style="background-color:  #21791A">Save
                                                     changes</button>
                                             </div>
