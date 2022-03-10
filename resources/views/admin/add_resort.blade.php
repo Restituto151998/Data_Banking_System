@@ -5,6 +5,14 @@
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
             <div class="main-content">
+                @if (session()->has('message_fail'))
+                <div class="alert alert-danger alert-dismissible fade  show" role="alert">
+                    {{ session()->get('message_fail') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
                 <div class="row">
                     @if (session('status'))
                         <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"

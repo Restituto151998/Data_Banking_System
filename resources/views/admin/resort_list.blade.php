@@ -76,6 +76,16 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            @empty($resort)
+                                            <center>
+                                            <div>
+                                                <img
+                                                src="../../assets/img/no_datas.PNG" alt=""
+                                                srcset=""><br>
+                                            <p>No results found.</p>
+                                            </div>
+                                            </center>
+                                        @endempty
                                             <span class="float-right"> {!! $resort_lists->links() !!}</span>
                                         </div>
                                     </div>

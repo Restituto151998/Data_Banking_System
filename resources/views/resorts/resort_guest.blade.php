@@ -4,7 +4,7 @@
     <div class="main-wrapper main-wrapper-1">
         <!-- Main Content -->
         <div class="main-content">
-            @if (isset($details))
+            @if ($details)
                 <a href="{{ route('resorts.resort_guest', $details->resort_id) }}" class="print float-right ">print<i
                         data-feather="printer"></i></a>
                 <div class="row">
@@ -50,8 +50,14 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                @empty($guest)                                               
+                                                        <div class="text-center">
+                                                            <img src="../../assets/img/no_datas.PNG" alt="" srcset=""><br>
+                                                            <p>No Data</p>
+                                                        </div>                                                    
+                                                @endempty
                                             </div>
-                                            <span class="float-right">{!! $guests->links() !!}</span>
+                                            {{-- <span class="float-right">{!! $guests->links() !!}</span> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +65,8 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            </div>
+
         </div>
     </div>
 @endsection
