@@ -51,6 +51,7 @@ Route::post('/add_user', [App\Http\Controllers\Admin\AddUserController::class, '
 Route::any('/add_user/search', [App\Http\Controllers\Admin\AddUserController::class, 'search']);
 
 
+
 Route::get('/add_user/{id}/edit', [App\Http\Controllers\Admin\AddUserController::class, 'editUser'])->name('admin.add_user_edit');
 Route::put('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'updateUser']);
 

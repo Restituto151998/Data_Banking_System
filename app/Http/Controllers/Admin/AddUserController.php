@@ -28,14 +28,7 @@ class AddUserController extends Controller
         return view( 'admin.add_user' )->with( 'users', $users );
     }
 
-    public function search() {
-        $search = Input::get ( 'search' );
-        $users = User::where( 'name', 'LIKE', '%'.$search.'%' )->orWhere( 'email', 'LIKE', '%'.$search.'%' )->paginate( 5 );
-
-        return view( 'resorts.search' )->with( 'users', $users )->withQuery ( $search );
-
-    }
-
+ 
     //     //redirect add_users
 
     public function redirectToAddUser() {
