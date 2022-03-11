@@ -49,7 +49,7 @@
 
                                 <h2 class="text-center mt-4 mb-4">{{ $image->resort_name }}</h2 >
                                 <p>{{ $image->resort_description }}</p>
-                                <button class="btn btn-primary">More Info</button>
+                                <button class="btn btn-primary mb-3">More Info</button>
                             </div>
 
                         </div>

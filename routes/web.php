@@ -59,8 +59,6 @@ Route::put('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'u
 Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'show'])->name('admin.resort_list');
 //changeStatusResort
  Route::get('/resorts_status_update/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'changeResortStatus']);
- //searchResort
- Route::any('/resort_list/search', [App\Http\Controllers\Admin\ResortListController::class, 'searchResortList']);
  //uploadProfile
  Route::post('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'uploadProfile']);
 

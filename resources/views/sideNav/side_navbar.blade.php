@@ -64,7 +64,7 @@
                     </li>
                 </ul>
                 <div class="text-white h3 pt-2">
-                    Alcoy Data Banking 
+                    Alcoy Data Banking
                 </div>
             </div>
             <ul class="navbar-nav navbar-right">
@@ -209,21 +209,25 @@
 
             setTimeout(function() {
                 $("#alert_message").remove();
-            }, 3000); // 5 secs duration for update profile
+            }, 3000);
 
-            $('#click_me').on('click', function() {
-                $('#alcoy').attr('hidden', true);
-            })
-
-
+            $('.p').hide();
             $("#myInput").on("keyup", function() {
+                var count = 0;
                 var value = $(this).val().toLowerCase();
                 $("#myTable tr").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
+
+                $('.tr:visible').each(function() {
+                    count++;
+                });
+                if (count === 0) {
+                    $('.p').show();
+                } else {
+                    $('.p').hide();
+                }
             });
-
-
 
         });
 
