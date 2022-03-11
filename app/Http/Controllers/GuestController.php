@@ -41,12 +41,12 @@ public function redirectTo(){
     $save->purpose = $purpose;
     $save->save();
 
-    
-return back()->with('status', 'You are Successfully Registered in'.$resort->resort_name);
+return redirect('resorts-overview')->with('status', 'Successfully Registered!');
 
   }  
 
   public function overview(){
+
     $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
     $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
     return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image);

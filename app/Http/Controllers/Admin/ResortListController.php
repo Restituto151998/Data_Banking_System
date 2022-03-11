@@ -29,8 +29,6 @@ class ResortListController extends Controller
     public function edit( $id )
  {
         $resort = ResortList::where( 'id',  '=', $id )->first();
-        dd( $resort );
-
         return view( 'admin.resort_list' )->with( 'resort_lists', $resort );
     }
 

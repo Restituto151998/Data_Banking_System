@@ -34,7 +34,15 @@
 <body>
 
     <div class="container mt-5">
+        @if (session()->has('status'))
+            <div class="alert alert-success alert-dismissible fade  show" role="alert">
+                {{ session()->get('status') }}
 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             @foreach ($resorts as $image)
                 <div class="col-sm-12">
@@ -47,7 +55,7 @@
                             </div>
                             <div class="col">
 
-                                <h2 class="text-center mt-4 mb-4">{{ $image->resort_name }}</h2 >
+                                <h2 class="text-center mt-4 mb-4">{{ $image->resort_name }}</h2>
                                 <p>{{ $image->resort_description }}</p>
                                 <button class="btn btn-primary mb-3">More Info</button>
                             </div>
