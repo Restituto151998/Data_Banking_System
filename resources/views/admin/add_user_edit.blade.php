@@ -52,10 +52,21 @@
                                                             Number</label></strong>
                                                 </div>
                                                 <div class="col text-center">
-                                                    <input type="gender"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                        class="form-control text-center" name="gender"
-                                                        value="{{ $user->gender }}">
+                                                    <select class="custom-select text-center" id="inputGroupSelect01"
+                                                                name="gender"
+                                                                style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                                <option selected>{{ $user->gender }}</option>
+                                                                @if($user->gender == "Male")
+                                                                    <option value="Female">
+                                                                        Female
+                                                                    </option>
+                                                                @else
+                                                                    <option value="Male">
+                                                                        Male
+                                                                    </option>
+                                                                @endif
+                                                                    
+                                                            </select>
                                                     <strong><label for="gender" class="col-form-label mb-1 text-black">Gender
                                                         </label></strong>
                                                 </div>

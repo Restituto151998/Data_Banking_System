@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 //online registration
+Route::get('/resorts-overview', [App\Http\Controllers\GuestController::class, 'overview'])->name('online_registration.resorts_overview');
 Route::get('/resort-alcoy-registration', [App\Http\Controllers\GuestController::class, 'redirectTo'])->name('online_registration.guest_registration');
 Route::post('/guest_register', [App\Http\Controllers\GuestController::class, 'onlineRegister']);
 
@@ -51,6 +52,7 @@ Route::post('/add_user', [App\Http\Controllers\Admin\AddUserController::class, '
 Route::any('/add_user/search', [App\Http\Controllers\Admin\AddUserController::class, 'search']);
 
 
+
 Route::get('/add_user/{id}/edit', [App\Http\Controllers\Admin\AddUserController::class, 'editUser'])->name('admin.add_user_edit');
 Route::put('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'updateUser']);
 
@@ -58,7 +60,7 @@ Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::cla
 //changeStatusResort
  Route::get('/resorts_status_update/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'changeResortStatus']);
  //searchResort
- Route::any('/resort_list/search', [App\Http\Controllers\Admin\ResortListController::class, 'searchResortList']);
+
  //uploadProfile
  Route::post('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'uploadProfile']);
 

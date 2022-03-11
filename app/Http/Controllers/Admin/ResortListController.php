@@ -29,8 +29,6 @@ class ResortListController extends Controller
     public function edit( $id )
  {
         $resort = ResortList::where( 'id',  '=', $id )->first();
-        dd( $resort );
-
         return view( 'admin.resort_list' )->with( 'resort_lists', $resort );
     }
 
@@ -75,12 +73,6 @@ class ResortListController extends Controller
 
     }
 
-    public function searchResortList() {
-
-        $search = Input::get ( 'search' );
-        $resort_lists = ResortList::where( 'resort_name', 'LIKE', '%'.$search.'%' )->orWhere( 'assigned_staff', 'LIKE', '%'.$search.'%' )->paginate( 5 );
-        return view( 'resorts.resort_search' )->with( 'resort_lists',  $resort_lists )->withQuery ( $search );
-
-    }
+  
 
 }

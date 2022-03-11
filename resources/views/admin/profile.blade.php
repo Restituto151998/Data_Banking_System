@@ -155,10 +155,21 @@
                                                                             Number</small> </label>
                                                                 </div>
                                                                 <div class="col text-center">
-                                                                    <input type="text" value="{{ Auth::user()->gender }}"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                        class="form-control ml-2 text-center" name="gender"
-                                                                        placeholder="Gender" required>
+                                                                   <select class="custom-select text-center" id="inputGroupSelect01"
+                                                                name="gender"
+                                                                style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                                <option selected>{{ Auth::user()->gender }}</option>
+                                                                @if(Auth::user()->gender == "Male")
+                                                                    <option value="Female">
+                                                                        Female
+                                                                    </option>
+                                                                @else
+                                                                    <option value="Male">
+                                                                        Male
+                                                                    </option>
+                                                                @endif
+                                                                    
+                                                            </select>
                                                                     <label
                                                                         class="col-form-label mb-1 text-black"><small>Gender</small>
                                                                     </label>

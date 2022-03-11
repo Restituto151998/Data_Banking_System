@@ -27,27 +27,22 @@
                                     <h4 style="text-align: center; color:black">Data Banking System Users</h4>
                                     <div class="container">
                                         <div class="main justify-align-center">
-                                            <form class="d-flex mt-4" action="/add_user/search" method="POST" role="search">
-                                                {{ csrf_field() }}
-                                                <div class="input-group w-100 ml-4">
-                                                    <input type="search" class="form-control border border-success"
-                                                        name='search' placeholder="Search" aria-label="Search">
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-success mr-5" type="submit">
-                                                            <i class="fa fa-search"></i>
+
+                                            <div class="input-group w-100 ml-4">
+                                                <input type="search" id="myInput" class="form-control border border-success"
+                                                    placeholder="Search" aria-label="Search">
+                                                <div class="input-group-append">
+                                                </div>
+                                                <div class="row mr-3">
+                                                    <div class="col">
+                                                        <span class="float-right"> {!! $users->links() !!}</span>
+                                                        <a class="btn p-2" style="background-color:#21791A; color:white"
+                                                            href="{{ route('admin.add_users') }}">+ Add New User</a>
                                                         </button>
                                                     </div>
-                                                    <div class="row mr-3">
-                                                        <div class="col">
-                                                            <span class="float-right"> {!! $users->links() !!}</span>
-                                                            <a class="btn p-2"
-                                                                style="background-color:#21791A; color:white"
-                                                                href="{{ route('admin.add_users') }}">+ Add New User</a>
-                                                            </button>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                            </form>
+                                            </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
@@ -68,11 +63,11 @@
                                                                 <th scope="col" class="text-white">Action</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody id="myTable">
                                                             @if (isset($users))
                                                                 @foreach ($users as $user)
                                                                     @if (Auth::user()->type != $user->type)
-                                                                        <tr>
+                                                                        <tr class="tr">
                                                                             <td>{{ $user->name }}</td>
                                                                             <td>{{ $user->email }}</td>
                                                                             <td>{{ $user->phone_number }}</td>
@@ -94,30 +89,16 @@
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
-                                                                    @endif                                                              
+                                                                    @endif
                                                                 @endforeach
                                                             @endif
                                                         </tbody>
                                                     </table>
-                                   
-                                                    @if($user->id == 1)
-                                                    <div class="row">
-                                                        <div class="col text-center">
-                                                            <img
-                                                            src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
+                                                    <div class="p text-center">
+                                                        <img src="{{ asset('assets/img/no_data.PNG') }}" alt=""
                                                             srcset=""><br>
                                                         <p>No results found.</p>
-                                                        </div>
                                                     </div>
-                                                    {{-- <center>
-                                                        <div>
-                                                            <img
-                                                            src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
-                                                            srcset=""><br>
-                                                        <p>No results found.</p>
-                                                        </div>
-                                                        </center> --}}
-                                                    @endif
                                                     <span class="float-right"> {!! $users->links() !!}</span>
                                                 </div>
                                             </div>

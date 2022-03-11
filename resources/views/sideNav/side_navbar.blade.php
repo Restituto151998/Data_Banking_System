@@ -10,6 +10,7 @@
         window.onunload = function() {
             null
         };
+
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,13 +31,14 @@
     <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/data.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="./assets/css/data.css">
+    <link rel="stylesheet" href="./assets/css/loader.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
 
@@ -86,9 +88,16 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item" href="{{ url()->previous() }}"
+                            <a class="dropdown-item text-center" href="{{ url()->previous() }}"
                                 onclick="event.preventDefault();                                                                                                                                                            document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
+                            </a>
+                            <a class="dropdown-item text-center" href="/profile"
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Profile') }} @if (Auth::user()->image)
+                                    <img src="{{ asset('storage/images/' . Auth::user()->image) }}"
+                                        class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+                                @endif
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -163,7 +172,6 @@
         @yield('content')
     </body>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
@@ -208,13 +216,41 @@
 
             setTimeout(function() {
                 $("#alert_message").remove();
-            }, 3000); // 5 secs duration for update profile
+            }, 3000);
 
-            $('#click_me').on('click', function(){
-                $('#alcoy').attr('hidden', true);
-            })
-     
+            $('.p').hide();
+            $("#myInput").on("keyup", function() {
+                var count = 0;
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
 
+                $('.tr:visible').each(function() {
+                    count++;
+                });
+                if (count === 0) {
+                    $('.p').show();
+                } else {
+                    $('.p').hide();
+                }
+            });
+
+        });
+        $('#generate').on('click', function() {
+            setTimeout(function() {
+                $('#load').attr('hidden', false);
+                $('#arrow_down').attr('hidden', true);
+            }, 0);
+
+            setTimeout(function() {
+                $('#qr').attr('hidden', false);
+                $('#qr-text').attr('hidden', false);
+                $('#qr-download').attr('hidden', false);;
+                $('#load').attr('hidden', true);;
+            }, 3000);
+
+            $('#generate').attr('disabled', true);;
 
         });
 

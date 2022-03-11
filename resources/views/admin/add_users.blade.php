@@ -55,9 +55,19 @@
                                                                     Number</label></strong>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="gender"
-                                                                style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center" name="gender" required>
+                                                           <select class="custom-select text-center" id="inputGroupSelect01"
+                                                                name="gender"
+                                                                style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                                <option selected>Choose gender...</option>
+                                                              
+                                                                    <option value="Male">
+                                                                        Male
+                                                                    </option>
+                                                                    <option value="Female">
+                                                                        Female
+                                                                    </option>
+                                                                    
+                                                            </select>
                                                             <strong><label for="inputPassword"
                                                                     class="col-form-label mb-1 text-black">Gender</label></strong>
                                                         </div>
