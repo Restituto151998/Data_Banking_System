@@ -54,16 +54,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col" id="register_content">
-                                {{-- <div class="card"> --}}
                                 <div class="inline-block">
-                                    <!-- <div class="card-header justify-content-center pt-4"> -->
                                     <div>
                                         <img alt="image" src="assets/img/logo.png"
                                             class="register-logo rounded-circle" />
                                         <h3 class="text-register">Welcome to Alcoy</h3>
                                     </div>
                                 </div>
-
                                 <div class="card-header">{{ __('Register') }}</div>
                                 <form method="post" enctype="multipart/form-data" id="add_guest"
                                     action="{{ url('/guest_register') }}">
@@ -71,14 +68,9 @@
                                     <div class="card-body ">
                                         <div class="row mb-2">
                                             <div class="col d-flex" style="width:500px">
-                                                {{-- <label for="to_assigned"
-                                                    class="col-form-label text-black sm font-weight-bold">Please Select
-                                                    A
-                                                    Resort:</label> --}}
                                                     <strong><label><i data-feather="check-square" class="mt-3"></i>
                                                     </label></strong>
                                                 </button>
-                                                {{-- <div class="col-sm-10"> --}}
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     name="resort">
@@ -160,24 +152,13 @@
                                                     autocomplete="temperature" autofocus>
                                             </div>
                                         </div>
-                                        {{-- <div class="form-group mb-2">
-                                            <div class="input-group-append">
-                                                <strong><label><i data-feather="clock" class="mt-2"></i>
-                                                    </label></strong>
-                                                </button>
-                                                <input type="text"
-                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                                    class="form-control ml-4" name="time_use" placeholder="Time use"
-                                                    tabindex="1" required autocomplete="time_use" autofocus>
-                                            </div>
-                                        </div> --}}
                                         <div class="row mb-2">
                                             <div class="col d-flex" style="width:500px">
                                                     <strong><label><i data-feather="clock" class="mt-3"></i>
                                                     </label></strong>
                                                 </button>
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
-                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     name="time_use"  tabindex="1" required autocomplete="time_use" autofocus>
                                                     <option selected>Choose time use...</option>
                                                     <option value="1">Daytime use</option>

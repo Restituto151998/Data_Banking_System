@@ -101,25 +101,23 @@
                                                     </table>
                                    
                                                     @if($user->id == 1)
-                                                    <center>
+                                                    <div class="row">
+                                                        <div class="col text-center">
+                                                            <img
+                                                            src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
+                                                            srcset=""><br>
+                                                        <p>No results found.</p>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <center>
                                                         <div>
                                                             <img
                                                             src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
                                                             srcset=""><br>
                                                         <p>No results found.</p>
                                                         </div>
-                                                        </center>
+                                                        </center> --}}
                                                     @endif
-                                                    {{-- @empty($user)
-                                                    <center>
-                                                    <div>
-                                                        <img
-                                                        src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
-                                                        srcset=""><br>
-                                                    <p>No results found.</p>
-                                                    </div>
-                                                    </center>
-                                                    @endempty --}}
                                                     <span class="float-right"> {!! $users->links() !!}</span>
                                                 </div>
                                             </div>
