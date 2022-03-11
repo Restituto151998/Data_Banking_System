@@ -103,9 +103,15 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <a class="dropdown-item text-center" href="{{ route('logout') }}" onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
+                            </a>
+                               <a class="dropdown-item text-center" href="/profile"                                                                                                                                                          document.getElementById('logout-form').submit();">
+                                {{ __('Profile') }}  @if (Auth::user()->image)
+                                <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle ml-2"
+                                    style="width:20px; height: 20px;" alt="img">
+                            @endif
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -210,9 +216,6 @@
         $(document).ready(function() {
             $('.print').printPage();
 
-            // $('#password').change( function(){
-            //     
-            // });
             $('#btn-password').on('click', function(){
                 $('#change-password').attr('hidden', false);
                 $('#btn-password').attr('hidden', true);

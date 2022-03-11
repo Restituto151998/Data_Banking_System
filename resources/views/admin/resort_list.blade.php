@@ -25,23 +25,17 @@
                                     <div class="card-body">
                                         <div class="container">
                                             <div class="main w-100 mb-5 justify-align-center">
-                                                <form class="d-flex " action="/resort_list/search" method="POST"
-                                                    role="search">
-                                                    {{ csrf_field() }}
-                                                    <div class="input-group">
-                                                        <input type="search" id="myInput" class="border border-success form-control w-75"
-                                                            name='search' placeholder="Search">
-                                                        <div class="input-group-append">
-                                                            {{-- <button class="btn btn-success" type="submit">
-                                                                <i class="fa fa-search"></i>
-                                                            </button> --}}
-                                                        </div>
+                                                <div class="input-group">
+                                                    <input type="search" id="myInput"
+                                                        class="border border-success form-control w-75" name='search'
+                                                        placeholder="Search">
+                                                    <div class="input-group-append">
+
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
                                             <table class="table text-center">
-                                                <thead class="table"
-                                                    style="background-color: #21791A; text-align:center">
+                                                <thead class="table" style="background-color: #21791A; text-align:center">
                                                     <tr>
                                                         <th scope="col" class="text-white">
                                                             Resort Name</th>
@@ -55,7 +49,7 @@
                                                 </thead>
                                                 <tbody id="myTable">
                                                     @foreach ($resort_lists as $resort)
-                                                        <tr>
+                                                        <tr class="tr">
                                                             <td>{{ $resort->resort_name }}</td>
                                                             <td>{{ $resort->assigned_staff }}</td>
                                                             <td>
@@ -76,16 +70,10 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                            @empty($resort)
-                                            <center>
-                                            <div>
-                                                <img
-                                                src="../../assets/img/no_datas.PNG" alt=""
-                                                srcset=""><br>
-                                            <p>No results found.</p>
+                                            <div class="p text-center">
+                                                <img src="{{ asset('assets/img/no_data.PNG') }}" alt="" srcset=""><br>
+                                                <p>No results found.</p>
                                             </div>
-                                            </center>
-                                        @endempty
                                             <span class="float-right"> {!! $resort_lists->links() !!}</span>
                                         </div>
                                     </div>

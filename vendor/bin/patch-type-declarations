@@ -28,6 +28,10 @@ if (PHP_VERSION_ID < 80000) {
             {
                 // get rid of composer-bin-proxy:// prefix for __FILE__ & __DIR__ resolution
                 $opened_path = substr($path, 21);
+<<<<<<< HEAD
+                $opened_path = realpath($opened_path) ?: $opened_path;
+=======
+>>>>>>> f9a2ba66af8c041fb3dc69cdb4e0fead0b5f95bc
                 $this->handle = fopen($opened_path, $mode);
                 $this->position = 0;
 

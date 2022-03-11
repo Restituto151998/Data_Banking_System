@@ -548,6 +548,7 @@ class ComposerStaticInit85a093801ac278a3d26ebe543293c187
         'App\\Http\\Controllers\\Admin\\ResortListController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ResortListController.php',
         'App\\Http\\Controllers\\Admin\\SaveUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SaveUserController.php',
         'App\\Http\\Controllers\\Admin\\SideNavbarController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SideNavbarController.php',
+        'App\\Http\\Controllers\\Auth\\ChangePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ChangePasswordController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
