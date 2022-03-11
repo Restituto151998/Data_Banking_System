@@ -29,12 +29,12 @@
                                                     role="search">
                                                     {{ csrf_field() }}
                                                     <div class="input-group">
-                                                        <input type="search" class="border border-success form-control w-75"
+                                                        <input type="search" id="myInput" class="border border-success form-control w-75"
                                                             name='search' placeholder="Search">
                                                         <div class="input-group-append">
-                                                            <button class="btn btn-success" type="submit">
+                                                            {{-- <button class="btn btn-success" type="submit">
                                                                 <i class="fa fa-search"></i>
-                                                            </button>
+                                                            </button> --}}
                                                         </div>
                                                     </div>
                                                 </form>
@@ -53,7 +53,7 @@
                                                             Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="myTable">
                                                     @foreach ($resort_lists as $resort)
                                                         <tr>
                                                             <td>{{ $resort->resort_name }}</td>

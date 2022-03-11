@@ -30,12 +30,12 @@
                                             <form class="d-flex mt-4" action="/add_user/search" method="POST" role="search">
                                                 {{ csrf_field() }}
                                                 <div class="input-group w-100 ml-4">
-                                                    <input type="search" class="form-control border border-success"
+                                                    <input type="search" id="myInput" class="form-control border border-success"
                                                         name='search' placeholder="Search" aria-label="Search">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-success mr-5" type="submit">
+                                                        {{-- <button class="btn btn-success mr-5" type="submit">
                                                             <i class="fa fa-search"></i>
-                                                        </button>
+                                                        </button> --}}
                                                     </div>
                                                     <div class="row mr-3">
                                                         <div class="col">
@@ -68,7 +68,7 @@
                                                                 <th scope="col" class="text-white">Action</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody id="myTable">
                                                             @if (isset($users))
                                                                 @foreach ($users as $user)
                                                                     @if (Auth::user()->type != $user->type)

@@ -10,6 +10,7 @@
         window.onunload = function() {
             null
         };
+
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -210,10 +211,18 @@
                 $("#alert_message").remove();
             }, 3000); // 5 secs duration for update profile
 
-            $('#click_me').on('click', function(){
+            $('#click_me').on('click', function() {
                 $('#alcoy').attr('hidden', true);
             })
-     
+
+
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
 
 
         });
