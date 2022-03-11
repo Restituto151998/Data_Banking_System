@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 //online registration
+Route::get('/resorts-overview', [App\Http\Controllers\GuestController::class, 'overview'])->name('online_registration.resorts_overview');
 Route::get('/resort-alcoy-registration', [App\Http\Controllers\GuestController::class, 'redirectTo'])->name('online_registration.guest_registration');
 Route::post('/guest_register', [App\Http\Controllers\GuestController::class, 'onlineRegister']);
 

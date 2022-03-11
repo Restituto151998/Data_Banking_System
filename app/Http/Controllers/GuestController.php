@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Guest;
-
+use Carbon\Carbon;
 class GuestController extends Controller
 {
 
@@ -44,5 +44,11 @@ public function redirectTo(){
     
 return back()->with('status', 'You are Successfully Registered in'.$resort->resort_name);
 
+  }  
+
+  public function overview(){
+    $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
+    $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
+    return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image);
   }  
 }

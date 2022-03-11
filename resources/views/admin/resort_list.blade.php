@@ -82,7 +82,7 @@
                                                 <img
                                                 src="../../assets/img/no_datas.PNG" alt=""
                                                 srcset=""><br>
-                                            <p>No results found.</p>
+                                            <p>No data.</p>
                                             </div>
                                             </center>
                                         @endempty

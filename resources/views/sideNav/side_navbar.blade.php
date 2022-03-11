@@ -63,7 +63,7 @@
                     </li>
                 </ul>
                 <div class="text-white h3 pt-2">
-                    Alcoy Data Banking
+                    Alcoy Data Banking 
                 </div>
             </div>
             <ul class="navbar-nav navbar-right">
