@@ -75,7 +75,7 @@
                             <div class="card bg-info">
                                 <div class="card-body text-center">
                                     <h5 class="card-title">Number of Staffs</h5>
-                                    <h3>{{ $numberOfUser }}</h3>
+                                    <h3>{{ $numberOfUser-1 }}</h3>
 
                                 </div>
                             </div>

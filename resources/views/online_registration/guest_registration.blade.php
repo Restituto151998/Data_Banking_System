@@ -6,13 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-        {{-- <div>
-            @foreach ($resorts as $image)
-            {{ $image->imagePath}}
-                <img src="{{ asset('storage/'.$image->imagePath)}}" alt="images" srcset="">
-            @endforeach
-        </div> --}}
-
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

@@ -50,11 +50,11 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
-                                                @empty($guest)                                               
-                                                        <div class="text-center">
-                                                            <img src="../../assets/img/no_datas.PNG" alt="" srcset=""><br>
-                                                            <p>No Data</p>
-                                                        </div>                                                    
+                                                @empty($guest)
+                                                    <div class="text-center">
+                                                        <img src="../../assets/img/no_datas.PNG" alt="" srcset=""><br>
+                                                        <p>No Data</p>
+                                                    </div>
                                                 @endempty
                                             </div>
                                             {{-- <span class="float-right">{!! $guests->links() !!}</span> --}}
@@ -65,8 +65,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
+            @endif
         </div>
     </div>
 @endsection
