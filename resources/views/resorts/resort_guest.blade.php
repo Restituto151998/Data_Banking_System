@@ -11,13 +11,16 @@
                     <div class="co-12">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="{{ route('admin.resort_list') }}">
-                                    <i data-feather="arrow-left"></i>
+                               @if(Auth::user()->type == 'ADMIN')
+                                     <a href="{{ route('admin.resort_list') }}">
+                                    <i data-feather ="arrow-left"></i>
                                 </a>
-                                @if (Auth::user()->type == 'STAFF')
-                                    <h4 class="m-0">{{ Auth::user()->resortList->resort_name }} </h4>
-                                @endif
-                                <div class="row mt-4">
+                               @endif
+
+                                <div class="row mt-2">
+                                    @if (Auth::user()->type == 'ADMIN')
+                                        <h4 class="mt-3 text-center">{{ $details->resort_name }} </h4>
+                                    @endif
                                     <div class="col-12">
                                         <div class="card-body">
                                             <div>

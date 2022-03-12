@@ -4,10 +4,15 @@
 
 <head>
     <script type="text/javascript">
-        function disableBack() { window.history.forward(); }
+        function disableBack() {
+            window.history.forward();
+        }
         setTimeout("disableBack()", 0);
-        window.onunload = function () { null };
-</script>
+        window.onunload = function() {
+            null
+        };
+
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,12 +57,14 @@
 
 </head>
 <style>
-    @media print{
-   .print{
-       display:none;
-   }
-}
+    @media print {
+        .print {
+            display: none;
+        }
+    }
+
 </style>
+
 <body>
     <div class="loader"></div>
     <div id="#app"></div>
@@ -80,7 +87,11 @@
                     </li>
                 </ul>
                 <div class="text-white h3 pt-2">
-                    Alcoy Data Banking
+                    @if (Auth::user()->type == 'STAFF')
+                        {{ Auth::user()->resortList->resort_name }}
+                    @else
+                        Alcoy Data Banking
+                    @endif
                 </div>
             </div>
             <ul class="navbar-nav navbar-right">
@@ -97,21 +108,23 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
-                            @if(Auth::user()->image)
-                            <img src="{{ asset('storage/images/'.Auth::user()->image) }}" class="rounded-circle" style="width:30px; height: 30px;" alt="img">
+                            @if (Auth::user()->image)
+                                <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle"
+                                    style="width:30px; height: 30px;" alt="img">
                             @endif
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();">
+                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
-                               <a class="dropdown-item text-center" href="/profile"                                                                                                                                                          document.getElementById('logout-form').submit();">
-                                {{ __('Profile') }}  @if (Auth::user()->image)
-                                <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle ml-2"
-                                    style="width:20px; height: 20px;" alt="img">
-                            @endif
+                            <a class="dropdown-item text-center" href="/profile"
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Profile') }} @if (Auth::user()->image)
+                                    <img src="{{ asset('storage/images/' . Auth::user()->image) }}"
+                                        class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+                                @endif
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -134,43 +147,44 @@
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
                     @if (Auth::user()->type == 'ADMIN')
-                    <li class="dropdown">
-                        <a href="/admin_dashboard" class="nav-link"><i
-                                data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
-                    </li>
+                        <li class="dropdown">
+                            <a href="/admin_dashboard" class="nav-link"><i
+                                    data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
+                        </li>
                     @endif
                     @if (Auth::user()->type == 'STAFF')
-                    <li class="dropdown">
-                        <a href="/staff_dashboard" class="nav-link"><i
-                                data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
-                    </li>
+                        <li class="dropdown">
+                            <a href="/staff_dashboard" class="nav-link"><i
+                                    data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
+                        </li>
                     @endif
                     <li class="dropdown">
                         <a href="/profile" class="nav-link"><i
                                 data-feather="user"></i><span>{{ __('Profile') }}</span></a>
-                    </li>  @if(Auth::user()->type == "STAFF")
-                    <li class="dropdown">
-                        <a href="/resort_guest/{{Auth::user()->resortList->resort_id}}" class="nav-link"><i
-                                data-feather="list"></i><span>{{ Auth::user()->resortList->resort_name }}</span></a>
                     </li>
-                    <li class="dropdown">
-                        <a href="/staff_register" class="nav-link"><i
-                                data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
-                    </li>
+                    @if (Auth::user()->type == 'STAFF')
+                        <li class="dropdown">
+                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}" class="nav-link"><i
+                                    data-feather="list"></i><span>{{ Auth::user()->resortList->resort_name }}</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/staff_register" class="nav-link"><i
+                                    data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
+                        </li>
                     @endif
-            
-                  
+
+
                     @if (Auth::user()->type == 'ADMIN')
-                    <li class="dropdown">
-                        <a href="/add_resort" class="nav-link"><i
-                                data-feather="image"></i><span>{{ __('Add Resort') }}</span></a>
-                    </li>
-                   
-                    <li class="dropdown">
-                        <a href="/add_user" class="nav-link"><i
-                                data-feather="users"></i><span>{{ __('Users') }}</span></a>
-                    </li>
-             
+                        <li class="dropdown">
+                            <a href="/add_resort" class="nav-link"><i
+                                    data-feather="image"></i><span>{{ __('Add Resort') }}</span></a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="/add_user" class="nav-link"><i
+                                    data-feather="users"></i><span>{{ __('Users') }}</span></a>
+                        </li>
+
                         <li class="dropdown">
                             <a href="/resort_list" class="nav-link"><i
                                     data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
@@ -212,17 +226,14 @@
     <script src="{{ asset('../assets/js/custom.js') }}"></script>
     <script src="{{ asset('../assets/js/jquery.printPage.js') }}"></script>
     <script>
-        
         $(document).ready(function() {
             $('.print').printPage();
 
-            $('#btn-password').on('click', function(){
+            $('#btn-password').on('click', function() {
                 $('#change-password').attr('hidden', false);
                 $('#btn-password').attr('hidden', true);
             });
         });
-
-
 
     </script>
 </body>
