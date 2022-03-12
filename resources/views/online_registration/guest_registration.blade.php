@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="./assets/css/data.css">
-   <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
 
 <body style="background-color:#21791A">
@@ -61,7 +61,7 @@
                                     <div class="card-body ">
                                         <div class="row mb-2">
                                             <div class="col d-flex" style="width:500px">
-                                                    <strong><label><i data-feather="check-square" class="mt-3"></i>
+                                                <strong><label><i data-feather="check-square" class="mt-3"></i>
                                                     </label></strong>
                                                 </button>
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
@@ -87,15 +87,19 @@
                                                     tabindex="1" required autocomplete="full_name" autofocus>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-2">
-                                            <div class="input-group-append">
-                                                <strong><label><i data-feather="users" class="mt-2"></i>
+                                        <div class="row mb-2">
+                                            <div class="col d-flex" style="width:500px">
+                                                <strong><label><i data-feather="users" class="mt-3"></i>
                                                     </label></strong>
                                                 </button>
-                                                <input type="text"
+                                                <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                                    class="form-control ml-4" name="gender" placeholder="Gender"
-                                                    tabindex="1" required autocomplete="gender" autofocus>
+                                                    name="gender" tabindex="1" required autocomplete="gender"
+                                                    autofocus>
+                                                    <option selected>Choose gender...</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Male">Male</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group mb-2">
@@ -114,7 +118,7 @@
                                                 <strong><label><i data-feather="phone" class="mt-2"></i>
                                                     </label></strong>
                                                 </button>
-                                                <input type="text"
+                                                <input type="number"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     class="form-control ml-4" name="phone_number"
                                                     placeholder="Phone number" tabindex="1" required
@@ -138,7 +142,7 @@
                                                 <strong><label><i data-feather="thermometer" class="mt-2"></i>
                                                     </label></strong>
                                                 </button>
-                                                <input type="text"
+                                                <input type="number"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     class="form-control ml-4" name="temperature"
                                                     placeholder="Temperature" tabindex="1" required
@@ -147,15 +151,16 @@
                                         </div>
                                         <div class="row mb-2">
                                             <div class="col d-flex" style="width:500px">
-                                                    <strong><label><i data-feather="clock" class="mt-3"></i>
+                                                <strong><label><i data-feather="clock" class="mt-3"></i>
                                                     </label></strong>
                                                 </button>
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
-                                                    style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                    name="time_use"  tabindex="1" required autocomplete="time_use" autofocus>
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
+                                                    name="time_use" tabindex="1" required autocomplete="time_use"
+                                                    autofocus>
                                                     <option selected>Choose time use...</option>
-                                                    <option value="1">Daytime use</option>
-                                                    <option value="2">Nighttime use</option>
+                                                    <option value="Daytime use">Daytime use</option>
+                                                    <option value="Nighttime use">Nighttime use</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -170,12 +175,10 @@
                                                     tabindex="1" required autocomplete="purpose" autofocus>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-5">
-                                            <div class="text-center">
-                                                <button type="submit" class="w-50 login-btn">Register</button>
-                                            </div>
+                                        <div class="form-group mt-3">
+                                            <button type="submit" tabindex="4" class="w-50 login-btn" style="margin-left: 75px">Register
+                                            </button>
                                         </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>
