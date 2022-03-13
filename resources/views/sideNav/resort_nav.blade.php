@@ -115,8 +115,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-center" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                  document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item text-center" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -233,6 +234,25 @@
                 $('#change-password').attr('hidden', false);
                 $('#btn-password').attr('hidden', true);
             });
+
+            $('.p').hide();
+            $("#myInput").on("keyup", function() {
+                var count = 0;
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+
+                $('.tr:visible').each(function() {
+                    count++;
+                });
+                if (count === 0) {
+                    $('.p').show();
+                } else {
+                    $('.p').hide();
+                }
+            });
+
         });
 
     </script>

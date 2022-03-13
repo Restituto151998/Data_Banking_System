@@ -11,9 +11,12 @@ class GuestController extends Controller
 
 
 public function redirectTo(){
-    $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
-    $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
-    return view('online_registration.guest_registration')->with( 'resorts', $resorts )->with('resorts', $image);
+    // $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
+    // $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
+    // return view('online_registration.guest_registration')->with( 'resorts', $resorts )->with('resorts', $image);
+
+    $resort_lists = DB::table( 'resort_lists' )->select( 'id', 'user_id', 'resort_id', 'resort_name', 'assigned_staff', 'status' )->get();
+    return view('online_registration.guest_registration')->with( 'resort_lists', $resort_lists );
 }
 
   public function onlineRegister(Request $request){
@@ -50,5 +53,9 @@ return redirect('resorts-overview')->with('status', 'Successfully Registered!');
     $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
     $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
     return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image);
+
+
+    // $resort_lists = DB::table( 'resort_lists' )->select( 'id', 'user_id', 'resort_id', 'resort_name', 'assigned_staff', 'status' )->get();
+    // return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image);
   }  
 }
