@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="./assets/css/data.css">
-   <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
 
 <body style="background-color:#21791A">
@@ -61,22 +61,24 @@
                                     <div class="card-body ">
                                         <div class="row mb-2">
                                             <div class="col d-flex" style="width:500px">
-                                                    <strong><label><i data-feather="check-square" class="mt-3"></i>
+                                                <strong><label><i data-feather="check-square" class="mt-3"></i>
                                                     </label></strong>
                                                 </button>
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     name="resort">
                                                     <option selected>Choose resort...</option>
-                                                    @foreach ($resorts as $resort)
-                                                        <option value="{{ json_encode($resort) }}">
-                                                            {{ $resort->resort_name }}
-                                                        </option>
+                                                    @foreach ($resort_lists as $resort)
+                                                        @if ($resort->status == 'open')
+                                                            <option value="{{ json_encode($resort) }}">
+                                                                {{ $resort->resort_name }}
+                                                            </option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group  mb-2">
+                                        <div class="form-group  mb-2" id='myform'>
                                             <div class="input-group-append">
                                                 <strong><label><i data-feather="user" class="mt-2"></i>
                                                     </label></strong>
@@ -114,11 +116,11 @@
                                                 <strong><label><i data-feather="phone" class="mt-2"></i>
                                                     </label></strong>
                                                 </button>
-                                                <input type="text"
+                                                <input type="tel" id="phone"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     class="form-control ml-4" name="phone_number"
-                                                    placeholder="Phone number" tabindex="1" required
-                                                    autocomplete="phone_number" autofocus>
+                                                    pattern="[0-9]{3}[0-9]{4}[0-9]{4}" placeholder="Phone number"
+                                                    tabindex="1" required autocomplete="phone_number" autofocus>
                                             </div>
                                         </div>
                                         <div class="form-group mb-2">
@@ -147,12 +149,13 @@
                                         </div>
                                         <div class="row mb-2">
                                             <div class="col d-flex" style="width:500px">
-                                                    <strong><label><i data-feather="clock" class="mt-3"></i>
+                                                <strong><label><i data-feather="clock" class="mt-3"></i>
                                                     </label></strong>
                                                 </button>
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                    name="time_use"  tabindex="1" required autocomplete="time_use" autofocus>
+                                                    name="time_use" tabindex="1" required autocomplete="time_use"
+                                                    autofocus>
                                                     <option selected>Choose time use...</option>
                                                     <option value="1">Daytime use</option>
                                                     <option value="2">Nighttime use</option>

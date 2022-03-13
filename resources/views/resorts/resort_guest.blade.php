@@ -11,11 +11,16 @@
                     <div class="co-12">
                         <div class="card mb-0">
                             <div class="card-body">
-                               @if(Auth::user()->type == 'ADMIN')
-                                     <a href="{{ route('admin.resort_list') }}">
-                                    <i data-feather ="arrow-left"></i>
-                                </a>
-                               @endif
+                                <input type="search" id="myInput" class="form-control border border-success"
+                                    placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+
+                                </div>
+                                @if (Auth::user()->type == 'ADMIN')
+                                    <a href="{{ route('admin.resort_list') }}">
+                                        <i data-feather="arrow-left"></i>
+                                    </a>
+                                @endif
 
                                 <div class="row mt-2">
                                     @if (Auth::user()->type == 'ADMIN')
@@ -38,9 +43,9 @@
                                                             <th scope="col" class="text-white">Purpose</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="myTable">
                                                         @foreach ($guests as $guest)
-                                                            <tr>
+                                                            <tr class="tr">
                                                                 <td>{{ $guest->full_name }}</td>
                                                                 <td>{{ $guest->gender }}</td>
                                                                 <td>{{ $guest->address }}</td>
@@ -53,6 +58,11 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                <div class="p text-center">
+                                                    <img src="{{ asset('assets/img/no_data.PNG') }}" alt=""
+                                                        srcset=""><br>
+                                                    <p>No results found.</p>
+                                                </div>
                                                 @empty($guest)
                                                     <div class="text-center">
                                                         <img src="../../assets/img/no_datas.PNG" alt="" srcset=""><br>
