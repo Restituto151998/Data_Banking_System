@@ -64,7 +64,7 @@
                                                         class="col-form-label mb-1 text-black">Nationality</label></strong>
                                             </div>
                                             <div class="col">
-                                                <input type="number"
+                                                <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center" name="temperature" required>
                                                 <strong><label for=""
@@ -77,8 +77,8 @@
                                                     style="background-color:#FFFFFF;border-left-color:#FFFFFF; border-bottom-color:green;border-right-color:#FFFFFF;border-top-color:#FFFFFF"
                                                     name="time_use" tabindex="1" required autocomplete="time_use" autofocus>
                                                     <option selected>Choose time use...</option>
-                                                    <option value="1">Daytime use</option>
-                                                    <option value="2">Nighttime use</option>
+                                                    <option value="Daytime use">Daytime use</option>
+                                                    <option value="Nighttime use">Nighttime use</option>
                                                 </select>
                                                 <strong><label for="" class="col-form-label mb-1 text-black">Time
                                                         Use</label></strong>

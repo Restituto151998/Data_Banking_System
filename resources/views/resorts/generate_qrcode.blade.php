@@ -4,6 +4,9 @@
     <div class="main-wrapper main-wrapper-1">
         <!-- Main Content -->
         <div class="main-content">
+         @if (Auth::user()->resortList->status == 'closed')
+                <span>This tab is restricted to use. to use it. you may request the admin to open this resort.</span>
+            @else
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
@@ -36,16 +39,14 @@
                                     </ul>
                                     <p>Generating a QrCode...</p>
                                 </div>
-
-
                             </div>
-
                             <button id="generate" class="btn btn-primary" style="margin-top: -70px;">Generate
                                 Qr-code</button>
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 @endsection
