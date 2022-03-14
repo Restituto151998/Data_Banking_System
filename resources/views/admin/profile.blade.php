@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col text-center mt-2 mb-5">
-                                                <a href="{{ route('auth.passwords.changePassword') }}">
+                                                <a class="text-danger" href="{{ route('auth.passwords.changePassword') }}">
                                                     Change password?
                                                 </a>
                                             </div>
