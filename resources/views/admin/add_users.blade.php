@@ -107,8 +107,7 @@
                                                     </div>
                                             </div>
                                             <div class="col-md-12 mt-4">
-                                                <button type="submit" class="btn text-white w-50"
-                                                    style="background-color:  #21791A">Add User</button>
+                                                <button type="submit" class="btn w-50" id="btn_add">Add User</button>
                                             </div>
                                             </form>
                                         </div>

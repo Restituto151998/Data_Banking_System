@@ -98,8 +98,7 @@
                                                 </div>
                                             </div>
                                             <div class="col text-center mt-3">
-                                                <button type="submit" class="btn text-white w-50"
-                                                    style="background-color:  #21791A">Save
+                                                <button type="submit" class="btn w-50" id="btn-edit">Save
                                                     changes</button>
                                             </div>
                                             <div class="text-center mt-2"> <a href="#" id="btn-password">Change

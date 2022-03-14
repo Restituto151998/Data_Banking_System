@@ -15,12 +15,22 @@
                                     <i data-feather="arrow-left"></i>
                                 </a>
                                 @if (Auth::user()->type == 'STAFF')
-                                    <h4 class="m-0">{{ Auth::user()->resortList->resort_name }} </h4>
+                                    {{-- <h4 class="m-0">{{ Auth::user()->resortList->resort_name }} </h4> --}}
                                 @endif
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <div class="card-body">
-                                            <div>
+                                            <div class="cotainer">
+                                                <div class="main w-100 mb-5 justify-align-center">
+                                                    <div class="input-group">
+                                                        <input type="search" id="myInput"
+                                                            class="border border-success form-control w-75" name='search'
+                                                            placeholder="Search">
+                                                        <div class="input-group-append">
+    
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <table class="table">
                                                     <thead class="table"
                                                         style="background-color: #21791A; text-align:center">

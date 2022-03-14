@@ -65,3 +65,24 @@
         margin-top: 80px;
         margin-left: 55%;
     }
+    
+    #btn-edit {
+        border: 1px solid #19bacf;
+        color: #19bacf;
+    }
+    
+    #btn-edit:hover {
+        background-color: #19bacf;
+        color: #F4EBEB;
+    }
+    
+    #btn_add {
+        /* style="background-color:#21791A; color:white"  */
+        border: 1px solid #21791A;
+        color: #21791A;
+    }
+    
+    #btn_add:hover {
+        background-color: #21791A;
+        color: #F4EBEB;
+    }
