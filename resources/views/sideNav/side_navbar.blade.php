@@ -65,7 +65,11 @@
                     </li>
                 </ul>
                 <div class="text-white h3 pt-2">
-                    Alcoy Data Banking
+                     @if (Auth::user()->type == 'STAFF')
+                        {{ Auth::user()->resortList->resort_name }}
+                    @else
+                        Alcoy Data Banking
+                    @endif
                 </div>
             </div>
             <ul class="navbar-nav navbar-right">

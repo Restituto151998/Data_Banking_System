@@ -32,6 +32,7 @@
                                                 <input type="search" id="myInput" class="form-control border border-success"
                                                     placeholder="Search" aria-label="Search">
                                                 <div class="input-group-append">
+
                                                 </div>
                                                 <div class="row mr-3">
                                                     <div class="col">
