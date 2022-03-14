@@ -47,7 +47,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'remotemysql.com'),
+            'host' => env('DB_HOST', 'https://remotemysql.com/phpmyadmin/index.php?db=PTmYY6YKRL'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'PTmYY6YKRL'),
             'username' => env('DB_USERNAME', 'PTmYY6YKRL'),
