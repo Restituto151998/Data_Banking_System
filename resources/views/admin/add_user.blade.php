@@ -95,6 +95,13 @@
                                                             @endif
                                                         </tbody>
                                                     </table>
+                                                    @if ($user->count() == 1)
+                                                        <div class="text-center">
+                                                            <img src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
+                                                                srcset=""><br>
+                                                            <p>No data.</p>
+                                                        </div>
+                                                    @endif
                                                     <div class="p text-center">
                                                         <img src="{{ asset('assets/img/no_data.PNG') }}" alt=""
                                                             srcset=""><br>
