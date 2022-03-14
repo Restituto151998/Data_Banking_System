@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-$URL = parse_url('URL');
+$DATABASE_URL = parse_url('DATABASE_URL');
 return [
 
     /*
@@ -46,12 +46,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => $URL['URL'],
-            'host' => $URL['host'],
-            'port' => $URL['port'],
-            'database' => ltrim($URL['path'], '/'),
-            'username' =>  $URL['user'],
-            'password' =>  $URL['pass'],
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', 'remotemysql.com'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'PTmYY6YKRL'),
+            'username' => env('DB_USERNAME', 'PTmYY6YKRL'),
+            'password' => env('DB_PASSWORD', '1wGf9bGnch'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -64,20 +64,20 @@ return [
             ]) : [],
         ],
 
-        // 'pgsql' => [
-        //     'driver' => 'pgsql',
-        //     'url' => env('DATABASE_URL'),
-        //     'host' => $DATABASE_URL['host'],
-        //     'port' => $DATABASE_URL['port'],
-        //     'database' => ltrim($DATABASE_URL['path'], '/'),
-        //     'username' =>  $DATABASE_URL['user'],
-        //     'password' =>  $DATABASE_URL['pass'],
-        //     'charset' => 'utf8',
-        //     'prefix' => '',
-        //     'prefix_indexes' => true,
-        //     'search_path' => 'public',
-        //     'sslmode' => 'prefer',
-        // ],
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => $DATABASE_URL['host'],
+            'port' => $DATABASE_URL['port'],
+            'database' => ltrim($DATABASE_URL['path'], '/'),
+            'username' =>  $DATABASE_URL['user'],
+            'password' =>  $DATABASE_URL['pass'],
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'search_path' => 'public',
+            'sslmode' => 'prefer',
+        ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
