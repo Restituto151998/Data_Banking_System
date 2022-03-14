@@ -27,9 +27,7 @@
             @if (session()->has('status'))
                 <div class="alert alert-success alert-dismissible fade  show" role="alert">
                     {{ session()->get('status') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                   {{ Auth::logout() }}
                 </div>
             @endif
             <div class="card" style="width: 28rem;">
@@ -49,13 +47,13 @@
                                 aria-describedby="inputGroup-sizing-default" name="current_password">
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default">New Password</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
+                            <span class="input-group-text">New Password</span>
+                            <input type="text" id="new" class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" name="new_password">
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Confirm Password</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
+                            <span class="input-group-text" >Confirm Password</span>
+                            <input type="text" id="confirm"  class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" name="confirm_password">
                         </div>
                         @if (session()->has('error'))
@@ -67,20 +65,29 @@
                         </div>
                     @endif
                         <div>
-                            <button type="submit" class="btn btn-success w-50">Change</button>
+                            <button id="change_button" type="submit" class="btn btn-success w-50">Change</button>
                         </div>
 
                     </form>
                 </div>
             </div>
            </center>
-            <div style="margin-left:30%;">
-                <a href="/profile" style=""><i data-feather="back" class="ml-2"></i> Back to Previous</a>
+            <div style="margin-left:30%;" >
+                <a href="/profile" style="" id="previous"><i data-feather="back" class="ml-2"></i> Back to Previous</a>
             </div>
+
             
         </div>
    
      
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('#change_button').on('click', function(){
+       alert('Change');
+            
+   
+    });
+</script>
 
 </html>

@@ -70,6 +70,13 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                             @if($resort_lists->count() == 0)
+                                                    <div class="text-center">
+                                                        <img src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
+                                                            srcset=""><br>
+                                                        <p>No data.</p>
+                                                    </div>
+                                                    @endif
                                             <div class="p text-center">
                                                 <img src="{{ asset('assets/img/no_data.PNG') }}" alt="" srcset=""><br>
                                                 <p>No results found.</p>

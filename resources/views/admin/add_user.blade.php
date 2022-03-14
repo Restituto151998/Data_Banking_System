@@ -32,6 +32,7 @@
                                                 <input type="search" id="myInput" class="form-control border border-success"
                                                     placeholder="Search" aria-label="Search">
                                                 <div class="input-group-append">
+
                                                 </div>
                                                 <div class="row mr-3">
                                                     <div class="col">
@@ -94,6 +95,13 @@
                                                             @endif
                                                         </tbody>
                                                     </table>
+                                                    @if ($user->count() == 1)
+                                                        <div class="text-center">
+                                                            <img src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
+                                                                srcset=""><br>
+                                                            <p>No data.</p>
+                                                        </div>
+                                                    @endif
                                                     <div class="p text-center">
                                                         <img src="{{ asset('assets/img/no_data.PNG') }}" alt=""
                                                             srcset=""><br>

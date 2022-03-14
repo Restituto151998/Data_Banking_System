@@ -58,21 +58,21 @@
                                                             style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                             class="form-control ml-2 text-center" name="resort_name"
                                                             placeholder="Enter resort name" required>
-                                                        <strong><label class="col-form-label mb-1 text-black">Resort
-                                                                Name</label></strong>
+                                                        {{-- <strong><label class="col-form-label mb-1 text-black">Resort
+                                                                Name</label></strong> --}}
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col text-center">
+                                                    <div class="col text-center mt-5">
                                                         <textarea name="resort_description"
-                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            style="background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
                                                             class="form-control ml-2 text-center"
                                                             placeholder="Enter resort description" required></textarea>
-                                                        <strong><label class="col-form-label mb-1 text-black">Resort
-                                                                Description</label></strong>
+                                                        {{-- <strong><label class="col-form-label mb-1 text-black">Resort
+                                                                Description</label></strong> --}}
                                                     </div>
                                                     <div>
-                                                        <div class="row">
+                                                        <div class="row mt-3">
                                                             <div class="col text-center">
                                                                 <div class="form-group">
                                                                     <button class="btn w-50" id="btn_add">Add</button>
