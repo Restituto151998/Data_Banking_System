@@ -33,18 +33,18 @@ class DashboardController extends Controller
         }
         $chartData = $data2;
 
-        $result3 = DB::select( DB::raw( 'select count(id) as Guest from guests;' ) );
+        $result3 = DB::select( DB::raw( 'select count(id) as guest from guests;' ) );
         $data3 = '';
         foreach ( $result3 as $val3 ) {
-            $data3 .= "".$val3->Guest.'';
+            $data3 .= "".$val3->guest.'';
         }
         $numberOfGuest = $data3;
 
         
-        $result4 = DB::select( DB::raw( 'select count(id) as Staff from users;' ) );
+        $result4 = DB::select( DB::raw( 'select count(id) as staff from users;' ) );
         $data4 = '';
         foreach ( $result4 as $val4 ) {
-            $data4 .= "".$val4->Staff.'';
+            $data4 .= "".$val4->staff.'';
         }
         $numberOfUser = $data4;
 
