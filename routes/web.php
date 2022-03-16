@@ -65,8 +65,9 @@ Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::cla
  Route::post('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'uploadProfile']);
 
 //GuestList
-Route::get('/resort_list/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
+
 Route::get('/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest']);
+Route::get('/resort_guest/print/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
 
 //changeStatus
 Route::get('/status_update/{id}', [App\Http\Controllers\Admin\AddUserController::class, 'changeUserStatus']);
@@ -88,4 +89,6 @@ Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'up
 //changepassword
 Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'redirectTo'])->name('auth.passwords.changePassword');
 Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'updatePassword']);;
+
+
 

@@ -5,7 +5,7 @@
         <!-- Main Content -->
         <div class="main-content">
             @if ($details)
-                <a href="{{ route('resorts.resort_guest', $details->resort_id) }}" class="print float-right ">print<i
+                <a href="{{ route('resorts.resort_guest', $details->resort_id ) }}" class="print float-right ">print<i
                         data-feather="printer"></i></a>
                 <div class="row">
                     <div class="co-12">
