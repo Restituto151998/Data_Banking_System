@@ -71,9 +71,6 @@ class ResortListController extends Controller
         DB::table( 'resort_lists' )->where( 'id', $id )->update( $updateStatus );
 
         return redirect( '/resort_list' )->with( 'status', 'Resort status has been updated successfully.' );
-
     }
-
-  
-
+    
 }

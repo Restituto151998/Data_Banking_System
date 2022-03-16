@@ -17,20 +17,19 @@
                 <div class="col-12">
                     <div class="card mb-0">
                         <div class="card-body">
-                            <div class="row mt-4">
+                            <div class="row mt-2">
                                 <div class="col-12">
-                                    <div class="card-header">
-                                    </div>
-                                    <h4 style="text-align: center; color:black">Resort List</h4>
-                                    <div class="card-body">
-                                        <div class="container">
-                                            <div class="main w-100 mb-5 justify-align-center">
-                                                <div class="input-group">
-                                                    <input type="search" id="myInput"
-                                                        class="border border-success form-control w-75" name='search'
-                                                        placeholder="Search">
-                                                    <div class="input-group-append">
-
+                                    <div class="main justify-align-center">
+                                        <h4 style="text-align: center; color:black">Resort List</h4>
+                                        <div class="card-body">
+                                            <div class="container">
+                                                <div class="main w-100 mb-5 justify-align-center">
+                                                    <div class="input-group">
+                                                        <input type="search" id="myInput"
+                                                            class="border border-success form-control w-75" name='search'
+                                                            placeholder="Search">
+                                                        <div class="input-group-append">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -70,13 +69,13 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                             @if($resort_lists->count() == 0)
-                                                    <div class="text-center">
-                                                        <img src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
-                                                            srcset=""><br>
-                                                        <p>No data.</p>
-                                                    </div>
-                                                    @endif
+                                            @if ($resort_lists->count() == 0)
+                                                <div class="text-center">
+                                                    <img src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
+                                                        srcset=""><br>
+                                                    <p>No data.</p>
+                                                </div>
+                                            @endif
                                             <div class="p text-center">
                                                 <img src="{{ asset('assets/img/no_data.PNG') }}" alt="" srcset=""><br>
                                                 <p>No results found.</p>
