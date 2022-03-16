@@ -21,7 +21,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,9 +28,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/data.css">
@@ -41,7 +38,6 @@
     <link rel="stylesheet" href="./assets/css/loader.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
-
 <body>
     <div class="loader"></div>
     <div id="app"></div>
@@ -65,7 +61,7 @@
                     </li>
                 </ul>
                 <div class="text-white h3 pt-2">
-                     @if (Auth::user()->type == 'STAFF')
+                    @if (Auth::user()->type == 'STAFF')
                         {{ Auth::user()->resortList->resort_name }}
                     @else
                         Alcoy Data Banking
@@ -106,7 +102,6 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-
                         </div>
                     </li>
                 @endguest
@@ -171,7 +166,6 @@
             </aside>
         </div>
     @endauth
-
     <body class="py-4">
         @yield('content')
     </body>
@@ -191,6 +185,16 @@
                     $(this).data('submitted', true);
                 }
             });
+
+            $('#add_guest').submit(function(e) {
+                if ($(this).data('submitted') === true) {
+                    alert('Form is already submitted, waiting response.');
+                    e.preventDefault();
+                } else {
+                    $(this).data('submitted', true);
+                }
+            });
+
             $('#form_add_user').submit(function(e) {
                 if ($(this).data('submitted') === true) {
                     alert('Form is already submitted, waiting response.');
@@ -255,10 +259,7 @@
             }, 3000);
 
             $('#generate').attr('disabled', true);;
-
         });
-
     </script>
 </body>
-
 </html>

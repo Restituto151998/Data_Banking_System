@@ -46,10 +46,7 @@ class AddResortController extends Controller
             $save->resort_description = $resort_description;
             $save->resort_name = $resort_name;
             $save->imagePath = $imagePath;
-    
-        
-        
-    
+
             $save->save();
     
             return redirect( 'add_resort' )->with( 'status', 'Resort Successfully Added!' );
@@ -58,7 +55,6 @@ class AddResortController extends Controller
         if ( $resorts->resort_name == $resort_name) {
             return redirect()->back()->with( 'message_fail', 'Duplicate resort name please try another.' );
         }
-
 
         }
     }

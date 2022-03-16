@@ -43,17 +43,17 @@
                         @csrf
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-default">Current Password</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
+                            <input type="password" class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" name="current_password">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">New Password</span>
-                            <input type="text" id="new" class="form-control" aria-label="Sizing example input"
+                            <input type="password" id="new" class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" name="new_password">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" >Confirm Password</span>
-                            <input type="text" id="confirm"  class="form-control" aria-label="Sizing example input"
+                            <input type="password" id="confirm"  class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default" name="confirm_password">
                         </div>
                         @if (session()->has('error'))
@@ -81,13 +81,5 @@
    
      
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $('#change_button').on('click', function(){
-       alert('Change');
-            
-   
-    });
-</script>
 
 </html>

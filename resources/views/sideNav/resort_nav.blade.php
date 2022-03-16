@@ -35,19 +35,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
-    <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('../assets/css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/bundles/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <!-- Template CSS -->
 
     <link rel="stylesheet" href="../../assets/css/components.css">
-    <!-- Custom style CSS -->
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/custom.css">
     <link rel="stylesheet" href="../../assets/css/data.css">
@@ -74,8 +71,6 @@
         @yield('editUser')
         @yield('lionarch')
         @yield('resort_search')
-
-
         <div id="#app" class="navbar-bg"></div>
         <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
             <div class="form-inline mr-auto">
@@ -95,7 +90,6 @@
                 </div>
             </div>
             <ul class="navbar-nav navbar-right">
-
                 <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
@@ -113,11 +107,10 @@
                                     style="width:30px; height: 30px;" alt="img">
                             @endif
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                  document.getElementById('logout-form').submit();">
+                                                                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -127,7 +120,6 @@
                                         class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
                                 @endif
                             </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -137,7 +129,6 @@
                 @endguest
             </ul>
         </nav>
-
         <div class="main-sidebar sidebar-style-1 ">
             <aside id="sidebar-wrapper ">
                 <div class="sidebar-brand " style="background:#21791A;">
@@ -173,8 +164,6 @@
                                     data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
                         </li>
                     @endif
-
-
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
                             <a href="/add_resort" class="nav-link"><i
@@ -188,7 +177,7 @@
 
                         <li class="dropdown">
                             <a href="/resort_list" class="nav-link"><i
-                                    data-feather="list"></i><span>{{ __('Resort List') }}</span></a>
+                                    data-feather="list"></i><span>{{ __('Resort Assignee') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">

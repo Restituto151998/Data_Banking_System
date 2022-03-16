@@ -39,8 +39,7 @@ class DashboardController extends Controller
             $data3 .= "".$val3->guest.'';
         }
         $numberOfGuest = $data3;
-
-        
+   
         $result4 = DB::select( DB::raw( 'select count(id) as staff from users;' ) );
         $data4 = '';
         foreach ( $result4 as $val4 ) {
@@ -55,10 +54,52 @@ class DashboardController extends Controller
         }
         $numberOfResort = $data5;
 
+        $result6 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.status = "pending" GROUP BY guests.status;' ) );
+        $status = '';
+        foreach ( $result6 as $val ) {
+            $status .= "$val->count";
+        }
+        if($status == ""){
+            $pending = "0";
+        }else{
+            $pending = $status;
+        }
 
+        $result7 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.status = "accepted" GROUP BY guests.status;' ) );
+        $status2 = '';
+        foreach ( $result7 as $val ) {
+            $status2 .= "$val->count";
+        }
+        if($status2 == ""){
+            $accepted = "0";
+        }else{
+            $accepted = $status2;
+        }
 
-        return view( 'admin.dashboard', compact( 'chartData', 'barData', 'numberOfGuest', 'numberOfUser', 'numberOfResort' ) );
+        $result8 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.status = "cancelled" GROUP BY guests.status;' ) );
+        $status3 = '';
+        foreach ( $result8 as $val ) {
+            $status3 .= "$val->count";
+        }
+        if($status3 == ""){
+            $cancelled = "0";
+        }else{
+            $cancelled = $status3;
+        }
+       
 
+        $result9 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.status = "left" GROUP BY guests.status;' ) );
+        $status4 = '';
+        foreach ( $result9 as $val ) {
+            $status4 .= "$val->count";
+        }
+        if($status4 == ""){
+            $left = "0";
+        }else{
+            $left = $status4;
+        }
+
+        return view( 'admin.dashboard', compact( 'chartData', 'barData', 'numberOfGuest', 'numberOfUser', 'numberOfResort','pending', 'accepted', 'cancelled', 'left' ) );
     }
 
 }

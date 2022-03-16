@@ -8,19 +8,16 @@
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
-
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
-    {{-- CSS --}}
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/register.css">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -157,8 +154,8 @@
                                                     name="time_use" tabindex="1" required autocomplete="time_use"
                                                     autofocus>
                                                     <option selected>Choose time use...</option>
-                                                    <option value="1">Daytime use</option>
-                                                    <option value="2">Nighttime use</option>
+                                                    <option value="Daytime use">Daytime use</option>
+                                                    <option value="Nighttime use">Nighttime use</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -195,5 +192,17 @@
 <script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#add_guest').submit(function(e) {
+            if ($(this).data('submitted') === true) {
+                alert('Form is already submitted, waiting response.');
+                e.preventDefault();
+            } else {
+                $(this).data('submitted', true);
+            }
+        });
+    });
 
+</script>
 </html>
