@@ -32,10 +32,11 @@ class ResortListController extends Controller
         return view( 'admin.resort_list' )->with( 'resort_lists', $resort );
     }
 
-    public function guest( $id ) { 
-        $resort = ResortList::where( 'resort_id',  '=', $id )->first();  
+    public function guest( $id ) {
+        $resort = ResortList::where( 'resort_id',  '=', $id )->first();
         $guests = Guest::where( 'resort_id', $id )->get();
-        return view( 'resorts.resort_guest' )->with( 'guests', $guests )->withDetails($resort );
+  
+        return view( 'resorts.resort_guest' )->with( 'guests', $guests )->with('resorts', $resort );
     }
 
     public function update( Request $request )
@@ -70,9 +71,6 @@ class ResortListController extends Controller
         DB::table( 'resort_lists' )->where( 'id', $id )->update( $updateStatus );
 
         return redirect( '/resort_list' )->with( 'status', 'Resort status has been updated successfully.' );
-
     }
-
-  
-
+    
 }

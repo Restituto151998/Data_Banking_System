@@ -31,18 +31,16 @@
 
 <body>
     @guest
-    <div class="text-center" style="margin-top: 30%">
-        <h2>403 | FORBIDDEN</h2>
-        <p style="margin-left: 20%; margin-right: 20%">A 403 error indicates that the system you're trying to reach
-            can't be
-            found. You might see a 403 error because of a problem with your account was disabled by the admin. please
-            tell
-            your admin for this sunction. </p>
+        <div class="text-center" style="margin-top: 30%">
+            <h2>403 | FORBIDDEN</h2>
+            <p style="margin-left: 20%; margin-right: 20%">A 403 error indicates that the system you're trying to reach
+                can't be
+                found. You might see a 403 error because of a problem with your account was disabled by the admin. please
+                tell
+                your admin for this sunction. </p>
 
-        <span class="text-center">Go back to <a href="/login">Login</a></span>
-    </div>
+            <span class="text-center">Go back to <a href="/login">Login</a></span>
+        </div>
     @endguest
-
 </body>
-
 </html>

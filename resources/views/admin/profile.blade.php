@@ -121,10 +121,10 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" action="{{ route('admin.profile') }}">
-                                                            @csrf
-                                                            @method('PUT')
+                                                    <form method="post" action="{{ route('admin.profile') }}">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-body">
                                                             <input type="text" value="{{ Auth::user()->id }}" hidden>
                                                             <div class="row mt-2">
                                                                 <div class="col text-center">
@@ -155,21 +155,20 @@
                                                                             Number</small> </label>
                                                                 </div>
                                                                 <div class="col text-center">
-                                                                   <select class="custom-select text-center" id="inputGroupSelect01"
-                                                                name="gender"
-                                                                style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
-                                                                <option selected>{{ Auth::user()->gender }}</option>
-                                                                @if(Auth::user()->gender == "Male")
-                                                                    <option value="Female">
-                                                                        Female
-                                                                    </option>
-                                                                @else
-                                                                    <option value="Male">
-                                                                        Male
-                                                                    </option>
-                                                                @endif
-                                                                    
-                                                            </select>
+                                                                    <select class="custom-select text-center"
+                                                                        id="inputGroupSelect01" name="gender"
+                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                                        <option selected>{{ Auth::user()->gender }}</option>
+                                                                        @if (Auth::user()->gender == 'Male')
+                                                                            <option value="Female">
+                                                                                Female
+                                                                            </option>
+                                                                        @else
+                                                                            <option value="Male">
+                                                                                Male
+                                                                            </option>
+                                                                        @endif
+                                                                    </select>
                                                                     <label
                                                                         class="col-form-label mb-1 text-black"><small>Gender</small>
                                                                     </label>
@@ -185,14 +184,14 @@
                                                                         class="col-form-label mb-1 text-black"><small>Address</small></label>
                                                                 </div>
                                                             </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col text-center mb-5">
-                                                            <button type="submit" class="btn text-white w-50"
-                                                                style="background-color:  #21791A">Save
-                                                                changes</button>
                                                         </div>
-                                                    </div>
+                                                        <div class="row">
+                                                            <div class="col text-center mb-5">
+                                                                <button type="submit" class="btn text-white w-50"
+                                                                    style="background-color:  #21791A">Save
+                                                                    changes</button>
+                                                            </div>
+                                                        </div>
                                                     </form>
                                                 </div>
                                             </div>

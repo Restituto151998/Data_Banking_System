@@ -6,13 +6,13 @@
             <!-- Main Content -->
             <div class="main-content">
                 @if (session()->has('message_fail'))
-                <div class="alert alert-danger alert-dismissible fade  show" role="alert">
-                    {{ session()->get('message_fail') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
+                    <div class="alert alert-danger alert-dismissible fade  show" role="alert">
+                        {{ session()->get('message_fail') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="row">
                     @if (session('status'))
                         <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
@@ -58,21 +58,17 @@
                                                             style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                             class="form-control ml-2 text-center" name="resort_name"
                                                             placeholder="Enter resort name" required>
-                                                        <strong><label class="col-form-label mb-1 text-black">Resort
-                                                                Name</label></strong>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col text-center">
+                                                    <div class="col text-center mt-5">
                                                         <textarea name="resort_description"
-                                                            style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                            style="background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
                                                             class="form-control ml-2 text-center"
                                                             placeholder="Enter resort description" required></textarea>
-                                                        <strong><label class="col-form-label mb-1 text-black">Resort
-                                                                Description</label></strong>
                                                     </div>
                                                     <div>
-                                                        <div class="row">
+                                                        <div class="row mt-3">
                                                             <div class="col text-center">
                                                                 <div class="form-group">
                                                                     <button class="btn w-50"

@@ -44,7 +44,6 @@ class SaveUserController extends Controller {
         $password = Hash::make( $request->input( 'password' ) );
 
         $save->name = $name;
-
         $save->type = $type;
         $save->email = $email;
         $save->status = $status;

@@ -23,16 +23,15 @@
                     <div class="col-12">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <div class="row">
-                                    <h4 class="mb-5" style="text-align: center; color:black">Staffs</h4>
+                                <div class="row mt-2">
                                     <div class="container">
                                         <div class="main justify-align-center">
-
-                                            <div class="input-group w-100 ml-4">
+                                            <h4 style="text-align: center; color:black">Users List</h4>
+                                            <br>
+                                            <div class="input-group mt-2 w-100 ml-4">
                                                 <input type="search" id="myInput" class="form-control border border-success"
                                                     placeholder="Search" aria-label="Search">
                                                 <div class="input-group-append">
-
                                                 </div>
                                                 <div class="row mr-3">
                                                     <div class="col">
@@ -78,10 +77,10 @@
                                                                             <td>
                                                                                 @if ($user->status == 'enable')
                                                                                     <a href="{{ url('status_update', $user->id) }}"
-                                                                                        class="btn btn-success btn-sm text-white">enable</a>
+                                                                                        class="btn btn-success btn-sm text-white">{{ $user->status }}</a>
                                                                                 @else
                                                                                     <a href="{{ url('status_update', $user->id) }}"
-                                                                                        class="btn btn-danger btn-sm text-white">disable</a>
+                                                                                        class="btn btn-danger btn-sm text-white">{{ $user->status }}</a>
                                                                                 @endif
                                                                             <td>
                                                                                 <a
@@ -95,6 +94,13 @@
                                                             @endif
                                                         </tbody>
                                                     </table>
+                                                    @if ($user->count() == 1)
+                                                        <div class="text-center">
+                                                            <img src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
+                                                                srcset=""><br>
+                                                            <p>No data.</p>
+                                                        </div>
+                                                    @endif
                                                     <div class="p text-center">
                                                         <img src="{{ asset('assets/img/no_data.PNG') }}" alt=""
                                                             srcset=""><br>

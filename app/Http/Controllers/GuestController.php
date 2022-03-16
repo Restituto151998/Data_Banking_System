@@ -9,17 +9,13 @@ use Carbon\Carbon;
 class GuestController extends Controller
 {
 
-
 public function redirectTo(){
-    // $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
-    // $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
-    // return view('online_registration.guest_registration')->with( 'resorts', $resorts )->with('resorts', $image);
-
     $resort_lists = DB::table( 'resort_lists' )->select( 'id', 'user_id', 'resort_id', 'resort_name', 'assigned_staff', 'status' )->get();
     return view('online_registration.guest_registration')->with( 'resort_lists', $resort_lists );
 }
 
   public function onlineRegister(Request $request){
+    $status = 'pending';
     $resort = json_decode($request->resort);
    
     $full_name = $request->input('full_name');
@@ -42,20 +38,17 @@ public function redirectTo(){
     $save->temperature = $temperature;
     $save->time_use = $time_use;
     $save->purpose = $purpose;
+    $save->status = $status;
     $save->save();
 
-return redirect('resorts-overview')->with('status', 'Successfully Registered!');
+    return redirect('resorts-overview')->with('status', 'Successfully Registered!');
 
   }  
 
   public function overview(){
-
     $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
     $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
+  
     return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image);
-
-
-    // $resort_lists = DB::table( 'resort_lists' )->select( 'id', 'user_id', 'resort_id', 'resort_name', 'assigned_staff', 'status' )->get();
-    // return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image);
   }  
 }

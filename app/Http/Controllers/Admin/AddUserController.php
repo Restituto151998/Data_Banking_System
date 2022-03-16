@@ -20,24 +20,16 @@ class AddUserController extends Controller
     public function __construct() {
         $this->middleware( 'auth' );
     }
-    //display users
 
-    public function show() {
-
+    public function show() {       
         $users = User::paginate( 5 );
         return view( 'admin.add_user' )->with( 'users', $users );
     }
 
- 
-    //     //redirect add_users
-
     public function redirectToAddUser() {
-        //functionalities of dropdown resort
         $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name' )->get();
         return view( 'admin.add_users' )->with( 'resorts', $resorts );
     }
-
-    //     //saving the user
 
     public function saveUser( Request $request ) {
         $resort_status = 'closed';
@@ -58,11 +50,9 @@ class AddUserController extends Controller
         $emailValidator = Validator::make(
             array(
                 'email' => $email
-
             ),
             array(
                 'email' => 'required|email|unique:users'
-
             )
         );
 
@@ -109,16 +99,12 @@ class AddUserController extends Controller
         return redirect( '/add_user' )->with( 'message_success', 'Added Successfully' );
     }
 
-    //edit user
-
     public function editUser( $id )
  {
         $user = User::find( $id );
         return view( 'admin.add_user_edit', compact( 'user' ) );
 
     }
-
-    //update user
 
     public function updateUser( Request $request )
  {
@@ -133,6 +119,7 @@ class AddUserController extends Controller
                     'new_password' => [ 'required' ],
                     'confirm_password' => [ 'same:new_password' ],
                 ] );
+
                 $user = User::find( $request->id );
 
                 $name = $request->input( 'name' );
@@ -171,25 +158,20 @@ class AddUserController extends Controller
         $phone_number = $request->input( 'phone_number' );
         $gender = $request->input( 'gender' );
 
-
         $user->name = $name;
         $user->email = $email;
         $user->address = $address;
         $user->phone_number = $phone_number;
         $user->gender = $gender;
 
-
         $user->save();
         return redirect( '/add_user' )->with( 'message', 'Successfully Updated!' );
     }
-
-    //change status of the user
 
     public function changeUserStatus( $id )
  {
 
         $user = DB::table( 'users' )->select( 'status' )->where( 'id', '=', $id )->first();
-
         if ( $user->status == 'enable' ) {
             $status = 'disable';
         } else {
@@ -200,7 +182,6 @@ class AddUserController extends Controller
         DB::table( 'users' )->where( 'id', $id )->update( $updateStatus );
 
         return back()->with( 'status', 'User status has been updated successfully.' );
-
     }
 
 }
