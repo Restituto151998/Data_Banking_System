@@ -1,11 +1,6 @@
 <?php
 
 use Illuminate\Support\Str;
-<<<<<<< HEAD
-// $DATABASE_URL = parse_url('DATABASE_URL');
-=======
-
->>>>>>> de6ab0e8bbf3bb83f7054d79443af1863f913091
 return [
 
     /*

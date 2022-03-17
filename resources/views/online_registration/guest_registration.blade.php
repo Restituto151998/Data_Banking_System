@@ -154,7 +154,7 @@
                                                     </label></strong>
                                                 </button>
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
-                                                    style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     name="time_use" tabindex="1" required autocomplete="time_use"
                                                     autofocus>
                                                     <option selected>Choose time use...</option>

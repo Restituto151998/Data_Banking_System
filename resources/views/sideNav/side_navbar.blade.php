@@ -260,6 +260,7 @@
 
             $('#generate').attr('disabled', true);;
         });
+
     </script>
 </body>
 </html>
