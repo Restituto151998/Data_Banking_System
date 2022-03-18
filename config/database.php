@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Str;
+
 $DATABASE_URL=parse_url(‘DATABASE_URL’);
+
 return [
 
     /*
