@@ -54,34 +54,32 @@ return back()->with('status', 'Guest Successfully Registered!');
     public function accept( $id )
     {
            $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
-   
            if ( $guest->status == 'pending' ) {
-               $status = 'accepted';       
+               $status = 'accepted';   
+               $updateStatus = array( 'status' => $status );
+               DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );
+               return back()->with( 'status', 'Guest registration accepted' );    
            } 
-           $updateStatus = array( 'status' => $status );
-           DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );
-   
-           return back()->with( 'status', 'Guest registration accepted' );
+        
        }
     
     public function cancel( $id )
     {
            $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
-   
            if ( $guest->status == 'pending' ) {
-               $status = 'cancelled';       
+               $status = 'cancelled'; 
+               $updateStatus = array( 'status' => $status );
+               DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );
+       
+               return back()->with( 'status', 'Guest registration cancelled' );      
            } 
-           $updateStatus = array( 'status' => $status );
-           DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );
-   
-           return back()->with( 'status', 'Guest registration cancelled' );
+         
    
        }
 
        public function leave( $id )
        {
               $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
-      
               if ( $guest->status == 'accepted' ) {
                   $status = 'left';   
                   $updateStatus = array( 'status' => $status );
