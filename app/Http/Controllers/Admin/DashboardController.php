@@ -42,7 +42,8 @@ class DashboardController extends Controller
         $result5 = DB::select( DB::raw( 'select id from resorts;' ) );
         $numberOfResort = count($result5);
 
-        $result6 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.status = "pending" GROUP BY guests.status;' ) );
+        $pen = "pending";
+        $result6 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.status = "'.$pen.'" GROUP BY guests.status;' ) );
         $status = '';
         foreach ( $result6 as $val ) {
             $status .= "$val->count";
