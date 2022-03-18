@@ -61,3 +61,5 @@ Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'up
 Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'redirectTo'])->name('auth.passwords.changePassword');
 Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'updatePassword']);;
 
+
+

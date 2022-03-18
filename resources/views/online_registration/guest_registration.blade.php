@@ -86,15 +86,19 @@
                                                     tabindex="1" required autocomplete="full_name" autofocus>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-2">
-                                            <div class="input-group-append">
-                                                <strong><label><i data-feather="users" class="mt-2"></i>
+                                        <div class="row mb-2">
+                                            <div class="col d-flex" style="width:500px">
+                                                <strong><label><i data-feather="users" class="mt-3"></i>
                                                     </label></strong>
                                                 </button>
-                                                <input type="text"
+                                                <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                                    class="form-control ml-4" name="gender" placeholder="Gender"
-                                                    tabindex="1" required autocomplete="gender" autofocus>
+                                                    name="gender" tabindex="1" required autocomplete="gender"
+                                                    autofocus>
+                                                    <option selected>Choose gender...</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Male">Male</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group mb-2">
@@ -137,7 +141,7 @@
                                                 <strong><label><i data-feather="thermometer" class="mt-2"></i>
                                                     </label></strong>
                                                 </button>
-                                                <input type="text"
+                                                <input type="number"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     class="form-control ml-4" name="temperature"
                                                     placeholder="Temperature" tabindex="1" required
@@ -150,7 +154,7 @@
                                                     </label></strong>
                                                 </button>
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
-                                                    style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     name="time_use" tabindex="1" required autocomplete="time_use"
                                                     autofocus>
                                                     <option selected>Choose time use...</option>
@@ -170,12 +174,10 @@
                                                     tabindex="1" required autocomplete="purpose" autofocus>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-5">
-                                            <div class="text-center">
-                                                <button type="submit" class="w-50 login-btn">Register</button>
-                                            </div>
+                                        <div class="form-group mt-3">
+                                            <button type="submit" tabindex="4" class="w-50 login-btn" style="margin-left: 75px">Register
+                                            </button>
                                         </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>

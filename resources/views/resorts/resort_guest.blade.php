@@ -13,7 +13,8 @@
                                     <i data-feather="arrow-left"></i>
                                 </a>
                             @endif
-                            <a href="#" onclick="print()" class="print float-right mb-4">print<i data-feather="printer"></i></a>
+                            <a href="#" onclick="print()" class="print float-right mb-4">print<i
+                                    data-feather="printer"></i></a>
                             @if (Auth::user()->type == 'ADMIN')
                                 <h4 class="mt-3 text-center">{{ $resorts->resort_name }} </h4>
                             @endif
