@@ -20,12 +20,17 @@ class DashboardController extends Controller
         if(Auth::user()->status == 'disable'){
             return redirect('/forbidden');
         }  
-        $result = DB::select( DB::raw( 'select count(nationality) as count ,guests.nationality from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" GROUP BY guests.nationality;' ) );
-        $data = '';
-        foreach ( $result as $val ) {
-            $data .= "['".$val->nationality."',".$val->count.'],';
-        }
-        $chartData = $data;
+        $result = DB::table('guests')
+                 ->select('nationality', DB::raw('count(*) as total'))
+                 ->where('resort_id', Auth::user()->resortList->resort_id)
+                 ->groupBy('nationality')
+                 ->get();
+                 $data = '';
+                 foreach ( $result as $val ) {
+                     $data .= "['".$val->nationality."',".$val->count.'],';
+                 }
+                 $chartData = $data;
+ 
 
         $numberOfFilipino = Guest::where( 'resort_id', Auth::user()->resortList->resort_id )->get();
         $fili = 0;
@@ -42,7 +47,12 @@ class DashboardController extends Controller
         $foreigner = $fore;
         $numberOfGuest = Guest::where( 'resort_id', Auth::user()->resortList->resort_id )->get()->count();
 
-        $result1 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" AND guests.status = "pending" GROUP BY guests.status;' ) );
+        $result1 = DB::table('guests')
+        ->select('status', DB::raw('count(*) as count'))
+        ->where('resort_id', Auth::user()->resortList->resort_id)
+        ->where('status', 'pending')
+        ->groupBy('status')
+        ->get();
         $status = '';
         foreach ( $result1 as $val ) {
             $status .= "$val->count";
@@ -53,7 +63,12 @@ class DashboardController extends Controller
             $pending = $status;
         }
 
-        $result2 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" AND guests.status = "accepted" GROUP BY guests.status;' ) );
+        $result2 = DB::table('guests')
+        ->select('status', DB::raw('count(*) as count'))
+        ->where('resort_id', Auth::user()->resortList->resort_id)
+        ->where('status', 'accepted')
+        ->groupBy('status')
+        ->get();
         $status2 = '';
         foreach ( $result2 as $val ) {
             $status2 .= "$val->count";
@@ -64,7 +79,12 @@ class DashboardController extends Controller
             $accepted = $status2;
         }
 
-        $result3 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" AND guests.status = "cancelled" GROUP BY guests.status;' ) );
+        $result3 = DB::table('guests')
+        ->select('status', DB::raw('count(*) as count'))
+        ->where('resort_id', Auth::user()->resortList->resort_id)
+        ->where('status', 'cancelled')
+        ->groupBy('status')
+        ->get();
         $status3 = '';
         foreach ( $result3 as $val ) {
             $status3 .= "$val->count";
@@ -75,7 +95,12 @@ class DashboardController extends Controller
             $cancelled = $status3;
         }
        
-        $result4 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" AND guests.status = "left" GROUP BY guests.status;' ) );
+        $result4 = DB::table('guests')
+        ->select('status', DB::raw('count(*) as count'))
+        ->where('resort_id', Auth::user()->resortList->resort_id)
+        ->where('status', 'left')
+        ->groupBy('status')
+        ->get();
         $status4 = '';
         foreach ( $result4 as $val ) {
             $status4 .= "$val->count";
