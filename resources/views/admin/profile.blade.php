@@ -26,28 +26,32 @@
                                                 <form action="{{ url('/profile') }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
-                                                    <div class="form-group">
+                                                    <div class="form-group mt-4">
                                                         @if (Auth::user()->image)
                                                             <img id="preview-profile-image"
                                                                 src="{{ asset('storage/images/' . Auth::user()->image) }}"
                                                                 alt="preview image" style="width:200px; height: 200px;"
                                                                 class="rounded-circle">
                                                         @endif
-                                                        <label for="profile">
-                                                            <i data-feather="camera"
-                                                                style="margin-left:-50px; margin-top:90px; position: absolute"></i>
-                                                        </label>
-                                                        <input type="file" name="image" placeholder="Choose image" id="profile"
-                                                            hidden>
-                                                        @error('image')
-                                                            <div class="alert alert-danger mt-1 mb-1">
-                                                                {{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button type="submit" class="btn  text-center text-white"
-                                                            style="background-color:  #21791A" id="change_profile"
-                                                            disabled>Change Profile</button>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="profile">
+                                                                    <i data-feather="camera"
+                                                                        style="position:unset; margin-right: -172px; margin-top: -30px;"></i>
+                                                                </label>
+                                                                <input type="file" name="image" placeholder="Choose image" id="profile"
+                                                                    hidden>
+                                                                @error('image')
+                                                                    <div class="alert alert-danger mt-1 mb-1">
+                                                                        {{ $message }}</div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn  text-center text-white"
+                                                                style="background-color:  #21791A; margin-top: -20px;" id="change_profile"
+                                                                disabled>Change Profile</button>
+                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
@@ -59,13 +63,13 @@
                                             <div class="row mt-2 ">
                                                 <div class="col text-center">
                                                     <input type="text" value="{{ Auth::user()->name }}"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                        style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Name</label>
                                                 </div>
                                                 <div class="col text-center">
                                                     <input type="text" value="{{ Auth::user()->email }} "
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Email Address</label>
                                                 </div>
@@ -73,13 +77,13 @@
                                             <div class="row mt-2">
                                                 <div class="col text-center">
                                                     <input type="number" value="{{ Auth::user()->phone_number }}"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Phone Number</label>
                                                 </div>
                                                 <div class="col text-center">
                                                     <input type="text" value="{{ Auth::user()->gender }}"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Gender</label>
                                                 </div>
@@ -87,7 +91,7 @@
                                             <div class="row mt-2">
                                                 <div class="col text-center">
                                                     <input type="text" value="{{ Auth::user()->address }}"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Address</label>
                                                 </div>

@@ -8,22 +8,26 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Guest;
 
-
-
 class DashboardController extends Controller
  {
     public function __construct() {
         $this->middleware( 'auth' );
     }
 
-    public function dashboard() {  
-        if(Auth::user()->status == 'disable'){
-            return redirect('/forbidden');
-        }  
-        $result = DB::select( DB::raw( 'select count(nationality) as count ,guests.nationality from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" GROUP BY guests.nationality;' ) );
+    public function dashboard() {
+
+        if ( Auth::user()->status == 'disable' ) {
+            return redirect( '/forbidden' );
+        }
+
+        $guest = DB::table( 'guests' )
+        ->select( 'nationality', DB::raw( 'count(*) as total' ) )
+        ->where('resort_id', Auth::user()->resortList->resort_id)
+        ->groupBy( 'nationality' )
+        ->get();
         $data = '';
-        foreach ( $result as $val ) {
-            $data .= "['".$val->nationality."',".$val->count.'],';
+        foreach ( $guest as $val ) {
+            $data .= "['".$val->nationality."',".$val->total.'],';
         }
         $chartData = $data;
 
@@ -42,14 +46,21 @@ class DashboardController extends Controller
         $foreigner = $fore;
         $numberOfGuest = Guest::where( 'resort_id', Auth::user()->resortList->resort_id )->get()->count();
 
-        $result1 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" AND guests.status = "pending" GROUP BY guests.status;' ) );
+
+        
+        $result1 = DB::table( 'guests' )
+        ->select( 'status', DB::raw( 'count(*) as total' ) )
+        ->where('resort_id', Auth::user()->resortList->resort_id)
+        ->where('status','pending')
+        ->groupBy( 'status' )
+        ->get(); 
         $status = '';
         foreach ( $result1 as $val ) {
-            $status .= "$val->count";
+            $status .= "$val->total";
         }
-        if($status == ""){
-            $pending = "0";
-        }else{
+        if ( $status == '' ) {
+            $pending = '0';
+        } else {
             $pending = $status;
         }
 
@@ -58,9 +69,9 @@ class DashboardController extends Controller
         foreach ( $result2 as $val ) {
             $status2 .= "$val->count";
         }
-        if($status2 == ""){
-            $accepted = "0";
-        }else{
+        if ( $status2 == '' ) {
+            $accepted = '0';
+        } else {
             $accepted = $status2;
         }
 
@@ -69,23 +80,23 @@ class DashboardController extends Controller
         foreach ( $result3 as $val ) {
             $status3 .= "$val->count";
         }
-        if($status3 == ""){
-            $cancelled = "0";
-        }else{
+        if ( $status3 == '' ) {
+            $cancelled = '0';
+        } else {
             $cancelled = $status3;
         }
-       
+
         $result4 = DB::select( DB::raw( 'select count(status) as count ,guests.status from guests WHERE guests.resort_id = "'.Auth::user()->resortList->resort_id.'" AND guests.status = "left" GROUP BY guests.status;' ) );
         $status4 = '';
         foreach ( $result4 as $val ) {
             $status4 .= "$val->count";
         }
-        if($status4 == ""){
-            $left = "0";
-        }else{
+        if ( $status4 == '' ) {
+            $left = '0';
+        } else {
             $left = $status4;
         }
 
-        return view( 'staff.dashboard', compact( 'chartData', 'numberOfGuest', 'filipino', 'foreigner', 'pending', 'accepted', 'cancelled', 'left') );
+        return view( 'staff.dashboard', compact( 'chartData', 'numberOfGuest', 'filipino', 'foreigner', 'pending', 'accepted', 'cancelled', 'left' ) );
     }
 }
