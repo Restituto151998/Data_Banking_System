@@ -22,10 +22,10 @@
                                 placeholder="Search" aria-label="Search">
                             <div class="row mt-2">
                                 <div class="col-12">
-                                    <div class="card-body">
+                                    <div class="card-body text-center cont">
                                         <div>
                                             <table class="table" id="table">
-                                                <thead class="table" style="background-color: #21791A; text-align:center">
+                                                <thead class="table" style="background-color: #21791A;">
                                                     <tr>
                                                         <th scope="col" class="text-white">Full Name</th>
                                                         <th scope="col" class="text-white">Gender</th>
