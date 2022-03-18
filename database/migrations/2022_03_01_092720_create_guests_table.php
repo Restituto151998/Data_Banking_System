@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('temperature');
             $table->string('time_use');
             $table->string('purpose');
+            $table->string('status');
             $table->timestamps();
         });
     }

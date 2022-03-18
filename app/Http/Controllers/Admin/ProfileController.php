@@ -24,9 +24,7 @@ class ProfileController extends Controller
  {
         if ( $request->hasFile( 'image' ) ) {
             $filename = $request->image->getClientOriginalName();
-
             $request->image->storeAs( 'images', $filename, 'public' );
-
             Auth()->user()->update( [ 'image'=>$filename ] );
 
             return back()->with( 'status', 'Successfully uploaded!' );
@@ -37,7 +35,6 @@ class ProfileController extends Controller
     public function editUserInformation( $id )
  {
         $users = User::where( 'id',  '=', $id )->first() ;
-
         return view( 'admin.profile' );
     }
 
@@ -53,8 +50,6 @@ class ProfileController extends Controller
         ] );
 
         User::whereId( Auth::user()->id )->update( $updateData );
-
         return back()->with( 'message', 'Successfully Updated!' );
-
     }
 }

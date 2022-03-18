@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\VodaKrasna;
 use Illuminate\Support\Facades\DB;
+use App\Models\Guest;
 
 class DashboardController extends Controller
  {
@@ -33,32 +34,23 @@ class DashboardController extends Controller
         }
         $chartData = $data2;
 
-        $result3 = DB::select( DB::raw( 'select count(id) as guest from guests;' ) );
-        $data3 = '';
-        foreach ( $result3 as $val3 ) {
-            $data3 .= "".$val3->guest.'';
-        }
-        $numberOfGuest = $data3;
+        $result3 = DB::select( DB::raw( 'select id from guests;' ) );
+        $numberOfGuest = count($result3);
+   
+        $result4 = DB::select( DB::raw( 'select id from users;' ) );
+        $numberOfUser = count($result4);
 
-        
-        $result4 = DB::select( DB::raw( 'select count(id) as staff from users;' ) );
-        $data4 = '';
-        foreach ( $result4 as $val4 ) {
-            $data4 .= "".$val4->staff.'';
-        }
-        $numberOfUser = $data4;
-
-        $result5 = DB::select( DB::raw( 'select count(id) as resort from resorts;' ) );
-        $data5 = '';
-        foreach ( $result5 as $val5 ) {
-            $data5 .= "".$val5->resort.'';
-        }
-        $numberOfResort = $data5;
+        $result5 = DB::select( DB::raw( 'select id from resorts;' ) );
+        $numberOfResort = count($result5);
 
 
+        $pending = Guest::where('status', 'pending')->count();
+        $accepted = Guest::where('status', 'accepted')->count();
+        $cancelled = Guest::where('status', 'cancelled')->count();
+        $left = Guest::where('status', 'left')->count();
 
-        return view( 'admin.dashboard', compact( 'chartData', 'barData', 'numberOfGuest', 'numberOfUser', 'numberOfResort' ) );
-
+    
+        return view( 'admin.dashboard', compact( 'chartData', 'barData', 'numberOfGuest', 'numberOfUser', 'numberOfResort','pending', 'accepted', 'cancelled', 'left' ) );
     }
 
 }

@@ -65,24 +65,33 @@
         margin-top: 80px;
         margin-left: 55%;
     }
+    /* .dtHorizontalExampleWrapper {
+        max-width: 600px;
+        margin: 0 auto;
+      } */
     
-    #btn-edit {
-        border: 1px solid #19bacf;
-        color: #19bacf;
+    #dtHorizontalExample th,
+    td {
+        white-space: nowrap;
     }
     
-    #btn-edit:hover {
-        background-color: #19bacf;
-        color: #F4EBEB;
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc_disabled:after,
+    table.dataTable thead .sorting_asc_disabled:before,
+    table.dataTable thead .sorting_desc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc_disabled:after,
+    table.dataTable thead .sorting_desc_disabled:before {
+        bottom: .5em;
     }
     
-    #btn_add {
-        /* style="background-color:#21791A; color:white"  */
-        border: 1px solid #21791A;
-        color: #21791A;
-    }
-    
-    #btn_add:hover {
-        background-color: #21791A;
-        color: #F4EBEB;
+    .cont {
+        flex-wrap: wrap;
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+        overflow-x: scroll;
     }
