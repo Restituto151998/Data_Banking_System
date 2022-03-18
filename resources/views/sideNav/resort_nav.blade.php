@@ -41,7 +41,8 @@
     <link rel="stylesheet" href="{{ asset('../assets/css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/bundles/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('../assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <link rel="stylesheet" href="../../assets/css/components.css">
@@ -56,6 +57,15 @@
 <style>
     @media print {
         .print {
+            display: none;
+        }
+        .main-sidebar {
+            display: none;
+        }
+        #myInput{
+            display: none;
+        }
+        #arrow{
             display: none;
         }
     }
@@ -110,7 +120,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                  document.getElementById('logout-form').submit();">
+                                                                                                          document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -217,8 +227,6 @@
     <script src="{{ asset('../assets/js/jquery.printPage.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('.print').printPage();
-
             $('#btn-password').on('click', function() {
                 $('#change-password').attr('hidden', false);
                 $('#btn-password').attr('hidden', true);
@@ -240,7 +248,10 @@
                 } else {
                     $('.p').hide();
                 }
+
+         
             });
+
 
         });
 
