@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Guest;
 
-
-
 class DashboardController extends Controller
  {
     public function __construct() {
@@ -41,7 +39,6 @@ class DashboardController extends Controller
             } else {
                 $fore += 1;
             }
-
         }
         $filipino = $fili;
         $foreigner = $fore;
@@ -55,11 +52,11 @@ class DashboardController extends Controller
         ->get();
         $status = '';
         foreach ( $result1 as $val ) {
-            $status .= "$val->count";
+            $status .= "$val->total";
         }
-        if($status == ""){
-            $pending = "0";
-        }else{
+        if ( $status == '' ) {
+            $pending = '0';
+        } else {
             $pending = $status;
         }
 
@@ -73,9 +70,9 @@ class DashboardController extends Controller
         foreach ( $result2 as $val ) {
             $status2 .= "$val->count";
         }
-        if($status2 == ""){
-            $accepted = "0";
-        }else{
+        if ( $status2 == '' ) {
+            $accepted = '0';
+        } else {
             $accepted = $status2;
         }
 
@@ -89,9 +86,9 @@ class DashboardController extends Controller
         foreach ( $result3 as $val ) {
             $status3 .= "$val->count";
         }
-        if($status3 == ""){
-            $cancelled = "0";
-        }else{
+        if ( $status3 == '' ) {
+            $cancelled = '0';
+        } else {
             $cancelled = $status3;
         }
        
@@ -105,12 +102,12 @@ class DashboardController extends Controller
         foreach ( $result4 as $val ) {
             $status4 .= "$val->count";
         }
-        if($status4 == ""){
-            $left = "0";
-        }else{
+        if ( $status4 == '' ) {
+            $left = '0';
+        } else {
             $left = $status4;
         }
 
-        return view( 'staff.dashboard', compact( 'chartData', 'numberOfGuest', 'filipino', 'foreigner', 'pending', 'accepted', 'cancelled', 'left') );
+        return view( 'staff.dashboard', compact( 'chartData', 'numberOfGuest', 'filipino', 'foreigner', 'pending', 'accepted', 'cancelled', 'left' ) );
     }
 }

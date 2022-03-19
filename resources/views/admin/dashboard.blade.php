@@ -20,9 +20,13 @@
                 ]);
 
                 var options = {
-                    title: 'Nationality'
+                    title: 'Nationality',
+                    chartArea: {
+                        left: "5%",
+                        width: 400, 
+                        height: 300,
+                    },
                 };
-
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
                 chart.draw(data, options);
             }
