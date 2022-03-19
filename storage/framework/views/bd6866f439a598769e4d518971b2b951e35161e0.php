@@ -109,7 +109,7 @@
                 <?php endif; ?>
             </ul>
         </nav>
-        <div class="main-sidebar sidebar-style-1">
+        <div class="main-sidebar sidebar-style-1 sticky">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand" style="background:#21791A;">
                     <a href=""> <img alt="image" src="assets/img/logo.png" class="header-logo rounded-circle" /> <span
@@ -262,6 +262,11 @@
 
             $('#generate').attr('disabled', true);;
         });
+
+        $("#click_me").click(function(){
+        $("#alcoy").toggle();
+        });
+
 
     </script>
 </body>

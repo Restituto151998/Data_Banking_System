@@ -51,7 +51,7 @@
                                             <div class="col-12">
                                                 <div class="card-header">
                                                 </div>
-                                                <div class="card-body text-center">
+                                                <div class="card-body text-center cont">
                                                     <table class="table">
                                                         <thead class="table"
                                                             style="background-color: #21791A; text-align:center">

@@ -11,7 +11,6 @@
     <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
 
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
@@ -19,10 +18,8 @@
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/app.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/summernote/summernote-bs4.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/datatables.min.css')); ?>">
-    <link rel="stylesheet"
-        href="<?php echo e(asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')); ?>">
 
-    
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/register.css">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -32,12 +29,10 @@
 </head>
 
 <body>
-
     <div class="container mt-5">
         <?php if(session()->has('status')): ?>
             <div class="alert alert-success alert-dismissible fade  show" role="alert">
                 <?php echo e(session()->get('status')); ?>
-
 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -50,26 +45,20 @@
                     <div class="card">
                         <div class="row">
                             <div class="col">
-
                                 <img src="<?php echo e(asset('storage/' . $image->imagePath)); ?>" alt="images"
                                     style="width:100%; height: 100%;">
                             </div>
                             <div class="col">
-
                                 <h2 class="text-center mt-4 mb-4"><?php echo e($image->resort_name); ?></h2>
                                 <p><?php echo e($image->resort_description); ?></p>
                                 <button class="btn btn-primary mb-3">More Info</button>
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
-
 </body>
 <script src="<?php echo e(asset('assets/js/app.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/bundles/summernote/summernote-bs4.js')); ?>"></script>

@@ -28,35 +28,39 @@
                                                 <form action="<?php echo e(url('/profile')); ?>" method="POST"
                                                     enctype="multipart/form-data">
                                                     <?php echo csrf_field(); ?>
-                                                    <div class="form-group">
+                                                    <div class="form-group mt-4">
                                                         <?php if(Auth::user()->image): ?>
                                                             <img id="preview-profile-image"
                                                                 src="<?php echo e(asset('storage/images/' . Auth::user()->image)); ?>"
                                                                 alt="preview image" style="width:200px; height: 200px;"
                                                                 class="rounded-circle">
                                                         <?php endif; ?>
-                                                        <label for="profile">
-                                                            <i data-feather="camera"
-                                                                style="margin-left:-50px; margin-top:90px; position: absolute"></i>
-                                                        </label>
-                                                        <input type="file" name="image" placeholder="Choose image" id="profile"
-                                                            hidden>
-                                                        <?php $__errorArgs = ['image'];
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="profile">
+                                                                    <i data-feather="camera"
+                                                                        style="position:unset; margin-right: -172px; margin-top: -30px;"></i>
+                                                                </label>
+                                                                <input type="file" name="image" placeholder="Choose image" id="profile"
+                                                                    hidden>
+                                                                <?php $__errorArgs = ['image'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                            <div class="alert alert-danger mt-1 mb-1">
-                                                                <?php echo e($message); ?></div>
-                                                        <?php unset($message);
+                                                                    <div class="alert alert-danger mt-1 mb-1">
+                                                                        <?php echo e($message); ?></div>
+                                                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button type="submit" class="btn  text-center text-white"
-                                                            style="background-color:  #21791A" id="change_profile"
-                                                            disabled>Change Profile</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn  text-center text-white"
+                                                                style="background-color:  #21791A; margin-top: -20px;" id="change_profile"
+                                                                disabled>Change Profile</button>
+                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
@@ -68,13 +72,13 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="row mt-2 ">
                                                 <div class="col text-center">
                                                     <input type="text" value="<?php echo e(Auth::user()->name); ?>"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                        style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Name</label>
                                                 </div>
                                                 <div class="col text-center">
                                                     <input type="text" value="<?php echo e(Auth::user()->email); ?> "
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Email Address</label>
                                                 </div>
@@ -82,13 +86,13 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="row mt-2">
                                                 <div class="col text-center">
                                                     <input type="number" value="<?php echo e(Auth::user()->phone_number); ?>"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Phone Number</label>
                                                 </div>
                                                 <div class="col text-center">
                                                     <input type="text" value="<?php echo e(Auth::user()->gender); ?>"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Gender</label>
                                                 </div>
@@ -96,7 +100,7 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="row mt-2">
                                                 <div class="col text-center">
                                                     <input type="text" value="<?php echo e(Auth::user()->address); ?>"
-                                                        style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Address</label>
                                                 </div>
@@ -115,7 +119,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="row">
                                             <div class="col text-center mt-2 mb-5">
-                                                <a href="<?php echo e(route('auth.passwords.changePassword')); ?>">
+                                                <a class="text-danger" href="<?php echo e(route('auth.passwords.changePassword')); ?>">
                                                     Change password?
                                                 </a>
                                             </div>
