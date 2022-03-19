@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/resorts/print.blade.php ENDPATH**/ ?>

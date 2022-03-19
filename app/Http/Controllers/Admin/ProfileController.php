@@ -25,9 +25,10 @@ class ProfileController extends Controller
         if ( $request->hasFile( 'image' ) ) {
             $filename = $request->image->getClientOriginalName();
             $request->image->storeAs( 'images', $filename, 'public' );
-            Auth()->user()->update( [ 'image'=>$filename ] );
+             Auth()->user()->update( [ 'image'=>base64_encode($filename) ] );
 
             return back()->with( 'status', 'Successfully uploaded!' );
+            // base64_encode($file)
         }
 
     }

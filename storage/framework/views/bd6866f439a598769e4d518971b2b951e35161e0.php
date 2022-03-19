@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 
 <head>
     <script type="text/javascript">
@@ -16,19 +16,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/app.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/summernote/summernote-bs4.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/datatables.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')); ?>">
 
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/data.css">
@@ -41,16 +41,16 @@
 <body>
     <div class="loader"></div>
     <div id="app"></div>
-    @auth
-        @yield('adminDashboard')
-        @yield('staffDashboard')
-        @yield('profile')
-        @yield('addResort')
-        @yield('addUser')
-        @yield('resortList')
-        @yield('editUser')
-        @yield('register')
-        @yield('qr-code')
+    <?php if(auth()->guard()->check()): ?>
+        <?php echo $__env->yieldContent('adminDashboard'); ?>
+        <?php echo $__env->yieldContent('staffDashboard'); ?>
+        <?php echo $__env->yieldContent('profile'); ?>
+        <?php echo $__env->yieldContent('addResort'); ?>
+        <?php echo $__env->yieldContent('addUser'); ?>
+        <?php echo $__env->yieldContent('resortList'); ?>
+        <?php echo $__env->yieldContent('editUser'); ?>
+        <?php echo $__env->yieldContent('register'); ?>
+        <?php echo $__env->yieldContent('qr-code'); ?>
         <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
             <div class="form-inline mr-auto">
                 <ul class="navbar-nav mr-3">
@@ -61,120 +61,122 @@
                     </li>
                 </ul>
                 <div class="text-white h3 pt-2">
-                    @if (Auth::user()->type == 'STAFF')
-                        {{ Auth::user()->resortList->resort_name }}
-                    @else
+                    <?php if(Auth::user()->type == 'STAFF'): ?>
+                        <?php echo e(Auth::user()->resortList->resort_name); ?>
+
+                    <?php else: ?>
                         Alcoy Data Banking
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
             <ul class="navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                @guest
-                    @if (Route::has('login'))
+                <?php if(auth()->guard()->guest()): ?>
+                    <?php if(Route::has('login')): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}" hidden>{{ __('Login') }}</a>
+                            <a class="nav-link" href="<?php echo e(route('login')); ?>" hidden><?php echo e(__('Login')); ?></a>
                         </li>
-                    @endif
-                @else
+                    <?php endif; ?>
+                <?php else: ?>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                            @if (Auth::user()->image)
-                                <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle"
+                            <?php echo e(Auth::user()->name); ?>
+
+                            <?php if(Auth::user()->image): ?>
+                                <img src="<?php echo e(asset('storage/images/' . Auth::user()->image)); ?>" class="rounded-circle"
                                     style="width:30px; height: 30px;" alt="img">
-                            @endif
+                            <?php endif; ?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item text-center" href="{{ url()->previous() }}"
+                            <a class="dropdown-item text-center" href="<?php echo e(url()->previous()); ?>"
                                 onclick="event.preventDefault();                                                                                                                                                            document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
+                                <?php echo e(__('Logout')); ?> <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
                                 document.getElementById('logout-form').submit();">
-                                {{ __('Profile') }} @if (Auth::user()->image)
-                                    <img src="{{ asset('storage/images/' . Auth::user()->image) }}"
+                                <?php echo e(__('Profile')); ?> <?php if(Auth::user()->image): ?>
+                                    <img src="<?php echo e(asset('storage/images/' . Auth::user()->image)); ?>"
                                         class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
-                                @endif
+                                <?php endif; ?>
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
+                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                                <?php echo csrf_field(); ?>
                             </form>
                         </div>
                     </li>
-                @endguest
+                <?php endif; ?>
             </ul>
         </nav>
         <div class="main-sidebar sidebar-style-1 sticky">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand" style="background:#21791A;">
                     <a href=""> <img alt="image" src="assets/img/logo.png" class="header-logo rounded-circle" /> <span
-                            class="text-white" id="alcoy">{{ __('Alcoy') }}</span>
+                            class="text-white" id="alcoy"><?php echo e(__('Alcoy')); ?></span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
                     <li class="menu-header">Main</li>
-                    @if (Auth::user()->type == 'ADMIN')
+                    <?php if(Auth::user()->type == 'ADMIN'): ?>
                         <li class="dropdown">
                             <a href="/admin_dashboard" class="nav-link"><i
-                                    data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
+                                    data-feather="monitor"></i><span><?php echo e(__('Dashboard')); ?></span></a>
                         </li>
-                    @endif
-                    @if (Auth::user()->type == 'STAFF')
+                    <?php endif; ?>
+                    <?php if(Auth::user()->type == 'STAFF'): ?>
                         <li class="dropdown">
                             <a href="/staff_dashboard" class="nav-link"><i
-                                    data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
+                                    data-feather="monitor"></i><span><?php echo e(__('Dashboard')); ?></span></a>
                         </li>
-                    @endif
+                    <?php endif; ?>
                     <li class="dropdown">
                         <a href="/profile" class="nav-link"><i
-                                data-feather="user"></i><span>{{ __('Profile') }}</span></a>
+                                data-feather="user"></i><span><?php echo e(__('Profile')); ?></span></a>
                     </li>
-                    @if (Auth::user()->type == 'STAFF')
+                    <?php if(Auth::user()->type == 'STAFF'): ?>
                         <li class="dropdown">
-                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}" class="nav-link"><i
-                                    data-feather="list"></i><span>{{ Auth::user()->resortList->resort_name }}</span></a>
+                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>" class="nav-link"><i
+                                    data-feather="list"></i><span><?php echo e(Auth::user()->resortList->resort_name); ?></span></a>
                         </li>
                         <li class="dropdown">
                             <a href="/staff_register" class="nav-link"><i
-                                    data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
+                                    data-feather="edit"></i><span><?php echo e(__('Direct Register')); ?></span></a>
                         </li>
-                    @endif
-                    @if (Auth::user()->type == 'ADMIN')
+                    <?php endif; ?>
+                    <?php if(Auth::user()->type == 'ADMIN'): ?>
                         <li class="dropdown">
                             <a href="/add_resort" class="nav-link"><i
-                                    data-feather="image"></i><span>{{ __('Add Resort') }}</span></a>
+                                    data-feather="image"></i><span><?php echo e(__('Add Resort')); ?></span></a>
                         </li>
 
                         <li class="dropdown">
                             <a href="/add_user" class="nav-link"><i
-                                    data-feather="users"></i><span>{{ __('Users') }}</span></a>
+                                    data-feather="users"></i><span><?php echo e(__('Users')); ?></span></a>
                         </li>
 
                         <li class="dropdown">
                             <a href="/resort_list" class="nav-link"><i
-                                    data-feather="list"></i><span>{{ __('Resort Assignee') }}</span></a>
+                                    data-feather="list"></i><span><?php echo e(__('Resort Assignee')); ?></span></a>
                         </li>
-                    @endif
+                    <?php endif; ?>
                     <li class="dropdown">
                         <a href="/generate_qrcode" class="nav-link"><i
-                                data-feather="code"></i><span>{{ __('QRcode') }}</span></a>
+                                data-feather="code"></i><span><?php echo e(__('QRcode')); ?></span></a>
                     </li>
                 </ul>
             </aside>
         </div>
-    @endauth
+    <?php endif; ?>
     <body class="py-4">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </body>
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
-    <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="<?php echo e(asset('assets/js/app.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/bundles/summernote/summernote-bs4.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/bundles/datatables/datatables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/bundles/jquery-ui/jquery-ui.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/scripts.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
     <script>
         $(document).ready(function() {
             $('#add_resort').submit(function(e) {
@@ -269,3 +271,4 @@
     </script>
 </body>
 </html>
+<?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/sideNav/side_navbar.blade.php ENDPATH**/ ?>

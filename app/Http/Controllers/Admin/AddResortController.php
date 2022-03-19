@@ -39,7 +39,7 @@ class AddResortController extends Controller
 
             $filename = $request->image->getClientOriginalName();
     
-            $imagePath = $request->file( 'image' )->storeAs( 'resorts', $filename, 'public' );
+            $imagePath = $request->file( 'image' )->storeAs( 'resorts', base64_encode($filename), 'public' );
     
             $save = new Resort;
     
