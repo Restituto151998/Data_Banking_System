@@ -103,10 +103,10 @@
                                                 <a type="button"
                                                     href="{{ route('admin.profile.test', ['id' => Auth::user()->id]) }}"
                                                     id="btn-edit"
-                                                    class="btn w-50"
+                                                    class="btn w-50 text-white" style="background-color:  #21791A"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal{{ Auth::user()->id }}">
-                                                    Edit Informations
+                                                    data-bs-target="#exampleModal{{ Auth::user()->id }}" >
+                                                    Edit Information
                                                 </a>
                                             </div>
                                         </div>

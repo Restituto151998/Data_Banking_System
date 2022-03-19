@@ -39,7 +39,8 @@
                                                 <div class="row mr-3">
                                                     <div class="col">
                                                         <span class="float-right"> <?php echo $users->links(); ?></span>
-                                                        <a class="btn p-2" style="background-color:#21791A; color:white"
+                                                        <a class="btn p-2 text-white" id="btn_add"
+                                                            style="background-color:  #21791A"
                                                             href="<?php echo e(route('admin.add_users')); ?>">+ Add New User</a>
                                                         </button>
                                                     </div>

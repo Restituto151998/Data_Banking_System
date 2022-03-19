@@ -60,6 +60,7 @@ unset($__errorArgs, $__bag); ?>
                                                             <button type="submit" class="btn  text-center text-white"
                                                                 style="background-color:  #21791A; margin-top: -20px;" id="change_profile"
                                                                 disabled>Change Profile</button>
+
                                                         </div>
                                                     </div>
                                                 </form>
@@ -110,10 +111,11 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="col text-center mt-3">
                                                 <a type="button"
                                                     href="<?php echo e(route('admin.profile.test', ['id' => Auth::user()->id])); ?>"
-                                                    class="btn text-white w-50" style="background-color:  #21791A"
+                                                    id="btn-edit"
+                                                    class="btn w-50 text-white" style="background-color:  #21791A"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal<?php echo e(Auth::user()->id); ?>">
-                                                    Edit Informations
+                                                    data-bs-target="#exampleModal<?php echo e(Auth::user()->id); ?>" >
+                                                    Edit Information
                                                 </a>
                                             </div>
                                         </div>
