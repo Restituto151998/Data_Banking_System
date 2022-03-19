@@ -71,8 +71,7 @@
                                                         <div class="row mt-3">
                                                             <div class="col text-center">
                                                                 <div class="form-group">
-                                                                    <button class="btn w-50"
-                                                                        style="background-color:#21791A; color:white">Add</button>
+                                                                    <button class="btn w-50" id="btn_add">Add</button>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -65,12 +65,13 @@
         margin-top: 80px;
         margin-left: 55%;
     }
-
     /* .dtHorizontalExampleWrapper {
         max-width: 600px;
         margin: 0 auto;
       } */
-      #dtHorizontalExample th, td {
+    
+    #dtHorizontalExample th,
+    td {
         white-space: nowrap;
       }
       
@@ -98,3 +99,4 @@
 #piechart, #barGraph{
     overflow: hidden;
 }
+

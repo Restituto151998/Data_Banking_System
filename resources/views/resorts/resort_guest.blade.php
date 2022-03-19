@@ -12,6 +12,36 @@
                                 <a href="{{ route('admin.resort_list') }}" id="arrow">
                                     <i data-feather="arrow-left"></i>
                                 </a>
+                                @if (Auth::user()->type == 'STAFF')
+                                    {{-- <h4 class="m-0">{{ Auth::user()->resortList->resort_name }} </h4> --}}
+                                @endif
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <div class="card-body">
+                                            <div class="cotainer">
+                                                <div class="main w-100 mb-5 justify-align-center">
+                                                    <div class="input-group">
+                                                        <input type="search" id="myInput"
+                                                            class="border border-success form-control w-75" name='search'
+                                                            placeholder="Search">
+                                                        <div class="input-group-append">
+    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="table">
+                                                    <thead class="table"
+                                                        style="background-color: #21791A; text-align:center">
+                                                        <tr>
+                                                            <th scope="col" class="text-white">Full Name</th>
+                                                            <th scope="col" class="text-white">Gender</th>
+                                                            <th scope="col" class="text-white">Address</th>
+                                                            <th scope="col" class="text-white">Phone Number</th>
+                                                            <th scope="col" class="text-white">Nationality</th>
+                                                            <th scope="col" class="text-white">Temparature</th>
+                                                            <th scope="col" class="text-white">Time Use</th>
+                                                            <th scope="col" class="text-white">Purpose</th>
+
                             @endif
                             <a href="#" onclick="print()" class="print float-right mb-4">print<i
                                     data-feather="printer"></i></a>
@@ -128,6 +158,7 @@
                                                                     </div>
                                                                 @endif
                                                             </td>
+
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
