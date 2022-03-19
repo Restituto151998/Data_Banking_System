@@ -43,18 +43,11 @@ class DashboardController extends Controller
         $result5 = DB::select( DB::raw( 'select id from resorts;' ) );
         $numberOfResort = count($result5);
 
-<<<<<<< HEAD
-        $pending = Guest::where('status','pending')->count();
-        $accepted = Guest::where('status','accepted')->count();
-        $cancelled = Guest::where('status','cancelled')->count();
-        $left = Guest::where('status','left')->count();
-=======
 
         $pending = Guest::where('status', 'pending')->count();
         $accepted = Guest::where('status', 'accepted')->count();
         $cancelled = Guest::where('status', 'cancelled')->count();
         $left = Guest::where('status', 'left')->count();
->>>>>>> 299682d392bcae7af5901ff0debbb616cb106eb0
 
     
         return view( 'admin.dashboard', compact( 'chartData', 'barData', 'numberOfGuest', 'numberOfUser', 'numberOfResort','pending', 'accepted', 'cancelled', 'left' ) );
