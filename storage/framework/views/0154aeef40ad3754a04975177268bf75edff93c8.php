@@ -27,54 +27,50 @@
 
                                                 </div>
                                             <?php endif; ?>
-                                            <div class="card-body">
-                                                <form action="<?php echo e(route('admin.add_user')); ?>" method="post" id="form_add_user">
-                                                    <?php echo csrf_field(); ?>
+                                            <form action="<?php echo e(route('admin.add_user')); ?>" method="post" id="form_add_user">
+                                                <?php echo csrf_field(); ?>
+                                                <div class="card-body">
                                                     <div class="row">
                                                         <div class="col">
                                                             <input type="name"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center" placeholder="Full Name" name="name" required>
-                                                            
+                                                                class="form-control ml-2 text-center" placeholder="Full Name"
+                                                                name="name" required>
                                                         </div>
                                                         <div class="col">
                                                             <input type="email"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center" placeholder="Email Address" name="email" required>
-                                                            
+                                                                class="form-control ml-2 text-center"
+                                                                placeholder="Email Address" name="email" required>
                                                         </div>
                                                     </div>
                                                     <div class="row mt-4">
                                                         <div class="col">
                                                             <input type="number"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center" placeholder="Phone Number" name="phone_number"
-                                                                required>
-                                                            
+                                                                class="form-control ml-2 text-center" placeholder="Phone Number"
+                                                                name="phone_number" required>
                                                         </div>
                                                         <div class="col">
-                                                           <select class="custom-select text-center" id="inputGroupSelect01"
+                                                            <select class="custom-select text-center" id="inputGroupSelect01"
                                                                 name="gender"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
                                                                 <option selected>Select gender...</option>
-                                                              
-                                                                    <option value="Male">
-                                                                        Male
-                                                                    </option>
-                                                                    <option value="Female">
-                                                                        Female
-                                                                    </option>
-                                                                    
+                                                                <option value="Male">
+                                                                    Male
+                                                                </option>
+                                                                <option value="Female">
+                                                                    Female
+                                                                </option>
                                                             </select>
-                                                            
                                                         </div>
                                                     </div>
                                                     <div class="row mt-4">
                                                         <div class="col">
                                                             <input type="password"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center" placeholder="Password" name="password" required>
-                                                            
+                                                                class="form-control ml-2 text-center" placeholder="Password"
+                                                                name="password" required>
                                                         </div>
                                                         <div class="col">
                                                             <select class="custom-select text-center" id="inputGroupSelect01"
@@ -88,22 +84,21 @@
                                                                     </option>
                                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                             </select>
-                                                            
                                                         </div>
                                                     </div>
                                                     <div class="row mt-4">
                                                         <div class="col">
                                                             <input type="text"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center" placeholder="Address" name="address" required>
-                                                            
+                                                                class="form-control ml-2 text-center" placeholder="Address"
+                                                                name="address" required>
                                                         </div>
                                                     </div>
-                                            </div>
-                                            <div class="col-md-12 mt-4">
-                                                <button type="submit" class="btn text-white w-50"
-                                                    style="background-color:  #21791A">Add User</button>
-                                            </div>
+                                                </div>
+                                                <div class="col-md-12 mt-4">
+                                                    <button type="submit" class="btn text-white w-50"
+                                                        style="background-color:  #21791A">Add User</button>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -113,7 +108,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     <?php endif; ?>
 <?php $__env->stopSection(); ?>

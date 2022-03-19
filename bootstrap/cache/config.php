@@ -190,7 +190,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\framework/cache/data',
+        'path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -346,12 +346,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\app',
+        'root' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\app/public',
+        'root' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -369,7 +369,7 @@
     ),
     'links' => 
     array (
-      'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\public\\storage' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\app/public',
+      'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\public\\storage' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -404,13 +404,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -462,7 +462,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -527,7 +527,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\resources\\views/vendor/mail',
+        0 => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -632,7 +632,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\framework/sessions',
+    'files' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -652,9 +652,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\resources\\views',
+      0 => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\resources\\views',
     ),
-    'compiled' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1\\storage\\framework\\views',
+    'compiled' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System\\storage\\framework\\views',
   ),
   'flare' => 
   array (
@@ -727,7 +727,7 @@
     array (
     ),
     'enable_runnable_solutions' => true,
-    'remote_sites_path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System1',
+    'remote_sites_path' => 'C:\\Users\\capstonestudent\\Desktop\\Data_Banking_System',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
   ),

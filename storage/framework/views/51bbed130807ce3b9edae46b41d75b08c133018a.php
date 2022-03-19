@@ -35,54 +35,57 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <table class="table text-center">
-                                                <thead class="table" style="background-color: #21791A; text-align:center">
-                                                    <tr>
-                                                        <th scope="col" class="text-white">
-                                                            Resort Name</th>
-                                                        <th scope="col" class="text-white">
-                                                            Assigned Staff</th>
-                                                        <th scope="col" class="text-white">
-                                                            Status</th>
-                                                        <th scope="col" class="text-white">
-                                                            Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="myTable">
-                                                    <?php $__currentLoopData = $resort_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <tr class="tr">
-                                                            <td><?php echo e($resort->resort_name); ?></td>
-                                                            <td><?php echo e($resort->assigned_staff); ?></td>
-                                                            <td>
-                                                                <?php if($resort->status == 'open'): ?>
-                                                                    <a href="<?php echo e(url('resorts_status_update', $resort->id)); ?>"
-                                                                        class="btn btn-success btn-sm text-white">Open</a>
-                                                                <?php else: ?>
-                                                                    <a href="<?php echo e(url('resorts_status_update', $resort->id)); ?>"
-                                                                        class="btn btn-danger btn-sm text-white">Closed</a>
-                                                                <?php endif; ?>
-                                                            </td>
-                                                            <td>
-                                                                <a
-                                                                    href="<?php echo e(route('resorts.resort_guest', $resort->resort_id)); ?>"><i
-                                                                        data-feather="eye"></i> </a>
-                                                            </td>
+                                            <div class="card-body text-center cont">
+                                                <table class="table">
+                                                    <thead class="table"
+                                                        style="background-color: #21791A; text-align:center">
+                                                        <tr>
+                                                            <th scope="col" class="text-white">
+                                                                Resort Name</th>
+                                                            <th scope="col" class="text-white">
+                                                                Assigned Staff</th>
+                                                            <th scope="col" class="text-white">
+                                                                Status</th>
+                                                            <th scope="col" class="text-white">
+                                                                Action</th>
                                                         </tr>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </tbody>
-                                            </table>
-                                            <?php if($resort_lists->count() == 0): ?>
-                                                <div class="text-center">
-                                                    <img src="<?php echo e(asset('assets/img/no_datas.PNG')); ?>" alt=""
-                                                        srcset=""><br>
-                                                    <p>No data.</p>
+                                                    </thead>
+                                                    <tbody id="myTable">
+                                                        <?php $__currentLoopData = $resort_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <tr class="tr">
+                                                                <td><?php echo e($resort->resort_name); ?></td>
+                                                                <td><?php echo e($resort->assigned_staff); ?></td>
+                                                                <td>
+                                                                    <?php if($resort->status == 'open'): ?>
+                                                                        <a href="<?php echo e(url('resorts_status_update', $resort->id)); ?>"
+                                                                            class="btn btn-success btn-sm text-white">Open</a>
+                                                                    <?php else: ?>
+                                                                        <a href="<?php echo e(url('resorts_status_update', $resort->id)); ?>"
+                                                                            class="btn btn-danger btn-sm text-white">Closed</a>
+                                                                    <?php endif; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <a
+                                                                        href="<?php echo e(route('resorts.resort_guest', $resort->resort_id)); ?>"><i
+                                                                            data-feather="eye"></i> </a>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    </tbody>
+                                                </table>
+                                                <?php if($resort_lists->count() == 0): ?>
+                                                    <div class="text-center">
+                                                        <img src="<?php echo e(asset('assets/img/no_datas.PNG')); ?>" alt=""
+                                                            srcset=""><br>
+                                                        <p>No data.</p>
+                                                    </div>
+                                                <?php endif; ?>
+                                                <div class="p text-center">
+                                                    <img src="<?php echo e(asset('assets/img/no_data.PNG')); ?>" alt="" srcset=""><br>
+                                                    <p>No results found.</p>
                                                 </div>
-                                            <?php endif; ?>
-                                            <div class="p text-center">
-                                                <img src="<?php echo e(asset('assets/img/no_data.PNG')); ?>" alt="" srcset=""><br>
-                                                <p>No results found.</p>
+                                                <span class="float-right"> <?php echo $resort_lists->links(); ?></span>
                                             </div>
-                                            <span class="float-right"> <?php echo $resort_lists->links(); ?></span>
                                         </div>
                                     </div>
                                 </div>
