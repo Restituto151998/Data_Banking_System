@@ -54,20 +54,19 @@
                                                 </div>
                                                 <div class="col text-center">
                                                     <select class="custom-select text-center" id="inputGroupSelect01"
-                                                                name="gender"
-                                                                style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
-                                                                <option selected><?php echo e($user->gender); ?></option>
-                                                                <?php if($user->gender == "Male"): ?>
-                                                                    <option value="Female">
-                                                                        Female
-                                                                    </option>
-                                                                <?php else: ?>
-                                                                    <option value="Male">
-                                                                        Male
-                                                                    </option>
-                                                                <?php endif; ?>
-                                                                    
-                                                            </select>
+                                                        name="gender"
+                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                        <option selected><?php echo e($user->gender); ?></option>
+                                                        <?php if($user->gender == 'Male'): ?>
+                                                            <option value="Female">
+                                                                Female
+                                                            </option>
+                                                        <?php else: ?>
+                                                            <option value="Male">
+                                                                Male
+                                                            </option>
+                                                        <?php endif; ?>
+                                                    </select>
                                                     <strong><label for="gender" class="col-form-label mb-1 text-black">Gender
                                                         </label></strong>
                                                 </div>
@@ -99,8 +98,7 @@
                                                 </div>
                                             </div>
                                             <div class="col text-center mt-3">
-                                                <button type="submit" class="btn text-white w-50"
-                                                    style="background-color:  #21791A">Save
+                                                <button type="submit" class="btn w-50 text-white" id="btn-edit" style="background-color: #21791A;">Save
                                                     changes</button>
                                             </div>
                                             <div class="text-center mt-2"> <a href="#" id="btn-password">Change

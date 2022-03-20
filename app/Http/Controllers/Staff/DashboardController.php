@@ -52,7 +52,7 @@ class DashboardController extends Controller
         ->get();
         $status = '';
         foreach ( $result1 as $val ) {
-            $status .= "$val->total";
+            $status .= "$val->count";
         }
         if ( $status == '' ) {
             $pending = '0';

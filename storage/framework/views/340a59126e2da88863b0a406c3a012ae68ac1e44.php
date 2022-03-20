@@ -8,11 +8,7 @@
                 <div class="co-12">
                     <div class="card mb-0">
                         <div class="card-body">
-                            <?php if(Auth::user()->type == 'ADMIN'): ?>
-                                <a href="<?php echo e(route('admin.resort_list')); ?>" id="arrow">
-                                    <i data-feather="arrow-left"></i>
-                                </a>
-                            <?php endif; ?>
+
                             <a href="#" onclick="print()" class="print float-right mb-4">print<i
                                     data-feather="printer"></i></a>
                             <?php if(Auth::user()->type == 'ADMIN'): ?>
@@ -22,10 +18,10 @@
                                 placeholder="Search" aria-label="Search">
                             <div class="row mt-2">
                                 <div class="col-12">
-                                    <div class="card-body">
+                                    <div class="card-body text-center cont">
                                         <div>
                                             <table class="table" id="table">
-                                                <thead class="table" style="background-color: #21791A; text-align:center">
+                                                <thead class="table" style="background-color: #21791A;">
                                                     <tr>
                                                         <th scope="col" class="text-white">Full Name</th>
                                                         <th scope="col" class="text-white">Gender</th>
@@ -35,7 +31,8 @@
                                                         <th scope="col" class="text-white">Temparature</th>
                                                         <th scope="col" class="text-white">Time Use</th>
                                                         <th scope="col" class="text-white">Purpose</th>
-                                                        <th scope="col" class="text-white">Status</th>
+                                                        <th scope="col" class="text-white">Date Registered</th>
+                                                        <th scope="col" class="sta text-white">Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
@@ -49,7 +46,8 @@
                                                             <td><?php echo e($guest->temperature); ?></td>
                                                             <td><?php echo e($guest->time_use); ?></td>
                                                             <td><?php echo e($guest->purpose); ?></td>
-                                                            <td>
+                                                            <td><?php echo e($guest->created_at); ?></td>
+                                                            <td class="sta">
                                                                 <?php if(Auth::user()->type == 'ADMIN'): ?>
                                                                     <?php if($guest->status == 'pending'): ?>
                                                                         <button class="btn btn-warning  text-white btn-sm"
@@ -136,6 +134,7 @@
                                                                     </div>
                                                                 <?php endif; ?>
                                                             </td>
+
                                                         </tr>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </tbody>
@@ -145,7 +144,7 @@
                                                 <p>No results found.</p>
                                             </div>
                                             <?php if(empty($guest)): ?>
-                                                <div class="text-center">
+                                                <div class="text-center" id="no_data">
                                                     <img src="../../assets/img/no_datas.PNG" alt="" srcset=""><br>
                                                     <p>No Data</p>
                                                 </div>

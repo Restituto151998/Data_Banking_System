@@ -42,7 +42,7 @@
                                                                 placeholder="Email Address" name="email" required>
                                                         </div>
                                                     </div>
-                                                    <div class="row mt-4">
+                                                    <div class="row mt-5">
                                                         <div class="col">
                                                             <input type="number"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
@@ -63,7 +63,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="row mt-4">
+                                                    <div class="row mt-5">
                                                         <div class="col">
                                                             <input type="password"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
@@ -83,7 +83,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="row mt-4">
+                                                    <div class="row mt-5">
                                                         <div class="col">
                                                             <input type="text"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
