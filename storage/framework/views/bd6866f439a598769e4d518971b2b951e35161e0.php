@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/app.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/summernote/summernote-bs4.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/datatables.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')); ?>">
+    <link rel="stylesheet"
+        href="<?php echo e(asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')); ?>">
 
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/data.css">
@@ -38,6 +39,7 @@
     <link rel="stylesheet" href="./assets/css/loader.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
+
 <body>
     <div class="loader"></div>
     <div id="app"></div>
@@ -168,6 +170,7 @@
             </aside>
         </div>
     <?php endif; ?>
+
     <body class="py-4">
         <?php echo $__env->yieldContent('content'); ?>
     </body>
@@ -232,6 +235,7 @@
             $("#myInput").on("keyup", function() {
                 var count = 0;
                 var value = $(this).val().toLowerCase();
+
                 $("#myTable tr").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
@@ -239,11 +243,22 @@
                 $('.tr:visible').each(function() {
                     count++;
                 });
-                if (count === 0) {
-                    $('.p').show();
+
+                if (value != '') {
+                    $('#no_data').hide();
+                    if (count === 0) {
+                        $('.p').show();
+
+                    } else {
+                        $('.p').hide();
+
+                    }
                 } else {
+                    $('#no_data').show()
                     $('.p').hide();
                 }
+
+
             });
 
         });
@@ -263,12 +278,12 @@
             $('#generate').attr('disabled', true);;
         });
 
-        $("#click_me").click(function(){
-        $("#alcoy").toggle();
+        $("#click_me").click(function() {
+            $("#alcoy").toggle();
         });
-
 
     </script>
 </body>
+
 </html>
 <?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/sideNav/side_navbar.blade.php ENDPATH**/ ?>

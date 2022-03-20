@@ -59,15 +59,23 @@
         .print {
             display: none;
         }
+
         .main-sidebar {
             display: none;
         }
-        #myInput{
+
+        #myInput {
             display: none;
         }
-        #arrow{
+
+        #arrow {
             display: none;
         }
+
+        .sta {
+            display: none;
+        }
+
     }
 
 </style>
@@ -86,7 +94,7 @@
             <div class="form-inline mr-auto">
                 <ul class="navbar-nav mr-3">
                     <li>
-                        <a href="/" data-toggle="sidebar" class="nav-link nav-link-lgcollapse-btn">
+                        <a href="/" data-toggle="sidebar" id="click_me" class="nav-link nav-link-lgcollapse-btn">
                             <i data-feather="align-justify"></i>
                         </a>
                     </li>
@@ -122,7 +130,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="<?php echo e(route('logout')); ?>"
                                 onclick="event.preventDefault();
-                                                                                                          document.getElementById('logout-form').submit();">
+                                                                                                                  document.getElementById('logout-form').submit();">
                                 <?php echo e(__('Logout')); ?> <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -245,16 +253,26 @@
                 $('.tr:visible').each(function() {
                     count++;
                 });
-                if (count === 0) {
-                    $('.p').show();
+                if (value != '') {
+                    $('#no_data').hide();
+                    if (count === 0) {
+                        $('.p').show();
+
+                    } else {
+                        $('.p').hide();
+
+                    }
                 } else {
+                    $('#no_data').show()
                     $('.p').hide();
                 }
 
-         
+
             });
 
-
+            $("#click_me").click(function() {
+                $("#alcoy").toggle();
+            });
         });
 
     </script>

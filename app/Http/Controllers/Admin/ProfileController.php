@@ -28,7 +28,6 @@ class ProfileController extends Controller
              Auth()->user()->update( [ 'image'=>base64_encode($filename) ] );
 
             return back()->with( 'status', 'Successfully uploaded!' );
-            // base64_encode($file)
         }
 
     }
