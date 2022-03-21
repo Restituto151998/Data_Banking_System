@@ -10,7 +10,7 @@
                 @if (session()->has('status'))
                     <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
                         role="alert">
-                        {{ session()->get('status') }}
+                        {{ session()->get('status') }} ✔️
                     </div>
                 @endif
                 <div class="container">

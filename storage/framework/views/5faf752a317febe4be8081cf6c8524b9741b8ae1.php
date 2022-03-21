@@ -10,8 +10,7 @@
                 <?php if(session()->has('status')): ?>
                     <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
                         role="alert">
-                        <?php echo e(session()->get('status')); ?>
-
+                        <?php echo e(session()->get('status')); ?> ✔️
                     </div>
                 <?php endif; ?>
                 <div class="container">

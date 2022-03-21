@@ -6,20 +6,17 @@
             <div class="main-content">
                 <?php if(session()->has('status')): ?>
                     <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('status')); ?>
-
+                        <?php echo e(session()->get('status')); ?> ✔️
                     </div>
                 <?php endif; ?>
                 <?php if(session()->has('message_success')): ?>
                     <div id="alert_message" class="alert alert-success  alert-dismissible fade w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('message_success')); ?>
-
+                        <?php echo e(session()->get('message_success')); ?> ✔️
                     </div>
                 <?php endif; ?>
                 <?php if(session()->has('message')): ?>
                     <div id="alert_message" class="alert alert-success  alert-dismissible fade w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('message')); ?>
-
+                        <?php echo e(session()->get('message')); ?> ✔️
                     </div>
                 <?php endif; ?>
                 <div class="row">
@@ -38,7 +35,7 @@
                                                 </div>
                                                 <div class="row mr-3">
                                                     <div class="col">
-                                                        <span class="float-right"> <?php echo $users->links(); ?></span>
+                                                      
                                                         <a class="btn p-2 text-white" id="btn_add"
                                                             style="background-color:  #21791A"
                                                             href="<?php echo e(route('admin.add_users')); ?>">+ Add New User</a>
@@ -110,7 +107,7 @@
                                                             srcset=""><br>
                                                         <p>No results found.</p>
                                                     </div>
-                                                    <span class="float-right"> <?php echo $users->links(); ?></span>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -120,6 +117,7 @@
                         </div>
                     </div>
                 </div>
+                 <span class="float-right"> <?php echo $users->links(); ?></span>
             </div>
         </div>
     <?php endif; ?>

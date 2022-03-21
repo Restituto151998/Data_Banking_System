@@ -8,17 +8,19 @@
                 <div class="co-12">
                     <div class="card mb-0">
                         <div class="card-body">
-
                             <a href="#" onclick="print()" class="print float-right mb-4">print<i
                                     data-feather="printer"></i></a>
                             @if (Auth::user()->type == 'ADMIN')
+                                <h4 class="mt-3 text-center">{{ $resorts->resort_name }} </h4>
+                            @endif
+                             @if (Auth::user()->type == 'STAFF')
                                 <h4 class="mt-3 text-center">{{ $resorts->resort_name }} </h4>
                             @endif
                             <input type="search" id="myInput" class="form-control mt-4 border border-success"
                                 placeholder="Search" aria-label="Search">
                             <div class="row mt-2">
                                 <div class="col-12">
-                                    <div class="card-body text-center cont">
+                                    <div class="card-body cont">
                                         <div>
                                             <table class="table" id="table">
                                                 <thead class="table" style="background-color: #21791A;">
@@ -106,7 +108,6 @@
                                                                                 {{ $guest->status }}
                                                                             </button>
                                                                         @endif
-
                                                                         <div class="dropdown-menu text-center">
                                                                             @if ($guest->status == 'pending')
                                                                                 <a href="{{ url('status_accept', $guest->id) }}"
@@ -126,7 +127,6 @@
                                                                     </div>
                                                                 @endif
                                                             </td>
-
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -142,7 +142,6 @@
                                                 </div>
                                             @endempty
                                         </div>
-                                        {{-- <span class="float-right">{!! $guests->links() !!}</span> --}}
                                     </div>
                                 </div>
                             </div>
@@ -150,6 +149,7 @@
                     </div>
                 </div>
             </div>
+            <span class="float-right">{!! $guests->links() !!}</span>
         </div>
     </div>
 @endsection

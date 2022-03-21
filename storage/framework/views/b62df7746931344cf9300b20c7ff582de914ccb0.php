@@ -26,7 +26,7 @@
                                         <input id="email" type="email"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                             class="form-control" name="email"
-                                            tabindex="1" value="<?php echo e(old('email')); ?>" required autocomplete="email" placeholder="Email Addres"
+                                            tabindex="1" value="<?php echo e(old('email')); ?>" required autocomplete="email" placeholder="Email Address"
                                             autofocus>
                                     </div>
                                 </div>
@@ -36,7 +36,8 @@
                                         <input id="password"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                             type="password" class="form-control"
-                                            name="password" tabindex="2" required autocomplete="current-password" placeholder="Password">
+                                            name="password" tabindex="2" required autocomplete="Password" placeholder="Password">
+                                            <i class="fa fa-eye-slash mt-3"  id="pas" style="font-size:18px;"></i>
                                     </div>
                                     <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

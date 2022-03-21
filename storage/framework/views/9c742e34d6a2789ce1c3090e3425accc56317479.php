@@ -54,7 +54,8 @@
     QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resort-alcoy-registration'),
 ); ?> " id="qr"
                                         hidden>
-                                    <p id="qr-text" hidden>Please scan the QR-Code to register.</p>
+                                        
+                                    <p id="qr-text" hidden>url: <a href="alcoy-data-banking.herokuapp.com/resort-alcoy-registration" target="_blank">http://alcoy-data-banking.herokuapp.com/resort-alcoy-registration</a><br> Please scan the QR-Code to register.</p>
                                     <a href="data:image/png;base64, <?php echo base64_encode(
     QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resort-alcoy-registration'),
 ); ?> " class="btn" id="qr-download"
@@ -74,7 +75,7 @@
                                         <p>Generating a QrCode...</p>
                                     </div>
                                 </div>
-                                <button id="generate" class="btn btn-primary" style="margin-top: -70px;">Generate
+                                <button id="generate" class="btn text-white" style="margin-top: -70px; background-color:  #21791A;">Generate
                                     Qr-code</button>
                             </div>
                         </div>

@@ -6,7 +6,7 @@
             <div class="main-content">
                 @if (session()->has('message_fail'))
                     <div id="alert_message" class="alert alert-danger alert-dismissible fade w-25 show sticky" role="alert">
-                        {{ session()->get('message_fail') }}
+                        {{ session()->get('message_fail') }} ❌
                     </div>
                 @endif
                 <div class="row">
@@ -22,7 +22,7 @@
                                         <div class="card-body text-center">
                                             @if (session('status'))
                                                 <div class="alert alert-success">
-                                                    {{ session('status') }}
+                                                    {{ session('status') }} ✔️
                                                 </div>
                                             @endif
                                             <form action="{{ route('admin.add_user') }}" method="post" id="form_add_user">

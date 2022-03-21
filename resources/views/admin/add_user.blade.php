@@ -6,17 +6,17 @@
             <div class="main-content">
                 @if (session()->has('status'))
                     <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        {{ session()->get('status') }}
+                        {{ session()->get('status') }} ✔️
                     </div>
                 @endif
                 @if (session()->has('message_success'))
                     <div id="alert_message" class="alert alert-success  alert-dismissible fade w-25 show sticky" role="alert">
-                        {{ session()->get('message_success') }}
+                        {{ session()->get('message_success') }} ✔️
                     </div>
                 @endif
                 @if (session()->has('message'))
                     <div id="alert_message" class="alert alert-success  alert-dismissible fade w-25 show sticky" role="alert">
-                        {{ session()->get('message') }}
+                        {{ session()->get('message') }} ✔️
                     </div>
                 @endif
                 <div class="row">
@@ -35,7 +35,7 @@
                                                 </div>
                                                 <div class="row mr-3">
                                                     <div class="col">
-                                                        <span class="float-right"> {!! $users->links() !!}</span>
+                                                      
                                                         <a class="btn p-2 text-white" id="btn_add"
                                                             style="background-color:  #21791A"
                                                             href="{{ route('admin.add_users') }}">+ Add New User</a>
@@ -107,7 +107,7 @@
                                                             srcset=""><br>
                                                         <p>No results found.</p>
                                                     </div>
-                                                    <span class="float-right"> {!! $users->links() !!}</span>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -117,6 +117,7 @@
                         </div>
                     </div>
                 </div>
+                 <span class="float-right"> {!! $users->links() !!}</span>
             </div>
         </div>
     @endauth

@@ -34,7 +34,7 @@ class DashboardController extends Controller
         $fili = 0;
         $fore = 0;
         foreach ( $numberOfFilipino as $fil ) {
-            if ( $fil->nationality == 'Filipino' ) {
+            if ( $fil->nationality == 'FILIPINO' ) {
                 $fili += 1;
             } else {
                 $fore += 1;

@@ -28,5 +28,6 @@ class UsersTableSeeder extends Seeder
     'type' => 'ADMIN',
     'password' => Hash::make('password'),
   ]);
+  
     }
 }
