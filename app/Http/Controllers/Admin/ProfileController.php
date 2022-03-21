@@ -27,7 +27,7 @@ class ProfileController extends Controller
             $request->image->storeAs( 'images', base64_encode($filename), 'public' );
              Auth()->user()->update( [ 'image'=>base64_encode($filename) ] );
 
-            return back()->with( 'status', 'Successfully uploaded!' );
+            return back()->with( 'status', 'Image profile successfully changed!' );
         }
 
     }
@@ -50,6 +50,6 @@ class ProfileController extends Controller
         ] );
 
         User::whereId( Auth::user()->id )->update( $updateData );
-        return back()->with( 'message', 'Successfully Updated!' );
+        return back()->with( 'message', 'Profile information updated successfully!!' );
     }
 }

@@ -7,12 +7,12 @@
             <div class="main-content">
                 @if (session()->has('status'))
                     <div id="alert_message" class="alert alert-success alert-dismissible fade w-25 show sticky" role="alert">
-                        {{ session()->get('status') }}
+                        {{ session()->get('status') }} ✔️
                     </div>
                 @endif
                 @if (session()->has('message'))
                     <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        {{ session()->get('message') }}
+                        {{ session()->get('message') }} ✔️
                     </div>
                 @endif
                 <div class="row">
@@ -51,7 +51,6 @@
                                                             <button type="submit" class="btn  text-center text-white"
                                                                 style="background-color:  #21791A; margin-top: -20px;" id="change_profile"
                                                                 disabled>Change Profile</button>
-
                                                         </div>
                                                     </div>
                                                 </form>
@@ -112,7 +111,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col text-center mt-2 mb-5">
-                                                <a class="text-danger" href="{{ route('auth.passwords.changePassword') }}">
+                                                <a class="text" href="{{ route('auth.passwords.changePassword') }}">
                                                     Change password?
                                                 </a>
                                             </div>

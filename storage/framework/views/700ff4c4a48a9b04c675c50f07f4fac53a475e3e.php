@@ -7,14 +7,12 @@
             <div class="main-content">
                 <?php if(session()->has('status')): ?>
                     <div id="alert_message" class="alert alert-success alert-dismissible fade w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('status')); ?>
-
+                        <?php echo e(session()->get('status')); ?> ✔️
                     </div>
                 <?php endif; ?>
                 <?php if(session()->has('message')): ?>
                     <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('message')); ?>
-
+                        <?php echo e(session()->get('message')); ?> ✔️
                     </div>
                 <?php endif; ?>
                 <div class="row">
@@ -60,7 +58,6 @@ unset($__errorArgs, $__bag); ?>
                                                             <button type="submit" class="btn  text-center text-white"
                                                                 style="background-color:  #21791A; margin-top: -20px;" id="change_profile"
                                                                 disabled>Change Profile</button>
-
                                                         </div>
                                                     </div>
                                                 </form>
@@ -121,7 +118,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="row">
                                             <div class="col text-center mt-2 mb-5">
-                                                <a class="text-danger" href="<?php echo e(route('auth.passwords.changePassword')); ?>">
+                                                <a class="text" href="<?php echo e(route('auth.passwords.changePassword')); ?>">
                                                     Change password?
                                                 </a>
                                             </div>

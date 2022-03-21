@@ -130,7 +130,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="<?php echo e(route('logout')); ?>"
                                 onclick="event.preventDefault();
-                                                                                                                  document.getElementById('logout-form').submit();">
+                                                                                                                          document.getElementById('logout-form').submit();">
                                 <?php echo e(__('Logout')); ?> <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -149,11 +149,11 @@
                 <?php endif; ?>
             </ul>
         </nav>
-        <div class="main-sidebar sidebar-style-1 ">
+        <div class="main-sidebar sidebar-style-1 sticky">
             <aside id="sidebar-wrapper ">
                 <div class="sidebar-brand " style="background:#21791A;">
                     <a href=""> <img alt="image" src="../../assets/img/logo.png" class="header-logo rounded-circle" />
-                        <span class="text-white " class="logo-name"><?php echo e(__('Alcoy')); ?></span>
+                        <span class="text-white " class="logo-name" id="alcoy"><?php echo e(__('Alcoy')); ?></span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">

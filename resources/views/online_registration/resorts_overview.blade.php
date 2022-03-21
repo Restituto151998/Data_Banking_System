@@ -31,8 +31,8 @@
 <body>
     <div class="container mt-5">
         @if (session()->has('status'))
-            <div class="alert alert-success alert-dismissible fade  show" role="alert">
-                {{ session()->get('status') }}
+            <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
+                {{ session()->get('status') }} ✔️
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -65,5 +65,13 @@
 <script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script>
+    $(document).ready(function() {
+          setTimeout(function() {
+                $("#overview").remove();
+            }, 3000);
+    });
+
+</script>
 
 </html>

@@ -25,7 +25,8 @@ class DirectRegisterController extends Controller
         $gender = $request->input('gender');
         $address = $request->input('address');
         $phone_number = $request->input('phone_number');
-        $nationality = $request->input('nationality');
+        $uppercase = $request->input('nationality');
+        $nationality = strtoupper($uppercase);
         $temperature = $request->input('temperature');
         $time_use = $request->input('time_use');
         $purpose = $request->input('purpose');

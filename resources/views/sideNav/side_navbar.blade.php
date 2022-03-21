@@ -172,6 +172,7 @@
     <body class="py-4">
         @yield('content')
     </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
@@ -258,6 +259,19 @@
 
 
             });
+
+            $('#pas').on('click', function() {
+                var x = document.getElementById("password");
+                if (x.type === "password") {
+                    x.type = "text";
+                    $('#pas').toggleClass('fa fa-eye fa fa-eye-slash');
+                } else {
+                    x.type = "password";
+                    $('#pas').toggleClass('fa fa-eye-slash fa fa-eye');
+                }
+            })
+
+
 
         });
         $('#generate').on('click', function() {

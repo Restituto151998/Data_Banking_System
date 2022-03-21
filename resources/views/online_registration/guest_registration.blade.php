@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/register.css">
@@ -27,20 +28,20 @@
 </head>
 
 <body style="background-color:#21791A">
-    <div class="container">
+
+    <div class="container mb-5">
+        @if (session()->has('error'))
+            <div id="registra" class="alert alert-danger mt-4 alert-dismissible fade  show" role="alert">
+                {{ session()->get('error') }} ❌
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="container">
             <div class="row">
                 <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4"
                     id="register">
-                    @if (session()->has('status'))
-                        <div class="alert alert-success alert-dismissible fade  show" role="alert">
-                            {{ session()->get('status') }}
-
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
                     <div class="container">
                         <div class="row">
                             <div class="col" id="register_content">
@@ -93,8 +94,7 @@
                                                 </button>
                                                 <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                                    name="gender" tabindex="1" required autocomplete="gender"
-                                                    autofocus>
+                                                    name="gender" tabindex="1" required autocomplete="gender" autofocus>
                                                     <option selected>Choose gender...</option>
                                                     <option value="Female">Female</option>
                                                     <option value="Male">Male</option>
@@ -117,7 +117,7 @@
                                                 <strong><label><i data-feather="phone" class="mt-2"></i>
                                                     </label></strong>
                                                 </button>
-                                                <input type="tel" id="phone"
+                                                <input type="number" id="phone"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     class="form-control ml-4" name="phone_number"
                                                     pattern="[0-9]{3}[0-9]{4}[0-9]{4}" placeholder="Phone number"
@@ -141,11 +141,11 @@
                                                 <strong><label><i data-feather="thermometer" class="mt-2"></i>
                                                     </label></strong>
                                                 </button>
-                                                <input type="number"
+                                                <input type="text"
                                                     style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
                                                     class="form-control ml-4" name="temperature"
-                                                    placeholder="Temperature" tabindex="1" required
-                                                    autocomplete="temperature" autofocus>
+                                                    placeholder="Temperature" tabindex="1" autocomplete="temperature"
+                                                    autofocus>
                                             </div>
                                         </div>
                                         <div class="row mb-2">
@@ -175,7 +175,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group mt-3">
-                                            <button type="submit" tabindex="4" class="w-50 login-btn" style="margin-left: 75px">Register
+                                            <button type="submit" tabindex="4" class="w-50 login-btn"
+                                                style="margin-left: 75px">Register
                                             </button>
                                         </div>
                                 </form>
@@ -204,7 +205,11 @@
                 $(this).data('submitted', true);
             }
         });
+        setTimeout(function() {
+            $("#registra").remove();
+        }, 3000);
     });
 
 </script>
+
 </html>

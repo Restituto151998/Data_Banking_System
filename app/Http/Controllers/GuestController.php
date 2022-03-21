@@ -15,10 +15,15 @@ public function redirectTo(){
 }
 
   public function onlineRegister(Request $request){
+
+   
     $status = 'pending';
     $resort = json_decode($request->resort);
    
-    $full_name = $request->input('full_name');
+    if(empty($resort->id)){
+      return back()->with('error', 'Please select specific resort');
+    }else{
+      $full_name = $request->input('full_name');
     $gender = $request->input('gender');
     $address = $request->input('address');
     $phone_number = $request->input('phone_number');
@@ -42,6 +47,7 @@ public function redirectTo(){
     $save->save();
 
     return redirect('resorts-overview')->with('status', 'Successfully Registered!');
+    }
 
   }  
 

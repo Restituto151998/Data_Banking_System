@@ -6,7 +6,7 @@
             <div class="main-content">
                 @if (session()->has('error'))
                     <div id="alert_message" class="alert alert-danger alert-dismissible fade  w-25 show sticky" role="alert">
-                        {{ session()->get('error') }}
+                        {{ session()->get('error') }} ❌
                     </div>
                 @endif
                 <div class="row">

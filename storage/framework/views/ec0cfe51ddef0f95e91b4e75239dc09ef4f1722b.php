@@ -31,9 +31,8 @@
 <body>
     <div class="container mt-5">
         <?php if(session()->has('status')): ?>
-            <div class="alert alert-success alert-dismissible fade  show" role="alert">
-                <?php echo e(session()->get('status')); ?>
-
+            <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
+                <?php echo e(session()->get('status')); ?> ✔️
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -66,6 +65,14 @@
 <script src="<?php echo e(asset('assets/bundles/jquery-ui/jquery-ui.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/scripts.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
+<script>
+    $(document).ready(function() {
+          setTimeout(function() {
+                $("#overview").remove();
+            }, 3000);
+    });
+
+</script>
 
 </html>
 <?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/online_registration/resorts_overview.blade.php ENDPATH**/ ?>
