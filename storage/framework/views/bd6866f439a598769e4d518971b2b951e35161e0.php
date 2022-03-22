@@ -41,7 +41,7 @@
 </head>
 
 <body>
-    <div class="loader"></div>
+    <div class="loader" style=""></div>
     <div id="app"></div>
     <?php if(auth()->guard()->check()): ?>
         <?php echo $__env->yieldContent('adminDashboard'); ?>
@@ -55,13 +55,7 @@
         <?php echo $__env->yieldContent('qr-code'); ?>
         <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
             <div class="form-inline mr-auto">
-                <ul class="navbar-nav mr-3">
-                    <li>
-                        <a href="/" data-toggle="sidebar" id="click_me" class="nav-link nav-link-lgcollapse-btn ">
-                            <i data-feather="align-justify"></i>
-                        </a>
-                    </li>
-                </ul>
+                
                 <div class="text-white h3 pt-2">
                     <?php if(Auth::user()->type == 'STAFF'): ?>
                         <?php echo e(Auth::user()->resortList->resort_name); ?>
@@ -111,60 +105,51 @@
                 <?php endif; ?>
             </ul>
         </nav>
-        <div class="main-sidebar sidebar-style-1 sticky">
+        <div class="main-sidebar sidebar-style-1 sticky" style="background:#21791A;">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand" style="background:#21791A;">
                     <a href=""> <img alt="image" src="assets/img/logo.png" class="header-logo rounded-circle" /> <span
                             class="text-white" id="alcoy"><?php echo e(__('Alcoy')); ?></span>
                     </a>
                 </div>
-                <ul class="sidebar-menu">
-                    <li class="menu-header">Main</li>
+                <ul class="sidebar-menu" >
+                    
                     <?php if(Auth::user()->type == 'ADMIN'): ?>
                         <li class="dropdown">
-                            <a href="/admin_dashboard" class="nav-link"><i
-                                    data-feather="monitor"></i><span><?php echo e(__('Dashboard')); ?></span></a>
+                            <a href="/admin_dashboard" class="nav-link text-white"><span><?php echo e(__('Dashboard')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <?php if(Auth::user()->type == 'STAFF'): ?>
                         <li class="dropdown">
-                            <a href="/staff_dashboard" class="nav-link"><i
-                                    data-feather="monitor"></i><span><?php echo e(__('Dashboard')); ?></span></a>
+                            <a href="/staff_dashboard" class="nav-link text-white"><span><?php echo e(__('Dashboard')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <li class="dropdown">
-                        <a href="/profile" class="nav-link"><i
-                                data-feather="user"></i><span><?php echo e(__('Profile')); ?></span></a>
+                        <a href="/profile" class="nav-link text-white"><span><?php echo e(__('Profile')); ?></span></a>
                     </li>
                     <?php if(Auth::user()->type == 'STAFF'): ?>
                         <li class="dropdown">
-                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>" class="nav-link"><i
-                                    data-feather="list"></i><span><?php echo e(Auth::user()->resortList->resort_name); ?></span></a>
+                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>" class="nav-link text-white"><span><?php echo e(Auth::user()->resortList->resort_name); ?></span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="/staff_register" class="nav-link"><i
-                                    data-feather="edit"></i><span><?php echo e(__('Direct Register')); ?></span></a>
+                            <a href="/staff_register" class="nav-link text-white"><span><?php echo e(__('Direct Register')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <?php if(Auth::user()->type == 'ADMIN'): ?>
                         <li class="dropdown">
-                            <a href="/add_resort" class="nav-link"><i
-                                    data-feather="image"></i><span><?php echo e(__('Add Resort')); ?></span></a>
+                            <a href="/add_resort" class="nav-link text-white"><span><?php echo e(__('Add Resort')); ?></span></a>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/add_user" class="nav-link"><i
-                                    data-feather="users"></i><span><?php echo e(__('Users')); ?></span></a>
+                            <a href="/add_user" class="nav-link text-white"><span><?php echo e(__('Users')); ?></span></a>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/resort_list" class="nav-link"><i
-                                    data-feather="list"></i><span><?php echo e(__('Resort Assignee')); ?></span></a>
+                            <a href="/resort_list" class="nav-link text-white"><span><?php echo e(__('Resort Assignee')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <li class="dropdown">
-                        <a href="/generate_qrcode" class="nav-link"><i
-                                data-feather="code"></i><span><?php echo e(__('QRcode')); ?></span></a>
+                        <a href="/generate_qrcode" class="nav-link text-white"><span><?php echo e(__('QRcode')); ?></span></a>
                     </li>
                 </ul>
             </aside>

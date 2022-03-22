@@ -41,7 +41,7 @@
 </head>
 
 <body>
-    <div class="loader"></div>
+    <div class="loader" style=""></div>
     <div id="app"></div>
     @auth
         @yield('adminDashboard')
@@ -55,13 +55,13 @@
         @yield('qr-code')
         <nav class="navbar navbar-expand-lg main-navbar sticky" style="background:#21791A;">
             <div class="form-inline mr-auto">
-                <ul class="navbar-nav mr-3">
+                {{-- <ul class="navbar-nav mr-3">
                     <li>
                         <a href="/" data-toggle="sidebar" id="click_me" class="nav-link nav-link-lgcollapse-btn ">
                             <i data-feather="align-justify"></i>
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
                 <div class="text-white h3 pt-2">
                     @if (Auth::user()->type == 'STAFF')
                         {{ Auth::user()->resortList->resort_name }}
@@ -109,60 +109,51 @@
                 @endguest
             </ul>
         </nav>
-        <div class="main-sidebar sidebar-style-1 sticky">
+        <div class="main-sidebar sidebar-style-1 sticky" style="background:#21791A;">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand" style="background:#21791A;">
                     <a href=""> <img alt="image" src="assets/img/logo.png" class="header-logo rounded-circle" /> <span
                             class="text-white" id="alcoy">{{ __('Alcoy') }}</span>
                     </a>
                 </div>
-                <ul class="sidebar-menu">
-                    <li class="menu-header">Main</li>
+                <ul class="sidebar-menu" >
+                    {{-- <li class="menu-header">Main</li> --}}
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
-                            <a href="/admin_dashboard" class="nav-link"><i
-                                    data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
+                            <a href="/admin_dashboard" class="nav-link text-white"><span>{{ __('Dashboard') }}</span></a>
                         </li>
                     @endif
                     @if (Auth::user()->type == 'STAFF')
                         <li class="dropdown">
-                            <a href="/staff_dashboard" class="nav-link"><i
-                                    data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
+                            <a href="/staff_dashboard" class="nav-link text-white"><span>{{ __('Dashboard') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">
-                        <a href="/profile" class="nav-link"><i
-                                data-feather="user"></i><span>{{ __('Profile') }}</span></a>
+                        <a href="/profile" class="nav-link text-white"><span>{{ __('Profile') }}</span></a>
                     </li>
                     @if (Auth::user()->type == 'STAFF')
                         <li class="dropdown">
-                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}" class="nav-link"><i
-                                    data-feather="list"></i><span>{{ Auth::user()->resortList->resort_name }}</span></a>
+                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}" class="nav-link text-white"><span>{{ Auth::user()->resortList->resort_name }}</span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="/staff_register" class="nav-link"><i
-                                    data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
+                            <a href="/staff_register" class="nav-link text-white"><span>{{ __('Direct Register') }}</span></a>
                         </li>
                     @endif
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
-                            <a href="/add_resort" class="nav-link"><i
-                                    data-feather="image"></i><span>{{ __('Add Resort') }}</span></a>
+                            <a href="/add_resort" class="nav-link text-white"><span>{{ __('Add Resort') }}</span></a>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/add_user" class="nav-link"><i
-                                    data-feather="users"></i><span>{{ __('Users') }}</span></a>
+                            <a href="/add_user" class="nav-link text-white"><span>{{ __('Users') }}</span></a>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/resort_list" class="nav-link"><i
-                                    data-feather="list"></i><span>{{ __('Resort Assignee') }}</span></a>
+                            <a href="/resort_list" class="nav-link text-white"><span>{{ __('Resort Assignee') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">
-                        <a href="/generate_qrcode" class="nav-link"><i
-                                data-feather="code"></i><span>{{ __('QRcode') }}</span></a>
+                        <a href="/generate_qrcode" class="nav-link text-white"><span>{{ __('QRcode') }}</span></a>
                     </li>
                 </ul>
             </aside>
