@@ -24,8 +24,10 @@ class ProfileController extends Controller
  {
         if ( $request->hasFile( 'image' ) ) {
             $filename = $request->image->getClientOriginalName();
-            $request->image->storeAs( 'images', base64_encode($filename), 'public' );
-             Auth()->user()->update( [ 'image'=>base64_encode($filename) ] );
+
+            $path = 'data:image/' .  pathinfo($request->image, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->image));
+            Auth::user()->update(['images'=>$path]);
+    
 
             return back()->with( 'status', 'Image profile successfully changed!' );
         }
