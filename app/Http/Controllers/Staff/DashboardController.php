@@ -18,6 +18,8 @@ class DashboardController extends Controller
         if(Auth::user()->status == 'disable'){
             return redirect('/forbidden');
         }  
+        
+
         $result = DB::table('guests')
                  ->select('nationality', DB::raw('count(*) as count'))
                  ->where('resort_id', Auth::user()->resortList->resort_id)

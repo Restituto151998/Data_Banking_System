@@ -7,8 +7,7 @@
             <div class="main-content">
                 <?php if(session()->has('message_fail')): ?>
                     <div class="alert alert-danger alert-dismissible fade  show" role="alert">
-                        <?php echo e(session()->get('message_fail')); ?>
-
+                        <?php echo e(session()->get('message_fail')); ?> ❌
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

@@ -17,8 +17,10 @@ class AddResortController extends Controller
     }
 
     public function addResort() {
+        if(Auth::user()->type == 'STAFF'){
+            return redirect('/not_found');
+        } 
         return view( 'admin.add_resort' );
-
     }
 
     public function save( Request $request )

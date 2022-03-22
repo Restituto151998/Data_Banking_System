@@ -53,13 +53,17 @@ Route::get('/status_leave_delete/{id}', [App\Http\Controllers\Staff\DirectRegist
 Route::get('/resort_list/{id}/edit', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.edit_resort_list');
 Route::put('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'update']);
 Route::get('/generate_qrcode', [App\Http\Controllers\Admin\QrCodeController::class, 'qrCode'])->name('resorts.generate_qrcode');
+
 Route::get('/staff_dashboard', [App\Http\Controllers\Staff\DashboardController::class, 'dashboard'])->middleware('type:STAFF');
 Route::get('/staff_register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'index'])->name('staff.staff_register');
 Route::post('/register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'register']);
 Route::get('/profile/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'editUserInformation'])->name('admin.profile.test');
 Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'updateUserInformation']);
+
 Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'redirectTo'])->name('auth.passwords.changePassword');
 Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'updatePassword']);;
+
+Route::get('/not_found', [App\Http\Controllers\HomeController::class, 'notFound'])->name('error_code.not_found');
 
 
 

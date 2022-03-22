@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\VodaKrasna;
 use Illuminate\Support\Facades\DB;
 use App\Models\Guest;
 
@@ -18,6 +17,9 @@ class DashboardController extends Controller
     public function dashboard() {
         if(Auth::user()->status == 'disable'){
             return redirect('/forbidden');
+        }
+        if(Auth::user()->type == 'STAFF'){
+            return redirect('/not_found');
         }
 
         $result1 = DB::select( DB::raw( 'select count(resorts.id) as guest,resorts.resort_name from guests INNER JOIN resorts ON guests.resort_id = resorts.id GROUP BY resorts.resort_name;' ) );
@@ -43,13 +45,11 @@ class DashboardController extends Controller
         $result5 = DB::select( DB::raw( 'select id from resorts;' ) );
         $numberOfResort = count($result5);
 
-
         $pending = Guest::where('status', 'pending')->count();
         $accepted = Guest::where('status', 'accepted')->count();
         $cancelled = Guest::where('status', 'cancelled')->count();
         $left = Guest::where('status', 'left')->count();
 
-    
         return view( 'admin.dashboard', compact( 'chartData', 'barData', 'numberOfGuest', 'numberOfUser', 'numberOfResort','pending', 'accepted', 'cancelled', 'left' ) );
     }
 

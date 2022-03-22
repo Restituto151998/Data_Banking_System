@@ -75,6 +75,9 @@
         .sta {
             display: none;
         }
+        #back{
+            display: none;
+        }
 
     }
 

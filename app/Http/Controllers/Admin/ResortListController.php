@@ -21,6 +21,9 @@ class ResortListController extends Controller
         if ( Auth::user()->status == 'disable' ) {
             return redirect( '/forbidden' );
         }
+        if(Auth::user()->type == 'STAFF'){
+            return redirect('/not_found');
+        } 
         $resortList = ResortList::paginate( 5 );
         return view( 'admin.resort_list' )->with( 'resort_lists', $resortList );
 

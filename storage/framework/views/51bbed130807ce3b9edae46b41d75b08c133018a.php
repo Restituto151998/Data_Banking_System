@@ -5,14 +5,12 @@
         <div class="main-content">
             <?php if(session()->has('status')): ?>
                 <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                    <?php echo e(session()->get('status')); ?>
-
+                    <?php echo e(session()->get('status')); ?> ✔️
                 </div>
             <?php endif; ?>
             <?php if(session()->has('message')): ?>
                 <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                    <?php echo e(session()->get('message')); ?>
-
+                    <?php echo e(session()->get('message')); ?> ✔️
                 </div>
             <?php endif; ?>
             <div class="row">

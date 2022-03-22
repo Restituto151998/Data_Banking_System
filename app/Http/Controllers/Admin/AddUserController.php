@@ -21,7 +21,10 @@ class AddUserController extends Controller
         $this->middleware( 'auth' );
     }
 
-    public function show() {       
+    public function show() {    
+        if(Auth::user()->type == 'STAFF'){
+            return redirect('/not_found');
+        }   
         $users = User::paginate( 5 );
         return view( 'admin.add_user' )->with( 'users', $users );
     }
