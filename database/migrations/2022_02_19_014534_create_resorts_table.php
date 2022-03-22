@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('resorts', function (Blueprint $table) {
             $table->id();
             $table->string('resort_name');
-            $table->string('resort_description');
-            $table->string('imagePath');
+            $table->longText('resort_description');
+            $table->longText('imagePath');
             $table->timestamps();
         });
     }

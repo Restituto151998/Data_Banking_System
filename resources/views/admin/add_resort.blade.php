@@ -64,7 +64,7 @@
                                                     <div class="col text-center mt-5">
                                                         <textarea name="resort_description"
                                                             style="background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
-                                                            class="form-control ml-2 text-center"
+                                                            class="form-control ml-2"
                                                             placeholder="Enter resort description" required></textarea>
                                                     </div>
                                                     <div>

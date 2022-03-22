@@ -22,13 +22,11 @@ class ProfileController extends Controller
 
     public function uploadProfile( Request $request )
  {
-        if ( $request->hasFile( 'image' ) ) {
-            $filename = $request->image->getClientOriginalName();
-            $request->image->storeAs( 'images', base64_encode($filename), 'public' );
-             Auth()->user()->update( [ 'image'=>base64_encode($filename) ] );
-
-            return back()->with( 'status', 'Image profile successfully changed!' );
-        }
+    if ( $request->hasFile( 'image' ) ) {
+        $path = 'data:image/' .  pathinfo($request->image, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->image));
+        Auth::user()->update(['image'=>$path]);
+        return back()->with( 'status', 'Image profile successfully changed!' );
+    }
 
     }
 
