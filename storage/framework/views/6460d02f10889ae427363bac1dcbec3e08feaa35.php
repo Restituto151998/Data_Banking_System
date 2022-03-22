@@ -6,8 +6,7 @@
             <div class="main-content">
                 <?php if(session()->has('error')): ?>
                     <div id="alert_message" class="alert alert-danger alert-dismissible fade  w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('error')); ?>
-
+                        <?php echo e(session()->get('error')); ?> ❌
                     </div>
                 <?php endif; ?>
                 <div class="row">

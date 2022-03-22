@@ -62,7 +62,7 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <div class="row mt-4 text-center">
-                                    <div id="piechart" style="width: 1500px; height: 500px;">
+                                    <div id="piechart" style="width: 500px; height: 400px;">
                                     </div>
                                 </div>
                             </div>

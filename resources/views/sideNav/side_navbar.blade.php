@@ -282,7 +282,7 @@
 
             setTimeout(function() {
                 $('#qr').attr('hidden', false);
-                $('#qr-text').attr('hidden', false);
+                $('.qr-text').attr('hidden', false);
                 $('#qr-download').attr('hidden', false);;
                 $('#load').attr('hidden', true);;
             }, 3000);

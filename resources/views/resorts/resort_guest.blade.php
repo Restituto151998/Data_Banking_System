@@ -8,12 +8,17 @@
                 <div class="co-12">
                     <div class="card mb-0">
                         <div class="card-body">
+                            @if (Auth::user()->type == 'ADMIN')
+                                <a href="{{ route('admin.resort_list') }}" id="back">
+                                    <i data-feather="arrow-left"></i>
+                                </a>
+                            @endif
                             <a href="#" onclick="print()" class="print float-right mb-4">print<i
                                     data-feather="printer"></i></a>
                             @if (Auth::user()->type == 'ADMIN')
                                 <h4 class="mt-3 text-center">{{ $resorts->resort_name }} </h4>
                             @endif
-                             @if (Auth::user()->type == 'STAFF')
+                            @if (Auth::user()->type == 'STAFF')
                                 <h4 class="mt-3 text-center">{{ $resorts->resort_name }} </h4>
                             @endif
                             <input type="search" id="myInput" class="form-control mt-4 border border-success"

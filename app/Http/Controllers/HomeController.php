@@ -27,4 +27,7 @@ class HomeController extends Controller
      public function forbidden(){
          return view('error_code.forbidden')->with(Auth::logout());
      }
+     public function notFound(){
+        return view('error_code.not_found');
+    }
 }

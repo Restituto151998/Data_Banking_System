@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Guest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class DirectRegisterController extends Controller
@@ -14,6 +15,9 @@ class DirectRegisterController extends Controller
         $this->middleware( 'auth' );
     }
     public function index(){
+        if(Auth::user()->type == 'ADMIN'){
+            return redirect('/not_found');
+        }
         return view('staff.register');
     }
 
