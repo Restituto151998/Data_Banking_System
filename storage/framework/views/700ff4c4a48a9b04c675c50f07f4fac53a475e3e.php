@@ -27,20 +27,20 @@
                                                     enctype="multipart/form-data">
                                                     <?php echo csrf_field(); ?>
                                                     <div class="form-group mt-4">
-                                                        <?php if(Auth::user()->image): ?>
+                                                      
                                                             <img id="preview-profile-image"
-                                                                src="<?php echo e(asset('storage/images/' . Auth::user()->image)); ?>"
+                                                                src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
                                                                 alt="preview image" style="width:200px; height: 200px;"
                                                                 class="rounded-circle">
-                                                        <?php endif; ?>
+                                                       
                                                         <div class="row">
                                                             <div class="col">
                                                                 <label for="profile">
                                                                     <i data-feather="camera"
                                                                         style="position:unset; margin-right: -172px; margin-top: -30px;"></i>
                                                                 </label>
-                                                                <input type="file" name="image" placeholder="Choose image" id="profile"
-                                                                    hidden>
+                                                                <input type="file" name="image" placeholder="Choose image"
+                                                                    id="profile" hidden>
                                                                 <?php $__errorArgs = ['image'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -56,8 +56,8 @@ unset($__errorArgs, $__bag); ?>
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn  text-center text-white"
-                                                                style="background-color:  #21791A; margin-top: -20px;" id="change_profile"
-                                                                disabled>Change Profile</button>
+                                                                style="background-color:  #21791A; margin-top: -20px;"
+                                                                id="change_profile" disabled>Change Profile</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -76,7 +76,7 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
                                                 <div class="col text-center">
                                                     <input type="text" value="<?php echo e(Auth::user()->email); ?> "
-                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
+                                                        style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Email Address</label>
                                                 </div>
@@ -84,13 +84,13 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="row mt-2">
                                                 <div class="col text-center">
                                                     <input type="number" value="<?php echo e(Auth::user()->phone_number); ?>"
-                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
+                                                        style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Phone Number</label>
                                                 </div>
                                                 <div class="col text-center">
                                                     <input type="text" value="<?php echo e(Auth::user()->gender); ?>"
-                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
+                                                        style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Gender</label>
                                                 </div>
@@ -98,7 +98,7 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="row mt-2">
                                                 <div class="col text-center">
                                                     <input type="text" value="<?php echo e(Auth::user()->address); ?>"
-                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
+                                                        style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
                                                     <label class="col-form-label mb-1 text-black">Address</label>
                                                 </div>
@@ -108,10 +108,9 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="col text-center mt-3">
                                                 <a type="button"
                                                     href="<?php echo e(route('admin.profile.test', ['id' => Auth::user()->id])); ?>"
-                                                    id="btn-edit"
-                                                    class="btn w-50 text-white" style="background-color:  #21791A"
+                                                    id="btn-edit" class="btn w-50 text-white" style="background-color:  #21791A"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal<?php echo e(Auth::user()->id); ?>" >
+                                                    data-bs-target="#exampleModal<?php echo e(Auth::user()->id); ?>">
                                                     Edit Information
                                                 </a>
                                             </div>

@@ -83,10 +83,10 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
-                            @if (Auth::user()->image)
-                                <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle"
+                           
+                                <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}" class="rounded-circle"
                                     style="width:30px; height: 30px;" alt="img">
-                            @endif
+                       
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 

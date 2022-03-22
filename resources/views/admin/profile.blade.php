@@ -27,12 +27,12 @@
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group mt-4">
-                                                        @if (Auth::user()->image)
+                                                      
                                                             <img id="preview-profile-image"
-                                                                src="{{ Auth::user()->image || asset('storage/images/default_profile.jpg') }}"
+                                                                src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
                                                                 alt="preview image" style="width:200px; height: 200px;"
                                                                 class="rounded-circle">
-                                                        @endif
+                                                       
                                                         <div class="row">
                                                             <div class="col">
                                                                 <label for="profile">
