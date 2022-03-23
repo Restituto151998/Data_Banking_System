@@ -44,7 +44,7 @@
                     <div class="card">
                         <div class="row">
                             <div class="col">
-                                <img src="<?php echo e(asset('storage/' . $image->imagePath)); ?>" alt="images"
+                                <img src="<?php echo e($image->imagePath); ?>" alt="images"
                                     style="width:100%; height: 100%;">
                             </div>
                             <div class="col">

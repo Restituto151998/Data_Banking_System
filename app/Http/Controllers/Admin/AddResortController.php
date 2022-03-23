@@ -39,20 +39,18 @@ class AddResortController extends Controller
         
             $resort_description = $request->input( 'resort_description' );
 
-            $filename = $request->image->getClientOriginalName();
-    
-            $imagePath = $request->file( 'image' )->storeAs( 'resorts', base64_encode($filename), 'public' );
+            $path = 'data:image/' .  pathinfo($request->image, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->image));
     
             $save = new Resort;
     
             $save->resort_description = $resort_description;
             $save->resort_name = $resort_name;
-            $save->imagePath = $imagePath;
+            $save->imagePath = $path;
 
             $save->save();
     
             return redirect( 'add_resort' )->with( 'status', 'Resort Successfully Added!' );
-    
+            
         }
         if ( $resorts->resort_name == $resort_name) {
             return redirect()->back()->with( 'message_fail', 'Duplicate resort name please try another.' );

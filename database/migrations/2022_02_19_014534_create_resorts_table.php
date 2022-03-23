@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('resort_name');
             $table->longText('resort_description');
-            $table->string('imagePath');
+            $table->longText('imagePath');
             $table->timestamps();
         });
     }
