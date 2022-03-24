@@ -34,9 +34,10 @@ class ResortListController extends Controller
 
     public function edit( $id )
  {
-    $resort = DB::table( 'resort_lists' )->select( 'id', 'user_id', 'resort_name', 'assigned_staff' )->get();
-    $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description' )->get();
-    $images = DB::table( 'images' )->select( 'id', 'resort_id', 'image_description' )->get();
+    $resort = ResortList::find( $id )->get();
+    $resorts = Resort::find( $id )->get();
+    $images = Image::where('resort_id', $id )->get();
+    dd($resort);
     return view( 'admin.resort_list_edit', compact( 'resort', 'resorts', 'images' ) );
     }
 
@@ -54,9 +55,13 @@ class ResortListController extends Controller
                     'resort_name' => 'required|max:255',
                     'assigned_staff' => 'required|max:255',
                 ] );
+                $resortName = $request->validate( [
+                    'resort_name' => 'required|max:255',
+                ] );
 
             $path = 'data:image/' .  pathinfo($request->imageMain, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->imageMain));
             ResortList::where('resort_id',$request->id )->update( $updateData );
+            Resort::where('id',$request->id )->update( $resortName );
             Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description, 'imagePath' => $path ] );
             return redirect('/resort_list')->with( 'message', 'Successfully Updated!' );
         }else{
@@ -64,7 +69,11 @@ class ResortListController extends Controller
                 'resort_name' => 'required|max:255',
                 'assigned_staff' => 'required|max:255',
             ] );
+            $resortName = $request->validate( [
+                'resort_name' => 'required|max:255',
+            ] );
             ResortList::where('resort_id',$request->id )->update( $updateData );
+            Resort::where('id',$request->id )->update( $resortName );
             return redirect('/resort_list')->with( 'message', 'Successfully Updated!' );
         }
     }
