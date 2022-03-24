@@ -55,6 +55,12 @@
 
 </head>
 <style>
+ @media screen and (min-width: 676px) {
+        .modal-dialog {
+            max-width: 1000px;
+            /* New width for default modal */
+        }
+    }
     @media print {
         .print {
             display: none;
@@ -88,6 +94,7 @@
     <div class="loader"></div>
     <div id="#app"></div>
     @auth
+        @yield('editResortlist')
         @yield('voda')
         @yield('search')
         @yield('editUser')
@@ -130,7 +137,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                          document.getElementById('logout-form').submit();">
+                                                                                                                                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -271,6 +278,23 @@
 
             $("#click_me").click(function() {
                 $("#alcoy").toggle();
+            });
+
+             $('#imageMain').change(function() {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    $('#preview-imageMain').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+          
+            });
+            
+              $('#image').change(function() {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    $('#preview-image').attr('src', e.target.result);
+                }
+                 reader.readAsDataURL(this.files[0]);
             });
         });
 
