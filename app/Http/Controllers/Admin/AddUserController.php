@@ -138,6 +138,8 @@ class AddUserController extends Controller
                 $user->gender = $gender;
                 $user->email = $email;
                 $user->password = $password;
+                
+               
 
                 $user->save();
            
@@ -166,7 +168,9 @@ class AddUserController extends Controller
         $user->address = $address;
         $user->phone_number = $phone_number;
         $user->gender = $gender;
-
+        $resortlist = ResortList::where('user_id', $request->id)->first();
+        $resortlist->assigned_staff = $name;
+        $resortlist->save();
         $user->save();
         return redirect( '/add_user' )->with( 'message', 'Successfully Updated!' );
     }

@@ -14,15 +14,15 @@
                                 <div class="card" style="width:500px;height:400px">
                                     <div class="card-body text-center mb-3">
                                         <img style="width: 50%" src="data:image/png;base64, {!! base64_encode(
-    QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resort-alcoy-registration'),
+    QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resorts-overview'),
 ) !!} "
                                             id="qr" hidden>
                                         <p class="qr-text" hidden>url: <a href="resort-alcoy-registration"
-                                                target="_blank">alcoy-data-banking.herokuapp.com/resort-alcoy-registration</a><br>
+                                                target="_blank">alcoy-data-banking.herokuapp.com/resorts-overview</a><br>
                                             Please scan the QR-Code to register.</p>
                                         <p id="qr-text" hidden>Please scan the QR-Code to register.</p>
                                         <a href="data:image/png;base64, {!! base64_encode(
-    QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resort-alcoy-registration'),
+    QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resorts-overview'),
 ) !!} " class="btn"
                                             id="qr-download" download hidden>
                                             <i class="fa fa-download" hidden></i> Download Qr-Code
@@ -54,14 +54,14 @@
                             <div class="card" style="width:500px;height:400px">
                                 <div class="card-body text-center mb-3">
                                     <img style="width: 50%" src="data:image/png;base64, {!! base64_encode(
-    QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resort-alcoy-registration'),
+    QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resorts-overview'),
 ) !!} " id="qr"
                                         hidden>
                                     <p class="qr-text" hidden>url: <a href="resort-alcoy-registration"
-                                            target="_blank">alcoy-data-banking.herokuapp.com/resort-alcoy-registration</a><br>
+                                            target="_blank">alcoy-data-banking.herokuapp.com/resorts-overview</a><br>
                                         Please scan the QR-Code to register.</p>
                                     <a href="data:image/png;base64, {!! base64_encode(
-    QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resort-alcoy-registration'),
+    QrCode::format('png')->merge('assets/img/logo.png', 0.3, true)->size(200)->errorCorrection('H')->generate('alcoy-data-banking.herokuapp.com/resorts-overview'),
 ) !!} " class="btn" id="qr-download"
                                         download hidden>
                                         <i class="fa fa-download" hidden></i> Download Qr-Code

@@ -39,9 +39,18 @@
     <link rel="stylesheet" href="./assets/css/loader.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
+<style>
+    @media screen and (min-width: 676px) {
+        .modal-dialog {
+            max-width: 1000px;
+            /* New width for default modal */
+        }
+    }
+
+</style>
 
 <body>
-    <div class="loader" style=""></div>
+    <div class="loader"></div>
     <div id="app"></div>
     @auth
         @yield('adminDashboard')
@@ -83,10 +92,10 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
-                           
-                                <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}" class="rounded-circle"
-                                    style="width:30px; height: 30px;" alt="img">
-                       
+
+                            <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
+                                class="rounded-circle" style="width:30px; height: 30px;" alt="img">
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
@@ -96,10 +105,10 @@
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
                                 document.getElementById('logout-form').submit();">
-                                {{ __('Profile') }} 
-                                    <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
-                                        class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
-                                
+                                {{ __('Profile') }}
+                                <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
+                                    class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -116,7 +125,7 @@
                             class="text-white" id="alcoy">{{ __('Alcoy') }}</span>
                     </a>
                 </div>
-                <ul class="sidebar-menu" >
+                <ul class="sidebar-menu">
                     {{-- <li class="menu-header">Main</li> --}}
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
@@ -133,10 +142,12 @@
                     </li>
                     @if (Auth::user()->type == 'STAFF')
                         <li class="dropdown">
-                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}" class="nav-link text-white"><span>{{ Auth::user()->resortList->resort_name }}</span></a>
+                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}"
+                                class="nav-link text-white"><span>{{ Auth::user()->resortList->resort_name }}</span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="/staff_register" class="nav-link text-white"><span>{{ __('Direct Register') }}</span></a>
+                            <a href="/staff_register"
+                                class="nav-link text-white"><span>{{ __('Direct Register') }}</span></a>
                         </li>
                     @endif
                     @if (Auth::user()->type == 'ADMIN')
@@ -149,7 +160,8 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="/resort_list" class="nav-link text-white"><span>{{ __('Resort Assignee') }}</span></a>
+                            <a href="/resort_list"
+                                class="nav-link text-white"><span>{{ __('Resort Assignee') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">
@@ -213,6 +225,7 @@
                 reader.readAsDataURL(this.files[0]);
                 $('#change_profile').attr('disabled', false);
             });
+
             $('#password').change(function() {
                 $('#change-password').attr('hidden', false);
             });

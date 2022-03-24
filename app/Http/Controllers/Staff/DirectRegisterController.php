@@ -22,7 +22,7 @@ class DirectRegisterController extends Controller
     }
 
     public function register(Request $request){
-        $status = 'pending';
+        $status = 'accepted';
 
         $resort_id = $request->user()->resortList->resort_id;
         $full_name = $request->input('full_name');

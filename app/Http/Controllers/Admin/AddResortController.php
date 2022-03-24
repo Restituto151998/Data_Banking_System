@@ -40,7 +40,7 @@ class AddResortController extends Controller
             $resort_description = $request->input( 'resort_description' );
 
             $path = 'data:image/' .  pathinfo($request->image, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->image));
-    
+
             $save = new Resort;
     
             $save->resort_description = $resort_description;

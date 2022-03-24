@@ -55,6 +55,12 @@
 
 </head>
 <style>
+ @media  screen and (min-width: 676px) {
+        .modal-dialog {
+            max-width: 1000px;
+            /* New width for default modal */
+        }
+    }
     @media  print {
         .print {
             display: none;
@@ -75,7 +81,8 @@
         .sta {
             display: none;
         }
-        #back{
+
+        #back {
             display: none;
         }
 
@@ -87,6 +94,7 @@
     <div class="loader"></div>
     <div id="#app"></div>
     <?php if(auth()->guard()->check()): ?>
+        <?php echo $__env->yieldContent('editResortlist'); ?>
         <?php echo $__env->yieldContent('voda'); ?>
         <?php echo $__env->yieldContent('search'); ?>
         <?php echo $__env->yieldContent('editUser'); ?>
@@ -118,23 +126,24 @@
                             aria-haspopup="true" aria-expanded="false" v-pre>
                             <?php echo e(Auth::user()->name); ?>
 
-                          
-                                <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>" class="rounded-circle"
-                                    style="width:30px; height: 30px;" alt="img">
-                           
+
+                            <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
+                                class="rounded-circle" style="width:30px; height: 30px;" alt="img">
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="<?php echo e(route('logout')); ?>"
                                 onclick="event.preventDefault();
-                                                                                                                          document.getElementById('logout-form').submit();">
+                                                                                                                                  document.getElementById('logout-form').submit();">
                                 <?php echo e(__('Logout')); ?> <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
                                 document.getElementById('logout-form').submit();">
-                                <?php echo e(__('Profile')); ?> <?php if(Auth::user()->image): ?>
-                                    <img src="<?php echo e(asset('storage/images/' . Auth::user()->image)); ?>"
-                                        class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
-                                <?php endif; ?>
+                                <?php echo e(__('Profile')); ?>
+
+                                <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
+                                    class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+
                             </a>
                             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
                                 <?php echo csrf_field(); ?>
@@ -153,7 +162,7 @@
                     </a>
                 </div>
                 <ul class="sidebar-menu">
-                 
+
                     <?php if(Auth::user()->type == 'ADMIN'): ?>
                         <li class="dropdown">
                             <a href="/admin_dashboard" class="nav-link text-white"><span><?php echo e(__('Dashboard')); ?></span></a>
@@ -169,10 +178,14 @@
                     </li>
                     <?php if(Auth::user()->type == 'STAFF'): ?>
                         <li class="dropdown">
-                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>" class="nav-link text-white"><i<span><?php echo e(Auth::user()->resortList->resort_name); ?></span></a>
+                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>"
+                                class="nav-link text-white">
+                                <i<span><?php echo e(Auth::user()->resortList->resort_name); ?></span>
+                            </a>
                         </li>
                         <li class="dropdown">
-                            <a href="/staff_register" class="nav-link text-white"><span><?php echo e(__('Direct Register')); ?></span></a>
+                            <a href="/staff_register"
+                                class="nav-link text-white"><span><?php echo e(__('Direct Register')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <?php if(Auth::user()->type == 'ADMIN'): ?>
@@ -185,7 +198,8 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="/resort_list" class="nav-link text-white"><span><?php echo e(__('Resort Assignee')); ?></span></a>
+                            <a href="/resort_list"
+                                class="nav-link text-white"><span><?php echo e(__('Resort Assignee')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <li class="dropdown">
@@ -260,6 +274,26 @@
             $("#click_me").click(function() {
                 $("#alcoy").toggle();
             });
+
+
+               $('#imageMain').change(function() {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    $('#preview-imageMain').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+          
+            });
+
+            
+              $('#image').change(function() {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    $('#preview-image').attr('src', e.target.result);
+                }
+                 reader.readAsDataURL(this.files[0]);
+            });
+            
         });
 
     </script>

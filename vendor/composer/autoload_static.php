@@ -571,6 +571,7 @@ class ComposerStaticInit85a093801ac278a3d26ebe543293c187
         'App\\Http\\Middleware\\Type' => __DIR__ . '/../..' . '/app/Http/Middleware/Type.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Guest' => __DIR__ . '/../..' . '/app/Models/Guest.php',
+        'App\\Models\\Image' => __DIR__ . '/../..' . '/app/Models/Image.php',
         'App\\Models\\Resort' => __DIR__ . '/../..' . '/app/Models/Resort.php',
         'App\\Models\\ResortList' => __DIR__ . '/../..' . '/app/Models/ResortList.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

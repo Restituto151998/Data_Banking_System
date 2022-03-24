@@ -55,6 +55,12 @@
 
 </head>
 <style>
+ @media screen and (min-width: 676px) {
+        .modal-dialog {
+            max-width: 1000px;
+            /* New width for default modal */
+        }
+    }
     @media print {
         .print {
             display: none;
@@ -75,7 +81,8 @@
         .sta {
             display: none;
         }
-        #back{
+
+        #back {
             display: none;
         }
 
@@ -87,6 +94,7 @@
     <div class="loader"></div>
     <div id="#app"></div>
     @auth
+        @yield('editResortlist')
         @yield('voda')
         @yield('search')
         @yield('editUser')
@@ -116,23 +124,23 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
-                          
-                                <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}" class="rounded-circle"
-                                    style="width:30px; height: 30px;" alt="img">
-                           
+
+                            <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
+                                class="rounded-circle" style="width:30px; height: 30px;" alt="img">
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                          document.getElementById('logout-form').submit();">
+                                                                                                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
                                 document.getElementById('logout-form').submit();">
-                                {{ __('Profile') }} 
-                                    <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
-                                        class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
-              
+                                {{ __('Profile') }}
+                                <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
+                                    class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -151,7 +159,7 @@
                     </a>
                 </div>
                 <ul class="sidebar-menu">
-                 
+
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
                             <a href="/admin_dashboard" class="nav-link text-white"><span>{{ __('Dashboard') }}</span></a>
@@ -167,10 +175,14 @@
                     </li>
                     @if (Auth::user()->type == 'STAFF')
                         <li class="dropdown">
-                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}" class="nav-link text-white"><i<span>{{ Auth::user()->resortList->resort_name }}</span></a>
+                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}"
+                                class="nav-link text-white">
+                                <i<span>{{ Auth::user()->resortList->resort_name }}</span>
+                            </a>
                         </li>
                         <li class="dropdown">
-                            <a href="/staff_register" class="nav-link text-white"><span>{{ __('Direct Register') }}</span></a>
+                            <a href="/staff_register"
+                                class="nav-link text-white"><span>{{ __('Direct Register') }}</span></a>
                         </li>
                     @endif
                     @if (Auth::user()->type == 'ADMIN')
@@ -183,7 +195,8 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="/resort_list" class="nav-link text-white"><span>{{ __('Resort Assignee') }}</span></a>
+                            <a href="/resort_list"
+                                class="nav-link text-white"><span>{{ __('Resort Assignee') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">
@@ -258,6 +271,26 @@
             $("#click_me").click(function() {
                 $("#alcoy").toggle();
             });
+
+
+               $('#imageMain').change(function() {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    $('#preview-imageMain').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+          
+            });
+
+            
+              $('#image').change(function() {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    $('#preview-image').attr('src', e.target.result);
+                }
+                 reader.readAsDataURL(this.files[0]);
+            });
+            
         });
 
     </script>

@@ -39,6 +39,7 @@ return array(
     'App\\Http\\Middleware\\Type' => $baseDir . '/app/Http/Middleware/Type.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Guest' => $baseDir . '/app/Models/Guest.php',
+    'App\\Models\\Image' => $baseDir . '/app/Models/Image.php',
     'App\\Models\\Resort' => $baseDir . '/app/Models/Resort.php',
     'App\\Models\\ResortList' => $baseDir . '/app/Models/ResortList.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

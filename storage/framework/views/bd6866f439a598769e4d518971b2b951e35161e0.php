@@ -39,9 +39,18 @@
     <link rel="stylesheet" href="./assets/css/loader.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
+<style>
+    @media  screen and (min-width: 676px) {
+        .modal-dialog {
+            max-width: 1000px;
+            /* New width for default modal */
+        }
+    }
+
+</style>
 
 <body>
-    <div class="loader" style=""></div>
+    <div class="loader"></div>
     <div id="app"></div>
     <?php if(auth()->guard()->check()): ?>
         <?php echo $__env->yieldContent('adminDashboard'); ?>
@@ -79,10 +88,10 @@
                             aria-haspopup="true" aria-expanded="false" v-pre>
                             <?php echo e(Auth::user()->name); ?>
 
-                           
-                                <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>" class="rounded-circle"
-                                    style="width:30px; height: 30px;" alt="img">
-                       
+
+                            <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
+                                class="rounded-circle" style="width:30px; height: 30px;" alt="img">
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
@@ -92,10 +101,11 @@
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
                                 document.getElementById('logout-form').submit();">
-                                <?php echo e(__('Profile')); ?> <?php if(Auth::user()->image): ?>
-                                    <img src="<?php echo e(asset('storage/images/' . Auth::user()->image)); ?>"
-                                        class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
-                                <?php endif; ?>
+                                <?php echo e(__('Profile')); ?>
+
+                                <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
+                                    class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+
                             </a>
                             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
                                 <?php echo csrf_field(); ?>
@@ -112,7 +122,7 @@
                             class="text-white" id="alcoy"><?php echo e(__('Alcoy')); ?></span>
                     </a>
                 </div>
-                <ul class="sidebar-menu" >
+                <ul class="sidebar-menu">
                     
                     <?php if(Auth::user()->type == 'ADMIN'): ?>
                         <li class="dropdown">
@@ -129,10 +139,12 @@
                     </li>
                     <?php if(Auth::user()->type == 'STAFF'): ?>
                         <li class="dropdown">
-                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>" class="nav-link text-white"><span><?php echo e(Auth::user()->resortList->resort_name); ?></span></a>
+                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>"
+                                class="nav-link text-white"><span><?php echo e(Auth::user()->resortList->resort_name); ?></span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="/staff_register" class="nav-link text-white"><span><?php echo e(__('Direct Register')); ?></span></a>
+                            <a href="/staff_register"
+                                class="nav-link text-white"><span><?php echo e(__('Direct Register')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <?php if(Auth::user()->type == 'ADMIN'): ?>
@@ -145,7 +157,8 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="/resort_list" class="nav-link text-white"><span><?php echo e(__('Resort Assignee')); ?></span></a>
+                            <a href="/resort_list"
+                                class="nav-link text-white"><span><?php echo e(__('Resort Assignee')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <li class="dropdown">
@@ -209,6 +222,7 @@
                 reader.readAsDataURL(this.files[0]);
                 $('#change_profile').attr('disabled', false);
             });
+
             $('#password').change(function() {
                 $('#change-password').attr('hidden', false);
             });
