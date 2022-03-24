@@ -70,7 +70,7 @@
                                                                                     data-feather="eye"></i> </a>
                                                                             ◉
                                                                             <a
-                                                                                href="{{ route('admin.resort_list_edit', $resort->resort_id) }} }}"><i
+                                                                                href="{{ route('admin.resort_list_edit', $resort->resort_id) }}"><i
                                                                                     data-feather="edit"></i> </a>
                                                                         </td>
                                                                     </tr>
