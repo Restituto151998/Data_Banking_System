@@ -57,26 +57,13 @@
                                     action="<?php echo e(url('/guest_register')); ?>">
                                     <?php echo csrf_field(); ?>
                                     <div class="card-body ">
-                                        <div class="row mb-2">
-                                            <div class="col d-flex" style="width:500px">
-                                                <strong><label><i data-feather="check-square" class="mt-3"></i>
-                                                    </label></strong>
-                                                </button>
-                                                <select class="custom-select mt-2 ml-4" id="inputGroupSelect01"
-                                                    style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                                    name="resort">
-                                                    <option selected>Choose resort...</option>
                                                     <?php $__currentLoopData = $resort_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <?php if($resort->status == 'open'): ?>
-                                                            <option value="<?php echo e(json_encode($resort)); ?>">
-                                                                <?php echo e($resort->resort_name); ?>
-
-                                                            </option>
+                                                        <?php if($resort->resort_id == $resort->id): ?>
+                                                        <input name="resort_id" value="<?php echo e($resort->resort_id); ?>" hidden>
                                                         <?php endif; ?>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </select>
-                                            </div>
-                                        </div>
+                                              
+                                          
                                         <div class="form-group  mb-2" id='myform'>
                                             <div class="input-group-append">
                                                 <strong><label><i data-feather="user" class="mt-2"></i>
@@ -210,8 +197,6 @@
             $("#registra").remove();
         }, 3000);
     });
-
 </script>
 
-</html>
-<?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/online_registration/guest_registration.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/online_registration/guest_registration.blade.php ENDPATH**/ ?>

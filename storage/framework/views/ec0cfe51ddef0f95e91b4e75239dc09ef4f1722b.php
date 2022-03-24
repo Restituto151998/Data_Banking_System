@@ -50,7 +50,7 @@
                             <div class="col">
                                 <h2 class="text-center mt-4 mb-4"><?php echo e($image->resort_name); ?></h2>
                                 <p><?php echo e($image->resort_description); ?></p>
-                                <button class="btn btn-primary mb-3">More Info</button>
+                                <a href="<?php echo e(route('online_registration.more_info', $image->id )); ?>" class="btn btn-primary mb-3">More Info</a>                             
                             </div>
                         </div>
                     </div>
@@ -71,8 +71,6 @@
                 $("#overview").remove();
             }, 3000);
     });
-
 </script>
 
-</html>
-<?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/online_registration/resorts_overview.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/online_registration/resorts_overview.blade.php ENDPATH**/ ?>

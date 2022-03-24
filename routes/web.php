@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/resorts-overview', [App\Http\Controllers\GuestController::class, 'overview'])->name('online_registration.resorts_overview');
-Route::get('/resort-alcoy-registration', [App\Http\Controllers\GuestController::class, 'redirectTo'])->name('online_registration.guest_registration');
+Route::get('/resorts-more-info/{id}', [App\Http\Controllers\GuestController::class, 'info'])->name('online_registration.more_info');
+Route::get('/resort-alcoy-registration/{id}', [App\Http\Controllers\GuestController::class, 'redirectTo'])->name('online_registration.guest_registration');
 Route::post('/guest_register', [App\Http\Controllers\GuestController::class, 'onlineRegister']);
 
 Route::get('/forbidden', [App\Http\Controllers\HomeController::class, 'forbidden'])->name('error_code.forbidden');
@@ -50,7 +50,8 @@ Route::get('/status_update/{id}', [App\Http\Controllers\Admin\AddUserController:
 Route::get('/status_accept/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'accept']);
 Route::get('/status_cancel/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'cancel']);
 Route::get('/status_leave_delete/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'leave']);
-Route::get('/resort_list/{id}/edit', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.edit_resort_list');
+Route::get('/resort_list/resort_list_edit/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.resort_list_edit');
+Route::post('/resort_list/resort_list_edit/add-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'addImage'])->name('admin.resort_list_edit.add');
 Route::put('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'update']);
 Route::get('/generate_qrcode', [App\Http\Controllers\Admin\QrCodeController::class, 'qrCode'])->name('resorts.generate_qrcode');
 

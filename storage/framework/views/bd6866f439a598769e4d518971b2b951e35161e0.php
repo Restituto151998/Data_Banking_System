@@ -39,7 +39,14 @@
     <link rel="stylesheet" href="./assets/css/loader.css">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
-
+<style>
+    @media  screen and (min-width: 676px) {
+        .modal-dialog {
+            max-width: 1000px;
+            /* New width for default modal */
+        }
+    }
+</style>
 <body>
     <div class="loader"></div>
     <div id="app"></div>

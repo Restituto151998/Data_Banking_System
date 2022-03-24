@@ -27,7 +27,7 @@ class AddResortController extends Controller
  {
 
         $validatedData = $request->validate( [
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'resort_name' => 'required',
             'resort_description' => 'required',
 
@@ -35,15 +35,22 @@ class AddResortController extends Controller
         $resort_name = $request->input( 'resort_name' );   
 
         $resorts = Resort::where( 'resort_name', '=', $resort_name )->first();
+        if(empty($resorts->resort_name)){
         
-        if(empty($resorts->resort_name)){   
             $resort_description = $request->input( 'resort_description' );
+
             $path = 'data:image/' .  pathinfo($request->image, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->image));
 
-            Resort::insert(['imagePath'=>$path, 'resort_name' => $resort_name, 'resort_description' => $resort_description,] );
+            $save = new Resort;
+    
+            $save->resort_description = $resort_description;
+            $save->resort_name = $resort_name;
+            $save->imagePath = $path;
+
+            $save->save();
     
             return redirect( 'add_resort' )->with( 'status', 'Resort Successfully Added!' );
-    
+            
         }
         if ( $resorts->resort_name == $resort_name) {
             return redirect()->back()->with( 'message_fail', 'Duplicate resort name please try another.' );
