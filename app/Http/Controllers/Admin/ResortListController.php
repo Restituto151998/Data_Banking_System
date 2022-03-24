@@ -34,9 +34,9 @@ class ResortListController extends Controller
 
     public function edit( $id )
  {
-    $resort = ResortList::where('resort_id','=', $id);
-    $resorts = Resort::where('id','=', $id);
-    $images = Image::where('resort_id','=', $id );
+    $resort = DB::table( 'resort_lists' )->select( 'id', 'user_id', 'resort_name', 'assigned_staff' )->get();
+    $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description' )->get();
+    $images = DB::table( 'images' )->select( 'id', 'resort_id', 'image_description' )->get();
     return view( 'admin.resort_list_edit', compact( 'resort', 'resorts', 'images' ) );
     }
 
