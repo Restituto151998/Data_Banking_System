@@ -40,13 +40,16 @@ public function redirectTo($id){
   }  
 
   public function overview(){
+    $resort_lists = ResortList::all();
+   
     $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
     $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
   
-    return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image);
+    return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image)->with('resort_lists', $resort_lists);
   }  
 
   public function info($id){
+    
     $resorts = Resort::where('id', $id)->get();
     // $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
     $images = Image::where('resort_id', $id)->get();

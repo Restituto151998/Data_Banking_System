@@ -26,10 +26,11 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="<?php echo e(asset('/assets/css/data.css')); ?>">
+     
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
 
-<body>
+<body class="overview">
     <div class="container mt-5">
         <?php if(session()->has('status')): ?>
             <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
@@ -38,30 +39,35 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <?php endif; ?>
+        <?php endif; ?> 
 
-        <div class="row">
+   <div class="row">
             <?php $__currentLoopData = $resorts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-sm-4 mt-4">
-                    <div class="card card-flip h-100">
-                        <div class="card-front text-white bg-primary">
-                            <div class="card-body">
-                                <i class="fa fa-arrow-circle-right fa-5x float-right"></i>
-                                <h3 class="card-title"><?php echo e($image->resort_name); ?></h3>
-                                <img src="<?php echo e($image->imagePath); ?>" class="rounded" alt="images"
-                                    style="width:100%; height: 100%;">
+                <?php $__currentLoopData = $resort_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($image->id == $resort->resort_id && $resort->status == 'open'): ?>
+                        <div class="col-sm-4 mt-4">
+                            <div class="card card-flip">
+                                <div class="card-front text-white bg-primary">
+                                    <div class="card-body">
+                                        <i class="fa fa-arrow-circle-right fa-2x float-right"></i>
+                                        <h5 class="card-title"><?php echo e($image->resort_name); ?></h5>
+                                        <img src="<?php echo e($image->imagePath); ?>" class="rounded" alt="images"
+                                            style="width:100%; height: 100%;">
+                                    </div>
+                                </div>
+                                <div class="card-back bg-white">
+                                    <div class="card-body text-primary">
+                                        <h5 class="card-title"><?php echo e($image->resort_name); ?></h5>
+                                        <p class="card-text"><?php echo e($image->resort_description); ?></p>
+                                        <a href="<?php echo e(route('online_registration.more_info', $image->id)); ?>"
+                                            class="btn w-100 text-white" style="background-color:  #21791A; ">More
+                                            Info</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-back bg-white">
-                            <div class="card-body text-primary">
-                                <h3 class="card-title"><?php echo e($image->resort_name); ?></h3>
-                                <p class="card-text"><?php echo e($image->resort_description); ?></p>
-                                <a href="<?php echo e(route('online_registration.more_info', $image->id)); ?>"
-                                    class="btn w-100 text-white" style="background-color:  #21791A; ">More Info</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
@@ -82,8 +88,8 @@
         $(".card-text").each(function(i) {
             var text = $(".card-text").text();
             console.log(text);
-            if (text.length > 400) {
-                $('.card-text').text(text.substring(0, 400) + '.....');
+            if (text.length > 100) {
+                $('.card-text').text(text.substring(0, 100) + '.....');
             }
 
         });
