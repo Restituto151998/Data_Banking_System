@@ -18,17 +18,15 @@
     <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/datatables.min.css')); ?>">
     <link rel="stylesheet"
         href="<?php echo e(asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')); ?>">
-
-    <link rel="stylesheet" href="./assets/css/components.css">
-    <link rel="stylesheet" href="./assets/css/register.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/custom.css">
-    <link rel="stylesheet" href="./assets/css/data.css">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
+    <link rel="stylesheet" href="<?php echo e(asset('/assets/css/components.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/assets/css/register.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/assets/css/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/assets/css/custom.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/assets/css/data.css')); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('/assets/img/alcoyLogo.png')); ?>" />
 </head>
-
 <body style="background-color:#21791A">
-
+<div class="container">
     <div class="container mb-5">
         <?php if(session()->has('error')): ?>
             <div id="registra" class="alert alert-danger mt-4 alert-dismissible fade  show" role="alert">
@@ -47,7 +45,7 @@
                             <div class="col" id="register_content">
                                 <div class="inline-block">
                                     <div>
-                                        <img alt="image" src="assets/img/logo.png"
+                                        <img alt="image" src="<?php echo e(asset('assets/img/logo.png')); ?>"
                                             class="register-logo rounded-circle" />
                                         <h3 class="text-register">Welcome to Alcoy</h3>
                                     </div>
@@ -62,8 +60,7 @@
                                                         <input name="resort_id" value="<?php echo e($resort->resort_id); ?>" hidden>
                                                         <?php endif; ?>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                              
-                                          
+                            
                                         <div class="form-group  mb-2" id='myform'>
                                             <div class="input-group-append">
                                                 <strong><label><i data-feather="user" class="mt-2"></i>
@@ -168,6 +165,7 @@
                                             </button>
                                         </div>
                                 </form>
+                            </div>
                             </div>
                         </div>
                     </div>

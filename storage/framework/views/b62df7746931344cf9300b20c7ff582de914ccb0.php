@@ -1,5 +1,4 @@
 
-
 <?php $__env->startSection('content'); ?>
 
     <body style="background-color: #21791A">

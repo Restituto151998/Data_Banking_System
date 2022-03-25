@@ -18,13 +18,14 @@
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/app.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/summernote/summernote-bs4.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/datatables.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')); ?>">
+    <link rel="stylesheet"
+        href="<?php echo e(asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')); ?>">
 
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/register.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
-    <link rel="stylesheet" href="./assets/css/data.css">
+    <link rel="stylesheet" href="<?php echo e(asset('/assets/css/data.css')); ?>">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
 
@@ -38,25 +39,32 @@
                 </button>
             </div>
         <?php endif; ?>
+
         <div class="row">
             <?php $__currentLoopData = $resorts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col">
-                                <img src="<?php echo e($image->imagePath); ?>" alt="images"
+                <div class="col-sm-4 mt-4">
+                    <div class="card card-flip h-100">
+                        <div class="card-front text-white bg-primary">
+                            <div class="card-body">
+                                <i class="fa fa-arrow-circle-right fa-5x float-right"></i>
+                                <h3 class="card-title"><?php echo e($image->resort_name); ?></h3>
+                                <img src="<?php echo e($image->imagePath); ?>" class="rounded" alt="images"
                                     style="width:100%; height: 100%;">
                             </div>
-                            <div class="col">
-                                <h2 class="text-center mt-4 mb-4"><?php echo e($image->resort_name); ?></h2>
-                                <p><?php echo e($image->resort_description); ?></p>
-                                <a href="<?php echo e(route('online_registration.more_info', $image->id )); ?>" class="btn btn-primary mb-3">More Info</a>                             
+                        </div>
+                        <div class="card-back bg-white">
+                            <div class="card-body text-primary">
+                                <h3 class="card-title"><?php echo e($image->resort_name); ?></h3>
+                                <p class="card-text"><?php echo e($image->resort_description); ?></p>
+                                <a href="<?php echo e(route('online_registration.more_info', $image->id)); ?>"
+                                    class="btn w-100 text-white" style="background-color:  #21791A; ">More Info</a>
                             </div>
                         </div>
                     </div>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
+
     </div>
 </body>
 <script src="<?php echo e(asset('assets/js/app.min.js')); ?>"></script>
@@ -67,10 +75,21 @@
 <script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
 <script>
     $(document).ready(function() {
-          setTimeout(function() {
-                $("#overview").remove();
-            }, 3000);
+        setTimeout(function() {
+            $("#overview").remove();
+        }, 3000);
+
+        $(".card-text").each(function(i) {
+            var text = $(".card-text").text();
+            console.log(text);
+            if (text.length > 400) {
+                $('.card-text').text(text.substring(0, 400) + '.....');
+            }
+
+        });
     });
+
 </script>
 
-</html><?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/online_registration/resorts_overview.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/online_registration/resorts_overview.blade.php ENDPATH**/ ?>

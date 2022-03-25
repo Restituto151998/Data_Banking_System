@@ -34,15 +34,16 @@ class ResortListController extends Controller
 
     public function edit( $id )
  {
-    $resort = ResortList::find( $id )->get();
-    $resorts = Resort::find( $id )->get();
+    $resort = ResortList::find( $id );
+    $resorts = Resort::find( $id );
+    $users = User::all();
     $images = Image::where('resort_id', $id )->get();
-    return view( 'admin.resort_list_edit', compact( 'resort', 'resorts', 'images' ) );
+    return view( 'admin.resort_list_edit', compact( 'resort', 'resorts', 'images','users' ) );
     }
 
     public function guest( $id ) {
         $resort = ResortList::where( 'resort_id',  '=', $id )->first();
-        $guests = Guest::where( 'resort_id', $id )->paginate(15);
+        $guests = Guest::where( 'resort_id', $id )->get();
   
         return view( 'resorts.resort_guest' )->with( 'guests', $guests )->with('resorts', $resort );
     }
@@ -54,13 +55,9 @@ class ResortListController extends Controller
                     'resort_name' => 'required|max:255',
                     'assigned_staff' => 'required|max:255',
                 ] );
-                $resortName = $request->validate( [
-                    'resort_name' => 'required|max:255',
-                ] );
 
             $path = 'data:image/' .  pathinfo($request->imageMain, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->imageMain));
             ResortList::where('resort_id',$request->id )->update( $updateData );
-            Resort::where('id',$request->id )->update( $resortName );
             Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description, 'imagePath' => $path ] );
             return redirect('/resort_list')->with( 'message', 'Successfully Updated!' );
         }else{
@@ -68,11 +65,9 @@ class ResortListController extends Controller
                 'resort_name' => 'required|max:255',
                 'assigned_staff' => 'required|max:255',
             ] );
-            $resortName = $request->validate( [
-                'resort_name' => 'required|max:255',
-            ] );
+
             ResortList::where('resort_id',$request->id )->update( $updateData );
-            Resort::where('id',$request->id )->update( $resortName );
+            Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description] );
             return redirect('/resort_list')->with( 'message', 'Successfully Updated!' );
         }
     }

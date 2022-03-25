@@ -84,7 +84,7 @@ class AddUserController extends Controller
         $save->status = $status;
         $save->password = $password;
 
-        if ( ResortList::where( 'resort_name', '=', $assigned_staff )->exists() ) {
+        if ( ResortList::where( 'resort_name', '=', $assigned_staff )->exists()) {
             return redirect()->back()->with( 'message_fail', 'Resort has already staff.' );
         }
 

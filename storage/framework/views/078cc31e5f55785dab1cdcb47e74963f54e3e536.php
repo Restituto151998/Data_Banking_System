@@ -14,7 +14,7 @@
 
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                    ['Nationality', 'count'],
+                    ['nationality', 'count'],
                     <?php
                     echo $chartData; ?>
                 ]);

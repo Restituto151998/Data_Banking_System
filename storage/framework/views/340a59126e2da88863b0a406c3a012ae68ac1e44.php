@@ -5,6 +5,7 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="row">
+
                 <div class="co-12">
                     <div class="card mb-0">
                         <div class="card-body">
@@ -21,8 +22,6 @@
                             <?php if(Auth::user()->type == 'STAFF'): ?>
                                 <h4 class="mt-3 text-center"><?php echo e($resorts->resort_name); ?> </h4>
                             <?php endif; ?>
-                            <input type="search" id="myInput" class="form-control mt-4 border border-success"
-                                placeholder="Search" aria-label="Search">
                             <div class="row mt-2">
                                 <div class="col-12">
                                     <div class="card-body cont">
@@ -30,7 +29,8 @@
                                             <table class="table" id="table">
                                                 <thead class="table" style="background-color: #21791A;">
                                                     <tr>
-                                                        <th scope="col" class="text-white">Full Name</th>
+                                                        <th scope="col" style="border-top-left-radius:10px 10px;"
+                                                            class="text-white">Full Name</th>
                                                         <th scope="col" class="text-white">Gender</th>
                                                         <th scope="col" class="text-white">Address</th>
                                                         <th scope="col" class="text-white">Phone Number</th>
@@ -39,7 +39,8 @@
                                                         <th scope="col" class="text-white">Time Use</th>
                                                         <th scope="col" class="text-white">Purpose</th>
                                                         <th scope="col" class="text-white">Date Registered</th>
-                                                        <th scope="col" class="sta text-white">Status</th>
+                                                        <th scope="col" style="border-top-right-radius:10px 10px;"
+                                                            class="sta text-white">Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
@@ -53,7 +54,7 @@
                                                             <td><?php echo e($guest->temperature); ?></td>
                                                             <td><?php echo e($guest->time_use); ?></td>
                                                             <td><?php echo e($guest->purpose); ?></td>
-                                                            <td><?php echo e($guest->created_at); ?></td>
+                                                            <td><?php echo e($guest->created_at->todatestring()); ?></td>
                                                             <td class="sta">
                                                                 <?php if(Auth::user()->type == 'ADMIN'): ?>
                                                                     <?php if($guest->status == 'pending'): ?>
@@ -148,12 +149,6 @@
                                                 <img src="<?php echo e(asset('assets/img/no_data.PNG')); ?>" alt="" srcset=""><br>
                                                 <p>No results found.</p>
                                             </div>
-                                            <?php if(empty($guest)): ?>
-                                                <div class="text-center" id="no_data">
-                                                    <img src="../../assets/img/no_datas.PNG" alt="" srcset=""><br>
-                                                    <p>No Data</p>
-                                                </div>
-                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -162,7 +157,6 @@
                     </div>
                 </div>
             </div>
-            <span class="float-right"><?php echo $guests->links(); ?></span>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

@@ -32,9 +32,9 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <img id="preview-imageMain"
+                                                    <img id="preview-imageMain" class="rounded"
                                                         src="{{ $resorts->imagePath ?? asset('/assets/img/no_image.png') }}"
-                                                        alt="preview image" style="width:400px; height: 300px;">
+                                                        alt="preview image" style="width:400px; height: 400px;">
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <input type="file" name="imageMain" placeholder="Choose image"
@@ -61,10 +61,19 @@
                                                         Name</label></strong>
                                             </div>
                                             <div class="col text-center">
-                                                <input type="name"
-                                                    style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                    class="form-control text-center" name="assigned_staff"
-                                                    value="{{ $resort->assigned_staff }}">
+                                                <select class="custom-select text-center" id="inputGroupSelect01"
+                                                    name="assigned_staff"
+                                                    style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                      <option selected hidden>{{ $resort->assigned_staff }}</option>
+                                                    @foreach ($users as $user)
+                                                        @if ($user->type == 'STAFF')                                                         
+                                                            <option value="{{ $user->name }}">
+                                                                {{ $user->name }}
+                                                            </option>]
+                                                        @endif
+                                                    @endforeach
+
+                                                </select>
                                                 <strong><label for="name" class="col-form-label mb-1 text-black">Assigned
                                                         Staff</label></strong>
 
@@ -81,101 +90,19 @@
                                             </div>
                                         </div>
 
+                                        <div class="col d-flex mt-3">
 
-                                        {{-- <div class="row mt-5">
-                                                <div class="col-4">
-                                                    <div class="form-group">
-                                                        <img id="preview-image1" src="{{ asset('/assets/img/no_image.png') }}"
-                                                            alt="preview image" style="max-height: 250px;">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <input type="file" name="image1" placeholder="Choose image"
-                                                                    id="image1">
-                                                                @error('image1')
-                                                                    <div class="alert alert-danger mt-1 mb-1">
-                                                                        {{ $message }}</div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-8">
-                                                    <textarea name="image1_description"
-                                                        style="min-height:200px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
-                                                        class="form-control ml-2" placeholder="Enter resort description"
-                                                        required></textarea>
-                                                    <strong><label for="name" class="col-form-label mb-1 text-black">Image1
-                                                            Description</label></strong>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-5">
-                                                <div class="col-4">
-                                                    <div class="form-group">
-                                                        <img id="preview-image2"
-                                                            src="{{ asset('/assets/img/no_image.png') }}" alt="preview image"
-                                                            style="max-height: 250px;">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <input type="file" name="image2" placeholder="Choose image"
-                                                                    id="image2">
-                                                                @error('image2')
-                                                                    <div class="alert alert-danger mt-1 mb-1">
-                                                                        {{ $message }}</div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-8">
-                                                    <textarea name="image2_description"
-                                                        style="min-height:200px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
-                                                        class="form-control ml-2" placeholder="Enter resort description"
-                                                        required></textarea>
-                                                    <strong><label for="name" class="col-form-label mb-1 text-black">Image2
-                                                            Description</label></strong>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-5">
-                                                <div class="col-4">
-                                                    <div class="form-group">
-                                                        <img id="preview-image3"
-                                                            src="{{ asset('/assets/img/no_image.png') }}" alt="preview image"
-                                                            style="max-height: 250px;">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <input type="file" name="image3" placeholder="Choose image"
-                                                                    id="image3">
-                                                                @error('image3')
-                                                                    <div class="alert alert-danger mt-1 mb-1">
-                                                                        {{ $message }}</div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-8">
-                                                    <textarea name="image3_description"
-                                                        style="min-height:200px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
-                                                        class="form-control ml-2" placeholder="Enter resort description"
-                                                        required></textarea>
-                                                    <strong><label for="name" class="col-form-label mb-1 text-black">Image3
-                                                            Description</label></strong>
-                                                </div>
-                                            </div> --}}
-                                        <div class="row">
-                                            <div class="col text-center mt-3">
-                                                <a type="button"
-                                                    href="{{ route('admin.resort_list_edit.add', ['id' => $resort->id]) }}"
-                                                    id="btn-edit" class="btn w-50 text-white" style="background-color:  #21791A"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal{{ $resort->id }}">
-                                                    Add Image
-                                                </a>
-                                            </div>
-                                            <div class="col text-center mt-3">
-                                                <button type="submit" class="btn w-50 text-white" id="btn-edit"
-                                                    style="background-color: #21791A;">Save
-                                                    changes</button>
-                                            </div>
+                                            <a type="button"
+                                                href="{{ route('admin.resort_list_edit.add', ['id' => $resort->id]) }}"
+                                                id="btn-edit" class="btn w-50 text-white" style="background-color:  #21791A"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal{{ $resort->id }}">
+                                                Add Image
+                                            </a>
+
+                                            <button type="submit" class="btn w-50 text-white ml-5" id="btn-edit"
+                                                style="background-color: #21791A;">Save
+                                                changes</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +118,8 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form method="post" action="{{ route('admin.resort_list_edit.add',$resort->id) }}" enctype="multipart/form-data">
+                                        <form method="post" action="{{ route('admin.resort_list_edit.add', $resort->id) }}"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             <div class="modal-body">
                                                 <input type="text" value="{{ $resort->id }}" hidden>
