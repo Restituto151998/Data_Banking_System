@@ -55,22 +55,37 @@
 
 </head>
 <style>
- @media screen and (min-width: 676px) {
+    @media screen and (min-width: 676px) {
         .modal-dialog {
             max-width: 1000px;
             /* New width for default modal */
         }
     }
+
     @media print {
         .print {
             display: none;
         }
 
+
         .main-sidebar {
+            display: none;
+            margin-top: -20px;
+        }
+
+        #table_length {
             display: none;
         }
 
-        #myInput {
+        #table_filter {
+            display: none;
+        }
+
+        #table_info {
+            display: none;
+        }
+
+        .pagination {
             display: none;
         }
 
@@ -137,7 +152,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                  document.getElementById('logout-form').submit();">
+                                                                                                                                                                                          document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -241,6 +256,8 @@
     <!-- Custom JS File -->
     <script src="{{ asset('../assets/js/custom.js') }}"></script>
     <script src="{{ asset('../assets/js/jquery.printPage.js') }}"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#btn-password').on('click', function() {
@@ -248,55 +265,53 @@
                 $('#btn-password').attr('hidden', true);
             });
 
-            $('.p').hide();
-            $("#myInput").on("keyup", function() {
-                var count = 0;
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-
-                $('.tr:visible').each(function() {
-                    count++;
-                });
-                if (value != '') {
-                    $('#no_data').hide();
-                    if (count === 0) {
-                        $('.p').show();
-
-                    } else {
-                        $('.p').hide();
-
-                    }
-                } else {
-                    $('#no_data').show()
-                    $('.p').hide();
-                }
-
-
+            $('#table').DataTable({
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ]
             });
+
+            $('.p').hide();
 
             $("#click_me").click(function() {
                 $("#alcoy").toggle();
             });
 
-             $('#imageMain').change(function() {
+            $('#imageMain').change(function() {
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     $('#preview-imageMain').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(this.files[0]);
-          
+
             });
-            
-              $('#image').change(function() {
+
+            $('#image').change(function() {
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     $('#preview-image').attr('src', e.target.result);
                 }
-                 reader.readAsDataURL(this.files[0]);
+                reader.readAsDataURL(this.files[0]);
             });
         });
+
+        function filterText() {
+            var rex = new RegExp($('#filterText').val());
+            if (rex == "/all/") {
+                clearFilter()
+            } else {
+                $('.tr').hide();
+                $('.tr').filter(function() {
+                    return rex.test($(this).text());
+                }).show();
+            }
+        }
+
+        function clearFilter() {
+            $('.filterText').val('');
+            $('.tr').show();
+        }
 
     </script>
 </body>

@@ -32,7 +32,7 @@
                                                 <div class="col text-center">
                                                     <div class="form-group">
                                                         <img id="preview-image-before-upload" src="/assets/img/no_image.png"
-                                                            alt="preview image" style="max-height: 250px;">
+                                                            alt="preview image" style="height: 300px; width:400px;">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <input type="file" name="image" placeholder="Choose image"

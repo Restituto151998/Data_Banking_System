@@ -32,9 +32,9 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <img id="preview-imageMain"
+                                                    <img id="preview-imageMain" class="rounded"
                                                         src="<?php echo e($resorts->imagePath ?? asset('/assets/img/no_image.png')); ?>"
-                                                        alt="preview image" style="width:400px; height: 300px;">
+                                                        alt="preview image" style="width:400px; height: 400px;">
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <input type="file" name="imageMain" placeholder="Choose image"
@@ -68,10 +68,20 @@ unset($__errorArgs, $__bag); ?>
                                                         Name</label></strong>
                                             </div>
                                             <div class="col text-center">
-                                                <input type="name"
-                                                    style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                    class="form-control text-center" name="assigned_staff"
-                                                    value="<?php echo e($resort->assigned_staff); ?>">
+                                                <select class="custom-select text-center" id="inputGroupSelect01"
+                                                    name="assigned_staff"
+                                                    style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                      <option selected hidden><?php echo e($resort->assigned_staff); ?></option>
+                                                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php if($user->type == 'STAFF'): ?>                                                         
+                                                            <option value="<?php echo e($user->name); ?>">
+                                                                <?php echo e($user->name); ?>
+
+                                                            </option>]
+                                                        <?php endif; ?>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                                </select>
                                                 <strong><label for="name" class="col-form-label mb-1 text-black">Assigned
                                                         Staff</label></strong>
 
@@ -88,22 +98,19 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
 
+                                        <div class="col d-flex mt-3">
 
-                                        
-                                        <div class="row">
-                                            <div class="col text-center mt-3">
-                                                <a type="button"
-                                                    href="<?php echo e(route('admin.resort_list_edit.add', ['id' => $resort->id])); ?>"
-                                                    id="btn-edit" class="btn w-50 text-white" style="background-color:  #21791A"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo e($resort->id); ?>">
-                                                    Add Image
-                                                </a>
-                                            </div>
-                                            <div class="col text-center mt-3">
-                                                <button type="submit" class="btn w-50 text-white" id="btn-edit"
-                                                    style="background-color: #21791A;">Save
-                                                    changes</button>
-                                            </div>
+                                            <a type="button"
+                                                href="<?php echo e(route('admin.resort_list_edit.add', ['id' => $resort->id])); ?>"
+                                                id="btn-edit" class="btn w-50 text-white" style="background-color:  #21791A"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo e($resort->id); ?>">
+                                                Add Image
+                                            </a>
+
+                                            <button type="submit" class="btn w-50 text-white ml-5" id="btn-edit"
+                                                style="background-color: #21791A;">Save
+                                                changes</button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +126,8 @@ unset($__errorArgs, $__bag); ?>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form method="post" action="<?php echo e(route('admin.resort_list_edit.add',$resort->id)); ?>" enctype="multipart/form-data">
+                                        <form method="post" action="<?php echo e(route('admin.resort_list_edit.add', $resort->id)); ?>"
+                                            enctype="multipart/form-data">
                                             <?php echo csrf_field(); ?>
                                             <div class="modal-body">
                                                 <input type="text" value="<?php echo e($resort->id); ?>" hidden>
@@ -181,4 +189,5 @@ unset($__errorArgs, $__bag); ?>
         </div>
     <?php endif; ?>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('sideNav.resort_nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/admin/resort_list_edit.blade.php ENDPATH**/ ?>

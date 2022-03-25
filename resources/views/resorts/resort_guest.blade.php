@@ -5,6 +5,7 @@
         <!-- Main Content -->
         <div class="main-content">
             <div class="row">
+
                 <div class="co-12">
                     <div class="card mb-0">
                         <div class="card-body">
@@ -21,8 +22,6 @@
                             @if (Auth::user()->type == 'STAFF')
                                 <h4 class="mt-3 text-center">{{ $resorts->resort_name }} </h4>
                             @endif
-                            <input type="search" id="myInput" class="form-control mt-4 border border-success"
-                                placeholder="Search" aria-label="Search">
                             <div class="row mt-2">
                                 <div class="col-12">
                                     <div class="card-body cont">
@@ -30,7 +29,8 @@
                                             <table class="table" id="table">
                                                 <thead class="table" style="background-color: #21791A;">
                                                     <tr>
-                                                        <th scope="col" class="text-white">Full Name</th>
+                                                        <th scope="col" style="border-top-left-radius:10px 10px;"
+                                                            class="text-white">Full Name</th>
                                                         <th scope="col" class="text-white">Gender</th>
                                                         <th scope="col" class="text-white">Address</th>
                                                         <th scope="col" class="text-white">Phone Number</th>
@@ -39,7 +39,8 @@
                                                         <th scope="col" class="text-white">Time Use</th>
                                                         <th scope="col" class="text-white">Purpose</th>
                                                         <th scope="col" class="text-white">Date Registered</th>
-                                                        <th scope="col" class="sta text-white">Status</th>
+                                                        <th scope="col" style="border-top-right-radius:10px 10px;"
+                                                            class="sta text-white">Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
@@ -53,7 +54,7 @@
                                                             <td>{{ $guest->temperature }}</td>
                                                             <td>{{ $guest->time_use }}</td>
                                                             <td>{{ $guest->purpose }}</td>
-                                                            <td>{{ $guest->created_at }}</td>
+                                                            <td>{{ $guest->created_at->todatestring() }}</td>
                                                             <td class="sta">
                                                                 @if (Auth::user()->type == 'ADMIN')
                                                                     @if ($guest->status == 'pending')
@@ -140,12 +141,6 @@
                                                 <img src="{{ asset('assets/img/no_data.PNG') }}" alt="" srcset=""><br>
                                                 <p>No results found.</p>
                                             </div>
-                                            @empty($guest)
-                                                <div class="text-center" id="no_data">
-                                                    <img src="../../assets/img/no_datas.PNG" alt="" srcset=""><br>
-                                                    <p>No Data</p>
-                                                </div>
-                                            @endempty
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +149,6 @@
                     </div>
                 </div>
             </div>
-            <span class="float-right">{!! $guests->links() !!}</span>
         </div>
     </div>
 @endsection

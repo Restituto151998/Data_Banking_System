@@ -1,5 +1,4 @@
 @extends('sideNav.side_navbar')
-
 @section('content')
 
     <body style="background-color: #21791A">

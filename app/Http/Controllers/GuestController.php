@@ -29,7 +29,7 @@ public function redirectTo($id){
     $save->gender = $request->gender;
     $save->address = $request->address;
     $save->phone_number = $request->phone_number;
-    $save->nationality = $request->nationality;
+    $save->nationality = strtoupper($request->nationality);
     $save->temperature = $request->temperature;
     $save->time_use = $request->time_use;
     $save->purpose = $request->purpose;

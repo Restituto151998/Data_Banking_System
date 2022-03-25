@@ -52,16 +52,16 @@
                                                 <div class="card-body text-center cont">
                                                     <table class="table">
                                                         <thead class="table"
-                                                            style="background-color: #21791A; text-align:center">
+                                                            style="background-color: #21791A; text-align:center; ">
                                                             <tr>
-                                                                <th scope="col" class="text-white">Name</th>
+                                                                <th scope="col" style="border-top-left-radius:10px 10px;" class="text-white">Name</th>
                                                                 <th scope="col" class="text-white">Email Address</th>
                                                                 <th scope="col" class="text-white">Phone Number</th>
                                                                 <th scope="col" class="text-white">Gender</th>
                                                                 <th scope="col" class="text-white">Address</th>
                                                                 <th scope="col" class="text-white">Role</th>
                                                                 <th scope="col" class="text-white">Status</th>
-                                                                <th scope="col" class="text-white">Action</th>
+                                                                <th scope="col" style="border-top-right-radius:10px 10px;" class="text-white">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="myTable">

@@ -293,16 +293,12 @@
                 $('#qr-download').attr('hidden', false);;
                 $('#load').attr('hidden', true);;
             }, 3000);
-
             $('#generate').attr('disabled', true);;
         });
-
         $("#click_me").click(function() {
             $("#alcoy").toggle();
         });
-
     </script>
 </body>
-
 </html>
 <?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/sideNav/side_navbar.blade.php ENDPATH**/ ?>
