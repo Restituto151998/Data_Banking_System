@@ -29,7 +29,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
 </head>
 
-<body>
+<body class="overview">
     <div class="container mt-5">
         @if (session()->has('status'))
             <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
@@ -39,29 +39,33 @@
                 </button>
             </div>
         @endif
-
         <div class="row">
             @foreach ($resorts as $image)
-                <div class="col-sm-4 mt-4">
-                    <div class="card card-flip h-100">
-                        <div class="card-front text-white bg-primary">
-                            <div class="card-body">
-                                <i class="fa fa-arrow-circle-right fa-5x float-right"></i>
-                                <h3 class="card-title">{{ $image->resort_name }}</h3>
-                                <img src="{{ $image->imagePath }}" class="rounded" alt="images"
-                                    style="width:100%; height: 100%;">
+                @foreach ($resort_lists as $resort)
+                    @if ($image->id == $resort->resort_id && $resort->status == 'open')
+                        <div class="col-sm-4 mt-4">
+                            <div class="card card-flip">
+                                <div class="card-front text-white bg-primary">
+                                    <div class="card-body">
+                                        <i class="fa fa-arrow-circle-right fa-2x float-right"></i>
+                                        <h5 class="card-title">{{ $image->resort_name }}</h5>
+                                        <img src="{{ $image->imagePath }}" class="rounded" alt="images"
+                                            style="width:100%; height: 100%;">
+                                    </div>
+                                </div>
+                                <div class="card-back bg-white">
+                                    <div class="card-body text-primary">
+                                        <h5 class="card-title">{{ $image->resort_name }}</h5>
+                                        <p class="card-text">{{ $image->resort_description }}</p>
+                                        <a href="{{ route('online_registration.more_info', $image->id) }}"
+                                            class="btn w-100 text-white" style="background-color:  #21791A; ">More
+                                            Info</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-back bg-white">
-                            <div class="card-body text-primary">
-                                <h3 class="card-title">{{ $image->resort_name }}</h3>
-                                <p class="card-text">{{ $image->resort_description }}</p>
-                                <a href="{{ route('online_registration.more_info', $image->id) }}"
-                                    class="btn w-100 text-white" style="background-color:  #21791A; ">More Info</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
             @endforeach
         </div>
 
@@ -82,8 +86,8 @@
         $(".card-text").each(function(i) {
             var text = $(".card-text").text();
             console.log(text);
-            if (text.length > 400) {
-                $('.card-text').text(text.substring(0, 400) + '.....');
+            if (text.length > 100) {
+                $('.card-text').text(text.substring(0, 100) + '.....');
             }
 
         });
