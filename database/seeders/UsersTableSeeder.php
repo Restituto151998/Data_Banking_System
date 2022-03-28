@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
     'name' => 'admin',
     'address'=> 'Alcoy',
     'phone_number'=>'09123456789',
-    'gender'=>'male',
+    'gender'=>'Male',
     'email' => 'admin@admin',
     'status' => 'enable',
     'type' => 'ADMIN',

@@ -47,9 +47,8 @@
 
     <link rel="stylesheet" href="../../assets/css/components.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/custom.css">
     <link rel="stylesheet" href="../../assets/css/data.css">
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/alcoyLogo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/logo.png" />
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -57,7 +56,7 @@
 <style>
     @media screen and (min-width: 676px) {
         .modal-dialog {
-            max-width: 1000px;
+            max-width: 700px;
             /* New width for default modal */
         }
     }
@@ -152,7 +151,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                          document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -254,7 +253,7 @@
     <script src="{{ asset('../assets/js/scripts.js') }}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- Custom JS File -->
-    <script src="{{ asset('../assets/js/custom.js') }}"></script>
+    {{-- <script src="{{ asset('../assets/js/custom.js') }}"></script> --}}
     <script src="{{ asset('../assets/js/jquery.printPage.js') }}"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -271,6 +270,10 @@
                     [10, 25, 50, "All"]
                 ]
             });
+
+            setTimeout(function() {
+                $("#alert_message").remove();
+            }, 3000);
 
             $('.p').hide();
 

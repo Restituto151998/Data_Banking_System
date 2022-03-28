@@ -15,22 +15,17 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
-    <link rel="stylesheet" href="./assets/css/components.css">
-    <link rel="stylesheet" href="./assets/css/register.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/custom.css">
+    <link rel="stylesheet" href="{{ asset('/assets/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/data.css') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/assets/img/logo.png') }}" />
 </head>
 
-<body class="overview">
+<body>
     <div class="container mt-5">
+        <div id="app"></div>
         @if (session()->has('status'))
             <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
                 {{ session()->get('status') }} ✔️
@@ -40,9 +35,16 @@
             </div>
         @endif
         <div class="row">
+            <div class="card text-center">
+                <div class="card-title text-center">
+                    <h1 class="mt-3">Alcoy Resorts Overview</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             @foreach ($resorts as $image)
-                @foreach ($resort_lists as $resort)
-                    @if ($image->id == $resort->resort_id && $resort->status == 'open')
+                @foreach ($resort_lists as $res)
+                    @if ($image->id == $res->resort_id && $res->status == 'open')
                         <div class="col-sm-4 mt-4">
                             <div class="card card-flip">
                                 <div class="card-front text-white bg-primary">
@@ -56,7 +58,6 @@
                                 <div class="card-back bg-white">
                                     <div class="card-body text-primary">
                                         <h5 class="card-title">{{ $image->resort_name }}</h5>
-                                        <p class="card-text">{{ $image->resort_description }}</p>
                                         <a href="{{ route('online_registration.more_info', $image->id) }}"
                                             class="btn w-100 text-white" style="background-color:  #21791A; ">More
                                             Info</a>
@@ -72,25 +73,12 @@
     </div>
 </body>
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
-<script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>
 <script>
     $(document).ready(function() {
         setTimeout(function() {
             $("#overview").remove();
         }, 3000);
-
-        $(".card-text").each(function(i) {
-            var text = $(".card-text").text();
-            console.log(text);
-            if (text.length > 100) {
-                $('.card-text').text(text.substring(0, 100) + '.....');
-            }
-
-        });
     });
 
 </script>

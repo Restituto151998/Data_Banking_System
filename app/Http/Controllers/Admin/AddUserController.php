@@ -138,8 +138,6 @@ class AddUserController extends Controller
                 $user->gender = $gender;
                 $user->email = $email;
                 $user->password = $password;
-                
-               
 
                 $user->save();
            
