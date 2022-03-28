@@ -14,7 +14,8 @@ class GuestController extends Controller
 
 public function redirectTo($id){
     $resort_lists = ResortList::where('resort_id', $id)->get();
-    return view('online_registration.guest_registration')->with( 'resort_lists', $resort_lists );
+    $resorts = Resort::where('id', $id)->get();
+    return view('online_registration.guest_registration')->with( 'resort_lists', $resort_lists )->with( 'resorts', $resorts );
 }
 
   public function onlineRegister(Request $request){
@@ -43,9 +44,9 @@ public function redirectTo($id){
     $resort_lists = ResortList::all();
    
     $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
-    $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
+
   
-    return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resorts', $image)->with('resort_lists', $resort_lists);
+    return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resort_lists', $resort_lists);
   }  
 
   public function info($id){

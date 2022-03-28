@@ -131,7 +131,7 @@
                                                             <div class="row mt-2">
                                                                 <div class="col text-center">
                                                                     <input type="text" value="{{ Auth::user()->name }}"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                         class="form-control ml-2 text-center" name="name"
                                                                         placeholder="Profile name" required>
                                                                     <label
@@ -139,7 +139,7 @@
                                                                 </div>
                                                                 <div class="col text-center">
                                                                     <input type="value" value="{{ Auth::user()->email }}"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                         class="form-control ml-2 text-center" name="email"
                                                                         placeholder="Email address" required>
                                                                     <label class="col-form-label mb-1 text-black"><small>Email
@@ -150,7 +150,7 @@
                                                                 <div class="col text-center">
                                                                     <input type="number"
                                                                         value="{{ Auth::user()->phone_number }}"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                         class="form-control ml-2 text-center"
                                                                         name="phone_number" placeholder="Phone number" required>
                                                                     <label class="col-form-label mb-1 text-black"><small>Phone
@@ -159,7 +159,7 @@
                                                                 <div class="col text-center">
                                                                     <select class="custom-select text-center"
                                                                         id="inputGroupSelect01" name="gender"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
                                                                         <option selected>{{ Auth::user()->gender }}</option>
                                                                         @if (Auth::user()->gender == 'Male')
                                                                             <option value="Female">
@@ -179,7 +179,7 @@
                                                             <div class="row mt-2">
                                                                 <div class="col text-center">
                                                                     <input type="text" value="{{ Auth::user()->address }}"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                         class="form-control ml-2 text-center" name="address"
                                                                         placeholder="Address" required>
                                                                     <label

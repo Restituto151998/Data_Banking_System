@@ -52,6 +52,7 @@ Route::get('/status_cancel/{id}', [App\Http\Controllers\Staff\DirectRegisterCont
 Route::get('/status_leave_delete/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'leave']);
 Route::get('/resort_list/resort_list_edit/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.resort_list_edit');
 Route::post('/resort_list/resort_list_edit/add-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'addImage'])->name('admin.resort_list_edit.add');
+Route::get('/resort_list/resort_list_edit/delete-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'deleteImage']);
 Route::put('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'update']);
 Route::get('/generate_qrcode', [App\Http\Controllers\Admin\QrCodeController::class, 'qrCode'])->name('resorts.generate_qrcode');
 

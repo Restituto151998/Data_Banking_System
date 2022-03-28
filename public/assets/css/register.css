@@ -22,12 +22,13 @@
         max-height: 30%;
         margin-left: 102px;
         margin-top: -59px;
+      
     }
     
     .text-register {
         color: green;
-        margin-left: 49px;
         margin-top: 12px;
+        font-size: 25px;
     }
     
     .card-header {

@@ -39,13 +39,15 @@
                                                         <thead class="table"
                                                             style="background-color: #21791A; text-align:center">
                                                             <tr>
-                                                                <th scope="col" style="border-top-left-radius:10px 10px;" class="text-white">
+                                                                <th scope="col" style="border-top-left-radius:10px 10px;"
+                                                                    class="text-white">
                                                                     Resort Name</th>
                                                                 <th scope="col" class="text-white">
                                                                     Assigned Staff</th>
                                                                 <th scope="col" class="text-white">
                                                                     Status</th>
-                                                                <th scope="col" style="border-top-right-radius:10px 10px;" class="text-white">
+                                                                <th scope="col" style="border-top-right-radius:10px 10px;"
+                                                                    class="text-white">
                                                                     Action</th>
                                                             </tr>
                                                         </thead>
@@ -67,9 +69,9 @@
                                                                         <td>
                                                                             <a
                                                                                 href="<?php echo e(route('resorts.resort_guest', $resort->resort_id)); ?>"><i
-                                                                                    data-feather="eye"></i> </a> 
+                                                                                    data-feather="eye"></i> </a>
                                                                             ◉
-                                                                             <a
+                                                                            <a
                                                                                 href="<?php echo e(route('admin.resort_list_edit', $resort->resort_id)); ?>"><i
                                                                                     data-feather="edit"></i> </a>
                                                                         </td>
@@ -90,18 +92,23 @@
                                                             srcset=""><br>
                                                         <p>No results found.</p>
                                                     </div>
-                                                    <span class="float-right"> <?php echo $resort_lists->links(); ?></span>
+
                                                 </div>
                                             <?php endif; ?>
                                         </div>
+
                                     </div>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
+            <span class="float-right"> <?php echo $resort_lists->links(); ?></span>
         </div>
     </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('sideNav.side_navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/admin/resort_list.blade.php ENDPATH**/ ?>

@@ -138,7 +138,7 @@ unset($__errorArgs, $__bag); ?>
                                                             <div class="row mt-2">
                                                                 <div class="col text-center">
                                                                     <input type="text" value="<?php echo e(Auth::user()->name); ?>"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                         class="form-control ml-2 text-center" name="name"
                                                                         placeholder="Profile name" required>
                                                                     <label
@@ -146,7 +146,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                                 <div class="col text-center">
                                                                     <input type="value" value="<?php echo e(Auth::user()->email); ?>"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                         class="form-control ml-2 text-center" name="email"
                                                                         placeholder="Email address" required>
                                                                     <label class="col-form-label mb-1 text-black"><small>Email
@@ -157,7 +157,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 <div class="col text-center">
                                                                     <input type="number"
                                                                         value="<?php echo e(Auth::user()->phone_number); ?>"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                         class="form-control ml-2 text-center"
                                                                         name="phone_number" placeholder="Phone number" required>
                                                                     <label class="col-form-label mb-1 text-black"><small>Phone
@@ -166,7 +166,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 <div class="col text-center">
                                                                     <select class="custom-select text-center"
                                                                         id="inputGroupSelect01" name="gender"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
                                                                         <option selected><?php echo e(Auth::user()->gender); ?></option>
                                                                         <?php if(Auth::user()->gender == 'Male'): ?>
                                                                             <option value="Female">
@@ -186,7 +186,7 @@ unset($__errorArgs, $__bag); ?>
                                                             <div class="row mt-2">
                                                                 <div class="col text-center">
                                                                     <input type="text" value="<?php echo e(Auth::user()->address); ?>"
-                                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
+                                                                        style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                         class="form-control ml-2 text-center" name="address"
                                                                         placeholder="Address" required>
                                                                     <label

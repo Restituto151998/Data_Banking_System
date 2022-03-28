@@ -34,10 +34,9 @@
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/data.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="./assets/css/data.css">
     <link rel="stylesheet" href="./assets/css/loader.css">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/logo.png" />
 </head>
 <style>
     @media  screen and (min-width: 676px) {
@@ -46,7 +45,9 @@
             /* New width for default modal */
         }
     }
+
 </style>
+
 <body>
     <div class="loader"></div>
     <div id="app"></div>
@@ -105,8 +106,8 @@
                                 document.getElementById('logout-form').submit();">
                                 <?php echo e(__('Profile')); ?>
 
-                                    <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
-                                        class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+                                <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
+                                    class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
                             </a>
                             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
                                 <?php echo csrf_field(); ?>
@@ -185,7 +186,6 @@
     <script src="<?php echo e(asset('assets/bundles/datatables/datatables.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/bundles/jquery-ui/jquery-ui.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/scripts.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/js/custom.js')); ?>"></script>
     <script>
         $(document).ready(function() {
             $('#add_resort').submit(function(e) {
@@ -298,7 +298,9 @@
         $("#click_me").click(function() {
             $("#alcoy").toggle();
         });
+
     </script>
 </body>
+
 </html>
 <?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/sideNav/side_navbar.blade.php ENDPATH**/ ?>

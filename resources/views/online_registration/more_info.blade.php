@@ -12,24 +12,17 @@
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/summernote/summernote-bs4.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
-    <link rel="stylesheet" href="./assets/css/components.css">
-    <link rel="stylesheet" href="./assets/css/register.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/custom.css">
-    <link rel="stylesheet" href="./assets/css/data.css">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/alcoyLogo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/assets/img/logo.png') }}" />
 </head>
 
 <body style="background-color:#6b6b6b;">
+    <div id="app"></div>
     <div class="container mt-5 mb-5">
         @if (session()->has('status'))
             <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
@@ -53,10 +46,10 @@
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                             <a href="{{ url('resort-alcoy-registration',$resort->id) }}" class="btn w-50 text-white"
-                                style="background-color:  #21791A">Register
-                                Now</a>
-                          </div>
+                                <a href="{{ url('resort-alcoy-registration', $resort->id) }}"
+                                    class="btn w-50 text-white" style="background-color:  #21791A">Register
+                                    Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,7 +63,7 @@
                             <div class="col">
                                 <img src="{{ $image->image }}" alt="images" style="width:100%; height: 100%;">
                             </div>
-                            <div class="col mt-5 p-5">
+                            <div class="col p-5">
                                 <p>{{ $image->image_description }}</p>
                             </div>
                         </div>
@@ -80,21 +73,24 @@
         @endforeach
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/summernote/summernote-bs4.js') }}"></script>
-<script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>
 <script>
     $(document).ready(function() {
         setTimeout(function() {
             $("#overview").remove();
         }, 3000);
     });
+
 </script>
 
 </html>

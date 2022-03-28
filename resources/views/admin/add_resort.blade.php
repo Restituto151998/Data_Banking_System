@@ -17,7 +17,7 @@
                     @if (session('status'))
                         <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
                             role="alert">
-                            {{ session('status') }}
+                            {{ session('status') }} ✔️
                         </div>
                     @endif
                     <div class="col-12">
@@ -32,7 +32,7 @@
                                                 <div class="col text-center">
                                                     <div class="form-group">
                                                         <img id="preview-image-before-upload" src="/assets/img/no_image.png"
-                                                            alt="preview image" style="height: 300px; width:400px;">
+                                                            alt="preview image" style="height: 400px; width:450px;">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <input type="file" name="image" placeholder="Choose image"
@@ -63,7 +63,7 @@
                                                 <div class="row">
                                                     <div class="col text-center mt-5">
                                                         <textarea name="resort_description"
-                                                            style="background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
+                                                            style="min-height:200px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
                                                             class="form-control ml-2"
                                                             placeholder="Enter resort description" required></textarea>
                                                     </div>
