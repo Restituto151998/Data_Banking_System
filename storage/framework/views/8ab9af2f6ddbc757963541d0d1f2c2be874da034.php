@@ -56,20 +56,29 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
         <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="row mt-4">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col">
-                                <img src="<?php echo e($image->image); ?>" alt="images" style="width:100%; height: 100%;">
-                            </div>
-                            <div class="col p-5">
-                                <p><?php echo e($image->image_description); ?></p>
+            
+            
+            <div class="main-wrapper main-wrapper-1 mt-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="<?php echo e($image->image); ?>" alt="images" id="image-info"
+                                            style="width:100%; height: 100%;">
+                                    </div>
+                                    <div class="col-sm-8 mt-3">
+                                        <p><?php echo e($image->image_description); ?></p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 </body>
