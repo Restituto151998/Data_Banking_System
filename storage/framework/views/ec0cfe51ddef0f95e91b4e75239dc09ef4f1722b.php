@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,16 @@
     <link rel="stylesheet" href="<?php echo e(asset('/assets/css/data.css')); ?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('/assets/img/logo.png')); ?>" />
 </head>
+<style>
+ @media  screen and (min-width: 414px) {
+        #flip {
+            max-width: 400px;
+            max-height: 400px;
+            /* New width for default modal */
+        }
+    }
 
+</style>
 <body>
     <div class="container mt-5">
         <div id="app"></div>
@@ -46,7 +56,8 @@
                 <?php $__currentLoopData = $resort_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $res): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if($image->id == $res->resort_id && $res->status == 'open'): ?>
                         <div class="col-sm-4 mt-4">
-                            <div class="card card-flip">
+                            <div class="card card-flip" id="flip"
+                                style="width:100%; height: 100%;">
                                 <div class="card-front text-white bg-primary">
                                     <div class="card-body">
                                         <i class="fa fa-arrow-circle-right fa-2x float-right"></i>
@@ -80,7 +91,6 @@
             $("#overview").remove();
         }, 3000);
     });
-
 </script>
 
 </html>

@@ -43,7 +43,7 @@
                                     <div class="inline-block">
                                         <div>
                                             <img alt="image" src="<?php echo e(asset('assets/img/logo.png')); ?>"
-                                                class="register-logo rounded-circle" />
+                                                class="register-logo rounded-circle text-center" />
                                             <?php $__currentLoopData = $resorts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <h3 class="text-register text-center">Welcome to
                                                     <?php echo e($resort->resort_name); ?></h3>

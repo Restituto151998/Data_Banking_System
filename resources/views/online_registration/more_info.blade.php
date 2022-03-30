@@ -56,12 +56,12 @@
             @endforeach
         </div>
         @foreach ($images as $image)
-            <div class="row mt-4">
+            {{-- <div class="row mt-4">
                 <div class="col-sm-12">
-                    <div class="card">
+                    <div class="card" id="card-info">
                         <div class="row">
                             <div class="col">
-                                <img src="{{ $image->image }}" alt="images" style="width:100%; height: 100%;">
+                                <img src="{{ $image->image }}" alt="images" id="image-info" style="width:100%; max-height: 100%;">
                             </div>
                             <div class="col p-5">
                                 <p>{{ $image->image_description }}</p>
@@ -69,7 +69,29 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+            {{-- sample --}}
+            <div class="main-wrapper main-wrapper-1 mt-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="{{ $image->image }}" alt="images" id="image-info"
+                                            style="width:100%; height: 100%;">
+                                    </div>
+                                    <div class="col-sm-8 mt-3">
+                                        <p>{{ $image->image_description }}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- end sample --}}
         @endforeach
     </div>
 </body>

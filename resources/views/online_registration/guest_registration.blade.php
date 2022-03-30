@@ -43,7 +43,7 @@
                                     <div class="inline-block">
                                         <div>
                                             <img alt="image" src="{{ asset('assets/img/logo.png') }}"
-                                                class="register-logo rounded-circle" />
+                                                class="register-logo rounded-circle text-center" />
                                             @foreach ($resorts as $resort)
                                                 <h3 class="text-register text-center">Welcome to
                                                     {{ $resort->resort_name }}</h3>
