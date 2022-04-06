@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('resortList'); ?>
-<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="main-wrapper main-wrapper-1">
         <div class="main-content">
             <div class="row">
@@ -58,12 +58,16 @@
                                                                             <?php endif; ?>
                                                                         </td>
                                                                         <td>
-                                                                            <a
-                                                                                href="<?php echo e(route('resorts.resort_guest', $resort->resort_id)); ?>" data-toggle="tooltip" data-placement="bottom" title="View all guest in <?php echo e($resort->resort_name); ?>"><i
+                                                                            <a href="<?php echo e(route('resorts.resort_guest', $resort->resort_id)); ?>"
+                                                                                data-toggle="tooltip"
+                                                                                data-placement="bottom"
+                                                                                title="View all guest in <?php echo e($resort->resort_name); ?>"><i
                                                                                     data-feather="eye"></i> </a>
                                                                             |
-                                                                            <a
-                                                                                href="<?php echo e(route('admin.resort_list_edit', $resort->resort_id)); ?>" data-toggle="tooltip" data-placement="bottom" title="Edit <?php echo e($resort->resort_name); ?>"><i
+                                                                            <a href="<?php echo e(route('admin.resort_list_edit', $resort->resort_id)); ?>"
+                                                                                data-toggle="tooltip"
+                                                                                data-placement="bottom"
+                                                                                title="Edit <?php echo e($resort->resort_name); ?>"><i
                                                                                     data-feather="edit"></i> </a>
                                                                         </td>
                                                                     </tr>

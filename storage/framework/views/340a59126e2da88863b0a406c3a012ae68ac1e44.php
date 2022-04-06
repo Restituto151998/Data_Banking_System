@@ -23,13 +23,13 @@
 
                                     <input name="id" value="<?php echo e($resorts->id); ?>" hidden>
                                     <?php $__empty_1 = true; $__currentLoopData = $dates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $date): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                        <label>from:</label><input type="date" name="from" class="from ml-2 mr-3"
+                                        <label>starting date:</label><input type="date" name="from" class="from ml-2 mr-3"
                                             value="<?php echo e($date->from); ?>">
-                                        <label>to: </label><input type="date" name="to" class="to ml-2"
+                                        <label>date end: </label><input type="date" name="to" class="to ml-2"
                                             value="<?php echo e($date->to); ?>">
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                        <label>from: </label><input type="date" name="from" class="from ml-2 mr-3">
-                                        <label>to: </label><input type="date" name="to" class="to ml-2">
+                                        <label>starting date: </label><input type="date" name="from" class="from ml-2 mr-3">
+                                        <label>date end: </label><input type="date" name="to" class="to ml-2">
 
                                     <?php endif; ?>
                                     <button type="submit" id="update-btn" class="btn btn-sm ml-3 text-light"
