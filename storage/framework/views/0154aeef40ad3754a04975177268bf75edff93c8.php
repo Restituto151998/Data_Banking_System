@@ -1,14 +1,10 @@
 
 
 <?php $__env->startSection('addResort'); ?>
+<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php if(auth()->guard()->check()): ?>
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
-                <?php if(session()->has('message_fail')): ?>
-                    <div id="alert_message" class="alert alert-danger alert-dismissible fade w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('message_fail')); ?> ❌
-                    </div>
-                <?php endif; ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
@@ -20,11 +16,6 @@
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <div class="card-body text-center">
-                                            <?php if(session('status')): ?>
-                                                <div class="alert alert-success">
-                                                    <?php echo e(session('status')); ?> ✔️
-                                                </div>
-                                            <?php endif; ?>
                                             <form action="<?php echo e(route('admin.add_user')); ?>" method="post" id="form_add_user">
                                                 <?php echo csrf_field(); ?>
                                                 <div class="card-body">

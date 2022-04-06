@@ -230,10 +230,6 @@
                 $('#change-password').attr('hidden', false);
             });
 
-            setTimeout(function() {
-                $("#alert_message").remove();
-            }, 3000);
-
             $('.p').hide();
             $("#myInput").on("keyup", function() {
                 var count = 0;

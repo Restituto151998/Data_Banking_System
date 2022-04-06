@@ -1,24 +1,10 @@
 @extends('sideNav.resort_nav')
 
 @section('editResortlist')
+    @include('sweetalert::alert')
     @auth
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
-                @if (session()->has('error'))
-                    <div id="alert_message" class="alert alert-danger alert-dismissible fade  w-25 show sticky" role="alert">
-                        {{ session()->get('error') }} ❌
-                    </div>
-                @endif
-                @if (session()->has('message'))
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        {{ session()->get('message') }} ✔️
-                    </div>
-                @endif
-                @if (session()->has('status'))
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        {{ session()->get('status') }} ✔️
-                    </div>
-                @endif
                 <div class="col-12">
                     <div class="card mb-0">
                         <div class="card-body">
@@ -35,13 +21,14 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <img id="preview-imageMain" class="rounded"
+                                                    <img id="preview-imageMain" class="rounded mb-1"
                                                         src="{{ $resorts->imagePath ?? asset('/assets/img/no_image.png') }}"
                                                         alt="preview image" style="width:400px; height: 400px;">
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <input type="file" name="imageMain" placeholder="Choose image"
-                                                                id="imageMain">
+                                                                id="imageMain" data-toggle="tooltip" data-placement="bottom"
+                                                                title="Choose Image">
                                                             @error('imageMain')
                                                                 <div class="alert alert-danger mt-1 mb-1">
                                                                     {{ $message }}</div>
@@ -55,7 +42,7 @@
                                     <div class="col">
                                         <div class="row mb-3">
                                             <div class="col text-center">
-                                                <input type="name"
+                                                <input type="name" id="resort_name"
                                                     style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center" name="resort_name"
                                                     value="{{ $resort->resort_name }}">
@@ -84,9 +71,9 @@
                                         </div>
                                         <div class="row ">
                                             <div class="col">
-                                                <textarea name="resort_description"
+                                                <textarea name="resort_description" id="resort_description"
                                                     style="min-height:200px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
-                                                    class="form-control ml-2" placeholder="Enter resort description"
+                                                    class="change form-control ml-2" placeholder="Enter resort description"
                                                     required>{{ $resorts->resort_description }}</textarea>
                                                 <strong><label for="name" class="col-form-label mb-1 text-black">Resort
                                                         Description</label></strong>
@@ -95,7 +82,7 @@
                                         <div class="row text-center">
                                             <div class="col">
                                                 <button type="submit" class="btn w-50 text-white " id="btn-edit"
-                                                    style="background-color: #21791A;">Save
+                                                    style="background-color: #21791A;" disabled>Save
                                                     changes</button>
                                             </div>
                                         </div>
@@ -157,15 +144,14 @@
                                                                 Description</label></strong>
                                                     </div>
                                                 </div>
-                                                 <div class="row">
-                                                <div class="col text-center mb-5">
-                                                    <button type="submit" class="btn text-white w-50"
-                                                        style="background-color:  #21791A">Add 
-                                                        Image</button>
+                                                <div class="row">
+                                                    <div class="col text-center mb-5">
+                                                        <button type="submit" class="btn text-white w-50"
+                                                            style="background-color:  #21791A">Add
+                                                            Image</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            </div>
-                                           
                                         </form>
                                     </div>
                                 </div>
@@ -208,6 +194,12 @@
                                                     </div>
                                                 @endif
                                             @endforeach
+                                            @if ($images->count() == 0)
+                                                <div class="text-center" id="no_data">
+                                                    <img src="{{ asset('assets/img/no_datas.PNG') }}" alt="" srcset=""><br>
+                                                    <p>No images to delete.</p>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

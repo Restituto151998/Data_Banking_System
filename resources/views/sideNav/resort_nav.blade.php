@@ -54,19 +54,30 @@
 
 </head>
 <style>
+    .paginate_button {
+        color: #21791A;
+    }
+
     @media screen and (min-width: 676px) {
         .modal-dialog {
             max-width: 1000px;
             /* New width for default modal */
         }
-        
+
     }
 
     @media print {
-        .print {
+        #date {
             display: none;
         }
 
+        #scroll {
+            overflow-x: hidden;
+        }
+
+        .print {
+            display: none;
+        }
 
         .main-sidebar {
             display: none;
@@ -152,7 +163,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                  document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -164,7 +175,6 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-
                         </div>
                     </li>
                 @endguest
@@ -236,25 +246,12 @@
     </main>
     @yield('content')
 
-
-    <!-- General JS Scripts -->
     <script src="{{ asset('../assets/js/app.min.js') }}"></script>
-
     <script src="{{ asset('../assets/bundles/summernote/summernote-bs4.js') }}"></script>
-    <!-- JS Libraies -->
     <script src="{{ asset('../assets/bundles/datatables/datatables.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script> --}}
-
-    {{-- <script src="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script> --}}
     <script src="{{ asset('../assets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <!-- Page Specific JS File -->
-    {{-- <script src="{{ asset('assets/js/page/datatables.js') }}"></script> --}}
-
-    <!-- Template JS File -->
     <script src="{{ asset('../assets/js/scripts.js') }}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <!-- Custom JS File -->
-    {{-- <script src="{{ asset('../assets/js/custom.js') }}"></script> --}}
     <script src="{{ asset('../assets/js/jquery.printPage.js') }}"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -272,10 +269,6 @@
                 ]
             });
 
-            setTimeout(function() {
-                $("#alert_message").remove();
-            }, 3000);
-
             $('.p').hide();
 
             $("#click_me").click(function() {
@@ -283,6 +276,7 @@
             });
 
             $('#imageMain').change(function() {
+                $('#btn-edit').prop('disabled', false);
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     $('#preview-imageMain').attr('src', e.target.result);
@@ -316,6 +310,36 @@
             $('.filterText').val('');
             $('.tr').show();
         }
+
+        $('.from').change(function() {
+            $('#update-btn').attr('disabled', false);
+        });
+
+        $('.to').change(function() {
+            $('#update-btn').attr('disabled', false);
+        });
+
+        const resort_name = $('#resort_name').val();
+        $('#resort_name').on('input change', function() {
+            if ($(this).val() != resort_name) {
+                $('#btn-edit').prop('disabled', false);
+            } else {
+                $('#btn-edit').prop('disabled', true);
+            }
+        });
+
+        const description = $('#resort_description').val();
+        $('#resort_description').on('input change', function() {
+            if ($(this).val() != description) {
+                $('#btn-edit').prop('disabled', false);
+            } else {
+                $('#btn-edit').prop('disabled', true);
+            }
+        });
+
+        $('#inputGroupSelect01').change(function() {
+            $('#btn-edit').attr('disabled', false);
+        });
 
     </script>
 </body>

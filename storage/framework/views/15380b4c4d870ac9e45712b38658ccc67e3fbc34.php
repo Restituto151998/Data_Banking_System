@@ -24,22 +24,9 @@
 </head>
 
 <body>
+<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="container " style="margin-top: 100px;">
         <center>
-            <?php if(session()->has('status')): ?>
-                <div id="alert" class="alert alert-success alert-dismissible fade  show" role="alert">
-                    <?php echo e(session()->get('status')); ?>
-
-                    <?php echo e(Auth::logout()); ?>
-
-                </div>
-            <?php endif; ?>
-            <?php if(session()->has('error')): ?>
-                <div id="alert" class="alert alert-danger alert-dismissible fade  show" role="alert">
-                    <?php echo e(session()->get('error')); ?>
-
-                </div>
-            <?php endif; ?>
             <div class="card" style="width: 28rem;">
                 <div class="card-body" style="background:#21791A;">
                     <h5 class="card-title text-white">Change Password</h5>
@@ -56,7 +43,7 @@
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
                                 name="current_password" required>
                             <i class="fa fa-eye-slash mt-1" id="curr" onclick="current()"
-                                style="font-size:24px; z-index:9999; margin-left:90%;  position:absolute;"></i>
+                                style="font-size:24px; z-index:5; margin-left:90%;  position:absolute;"></i>
                         </div>
                         <div class="input-group mb-3" style="position: relative;">
                             <span class="input-group-text"><i class="fa fa-key" style="font-size:24px"></i></span>
@@ -64,7 +51,7 @@
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
                                 name="new_password" required>
                             <i class="fa fa-eye-slash mt-1" id="newpass" onclick="newpass()"
-                                style="font-size:24px; z-index:9999; margin-left:90%;  position:absolute;"></i>
+                                style="font-size:24px; z-index:5; margin-left:90%;  position:absolute;"></i>
                         </div>
                         <div class="input-group mb-3" style="position: relative;">
                             <span class="input-group-text"><i class="fa fa-key" style="font-size:24px"></i></span>
@@ -72,7 +59,7 @@
                                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
                                 name="confirm_password" required>
                             <i class="fa fa-eye-slash mt-1" id="conf" onclick="confirm()"
-                                style="font-size:24px; z-index:9999; margin-left:90%;  position:absolute;"></i>
+                                style="font-size:24px; z-index:5; margin-left:90%;  position:absolute;"></i>
                         </div>
 
                         <div>
@@ -95,10 +82,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script>
-    setTimeout(function() {
-        $('#alert').attr('hidden', true);
-    }, 3000);
-
     function current() {
         var x = document.getElementById("cur");
         if (x.type === "password") {

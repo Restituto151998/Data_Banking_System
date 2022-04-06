@@ -10,8 +10,10 @@ use App\Models\Guest;
 use App\Models\User;
 use App\Models\Resort;
 use App\Models\Image;
+use App\Models\Date;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ResortListController extends Controller
  {
@@ -41,11 +43,24 @@ class ResortListController extends Controller
     return view( 'admin.resort_list_edit', compact( 'resort', 'resorts', 'images','users' ) );
     }
 
-    public function guest( $id ) {
+    public function guest(Request $request, $id ) {
+     
+        $dates = Date::where('resort_id', $id)->get();
+        $from_date = '';
+        $to_date = '';
+        foreach($dates as $date){
+            $from_date = $date->from;
+            $to_date = $date->to;
+        }
         $resort = ResortList::where( 'resort_id',  '=', $id )->first();
-        $guests = Guest::where( 'resort_id', $id )->get();
+        $guests = DB::table('guests')
+        ->select('*')
+        ->where('resort_id',$id)
+        ->whereDate('created_at', '>=', $from_date)
+        ->whereDate('created_at', '<=', $to_date)
+        ->get();
   
-        return view( 'resorts.resort_guest' )->with( 'guests', $guests )->with('resorts', $resort );
+        return view( 'resorts.resort_guest' )->with( 'guests', $guests )->with('resorts', $resort )->with('dates', $dates );
     }
 
     public function update( Request $request )
@@ -62,7 +77,8 @@ class ResortListController extends Controller
 
             $path = 'data:image/' .  pathinfo($request->imageMain, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->imageMain));
             Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description, 'imagePath' => $path ] );
-            return redirect('/resort_list')->with( 'message', 'Successfully Updated!' );
+            Alert::success('Success', 'Successfully Updated!');
+            return redirect('/resort_list');
         }else{
       
             if($request->user_id == '1'){
@@ -75,7 +91,8 @@ class ResortListController extends Controller
             }
 
             Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description] );
-            return redirect('/resort_list')->with( 'message', 'Successfully Updated!' );
+            Alert::success('Success', 'Successfully Updated!');
+            return redirect('/resort_list');
         }
     }
 
@@ -84,7 +101,8 @@ class ResortListController extends Controller
        
         if ($delete_id->id == $id) {
             DB::table( 'images' )->where( 'id', $id )->delete();  
-            return back()->with( 'status', 'Image successfully deleted' );  
+            Alert::success('Success', 'Image successfully deleted!');
+            return back();  
         }
       
         
@@ -100,12 +118,10 @@ class ResortListController extends Controller
             $images->image_description = $request->image_description;
             $images->image = $image;                 
             $images->save();
-            return back()->with( 'message', 'Image Added Successfully!' );
+            Alert::success('Success', 'Image Added Successfully!');
+            return back();
            }
     }
-
-   
-
 
     public function changeResortStatus( $id )
  {
@@ -119,8 +135,8 @@ class ResortListController extends Controller
 
         $updateStatus = array( 'status' => $status );
         DB::table( 'resort_lists' )->where( 'id', $id )->update( $updateStatus );
-
-        return redirect( '/resort_list' )->with( 'status', 'Resort status has been updated successfully.' );
+        Alert::success('Success', 'Resort status has been updated successfully!');
+        return redirect( '/resort_list' );
     }
     
 }

@@ -22,17 +22,10 @@
 </head>
 
 <body style="background-color:#21791A">
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div id="app"></div>
     <div class="container">
         <div class="container mb-5">
-            <?php if(session()->has('error')): ?>
-                <div id="registra" class="alert alert-danger mt-4 alert-dismissible fade  show" role="alert">
-                    <?php echo e(session()->get('error')); ?> ❌
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <?php endif; ?>
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4"
@@ -190,9 +183,6 @@
                 $(this).data('submitted', true);
             }
         });
-        setTimeout(function() {
-            $("#registra").remove();
-        }, 3000);
     });
 
 </script>

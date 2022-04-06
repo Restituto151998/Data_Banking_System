@@ -30,7 +30,7 @@ Auth::routes();
     Route::get('/', function () {
         return redirect('/login');
     });
-
+    
 Route::get('/admin_dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'profile'])->name('admin.profile');
 Route::get('/add_resort', [App\Http\Controllers\Admin\AddResortController::class, 'addResort'])->name('admin.add_resort');
@@ -45,6 +45,7 @@ Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::cla
 Route::get('/resorts_status_update/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'changeResortStatus']);
 Route::post('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'uploadProfile']);
 Route::get('/resort_list/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
+Route::post('/resort_list/resort_guest/{id}', [App\Http\Controllers\DateController::class, 'updateDate'])->name('resorts.resort_guest.update');
 Route::get('/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest']);
 Route::get('/status_update/{id}', [App\Http\Controllers\Admin\AddUserController::class, 'changeUserStatus']);
 Route::get('/status_accept/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'accept']);
@@ -64,6 +65,7 @@ Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'up
 
 Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'redirectTo'])->name('auth.passwords.changePassword');
 Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'updatePassword']);;
+Route::get('/reset_password', [App\Http\Controllers\Admin\ProfileController::class, 'reset']);
 
 Route::get('/not_found', [App\Http\Controllers\HomeController::class, 'notFound'])->name('error_code.not_found');
 

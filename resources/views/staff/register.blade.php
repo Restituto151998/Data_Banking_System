@@ -1,18 +1,13 @@
 @extends('sideNav.side_navbar')
 
 @section('register')
+    @include('sweetalert::alert')
     <div class="main-wrapper main-wrapper-1">
         <!-- Main Content -->
         <div class="main-content">
             @if (Auth::user()->resortList->status == 'closed')
                 <span>This tab is restricted to use. to use it. you may request the admin to open this resort.</span>
             @else
-                @if (session()->has('status'))
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
-                        role="alert">
-                        {{ session()->get('status') }} ✔️
-                    </div>
-                @endif
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12-md-8">

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Guest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DirectRegisterController extends Controller
 {
@@ -50,51 +50,57 @@ class DirectRegisterController extends Controller
 
         $save->save();
 
-        
-return back()->with('status', 'Guest Successfully Registered!');
+        Alert::success('Congrats', 'Guest Successfully Registered!');   
+        return back();
 
     }
 
 
     public function accept( $id )
     {
-           $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
-           if ( $guest->status == 'pending' ) {
-               $status = 'accepted';   
-               $updateStatus = array( 'status' => $status );
-               DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );
-               return back()->with( 'status', 'Guest registration accepted' );    
-           } 
+        $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
+        if ( $guest->status == 'pending' ) {
+            $status = 'accepted';   
+            $updateStatus = array( 'status' => $status );
+            DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );
+
+            Alert::success('Success', 'Guest registration accepted!');   
+            return back();    
+        } 
         
-       }
+    }
     
     public function cancel( $id )
     {
-           $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
-           if ( $guest->status == 'pending' ) {
-               $status = 'cancelled'; 
-               $updateStatus = array( 'status' => $status );
-               DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );
+        $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
+        if ( $guest->status == 'pending' ) {
+            $status = 'cancelled'; 
+            $updateStatus = array( 'status' => $status );
+            DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );
        
-               return back()->with( 'status', 'Guest registration cancelled' );      
-           } 
-         
-   
-       }
+            Alert::success('Success', 'Guest registration cancelled!');   
+            return back();      
+        }            
+    }
 
-       public function leave( $id )
-       {
-              $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
-              if ( $guest->status == 'accepted' ) {
-                  $status = 'left';   
-                  $updateStatus = array( 'status' => $status );
-                  DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus );  
-                  return back()->with( 'status', 'Guest registration cancelled' );  
-              }
+    public function leave( $id )
+    {
+        $guest = DB::table( 'guests' )->select( 'status' )->where( 'id', '=', $id )->first();
+        if ( $guest->status == 'accepted' ) {
+            $status = 'left';   
+            $updateStatus = array( 'status' => $status );
+            DB::table( 'guests' )->where( 'id', $id )->update( $updateStatus ); 
+            
+            Alert::success('Success', 'Guest Left!'); 
+            return back();  
+        }
 
-              if($guest->status == 'cancelled'){
-                 DB::table( 'guests' )->where( 'id', $id )->delete();  
-                  return back()->with( 'status', 'Guest successfully deleted' );  
-              }              
-          }
+        if($guest->status == 'cancelled'){
+            DB::table( 'guests' )->where( 'id', $id )->delete();  
+
+            Alert::success('Success', 'Guest successfully deleted!'); 
+            return back();  
+        }              
+    }
+
 }

@@ -1,18 +1,13 @@
 
 
 <?php $__env->startSection('register'); ?>
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="main-wrapper main-wrapper-1">
         <!-- Main Content -->
         <div class="main-content">
             <?php if(Auth::user()->resortList->status == 'closed'): ?>
                 <span>This tab is restricted to use. to use it. you may request the admin to open this resort.</span>
             <?php else: ?>
-                <?php if(session()->has('status')): ?>
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
-                        role="alert">
-                        <?php echo e(session()->get('status')); ?> ✔️
-                    </div>
-                <?php endif; ?>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12-md-8">

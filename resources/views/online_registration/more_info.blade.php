@@ -22,16 +22,9 @@
 </head>
 
 <body style="background-color:#6b6b6b;">
+    @include('sweetalert::alert')
     <div id="app"></div>
     <div class="container mt-5 mb-5">
-        @if (session()->has('status'))
-            <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
-                {{ session()->get('status') }} ✔️
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
         <div class="row mt-4">
             @foreach ($resorts as $resort)
                 <div class="col-sm-12">
@@ -56,21 +49,6 @@
             @endforeach
         </div>
         @foreach ($images as $image)
-            {{-- <div class="row mt-4">
-                <div class="col-sm-12">
-                    <div class="card" id="card-info">
-                        <div class="row">
-                            <div class="col">
-                                <img src="{{ $image->image }}" alt="images" id="image-info" style="width:100%; max-height: 100%;">
-                            </div>
-                            <div class="col p-5">
-                                <p>{{ $image->image_description }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- sample --}}
             <div class="main-wrapper main-wrapper-1 mt-4">
                 <div class="row">
                     <div class="col-sm-12">
@@ -90,8 +68,6 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- end sample --}}
         @endforeach
     </div>
 </body>
@@ -106,13 +82,5 @@
 </script>
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        setTimeout(function() {
-            $("#overview").remove();
-        }, 3000);
-    });
-
-</script>
 
 </html>

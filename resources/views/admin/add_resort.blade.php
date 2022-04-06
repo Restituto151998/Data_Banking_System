@@ -1,25 +1,12 @@
 @extends('sideNav.side_navbar')
 
 @section('addResort')
+    @include('sweetalert::alert')
     @auth
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
             <div class="main-content">
-                @if (session()->has('message_fail'))
-                    <div class="alert alert-danger alert-dismissible fade  show" role="alert">
-                        {{ session()->get('message_fail') }} ❌
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
                 <div class="row">
-                    @if (session('status'))
-                        <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
-                            role="alert">
-                            {{ session('status') }} ✔️
-                        </div>
-                    @endif
                     <div class="col-12">
                         <div class="card mb-0">
                             <div class="card-body">
@@ -36,7 +23,8 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <input type="file" name="image" placeholder="Choose image"
-                                                                    id="image">
+                                                                    id="image" data-toggle="tooltip" data-placement="bottom"
+                                                                    title="Choose Image">
                                                                 @error('image')
                                                                     <div class="alert alert-danger mt-1 mb-1">
                                                                         {{ $message }}</div>
@@ -64,14 +52,15 @@
                                                     <div class="col text-center mt-5">
                                                         <textarea name="resort_description"
                                                             style="min-height:200px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
-                                                            class="form-control ml-2"
-                                                            placeholder="Enter resort description" required></textarea>
+                                                            class="form-control ml-2" placeholder="Enter resort description"
+                                                            required></textarea>
                                                     </div>
                                                     <div>
                                                         <div class="row mt-3">
                                                             <div class="col text-center">
                                                                 <div class="form-group">
-                                                                    <button class="btn w-50 text-white" id="btn_add" style="background-color:  #21791A">Add Resort</button>
+                                                                    <button class="btn w-50 text-white" id="btn_add"
+                                                                        style="background-color:  #21791A">Add Resort</button>
                                                                 </div>
                                                             </div>
                                                         </div>

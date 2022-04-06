@@ -1,14 +1,10 @@
 @extends('sideNav.resort_nav')
 
 @section('editUser')
+@include('sweetalert::alert')
     @auth
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
-                @if (session()->has('error'))
-                    <div id="alert_message" class="alert alert-danger alert-dismissible fade  w-25 show sticky" role="alert">
-                        {{ session()->get('error') }} ❌
-                    </div>
-                @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">

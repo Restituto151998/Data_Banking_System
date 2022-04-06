@@ -1,24 +1,10 @@
 
 
 <?php $__env->startSection('addUser'); ?>
+<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php if(auth()->guard()->check()): ?>
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
-                <?php if(session()->has('status')): ?>
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('status')); ?> ✔️
-                    </div>
-                <?php endif; ?>
-                <?php if(session()->has('message_success')): ?>
-                    <div id="alert_message" class="alert alert-success  alert-dismissible fade w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('message_success')); ?> ✔️
-                    </div>
-                <?php endif; ?>
-                <?php if(session()->has('message')): ?>
-                    <div id="alert_message" class="alert alert-success  alert-dismissible fade w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('message')); ?> ✔️
-                    </div>
-                <?php endif; ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
@@ -85,7 +71,7 @@
                                                                                 <?php endif; ?>
                                                                             <td>
                                                                                 <a
-                                                                                    href="<?php echo e(route('admin.add_user_edit', $user->id)); ?>"><i
+                                                                                    href="<?php echo e(route('admin.add_user_edit', $user->id)); ?>" data-toggle="tooltip" data-placement="bottom" title="Edit <?php echo e($user->name); ?>"><i
                                                                                         data-feather="edit"></i>
                                                                                 </a>
                                                                             </td>

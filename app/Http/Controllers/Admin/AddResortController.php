@@ -9,6 +9,7 @@ use App\Models\ResortList;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AddResortController extends Controller
  {
@@ -48,12 +49,13 @@ class AddResortController extends Controller
             $save->imagePath = $path;
 
             $save->save();
-    
-            return redirect( 'add_resort' )->with( 'status', 'Resort Successfully Added!' );
+            Alert::success( $resort_name, 'Successfully Added!');
+            return redirect( 'add_resort' );
             
         }
         if ( $resorts->resort_name == $resort_name) {
-            return redirect()->back()->with( 'message_fail', 'Duplicate resort name please try another.' );
+            Alert::error( $resort_name, 'Duplicate resort name!');
+            return back();
         }
 
         }

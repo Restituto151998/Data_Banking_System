@@ -22,16 +22,9 @@
 </head>
 
 <body style="background-color:#6b6b6b;">
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div id="app"></div>
     <div class="container mt-5 mb-5">
-        <?php if(session()->has('status')): ?>
-            <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
-                <?php echo e(session()->get('status')); ?> ✔️
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php endif; ?>
         <div class="row mt-4">
             <?php $__currentLoopData = $resorts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-sm-12">
@@ -56,8 +49,6 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
         <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            
-            
             <div class="main-wrapper main-wrapper-1 mt-4">
                 <div class="row">
                     <div class="col-sm-12">
@@ -77,8 +68,6 @@
                         </div>
                     </div>
                 </div>
-
-                
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 </body>
@@ -93,14 +82,6 @@
 </script>
 <script src="<?php echo e(asset('assets/js/app.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/scripts.js')); ?>"></script>
-<script>
-    $(document).ready(function() {
-        setTimeout(function() {
-            $("#overview").remove();
-        }, 3000);
-    });
-
-</script>
 
 </html>
 <?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/online_registration/more_info.blade.php ENDPATH**/ ?>

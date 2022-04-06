@@ -1,18 +1,9 @@
 @extends('sideNav.side_navbar')
 
 @section('resortList')
+    @include('sweetalert::alert')
     <div class="main-wrapper main-wrapper-1">
         <div class="main-content">
-            @if (session()->has('status'))
-                <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                    {{ session()->get('status') }} ✔️
-                </div>
-            @endif
-            @if (session()->has('message'))
-                <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                    {{ session()->get('message') }} ✔️
-                </div>
-            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-0">
@@ -67,12 +58,16 @@
                                                                             @endif
                                                                         </td>
                                                                         <td>
-                                                                            <a
-                                                                                href="{{ route('resorts.resort_guest', $resort->resort_id) }}"><i
+                                                                            <a href="{{ route('resorts.resort_guest', $resort->resort_id) }}"
+                                                                                data-toggle="tooltip"
+                                                                                data-placement="bottom"
+                                                                                title="View all guest in {{ $resort->resort_name }}"><i
                                                                                     data-feather="eye"></i> </a>
-                                                                            ◉
-                                                                            <a
-                                                                                href="{{ route('admin.resort_list_edit', $resort->resort_id) }}"><i
+                                                                            |
+                                                                            <a href="{{ route('admin.resort_list_edit', $resort->resort_id) }}"
+                                                                                data-toggle="tooltip"
+                                                                                data-placement="bottom"
+                                                                                title="Edit {{ $resort->resort_name }}"><i
                                                                                     data-feather="edit"></i> </a>
                                                                         </td>
                                                                     </tr>
