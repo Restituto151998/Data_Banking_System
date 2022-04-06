@@ -165,7 +165,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center" href="<?php echo e(route('logout')); ?>"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                          document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                  document.getElementById('logout-form').submit();">
                                 <?php echo e(__('Logout')); ?> <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <a class="dropdown-item text-center" href="/profile"
@@ -279,7 +279,7 @@
             });
 
             $('#imageMain').change(function() {
-                 $('#btn-edit').prop('disabled', false);
+                $('#btn-edit').prop('disabled', false);
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     $('#preview-imageMain').attr('src', e.target.result);

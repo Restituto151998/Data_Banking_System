@@ -23,13 +23,13 @@
 
                                     <input name="id" value="{{ $resorts->id }}" hidden>
                                     @forelse ($dates as $date)
-                                        <label>from:</label><input type="date" name="from" class="from ml-2 mr-3"
+                                        <label>starting date:</label><input type="date" name="from" class="from ml-2 mr-3"
                                             value="{{ $date->from }}">
-                                        <label>to: </label><input type="date" name="to" class="to ml-2"
+                                        <label>date end: </label><input type="date" name="to" class="to ml-2"
                                             value="{{ $date->to }}">
                                     @empty
-                                        <label>from: </label><input type="date" name="from" class="from ml-2 mr-3">
-                                        <label>to: </label><input type="date" name="to" class="to ml-2">
+                                        <label>starting date: </label><input type="date" name="from" class="from ml-2 mr-3">
+                                        <label>date end: </label><input type="date" name="to" class="to ml-2">
 
                                     @endforelse
                                     <button type="submit" id="update-btn" class="btn btn-sm ml-3 text-light"
