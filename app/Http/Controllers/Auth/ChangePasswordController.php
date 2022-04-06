@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\User;
 
@@ -29,13 +30,15 @@ class ChangePasswordController extends Controller {
                 ] );
     
                 User::find( Auth::user()->id )->update( [ 'password'=> Hash::make( $request->new_password ) ] );
-    
-                return back()->with( 'status', 'password successfully changed!.' );
+                Alert::success('Congrats', 'Your password successfully changed!');
+                return back();
             }
-            return back()->with( 'error', 'password doesnt match!' );
+            Alert::error('Failed', 'Password doesnt match!');
+            return back();
 
         }else{
-            return back()->with( 'error', 'Current Password not match!' );
+            Alert::error('Failed', 'Current Password not match!');
+            return back();
         }
         
     }

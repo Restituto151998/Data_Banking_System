@@ -9,6 +9,8 @@ use App\Models\Image;
 use App\Models\Resort;
 use App\Models\ResortList;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
+
 class GuestController extends Controller
 {
 
@@ -19,8 +21,6 @@ public function redirectTo($id){
 }
 
   public function onlineRegister(Request $request){
-
-    
     $status = 'pending';
 
     $save = new Guest;
@@ -36,23 +36,20 @@ public function redirectTo($id){
     $save->purpose = $request->purpose;
     $save->status = $status;
     $save->save();
-
-    return redirect('resorts-overview')->with('status', 'Successfully Registered!');
+    Alert::success('Congrats', 'Successfully Registered!');
+    return redirect('resorts-overview');
   }  
 
   public function overview(){
-    $resort_lists = ResortList::all();
-   
+    $resort_lists = ResortList::all();  
     $resorts = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
 
-  
     return view('online_registration.resorts_overview')->with( 'resorts', $resorts )->with('resort_lists', $resort_lists);
   }  
 
   public function info($id){
     
     $resorts = Resort::where('id', $id)->get();
-    // $image = DB::table( 'resorts' )->select( 'id', 'resort_name', 'resort_description', 'imagePath' )->get();
     $images = Image::where('resort_id', $id)->get();
   
     return view('online_registration.more_info')->with('images', $images)->with('resorts', $resorts);

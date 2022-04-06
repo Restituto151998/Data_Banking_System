@@ -34,16 +34,9 @@
 
 </style>
 <body>
+<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="container mt-5">
         <div id="app"></div>
-        <?php if(session()->has('status')): ?>
-            <div id="overview" class="alert alert-success alert-dismissible fade  show" role="alert">
-                <?php echo e(session()->get('status')); ?> ✔️
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php endif; ?>
         <div class="row">
             <div class="card text-center">
                 <div class="card-title text-center">
@@ -86,11 +79,6 @@
 <script src="<?php echo e(asset('assets/js/app.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/scripts.js')); ?>"></script>
 <script>
-    $(document).ready(function() {
-        setTimeout(function() {
-            $("#overview").remove();
-        }, 3000);
-    });
 </script>
 
 </html>

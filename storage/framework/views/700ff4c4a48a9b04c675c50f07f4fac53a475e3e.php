@@ -1,20 +1,11 @@
 
 
 <?php $__env->startSection('profile'); ?>
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php if(auth()->guard()->check()): ?>
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
             <div class="main-content">
-                <?php if(session()->has('status')): ?>
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('status')); ?> ✔️
-                    </div>
-                <?php endif; ?>
-                <?php if(session()->has('message')): ?>
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        <?php echo e(session()->get('message')); ?> ✔️
-                    </div>
-                <?php endif; ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
@@ -27,15 +18,15 @@
                                                     enctype="multipart/form-data">
                                                     <?php echo csrf_field(); ?>
                                                     <div class="form-group mt-4">
-                                                            <img id="preview-profile-image"
-                                                                src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
-                                                                alt="preview image" style="width:200px; height: 200px;"
-                                                                class="rounded-circle">
+                                                        <img id="preview-profile-image"
+                                                            src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
+                                                            alt="preview image" style="width:200px; height: 200px;"
+                                                            class="rounded-circle">
                                                         <div class="row">
                                                             <div class="col">
                                                                 <label for="profile">
                                                                     <i data-feather="camera"
-                                                                        style="position:unset; margin-right: -172px; margin-top: -30px;"></i>
+                                                                        style="position:unset; margin-right: -172px; margin-top: -30px;" data-toggle="tooltip" data-placement="bottom" title="Choose Profile"></i>
                                                                 </label>
                                                                 <input type="file" name="image" placeholder="Choose image"
                                                                     id="profile" hidden>
@@ -55,7 +46,7 @@ unset($__errorArgs, $__bag); ?>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn  text-center text-white"
                                                                 style="background-color:  #21791A; margin-top: -20px;"
-                                                                id="change_profile" disabled>Change Profile</button>
+                                                                id="change_profile" data-toggle="tooltip" data-placement="bottom" title="Click to save changes" disabled>Change Profile</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -115,9 +106,14 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="row">
                                             <div class="col text-center mt-2 mb-5">
-                                                <a class="text" href="<?php echo e(route('auth.passwords.changePassword')); ?>">
+                                                <a href="<?php echo e(route('auth.passwords.changePassword')); ?>">
                                                     Change password?
                                                 </a>
+                                                <?php if(Auth::user()->type == 'ADMIN'): ?>
+                                                    <a class="text-danger ml-5" href="<?php echo e(url('reset_password')); ?>">
+                                                        Reset password?
+                                                    </a>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="modal fade" id="exampleModal<?php echo e(Auth::user()->id); ?>" tabindex="-1"

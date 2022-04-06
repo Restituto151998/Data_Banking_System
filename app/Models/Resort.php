@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Guest;
 use App\Models\Image;
+use App\Models\Date;
 
 class Resort extends Model
 {
@@ -25,6 +26,10 @@ class Resort extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+    public function date()
+    {
+        return $this->hasMany(Date::class);
     }
    
 }

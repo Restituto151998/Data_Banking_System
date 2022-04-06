@@ -1,14 +1,10 @@
 @extends('sideNav.side_navbar')
 
 @section('addResort')
+@include('sweetalert::alert')
     @auth
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
-                @if (session()->has('message_fail'))
-                    <div id="alert_message" class="alert alert-danger alert-dismissible fade w-25 show sticky" role="alert">
-                        {{ session()->get('message_fail') }} ❌
-                    </div>
-                @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
@@ -20,11 +16,6 @@
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <div class="card-body text-center">
-                                            @if (session('status'))
-                                                <div class="alert alert-success">
-                                                    {{ session('status') }} ✔️
-                                                </div>
-                                            @endif
                                             <form action="{{ route('admin.add_user') }}" method="post" id="form_add_user">
                                                 @csrf
                                                 <div class="card-body">

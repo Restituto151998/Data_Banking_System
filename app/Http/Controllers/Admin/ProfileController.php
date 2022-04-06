@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -25,7 +27,8 @@ class ProfileController extends Controller
     if ( $request->hasFile( 'image' ) ) {
         $path = 'data:image/' .  pathinfo($request->image, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->image));
         Auth::user()->update(['image'=>$path]);
-        return back()->with( 'status', 'Image profile successfully changed!' );
+        Alert::success('Success', 'Image profile successfully changed!');
+        return back();
     }
 
     }
@@ -48,6 +51,15 @@ class ProfileController extends Controller
         ] );
 
         User::whereId( Auth::user()->id )->update( $updateData );
-        return back()->with( 'message', 'Profile information updated successfully!!' );
+        Alert::success('Success', 'Profile information updated successfully!');
+        return back();
+    }
+
+    public function reset(){
+        $password = "password";
+        $default_password = array('password' => Hash::make($password));
+        User::whereId(Auth::user()->id)->update($default_password);
+        Alert::success('Congrats', 'Your password successfully reset!');
+        return back();
     }
 }

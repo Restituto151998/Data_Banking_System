@@ -1,20 +1,11 @@
 @extends('sideNav.side_navbar')
 
 @section('profile')
+    @include('sweetalert::alert')
     @auth
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
             <div class="main-content">
-                @if (session()->has('status'))
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade w-25 show sticky" role="alert">
-                        {{ session()->get('status') }} ✔️
-                    </div>
-                @endif
-                @if (session()->has('message'))
-                    <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky" role="alert">
-                        {{ session()->get('message') }} ✔️
-                    </div>
-                @endif
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
@@ -27,15 +18,17 @@
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group mt-4">
-                                                            <img id="preview-profile-image"
-                                                                src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
-                                                                alt="preview image" style="width:200px; height: 200px;"
-                                                                class="rounded-circle">
+                                                        <img id="preview-profile-image"
+                                                            src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
+                                                            alt="preview image" style="width:200px; height: 200px;"
+                                                            class="rounded-circle">
                                                         <div class="row">
                                                             <div class="col">
                                                                 <label for="profile">
                                                                     <i data-feather="camera"
-                                                                        style="position:unset; margin-right: -172px; margin-top: -30px;"></i>
+                                                                        style="position:unset; margin-right: -172px; margin-top: -30px;"
+                                                                        data-toggle="tooltip" data-placement="bottom"
+                                                                        title="Choose Profile"></i>
                                                                 </label>
                                                                 <input type="file" name="image" placeholder="Choose image"
                                                                     id="profile" hidden>
@@ -48,7 +41,9 @@
                                                         <div class="form-group">
                                                             <button type="submit" class="btn  text-center text-white"
                                                                 style="background-color:  #21791A; margin-top: -20px;"
-                                                                id="change_profile" disabled>Change Profile</button>
+                                                                id="change_profile" data-toggle="tooltip"
+                                                                data-placement="bottom" title="Click to save changes"
+                                                                disabled>Change Profile</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -108,9 +103,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="col text-center mt-2 mb-5">
-                                                <a class="text" href="{{ route('auth.passwords.changePassword') }}">
+                                                <a href="{{ route('auth.passwords.changePassword') }}">
                                                     Change password?
                                                 </a>
+                                                @if (Auth::user()->type == 'ADMIN')
+                                                    <a class="text-danger ml-5" href="{{ url('reset_password') }}">
+                                                        Reset password?
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="modal fade" id="exampleModal{{ Auth::user()->id }}" tabindex="-1"

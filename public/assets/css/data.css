@@ -4,8 +4,6 @@
     
     #login {
         position: relative;
-        /* width: 291px;
-        height: 382px;  */
         max-width: 321px;
         height: 382px;
         background: #F4EBEB;
@@ -13,9 +11,6 @@
         box-shadow: 0 0 0 0;
         margin-top: 88px;
     }
-    /* .bg {
-        background: #21791A;
-    } */
     
     .login-logo {
         max-width: 39%;
@@ -29,23 +24,14 @@
         margin-left: 113px;
         margin-top: 12px;
     }
-    /* .text-login,
-    .text-username,
-    .text-password,
-    .logo-name {
-        font-family: 'Righteous';
-    } */
-    
+
     .login-btn {
         position: absolute;
-        /* max-width: 131px; */
-        /* text-align: center; */
         height: 40px;
         margin-top: 14px;
         margin-left: 55px;
         border-radius: 100px 0px;
         font-size: larger;
-        /* font-family: 'Righteous'; */
         background: #21791A;
         color: #F4EBEB;
         border-color: transparent !important;
@@ -54,21 +40,6 @@
     a#navbarDropdown.nav-link.dropdown-toggle::after {
         display: none;
     }
-    /* .login-btn:hover {
-        background: #21791A;
-        transition: 0.7s;
-    }
-     */
-    
-    #alert_message {
-        z-index: 1;
-        margin-top: 80px;
-        margin-left: 55%;
-    }
-    /* .dtHorizontalExampleWrapper {
-        max-width: 600px;
-        margin: 0 auto;
-      } */
     
     #dtHorizontalExample th,
     td {
@@ -90,7 +61,6 @@
       
 .cont{
     flex-wrap: wrap;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     overflow-x: scroll;
@@ -131,5 +101,11 @@ flip card
   .card-flip:hover .card-back {
     transform: rotateY(0deg);
   }
+
+  input#image{
+    margin-top: -20px;
+    float: left;
+  }
+
    
   

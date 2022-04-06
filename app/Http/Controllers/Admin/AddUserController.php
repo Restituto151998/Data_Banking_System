@@ -14,6 +14,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Input;
 use App\Models\ResortList;
 use App\Models\Resort;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AddUserController extends Controller
  {
@@ -39,7 +40,8 @@ class AddUserController extends Controller
         $resort = json_decode( $request->assigned_staff );
 
         if ( empty( $resort->resort_name ) ) {
-            return redirect()->back()->with( 'message_fail', 'Please choose a resort.' );
+            Alert::error('Failed', 'Please choose a resort!');
+            return back();
         }
 
         $validatedData = $request->validate( [
@@ -59,9 +61,9 @@ class AddUserController extends Controller
             )
         );
 
-        if ( $emailValidator->fails() )
- {
-            return redirect()->back()->with( 'message_fail', 'Duplicate email please try another.' );
+        if ( $emailValidator->fails() ){
+            Alert::error('Failed', 'Duplicate email please try another!');
+            return back();
         }
 
         $save = new User;
@@ -85,7 +87,8 @@ class AddUserController extends Controller
         $save->password = $password;
 
         if ( ResortList::where( 'resort_name', '=', $assigned_staff )->exists()) {
-            return redirect()->back()->with( 'message_fail', 'Resort has already staff.' );
+            Alert::error('Failed', 'Resort has already staff!');
+            return back();
         }
 
         $save->save();
@@ -98,8 +101,8 @@ class AddUserController extends Controller
             'status' => $resort_status,
 
         ] );
-
-        return redirect( '/add_user' )->with( 'message_success', 'Added Successfully' );
+        Alert::success('Success', 'User added/assigned successfully!');
+        return redirect( '/add_user' );
     }
 
     public function editUser( $id )
@@ -142,7 +145,8 @@ class AddUserController extends Controller
                 $user->save();
            
             }else{
-                return back()->with( 'error', 'password doesnt match!' );
+                Alert::error('Failed', 'Password doesnt match!');
+                return back();
             }
         }
 
@@ -170,7 +174,8 @@ class AddUserController extends Controller
         $resortlist->assigned_staff = $name;
         $resortlist->save();
         $user->save();
-        return redirect( '/add_user' )->with( 'message', 'Successfully Updated!' );
+        Alert::success('Success', 'User successfully updated!');
+        return redirect( '/add_user' );
     }
 
     public function changeUserStatus( $id )
@@ -185,8 +190,8 @@ class AddUserController extends Controller
 
         $updateStatus = array( 'status' => $status );
         DB::table( 'users' )->where( 'id', $id )->update( $updateStatus );
-
-        return back()->with( 'status', 'User status has been updated successfully.' );
+        Alert::success('Success','User status has been updated successfully!');
+        return back();
     }
 
 }

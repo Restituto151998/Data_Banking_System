@@ -1,25 +1,12 @@
 
 
 <?php $__env->startSection('addResort'); ?>
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php if(auth()->guard()->check()): ?>
         <div class="main-wrapper main-wrapper-1">
             <!-- Main Content -->
             <div class="main-content">
-                <?php if(session()->has('message_fail')): ?>
-                    <div class="alert alert-danger alert-dismissible fade  show" role="alert">
-                        <?php echo e(session()->get('message_fail')); ?> ❌
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php endif; ?>
                 <div class="row">
-                    <?php if(session('status')): ?>
-                        <div id="alert_message" class="alert alert-success alert-dismissible fade  w-25 show sticky"
-                            role="alert">
-                            <?php echo e(session('status')); ?> ✔️
-                        </div>
-                    <?php endif; ?>
                     <div class="col-12">
                         <div class="card mb-0">
                             <div class="card-body">
@@ -36,7 +23,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <input type="file" name="image" placeholder="Choose image"
-                                                                    id="image">
+                                                                    id="image" data-toggle="tooltip" data-placement="bottom" title="Choose Image">
                                                                 <?php $__errorArgs = ['image'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -71,14 +58,15 @@ unset($__errorArgs, $__bag); ?>
                                                     <div class="col text-center mt-5">
                                                         <textarea name="resort_description"
                                                             style="min-height:200px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
-                                                            class="form-control ml-2"
-                                                            placeholder="Enter resort description" required></textarea>
+                                                            class="form-control ml-2" placeholder="Enter resort description"
+                                                            required></textarea>
                                                     </div>
                                                     <div>
                                                         <div class="row mt-3">
                                                             <div class="col text-center">
                                                                 <div class="form-group">
-                                                                    <button class="btn w-50 text-white" id="btn_add" style="background-color:  #21791A">Add Resort</button>
+                                                                    <button class="btn w-50 text-white" id="btn_add"
+                                                                        style="background-color:  #21791A">Add Resort</button>
                                                                 </div>
                                                             </div>
                                                         </div>
