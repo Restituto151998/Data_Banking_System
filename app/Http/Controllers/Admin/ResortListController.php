@@ -14,6 +14,7 @@ use App\Models\Date;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
 
 class ResortListController extends Controller
  {
@@ -44,7 +45,7 @@ class ResortListController extends Controller
     }
 
     public function guest(Request $request, $id ) {
-     
+        $resort = ResortList::where( 'resort_id',  '=', $id )->first();
         $dates = Date::where('resort_id', $id)->get();
         $from_date = '';
         $to_date = '';
@@ -55,7 +56,10 @@ class ResortListController extends Controller
         $start_date = $from_date;
         $date_end = $to_date;
 
-        $resort = ResortList::where( 'resort_id',  '=', $id )->first();
+        if(empty($start_date) && empty($date_end)){
+            $guests = Guest::where('resort_id',$id)->get();
+            return view( 'resorts.resort_guest' )->with( 'guests', $guests )->with('resorts', $resort )->with('dates', $dates );
+        }  
     
         $guests = Guest::where('resort_id',$id)
         ->whereBetween('created_at', [$start_date, $date_end])
