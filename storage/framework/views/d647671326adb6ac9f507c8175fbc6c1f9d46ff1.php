@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('addUser'); ?>
-<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php if(auth()->guard()->check()): ?>
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
@@ -21,7 +21,7 @@
                                                 </div>
                                                 <div class="row mr-3">
                                                     <div class="col">
-                                                      
+
                                                         <a class="btn p-2 text-white" id="btn_add"
                                                             style="background-color:  #21791A"
                                                             href="<?php echo e(route('admin.add_users')); ?>">+ Add New User</a>
@@ -40,14 +40,16 @@
                                                         <thead class="table"
                                                             style="background-color: #21791A; text-align:center; ">
                                                             <tr>
-                                                                <th scope="col" style="border-top-left-radius:10px 10px;" class="text-white">Name</th>
+                                                                <th scope="col" style="border-top-left-radius:10px 10px;"
+                                                                    class="text-white">Name</th>
                                                                 <th scope="col" class="text-white">Email Address</th>
                                                                 <th scope="col" class="text-white">Phone Number</th>
                                                                 <th scope="col" class="text-white">Gender</th>
                                                                 <th scope="col" class="text-white">Address</th>
                                                                 <th scope="col" class="text-white">Role</th>
                                                                 <th scope="col" class="text-white">Status</th>
-                                                                <th scope="col" style="border-top-right-radius:10px 10px;" class="text-white">Action</th>
+                                                                <th scope="col" style="border-top-right-radius:10px 10px;"
+                                                                    class="text-white">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="myTable">
@@ -70,8 +72,10 @@
                                                                                         class="btn btn-danger btn-sm text-white"><?php echo e($user->status); ?></a>
                                                                                 <?php endif; ?>
                                                                             <td>
-                                                                                <a
-                                                                                    href="<?php echo e(route('admin.add_user_edit', $user->id)); ?>" data-toggle="tooltip" data-placement="bottom" title="Edit <?php echo e($user->name); ?>"><i
+                                                                                <a href="<?php echo e(route('admin.add_user_edit', $user->id)); ?>"
+                                                                                    data-toggle="tooltip"
+                                                                                    data-placement="bottom"
+                                                                                    title="Edit <?php echo e($user->name); ?>"><i
                                                                                         data-feather="edit"></i>
                                                                                 </a>
                                                                             </td>
@@ -93,7 +97,7 @@
                                                             srcset=""><br>
                                                         <p>No results found.</p>
                                                     </div>
-                                                   
+
                                                 </div>
                                             </div>
                                         </div>
@@ -103,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-                 <span class="float-right"> <?php echo $users->links(); ?></span>
+                <span class="float-right"> <?php echo $users->links(); ?></span>
             </div>
         </div>
     <?php endif; ?>
