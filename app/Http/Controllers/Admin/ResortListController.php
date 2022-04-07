@@ -53,9 +53,8 @@ class ResortListController extends Controller
             $to_date = $date->to;
         }
         $resort = ResortList::where( 'resort_id',  '=', $id )->first();
-        $guests = DB::table('guests')
-        ->select('*')
-        ->where('resort_id',$id)
+        
+        $guests = Guest::where('resort_id',$id)
         ->whereBetween('created_at', [$from_date, $to_date])
         ->get();
   
