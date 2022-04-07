@@ -53,10 +53,12 @@ class ResortListController extends Controller
             $to_date = $date->to;
         }
         $resort = ResortList::where( 'resort_id',  '=', $id )->first();
-        
+    
         $guests = Guest::where('resort_id',$id)
-        ->whereBetween('created_at', [$from_date, $to_date])
+        ->where('created_at', '>=', $from_date)
+        ->where('created_at', '<=', $to_date)
         ->get();
+
   
         return view( 'resorts.resort_guest' )->with( 'guests', $guests )->with('resorts', $resort )->with('dates', $dates );
     }
