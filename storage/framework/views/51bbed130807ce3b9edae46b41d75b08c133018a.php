@@ -47,7 +47,12 @@
                                                                 <?php $__currentLoopData = $resort_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <tr class="tr">
                                                                         <td><?php echo e($resort->resort_name); ?></td>
-                                                                        <td><?php echo e($resort->assigned_staff); ?></td>
+                                                                        <?php if($resort->user_id == 1): ?>
+                                                                         <td>No assigned staff</td>
+                                                                         <?php else: ?>
+                                                                         <td><?php echo e($resort->assigned_staff); ?></td>
+                                                                        <?php endif; ?>
+                                                                        
                                                                         <td>
                                                                             <?php if($resort->status == 'open'): ?>
                                                                                 <a href="<?php echo e(url('resorts_status_update', $resort->id)); ?>"

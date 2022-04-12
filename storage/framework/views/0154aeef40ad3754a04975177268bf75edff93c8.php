@@ -70,8 +70,11 @@
                                                                     <option value="<?php echo e(json_encode($resort)); ?>">
                                                                         <?php echo e($resort->resort_name); ?>
 
-                                                                    </option>
+                                                                    </option>                                                
                                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                  <option value="not applicable">
+                                                                        Not applicable to assign
+                                                                    </option>
                                                             </select>
                                                         </div>
                                                     </div>

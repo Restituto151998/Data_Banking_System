@@ -69,8 +69,11 @@
                                                                 @foreach ($resorts as $resort)
                                                                     <option value="{{ json_encode($resort) }}">
                                                                         {{ $resort->resort_name }}
-                                                                    </option>
+                                                                    </option>                                                
                                                                 @endforeach
+                                                                  <option value="not applicable">
+                                                                        Not applicable to assign
+                                                                    </option>
                                                             </select>
                                                         </div>
                                                     </div>

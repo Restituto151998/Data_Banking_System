@@ -54,17 +54,19 @@
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
                                                     <option selected hidden>{{ $resort->assigned_staff }}</option>
                                                     @foreach ($users as $user)
-                                                        @if ($user->type == 'STAFF')
+                                                        @if ($user->type == 'STAFF' && $user->status == 'enable')
                                                             <option value="{{ $user->id }}">
                                                                 {{ $user->name }}
                                                             </option>
                                                         @endif
                                                     @endforeach
+                                                    
                                                     <option value="1">
-                                                        Assign To Me
+                                                        No assigned staff
                                                     </option>
 
                                                 </select>
+                                              
                                                 <strong><label for="name" class="col-form-label mb-1 text-black">Assigned
                                                         Staff</label></strong>
                                             </div>

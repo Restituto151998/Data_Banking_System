@@ -23,7 +23,8 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <input type="file" name="image" placeholder="Choose image"
-                                                                    id="image" data-toggle="tooltip" data-placement="bottom" title="Choose Image">
+                                                                    id="image" data-toggle="tooltip" data-placement="bottom"
+                                                                    title="Choose Image">
                                                                 <?php $__errorArgs = ['image'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

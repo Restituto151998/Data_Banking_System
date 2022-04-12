@@ -27,7 +27,8 @@
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <input type="file" name="imageMain" placeholder="Choose image"
-                                                                id="imageMain" data-toggle="tooltip" data-placement="bottom" title="Choose Image">
+                                                                id="imageMain" data-toggle="tooltip" data-placement="bottom"
+                                                                title="Choose Image">
                                                             <?php $__errorArgs = ['imageMain'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -60,18 +61,20 @@ unset($__errorArgs, $__bag); ?>
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
                                                     <option selected hidden><?php echo e($resort->assigned_staff); ?></option>
                                                     <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <?php if($user->type == 'STAFF'): ?>
+                                                        <?php if($user->type == 'STAFF' && $user->status == 'enable'): ?>
                                                             <option value="<?php echo e($user->id); ?>">
                                                                 <?php echo e($user->name); ?>
 
                                                             </option>
                                                         <?php endif; ?>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    
                                                     <option value="1">
-                                                        Assign To Me
+                                                        No assigned staff
                                                     </option>
 
                                                 </select>
+                                              
                                                 <strong><label for="name" class="col-form-label mb-1 text-black">Assigned
                                                         Staff</label></strong>
                                             </div>

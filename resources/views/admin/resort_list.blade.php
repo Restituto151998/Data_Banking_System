@@ -47,7 +47,12 @@
                                                                 @foreach ($resort_lists as $resort)
                                                                     <tr class="tr">
                                                                         <td>{{ $resort->resort_name }}</td>
-                                                                        <td>{{ $resort->assigned_staff }}</td>
+                                                                        @if($resort->user_id == 1)
+                                                                         <td>No assigned staff</td>
+                                                                         @else
+                                                                         <td>{{ $resort->assigned_staff }}</td>
+                                                                        @endif
+                                                                        
                                                                         <td>
                                                                             @if ($resort->status == 'open')
                                                                                 <a href="{{ url('resorts_status_update', $resort->id) }}"

@@ -26,7 +26,9 @@
                                                             <div class="col">
                                                                 <label for="profile">
                                                                     <i data-feather="camera"
-                                                                        style="position:unset; margin-right: -172px; margin-top: -30px;" data-toggle="tooltip" data-placement="bottom" title="Choose Profile"></i>
+                                                                        style="position:unset; margin-right: -172px; margin-top: -30px;"
+                                                                        data-toggle="tooltip" data-placement="bottom"
+                                                                        title="Choose Profile"></i>
                                                                 </label>
                                                                 <input type="file" name="image" placeholder="Choose image"
                                                                     id="profile" hidden>
@@ -46,7 +48,9 @@ unset($__errorArgs, $__bag); ?>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn  text-center text-white"
                                                                 style="background-color:  #21791A; margin-top: -20px;"
-                                                                id="change_profile" data-toggle="tooltip" data-placement="bottom" title="Click to save changes" disabled>Change Profile</button>
+                                                                id="change_profile" data-toggle="tooltip"
+                                                                data-placement="bottom" title="Click to save changes"
+                                                                disabled>Change Profile</button>
                                                         </div>
                                                     </div>
                                                 </form>

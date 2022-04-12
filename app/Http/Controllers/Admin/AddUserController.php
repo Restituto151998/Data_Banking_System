@@ -38,11 +38,60 @@ class AddUserController extends Controller
     public function saveUser( Request $request ) {
         $resort_status = 'closed';
         $resort = json_decode( $request->assigned_staff );
+        
+        if ($request->assigned_staff == 'not applicable' ) {
+            $validatedData = $request->validate( [
+                'name' => 'required',
+                'email' => 'required',
+                'password' => 'required',
+            ] );
+    
+            $email = $request->input( 'email' );
+    
+            $emailValidator = Validator::make(
+                array(
+                    'email' => $email
+                ),
+                array(
+                    'email' => 'required|email|unique:users'
+                )
+            );
+    
+            if ( $emailValidator->fails() ){
+                Alert::error('Failed', 'Duplicate email please try another!');
+                return back();
+            }
+    
+            $save = new User;
+            $status = 'enable';
+            $name = $request->input( 'name' );
+            $address = $request->input( 'address' );
+            $phone_number = $request->input( 'phone_number' );
+            $gender = $request->input( 'gender' );
+            $email = $request->input( 'email' );
+            $assigned_staff = 'No resort';
+            $type = 'STAFF';
+            $password = Hash::make( $request->input( 'password' ) );
+    
+            $save->name = $name;
+            $save->address = $address;
+            $save->phone_number = $phone_number;
+            $save->gender = $gender;
+            $save->type = $type;
+            $save->email = $email;
+            $save->status = $status;
+            $save->password = $password;
+    
+            $save->save();
+            Alert::success('Success', 'User addedsuccessfully!');
+            return redirect( '/add_user' );
+        }
 
         if ( empty( $resort->resort_name ) ) {
             Alert::error('Failed', 'Please choose a resort!');
             return back();
         }
+
 
         $validatedData = $request->validate( [
             'name' => 'required',
@@ -67,7 +116,7 @@ class AddUserController extends Controller
         }
 
         $save = new User;
-        $status = 'enable';
+        $status = 'disable';
         $name = $request->input( 'name' );
         $address = $request->input( 'address' );
         $phone_number = $request->input( 'phone_number' );
@@ -171,6 +220,11 @@ class AddUserController extends Controller
         $user->phone_number = $phone_number;
         $user->gender = $gender;
         $resortlist = ResortList::where('user_id', $request->id)->first();
+        if(empty($resortlist->assigned_staff)){
+            $user->save();
+            Alert::success('Success', 'User successfully updated!');
+            return redirect( '/add_user' );
+        }
         $resortlist->assigned_staff = $name;
         $resortlist->save();
         $user->save();
@@ -189,6 +243,10 @@ class AddUserController extends Controller
         }
 
         $updateStatus = array( 'status' => $status );
+        $no_staff = array( 'user_id' => '1','assigned_staff' => 'No assigned staff' );
+        if($status == 'disable'){
+            ResortList::where('user_id',$id)->update($no_staff);
+        }
         DB::table( 'users' )->where( 'id', $id )->update( $updateStatus );
         Alert::success('Success','User status has been updated successfully!');
         return back();

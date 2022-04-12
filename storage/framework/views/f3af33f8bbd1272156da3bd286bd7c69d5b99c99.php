@@ -20,13 +20,15 @@
 </head>
 
 <body>
-        <div class="text-center" style="margin-top: 20%">
-            <h2>404 | NOT FOUND</h2>
-            <p style="margin-left: 20%; margin-right: 20%">A 404 error indicates that the system you're trying to reach
-                can't be
-                found. You might see a 404 error because you are trying to access a page that not exist! </p>
+    <div class="text-center" style="margin-top: 20%">
+        <h2>404 | NOT FOUND</h2>
+        <p style="margin-left: 20%; margin-right: 20%">A 404 error indicates that the system you're trying to reach
+            can't be
+            found. You might see a 404 error because you are trying to access a page that not exist! </p>
 
-            <span class="text-center">Go <a href="/">back</a></span>
-        </div>
+        <span class="text-center">Go <a href="/login">back</a></span>
+    </div>
 </body>
-</html><?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/error_code/not_found.blade.php ENDPATH**/ ?>
+
+</html>
+<?php /**PATH C:\Users\capstonestudent\Desktop\Data_Banking_System\resources\views/error_code/not_found.blade.php ENDPATH**/ ?>

@@ -26,7 +26,7 @@
             can't be
             found. You might see a 404 error because you are trying to access a page that not exist! </p>
 
-        <span class="text-center">Go <a href="/">back</a></span>
+        <span class="text-center">Go <a href="/login">back</a></span>
     </div>
 </body>
 
