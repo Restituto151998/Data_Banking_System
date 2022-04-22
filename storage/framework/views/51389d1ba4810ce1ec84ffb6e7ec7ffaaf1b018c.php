@@ -17,6 +17,8 @@
                                 <?php echo method_field('PUT'); ?>
                                 <div class="row mt-5">
                                     <input type="id" class="form-control" name="id" value="<?php echo e($resort->id); ?>" hidden>
+                                    <input type="id" class="form-control" name="u_id" value="<?php echo e($resort->user_id); ?>" hidden>
+                                     <input type="id" class="form-control" name="staff" value="<?php echo e($resort->assigned_staff); ?>" hidden>
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
@@ -59,15 +61,16 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="col text-center">
                                                 <select class="custom-select text-center" id="inputGroupSelect01" name="user_id"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
-                                                    <option selected hidden><?php echo e($resort->assigned_staff); ?></option>
+                                                    <option selected value="<?php echo e($resort->user_id); ?>" hidden><?php echo e($resort->assigned_staff); ?></option>
                                                     <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <?php if($user->type == 'STAFF' && $user->status == 'enable'): ?>
+                                                        <?php if($user->type == 'STAFF' && $user->status == 'enable' ): ?>
                                                             <option value="<?php echo e($user->id); ?>">
                                                                 <?php echo e($user->name); ?>
 
                                                             </option>
                                                         <?php endif; ?>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    
                                                     
                                                     <option value="1">
                                                         No assigned staff

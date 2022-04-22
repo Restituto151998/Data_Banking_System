@@ -76,10 +76,6 @@ class ResortListController extends Controller
                 if($request->user_id == '1'){
                     ResortList::where('resort_id',$request->id )->update(['user_id' => $user->id,'resort_name' => $request->resort_name, 'assigned_staff' => 'No assigned staff']);
                 }else{
-                    if ( ResortList::where( 'user_id', '=', $request->user_id )->exists()) {
-                        Alert::error('Failed', 'Staff has already resort!');
-                        return back();
-                    }
                     ResortList::where('resort_id',$request->id )->update(['user_id' => $user->id,'resort_name' => $request->resort_name, 'assigned_staff' => $user->name]);
                 }
                
@@ -89,19 +85,13 @@ class ResortListController extends Controller
             Alert::success('Success', 'Successfully Updated!');
             return redirect('/resort_list');
         }else{         
-           
-            $users = User::where('id',$request->user_id)->get();
+            $users = User::where('id',$request->user_id)->get();    
             foreach($users as $user){
                 if($request->user_id == '1'){
                     ResortList::where('resort_id',$request->id )->update(['user_id' => $user->id,'resort_name' => $request->resort_name, 'assigned_staff' => 'No assigned staff']);
                 }else{
-                    if ( ResortList::where( 'user_id', '=', $request->user_id )->exists()) {
-                        Alert::error('Failed', 'Staff has already resort!');
-                        return back();
-                    }
                     ResortList::where('resort_id',$request->id )->update(['user_id' => $user->id,'resort_name' => $request->resort_name, 'assigned_staff' => $user->name]);
-                }
-               
+                }                               
             }
             ResortList::where('resort_id',$request->id )->update(['resort_name' => $request->resort_name]);
             Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description] );

@@ -17,6 +17,8 @@
                                 @method('PUT')
                                 <div class="row mt-5">
                                     <input type="id" class="form-control" name="id" value="{{ $resort->id }}" hidden>
+                                    <input type="id" class="form-control" name="u_id" value="{{ $resort->user_id }}" hidden>
+                                     <input type="id" class="form-control" name="staff" value="{{ $resort->assigned_staff }}" hidden>
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
@@ -52,14 +54,15 @@
                                             <div class="col text-center">
                                                 <select class="custom-select text-center" id="inputGroupSelect01" name="user_id"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
-                                                    <option selected hidden>{{ $resort->assigned_staff }}</option>
+                                                    <option selected value="{{ $resort->user_id }}" hidden>{{ $resort->assigned_staff }}</option>
                                                     @foreach ($users as $user)
-                                                        @if ($user->type == 'STAFF' && $user->status == 'enable')
+                                                        @if ($user->type == 'STAFF' && $user->status == 'enable' )
                                                             <option value="{{ $user->id }}">
                                                                 {{ $user->name }}
                                                             </option>
                                                         @endif
                                                     @endforeach
+                                                    
                                                     
                                                     <option value="1">
                                                         No assigned staff
