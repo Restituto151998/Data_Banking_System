@@ -39,29 +39,17 @@ class AddUserController extends Controller
         $resort_status = 'closed';
         $resort = json_decode( $request->assigned_staff );
         
+        $validatedData = $request->validate( [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:8',
+            'gender' => 'required',
+            'phone_number' => 'required|min:11|max:11',
+            'assigned_staff' => 'required',
+            'address' => 'required',
+        ] );
+
         if ($request->assigned_staff == 'not applicable' ) {
-            $validatedData = $request->validate( [
-                'name' => 'required',
-                'email' => 'required',
-                'password' => 'required',
-            ] );
-    
-            $email = $request->input( 'email' );
-    
-            $emailValidator = Validator::make(
-                array(
-                    'email' => $email
-                ),
-                array(
-                    'email' => 'required|email|unique:users'
-                )
-            );
-    
-            if ( $emailValidator->fails() ){
-                Alert::error('Failed', 'Duplicate email please try another!');
-                return back();
-            }
-    
             $save = new User;
             $status = 'enable';
             $name = $request->input( 'name' );
@@ -80,39 +68,11 @@ class AddUserController extends Controller
             $save->type = $type;
             $save->email = $email;
             $save->status = $status;
-            $save->password = $password;
-    
+            $save->password = $password;  
             $save->save();
+
             Alert::success('Success', 'User addedsuccessfully!');
             return redirect( '/add_user' );
-        }
-
-        if ( empty( $resort->resort_name ) ) {
-            Alert::error('Failed', 'Please choose a resort!');
-            return back();
-        }
-
-
-        $validatedData = $request->validate( [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-        ] );
-
-        $email = $request->input( 'email' );
-
-        $emailValidator = Validator::make(
-            array(
-                'email' => $email
-            ),
-            array(
-                'email' => 'required|email|unique:users'
-            )
-        );
-
-        if ( $emailValidator->fails() ){
-            Alert::error('Failed', 'Duplicate email please try another!');
-            return back();
         }
 
         $save = new User;
