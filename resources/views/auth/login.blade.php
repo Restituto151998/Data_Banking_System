@@ -1,10 +1,9 @@
 @extends('sideNav.side_navbar')
 @section('content')
-
     <body style="background-color: #21791A">
         <div class="container ">
             <div class="container mt-5">
-                <div class="row">
+                <div class="row" id="row">
                     <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4"
                         id="login">
                         {{-- <div class="card" id="login"> --}}
@@ -20,12 +19,12 @@
                                 @csrf
                                 <div class="form-group">
                                     <div class="input-group-append">
-                                        <strong><label><i data-feather="mail" class="mt-3"></i> </label></strong>
+                                        <strong><label><i data-feather="user" class="mt-3"></i> </label></strong>
                                         </button>
-                                        <input id="email" type="email"
+                                        <input id="email" type="username"
                                             style="background-color:#F4EBEB;border-left-color:#F4EBEB; border-bottom-color:green;border-right-color:#F4EBEB;border-top-color:#F4EBEB"
-                                            class="form-control" name="email"
-                                            tabindex="1" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address"
+                                            class="form-control" name="username"
+                                            tabindex="1" value="{{ old('username') }}" required autocomplete="username" placeholder="Username"
                                             autofocus>
                                     </div>
                                 </div>
@@ -38,10 +37,10 @@
                                             name="password" tabindex="2" required autocomplete="Password" placeholder="Password">
                                             <i class="fa fa-eye-slash mt-3"  id="pas" style="font-size:18px;"></i>
                                     </div>
-                                    @error('email')
+                                    @error('username')
 
                                         <span class="text-danger">
-                                            <strong>email and password doesn't match!</strong>
+                                            <strong>Username and password doesn't match!</strong>
                                         </span>
                                     @enderror
                                 </div>

@@ -23,17 +23,15 @@ class ChangePasswordController extends Controller {
     public function updatePassword( Request $request ) {
         if(Hash::check($request->current_password, Auth::user()->password)){
             if ( $request->new_password == $request->confirm_password ) {
-                $request->validate( [
-                    'current_password' => [ 'required' ],
-                    'new_password' => [ 'required' ],
-                    'confirm_password' => [ 'same:new_password' ],
-                ] );
     
                 User::find( Auth::user()->id )->update( [ 'password'=> Hash::make( $request->new_password ) ] );
                 Alert::success('Congrats', 'Your password successfully changed!');
                 return back();
             }
-            Alert::error('Failed', 'Password doesnt match!');
+            $validatedData =  $request->validate( [
+                'new_password' => [ 'required' ],
+                'confirm_password' => [ 'same:new_password' ],
+            ] );
             return back();
 
         }else{

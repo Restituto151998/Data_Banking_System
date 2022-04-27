@@ -41,7 +41,7 @@ class AddUserController extends Controller
         
         $validatedData = $request->validate( [
             'name' => 'required',
-            'email' => 'required|unique:users',
+            'username' => 'required|unique:users',
             'password' => 'required|min:8',
             'gender' => 'required',
             'phone_number' => 'required|min:11|max:11',
@@ -49,14 +49,14 @@ class AddUserController extends Controller
             'address' => 'required',
         ] );
 
-        if ($request->assigned_staff == 'not applicable' ) {
+        if ($request->assigned_staff == 'Not applicable to assign') {
             $save = new User;
             $status = 'enable';
             $name = $request->input( 'name' );
             $address = $request->input( 'address' );
             $phone_number = $request->input( 'phone_number' );
             $gender = $request->input( 'gender' );
-            $email = $request->input( 'email' );
+            $username = $request->input( 'username' );
             $assigned_staff = 'No resort';
             $type = 'STAFF';
             $password = Hash::make( $request->input( 'password' ) );
@@ -66,7 +66,7 @@ class AddUserController extends Controller
             $save->phone_number = $phone_number;
             $save->gender = $gender;
             $save->type = $type;
-            $save->email = $email;
+            $save->username = $username;
             $save->status = $status;
             $save->password = $password;  
             $save->save();
@@ -81,7 +81,7 @@ class AddUserController extends Controller
         $address = $request->input( 'address' );
         $phone_number = $request->input( 'phone_number' );
         $gender = $request->input( 'gender' );
-        $email = $request->input( 'email' );
+        $username = $request->input( 'username' );
         $assigned_staff = $resort->resort_name;
         $type = 'STAFF';
         $password = Hash::make( $request->input( 'password' ) );
@@ -91,7 +91,7 @@ class AddUserController extends Controller
         $save->phone_number = $phone_number;
         $save->gender = $gender;
         $save->type = $type;
-        $save->email = $email;
+        $save->username = $username;
         $save->status = $status;
         $save->password = $password;
 
@@ -128,9 +128,9 @@ class AddUserController extends Controller
                 $updateData = $request->validate( [
                     'name' => [ 'required' ],
                     'address' => [ 'required' ],
-                    'phone_number' => [ 'required' ],
+                    'phone_number' => [ 'required|min:11|max:11' ],
                     'gender' => [ 'required' ],
-                    'email' => [ 'required' ],
+                    'username' => [ 'required' ],
                     'new_password' => [ 'required' ],
                     'confirm_password' => [ 'same:new_password' ],
                 ] );
@@ -141,14 +141,14 @@ class AddUserController extends Controller
                 $address = $request->input( 'address' );
                 $phone_number = $request->input( 'phone_number' );
                 $gender = $request->input( 'gender' );
-                $email = $request->input( 'email' );
+                $username = $request->input( 'username' );
                 $password = Hash::make( $request->input('new_password') );
 
                 $user->name = $name;
                 $user->address = $address;
                 $user->phone_number = $phone_number;
                 $user->gender = $gender;
-                $user->email = $email;
+                $user->username = $username;
                 $user->password = $password;
 
                 $user->save();
@@ -161,21 +161,21 @@ class AddUserController extends Controller
 
         $updateData = $request->validate( [
             'name' => 'required|max:255',
-            'email' => 'required|max:255',
+            'username' => 'required|max:255',
             'address' =>'required|max:255',
-            'phone_number' =>'required|max:255',
+            'phone_number' =>'required|min:11|max:11',
             'gender' =>'required|max:255',
         ] );
         $user = User::find( $request->id );
 
         $name = $request->input( 'name' );
-        $email = $request->input( 'email' );
+        $username = $request->input( 'username' );
         $address = $request->input( 'address' );
         $phone_number = $request->input( 'phone_number' );
         $gender = $request->input( 'gender' );
 
         $user->name = $name;
-        $user->email = $email;
+        $user->username = $username;
         $user->address = $address;
         $user->phone_number = $phone_number;
         $user->gender = $gender;

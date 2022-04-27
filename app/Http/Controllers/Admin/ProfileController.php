@@ -43,7 +43,7 @@ class ProfileController extends Controller
  {
         $updateData = $request->validate( [
             'name' => 'required|max:255',
-            'email' => 'required|max:255',
+            'username' => 'required|max:255',
             'address' => 'required|max:255',
             'phone_number' => 'required|max:255',
             'gender' => 'required|max:255',

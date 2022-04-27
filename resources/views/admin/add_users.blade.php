@@ -27,11 +27,11 @@
                                                                 value="{{ old('name') }}" name="name" required>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="email"
+                                                            <input type="username"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center"
-                                                                placeholder="Email Address" name="email"
-                                                                value="{{ old('email') }}"  autocomplete="email" required>
+                                                                class="form-control ml-2 text-center" placeholder="Username"
+                                                                name="username" value="{{ old('username') }}"
+                                                                autocomplete="username" required>
                                                         </div>
                                                     </div>
                                                     <div class="row mt-5">
@@ -39,8 +39,8 @@
                                                             <input type="number"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" placeholder="Phone Number"
-                                                                name="phone_number" 
-                                                                value="{{ old('phone_number') }}" required>
+                                                                name="phone_number" value="{{ old('phone_number') }}"
+                                                                required>
                                                             @error('phone_number')
                                                                 <span class="text-danger">
                                                                     <strong>Invalid phone number!</strong>
@@ -51,7 +51,12 @@
                                                             <select class="custom-select text-center" id="inputGroupSelect01"
                                                                 name="gender"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
-                                                                <option value="{{ old('gender') }}" selected>Select gender...
+                                                                <option value="{{ old('gender') }}" selected>
+                                                                    @if (empty(old('gender')))
+                                                                       Select gender...
+                                                                    @else
+                                                                        {{ old('gender') }}
+                                                                    @endif
                                                                 </option>
                                                                 <option value="Male">
                                                                     Male
@@ -72,11 +77,11 @@
                                                             <input type="password"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" placeholder="Password"
-                                                                name="password" value="{{ old('password') }}" 
+                                                                name="password" value="{{ old('password') }}"
                                                                 autocomplete="password" required>
                                                             @error('password')
                                                                 <span class="text-danger">
-                                                                    <strong>Password  minimum 8 characters!</strong>
+                                                                    <strong>Password minimum 8 characters!</strong>
                                                                 </span>
                                                             @enderror
                                                         </div>
@@ -85,13 +90,19 @@
                                                             <select class="custom-select text-center" id="inputGroupSelect01"
                                                                 name="assigned_staff"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
-                                                                <option name="id" value="{{ old('assigned_staff') }}" selected>Assign to...</option>
+                                                                     <option  name="id" value="{{ old('assigned_staff') }}" selected>
+                                                                    @if (empty(old('assigned_staff')))
+                                                                       Assign to...
+                                                                    @else
+                                                                        {{ old('assigned_staff') }}
+                                                                    @endif
+                                                                </option>
                                                                 @foreach ($resorts as $resort)
                                                                     <option value="{{ json_encode($resort) }}">
                                                                         {{ $resort->resort_name }}
                                                                     </option>
                                                                 @endforeach
-                                                                <option value="not applicable">
+                                                                <option value="Not applicable to assign">
                                                                     Not applicable to assign
                                                                 </option>
                                                             </select>

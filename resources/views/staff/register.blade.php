@@ -21,23 +21,34 @@
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                    class="form-control text-center" placeholder="Full Name"
-                                                    name="full_name" required>
+                                                    class="form-control text-center" value="{{ old('full_name') }}"
+                                                    placeholder="Full Name" name="full_name" required>
                                             </div>
                                             <div class="col">
                                                 <select class="custom-select text-center" id="inputGroupSelect01"
                                                     style="background-color:#FFFFFF;border-left-color:#FFFFFF; border-bottom-color:green;border-right-color:#FFFFFF;border-top-color:#FFFFFF"
-                                                    name="gender" tabindex="1" required autocomplete="gender" autofocus>
-                                                    <option selected>Select gender...</option>
+                                                    name="gender">
+                                                    <option value="{{ old('gender') }}" selected>
+                                                        @if (empty(old('gender')))
+                                                            Select gender
+                                                        @else
+                                                            {{ old('gender') }}
+                                                        @endif
+                                                    </option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>
+                                                @error('gender')
+                                                    <span class="text-danger">
+                                                        <strong>Please select gender!</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                    class="form-control text-center" placeholder="Address" name="address"
-                                                    required>
+                                                    class="form-control text-center" value="{{ old('address') }}"
+                                                    placeholder="Address" name="address" required>
                                             </div>
                                         </div>
                                         <div class="row mt-5">
@@ -45,36 +56,52 @@
                                                 <input type="number"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center" placeholder="Phone Number"
-                                                    name="phone_number" required>
+                                                    value="{{ old('phone_number') }}" name="phone_number" required>
+                                                @error('phone_number')
+                                                    <span class="text-danger">
+                                                        <strong>Invalid phone number!</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center" placeholder="Nationality"
-                                                    name="nationality" required>
+                                                    value="{{ old('nationality') }}" name="nationality" required>
                                             </div>
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center" placeholder="Temperature"
-                                                    name="temperature" required>
+                                                    value="{{ old('temperature') }}" name="temperature" required>
                                             </div>
                                         </div>
                                         <div class="row mt-5">
                                             <div class="col">
                                                 <select class="custom-select mt-2 text-center" id="inputGroupSelect01"
                                                     style="background-color:#FFFFFF;border-left-color:#FFFFFF; border-bottom-color:green;border-right-color:#FFFFFF;border-top-color:#FFFFFF"
-                                                    name="time_use" tabindex="1" required autocomplete="time_use" autofocus>
-                                                    <option selected>Select time...</option>
+                                                    name="time_use">
+                                                      <option value="{{ old('time_use') }}" selected>
+                                                        @if (empty(old('time_use')))
+                                                            Select time
+                                                        @else
+                                                            {{ old('time_use') }}
+                                                        @endif
+                                                    </option>
                                                     <option value="Daytime use">Daytime use</option>
                                                     <option value="Nighttime use">Nighttime use</option>
                                                 </select>
+                                                @error('time_use')
+                                                    <span class="text-danger">
+                                                        <strong>Please select time!</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center mt-2" placeholder="Purpose"
-                                                    name="purpose" required>
+                                                    value="{{ old('purpose') }}" name="purpose" required>
                                             </div>
                                         </div>
                                         <div class="form-group">

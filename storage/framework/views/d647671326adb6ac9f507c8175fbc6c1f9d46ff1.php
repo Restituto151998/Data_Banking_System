@@ -42,7 +42,7 @@
                                                             <tr>
                                                                 <th scope="col" style="border-top-left-radius:10px 10px;"
                                                                     class="text-white">Name</th>
-                                                                <th scope="col" class="text-white">Email Address</th>
+                                                                <th scope="col" class="text-white">Username</th>
                                                                 <th scope="col" class="text-white">Phone Number</th>
                                                                 <th scope="col" class="text-white">Gender</th>
                                                                 <th scope="col" class="text-white">Address</th>
@@ -58,7 +58,7 @@
                                                                     <?php if(Auth::user()->type != $user->type): ?>
                                                                         <tr class="tr">
                                                                             <td><?php echo e($user->name); ?></td>
-                                                                            <td><?php echo e($user->email); ?></td>
+                                                                            <td><?php echo e($user->username); ?></td>
                                                                             <td><?php echo e($user->phone_number); ?></td>
                                                                             <td><?php echo e($user->gender); ?></td>
                                                                             <td><?php echo e($user->address); ?></td>

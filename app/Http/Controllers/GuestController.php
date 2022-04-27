@@ -16,6 +16,7 @@ class GuestController extends Controller
 
 public function redirectTo($id){
     $resort_lists = ResortList::where('resort_id', $id)->get();
+   
     $resorts = Resort::where('id', $id)->get();
     return view('online_registration.guest_registration')->with( 'resort_lists', $resort_lists )->with( 'resorts', $resorts );
 }
@@ -51,7 +52,6 @@ public function redirectTo($id){
     
     $resorts = Resort::where('id', $id)->get();
     $images = Image::where('resort_id', $id)->get();
-  
     return view('online_registration.more_info')->with('images', $images)->with('resorts', $resorts);
   }  
 }

@@ -46,18 +46,19 @@ Route::get('/resorts_status_update/{id}', [App\Http\Controllers\Admin\ResortList
 Route::post('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'uploadProfile']);
 Route::get('/resort_list/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
 Route::post('/resort_list/resort_guest/{id}', [App\Http\Controllers\DateController::class, 'updateDate'])->name('resorts.resort_guest.update');
-Route::get('/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest']);
+Route::get('/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest.staff');;
 Route::get('/status_update/{id}', [App\Http\Controllers\Admin\AddUserController::class, 'changeUserStatus']);
 Route::get('/status_accept/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'accept']);
 Route::get('/status_cancel/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'cancel']);
 Route::get('/status_leave_delete/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'leave']);
 Route::get('/resort_list/resort_list_edit/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.resort_list_edit');
+Route::put('/resort_list/resort_list_edit/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'updateImage']);
 Route::post('/resort_list/resort_list_edit/add-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'addImage'])->name('admin.resort_list_edit.add');
 Route::get('/resort_list/resort_list_edit/delete-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'deleteImage']);
 Route::put('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'update']);
 Route::get('/generate_qrcode', [App\Http\Controllers\Admin\QrCodeController::class, 'qrCode'])->name('resorts.generate_qrcode');
 
-Route::get('/staff_dashboard', [App\Http\Controllers\Staff\DashboardController::class, 'dashboard'])->middleware('type:STAFF');
+Route::get('/staff_dashboard', [App\Http\Controllers\Staff\DashboardController::class, 'dashboard'])->name('staff.dashboard');
 Route::get('/staff_register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'index'])->name('staff.staff_register');
 Route::post('/register', [App\Http\Controllers\Staff\DirectRegisterController::class, 'register']);
 Route::get('/profile/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'editUserInformation'])->name('admin.profile.test');

@@ -21,23 +21,42 @@
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                    class="form-control text-center" placeholder="Full Name"
-                                                    name="full_name" required>
+                                                    class="form-control text-center" value="<?php echo e(old('full_name')); ?>"
+                                                    placeholder="Full Name" name="full_name" required>
                                             </div>
                                             <div class="col">
                                                 <select class="custom-select text-center" id="inputGroupSelect01"
                                                     style="background-color:#FFFFFF;border-left-color:#FFFFFF; border-bottom-color:green;border-right-color:#FFFFFF;border-top-color:#FFFFFF"
-                                                    name="gender" tabindex="1" required autocomplete="gender" autofocus>
-                                                    <option selected>Select gender...</option>
+                                                    name="gender">
+                                                    <option value="<?php echo e(old('gender')); ?>" selected>
+                                                        <?php if(empty(old('gender'))): ?>
+                                                            Select gender
+                                                        <?php else: ?>
+                                                            <?php echo e(old('gender')); ?>
+
+                                                        <?php endif; ?>
+                                                    </option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>
+                                                <?php $__errorArgs = ['gender'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger">
+                                                        <strong>Please select gender!</strong>
+                                                    </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                    class="form-control text-center" placeholder="Address" name="address"
-                                                    required>
+                                                    class="form-control text-center" value="<?php echo e(old('address')); ?>"
+                                                    placeholder="Address" name="address" required>
                                             </div>
                                         </div>
                                         <div class="row mt-5">
@@ -45,36 +64,67 @@
                                                 <input type="number"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center" placeholder="Phone Number"
-                                                    name="phone_number" required>
+                                                    value="<?php echo e(old('phone_number')); ?>" name="phone_number" required>
+                                                <?php $__errorArgs = ['phone_number'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger">
+                                                        <strong>Invalid phone number!</strong>
+                                                    </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center" placeholder="Nationality"
-                                                    name="nationality" required>
+                                                    value="<?php echo e(old('nationality')); ?>" name="nationality" required>
                                             </div>
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center" placeholder="Temperature"
-                                                    name="temperature" required>
+                                                    value="<?php echo e(old('temperature')); ?>" name="temperature" required>
                                             </div>
                                         </div>
                                         <div class="row mt-5">
                                             <div class="col">
                                                 <select class="custom-select mt-2 text-center" id="inputGroupSelect01"
                                                     style="background-color:#FFFFFF;border-left-color:#FFFFFF; border-bottom-color:green;border-right-color:#FFFFFF;border-top-color:#FFFFFF"
-                                                    name="time_use" tabindex="1" required autocomplete="time_use" autofocus>
-                                                    <option selected>Select time...</option>
+                                                    name="time_use">
+                                                      <option value="<?php echo e(old('time_use')); ?>" selected>
+                                                        <?php if(empty(old('time_use'))): ?>
+                                                            Select time
+                                                        <?php else: ?>
+                                                            <?php echo e(old('time_use')); ?>
+
+                                                        <?php endif; ?>
+                                                    </option>
                                                     <option value="Daytime use">Daytime use</option>
                                                     <option value="Nighttime use">Nighttime use</option>
                                                 </select>
+                                                <?php $__errorArgs = ['time_use'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="text-danger">
+                                                        <strong>Please select time!</strong>
+                                                    </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col">
                                                 <input type="text"
                                                     style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                     class="form-control text-center mt-2" placeholder="Purpose"
-                                                    name="purpose" required>
+                                                    value="<?php echo e(old('purpose')); ?>" name="purpose" required>
                                             </div>
                                         </div>
                                         <div class="form-group">

@@ -161,16 +161,16 @@
                                 class="rounded-circle" style="width:30px; height: 30px;" alt="img">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-center" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                  document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
-                            </a>
-                            <a class="dropdown-item text-center" href="/profile"
+                            <a class="dropdown-item text-center" style="color:#21791A;" href="/profile"
                                 document.getElementById('logout-form').submit();">
                                 {{ __('Profile') }}
                                 <img src="{{ Auth::user()->image ?? asset('storage/images/default_profile.jpg') }}"
                                     class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+                            </a>
+                            <a class="dropdown-item text-center" style="color:#21791A;" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                          document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }} <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -191,48 +191,57 @@
                     <li class="menu-header">Main</li>
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
-                            <a href="/admin_dashboard" class="nav-link"><i
+                            <a href="/admin_dashboard" class="nav-link"
+                                style="{{ request()->routeIs('admin.dashboard') ? '  border-right: 10px solid green;' : '' }}"><i
                                     data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
                         </li>
                     @endif
                     @if (Auth::user()->type == 'STAFF')
                         <li class="dropdown">
-                            <a href="/staff_dashboard" class="nav-link"><i
+                            <a href="/staff_dashboard" class="nav-link"
+                                style="{{ request()->routeIs('staff.dashboard') ? '  border-right: 10px solid green;' : '' }}"><i
                                     data-feather="monitor"></i><span>{{ __('Dashboard') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">
-                        <a href="/profile" class="nav-link"><i
+                        <a href="/profile" class="nav-link"
+                            style="{{ request()->routeIs('admin.profile') ? '  border-right: 10px solid green;' : '' }}"><i
                                 data-feather="user"></i><span>{{ __('Profile') }}</span></a>
                     </li>
                     @if (Auth::user()->type == 'STAFF')
                         <li class="dropdown">
-                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}" class="nav-link"><i
+                            <a href="/resort_guest/{{ Auth::user()->resortList->resort_id }}" class="nav-link"
+                                style="{{ request()->is('resort_guest*') ? '  border-right: 10px solid green;' : '' }}"><i
                                     data-feather="list"></i><span>{{ Auth::user()->resortList->resort_name }}</span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="/staff_register" class="nav-link"><i
+                            <a href="/staff_register" class="nav-link"
+                                style="{{ request()->routeIs('staff.staff_register') ? '  border-right: 10px solid green;' : '' }}"><i
                                     data-feather="edit"></i><span>{{ __('Direct Register') }}</span></a>
                         </li>
                     @endif
                     @if (Auth::user()->type == 'ADMIN')
                         <li class="dropdown">
-                            <a href="/add_resort" class="nav-link"><i
+                            <a href="/add_resort" class="nav-link"
+                                style="{{ request()->routeIs('admin.add_resort') ? '  border-right: 10px solid green;' : '' }}"><i
                                     data-feather="image"></i><span>{{ __('Add Resort') }}</span></a>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/add_user" class="nav-link"><i
+                            <a href="/add_user" class="nav-link"
+                                style="{{ request()->is('add_user*') ? '  border-right: 10px solid green;' : '' }}"><i
                                     data-feather="users"></i><span>{{ __('Users') }}</span></a>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/resort_list" class="nav-link"><i
+                            <a href="/resort_list" class="nav-link"
+                                style="{{ request()->is('resort_list*') ? '  border-right: 10px solid green;' : '' }}"><i
                                     data-feather="list"></i><span>{{ __('Resort Assignee') }}</span></a>
                         </li>
                     @endif
                     <li class="dropdown">
-                        <a href="/generate_qrcode" class="nav-link"><i
+                        <a href="/generate_qrcode" class="nav-link"
+                            style="{{ request()->routeIs('resorts.generate_qrcode') ? '  border-right: 10px solid green;' : '' }}"><i
                                 data-feather="code"></i><span>{{ __('QRcode') }}</span></a>
                     </li>
                 </ul>
@@ -340,6 +349,52 @@
         $('#inputGroupSelect01').change(function() {
             $('#btn-edit').attr('disabled', false);
         });
+
+        const name = $('#name').val();
+        $('#name').on('input change', function() {
+            if ($(this).val() != name) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+
+        const username = $('#username').val();
+        $('#username').on('input change', function() {
+            if ($(this).val() != username) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+
+        const phone_number = $('#phone_number').val();
+        $('#phone_number').on('input change', function() {
+            if ($(this).val() != phone_number) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+
+        const gender = $('#gender').val();
+        $('#gender').on('input change', function() {
+            if ($(this).val() != gender) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+
+        const address = $('#address').val();
+        $('#address').on('input change', function() {
+            if ($(this).val() != address) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+        
 
     </script>
 </body>

@@ -42,7 +42,7 @@
                                                             <tr>
                                                                 <th scope="col" style="border-top-left-radius:10px 10px;"
                                                                     class="text-white">Name</th>
-                                                                <th scope="col" class="text-white">Email Address</th>
+                                                                <th scope="col" class="text-white">Username</th>
                                                                 <th scope="col" class="text-white">Phone Number</th>
                                                                 <th scope="col" class="text-white">Gender</th>
                                                                 <th scope="col" class="text-white">Address</th>
@@ -58,7 +58,7 @@
                                                                     @if (Auth::user()->type != $user->type)
                                                                         <tr class="tr">
                                                                             <td>{{ $user->name }}</td>
-                                                                            <td>{{ $user->email }}</td>
+                                                                            <td>{{ $user->username }}</td>
                                                                             <td>{{ $user->phone_number }}</td>
                                                                             <td>{{ $user->gender }}</td>
                                                                             <td>{{ $user->address }}</td>

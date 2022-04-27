@@ -3,13 +3,14 @@
     }
     
     #login {
-        position: relative;
+        /* position: relative; */
         max-width: 321px;
         height: 382px;
         background: #F4EBEB;
         border-radius: 100px 0px;
         box-shadow: 0 0 0 0;
         margin-top: 88px;
+        
     }
     
     .login-logo {
@@ -69,7 +70,10 @@
 #piechart, #barGraph{
     overflow: hidden;
 }
-
+#row {
+  
+  margin-left: -10px;
+}
 
 /* 
 flip card
@@ -106,6 +110,8 @@ flip card
     margin-top: -20px;
     float: left;
   }
+
+
 
    
   

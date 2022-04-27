@@ -24,7 +24,7 @@
 </head>
 
 <body>
-<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="container " style="margin-top: 100px;">
         <center>
             <div class="card" style="width: 28rem;">
@@ -45,6 +45,9 @@
                             <i class="fa fa-eye-slash mt-1" id="curr" onclick="current()"
                                 style="font-size:24px; z-index:5; margin-left:90%;  position:absolute;"></i>
                         </div>
+                         <input type="text" id="cur" class="form-control" placeholder="Current Password"
+                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                                name="oldpass" value="<?php echo e(Auth::user()->password); ?>" required hidden> 
                         <div class="input-group mb-3" style="position: relative;">
                             <span class="input-group-text"><i class="fa fa-key" style="font-size:24px"></i></span>
                             <input type="password" id="new" class="form-control" placeholder="New Password"
@@ -61,6 +64,18 @@
                             <i class="fa fa-eye-slash mt-1" id="conf" onclick="confirm()"
                                 style="font-size:24px; z-index:5; margin-left:90%;  position:absolute;"></i>
                         </div>
+                           <?php $__errorArgs = ['confirm_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="text-danger">
+                                <strong>Password not match!</strong>
+                            </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
 
                         <div>
                             <button id="change_button" type="submit" class="btn w-50 text-white"

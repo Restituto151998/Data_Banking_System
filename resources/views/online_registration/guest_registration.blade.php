@@ -49,10 +49,8 @@
                                         action="{{ url('/guest_register') }}">
                                         @csrf
                                         <div class="card-body ">
-                                            @foreach ($resort_lists as $resort)
-                                                @if ($resort->resort_id == $resort->id)
-                                                    <input name="resort_id" value="{{ $resort->resort_id }}" hidden>
-                                                @endif
+                                            @foreach ($resort_lists as $resort)                                         
+                                                    <input name="resort_id" value="{{ $resort->resort_id }}" hidden>                                             
                                             @endforeach
 
                                             <div class="form-group  mb-2" id='myform'>

@@ -37,8 +37,11 @@ class ResortListController extends Controller
 
     public function edit( $id )
  {
-    $resort = ResortList::find( $id );
+    $resort = ResortList::where('resort_id', $id )->first();
+
+    // $resort = ResortList::find( $id );
     $resorts = Resort::find( $id );
+   
     $users = User::all();
     $images = Image::where('resort_id', $id )->get();
     return view( 'admin.resort_list_edit', compact( 'resort', 'resorts', 'images','users' ) );
@@ -80,24 +83,34 @@ class ResortListController extends Controller
                 }
                
             }
+            $path = 'data:image/' .  pathinfo($request->imageMain, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->imageMain));
             ResortList::where('resort_id',$request->id )->update(['resort_name' => $request->resort_name]);
-            Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description] );
+            Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description, 'imagePath' => $path ] );
             Alert::success('Success', 'Successfully Updated!');
             return redirect('/resort_list');
-        }else{         
-            $users = User::where('id',$request->user_id)->get();    
-            foreach($users as $user){
+        }else{        
+            $users = User::where('id',$request->user_id)->get();        
                 if($request->user_id == '1'){
-                    ResortList::where('resort_id',$request->id )->update(['user_id' => $user->id,'resort_name' => $request->resort_name, 'assigned_staff' => 'No assigned staff']);
+                    foreach ($users as $user) {
+                        ResortList::where('resort_id', $request->id)->update(['user_id' => $user->id,'resort_name' => $request->resort_name, 'assigned_staff' => 'No assigned staff']);
+                    }
                 }else{
-                    ResortList::where('resort_id',$request->id )->update(['user_id' => $user->id,'resort_name' => $request->resort_name, 'assigned_staff' => $user->name]);
-                }                               
-            }
+                    foreach ($users as $user) {
+                        ResortList::where('resort_id', $request->id)->update(['user_id' => $user->id,'resort_name' => $request->resort_name, 'assigned_staff' => $user->name]);
+                    }
+                }                          
+           
             ResortList::where('resort_id',$request->id )->update(['resort_name' => $request->resort_name]);
             Resort::where('id', $request->id )->update( ['resort_name' => $request->resort_name,'resort_description' => $request->resort_description] );
             Alert::success('Success', 'Successfully Updated!');
             return redirect('/resort_list');
         }
+    }
+
+    public function updateImage(Request $request){
+        Image::where('id', $request->imageId)->update(['image_description' => $request->description.''.$request->imageId]);
+        Alert::success('Success', 'Image description updated successfully!');
+        return back();
     }
 
     public function deleteImage($id){
@@ -114,7 +127,7 @@ class ResortListController extends Controller
     }
 
     public function addImage(Request $request, $id ){
-
+  
         if($request->hasFile('image')){
             $image = 'data:image/' .  pathinfo($request->image, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->image));    
             $images = new Image;
@@ -124,7 +137,12 @@ class ResortListController extends Controller
             $images->save();
             Alert::success('Success', 'Image Added Successfully!');
             return back();
+           }else{
+            Alert::error('Failed', 'Image is required!');
+            return back();
            }
+
+
     }
 
     public function changeResortStatus( $id )

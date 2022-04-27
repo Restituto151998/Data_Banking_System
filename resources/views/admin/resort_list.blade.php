@@ -72,8 +72,8 @@
                                                                             <a href="{{ route('admin.resort_list_edit', $resort->resort_id) }}"
                                                                                 data-toggle="tooltip"
                                                                                 data-placement="bottom"
-                                                                                title="Edit {{ $resort->resort_name }}"><i
-                                                                                    data-feather="edit"></i> </a>
+                                                                                title="Edit {{ $resort->resort_name }}" ><i
+                                                                                    data-feather="edit" ></i> </a>
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach

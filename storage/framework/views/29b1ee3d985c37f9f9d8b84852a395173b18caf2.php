@@ -49,10 +49,8 @@
                                         action="<?php echo e(url('/guest_register')); ?>">
                                         <?php echo csrf_field(); ?>
                                         <div class="card-body ">
-                                            <?php $__currentLoopData = $resort_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <?php if($resort->resort_id == $resort->id): ?>
-                                                    <input name="resort_id" value="<?php echo e($resort->resort_id); ?>" hidden>
-                                                <?php endif; ?>
+                                            <?php $__currentLoopData = $resort_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                                         
+                                                    <input name="resort_id" value="<?php echo e($resort->resort_id); ?>" hidden>                                             
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                             <div class="form-group  mb-2" id='myform'>

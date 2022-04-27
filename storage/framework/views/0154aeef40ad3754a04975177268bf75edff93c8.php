@@ -27,11 +27,11 @@
                                                                 value="<?php echo e(old('name')); ?>" name="name" required>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="email"
+                                                            <input type="username"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                class="form-control ml-2 text-center"
-                                                                placeholder="Email Address" name="email"
-                                                                value="<?php echo e(old('email')); ?>"  autocomplete="email" required>
+                                                                class="form-control ml-2 text-center" placeholder="Username"
+                                                                name="username" value="<?php echo e(old('username')); ?>"
+                                                                autocomplete="username" required>
                                                         </div>
                                                     </div>
                                                     <div class="row mt-5">
@@ -39,8 +39,8 @@
                                                             <input type="number"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" placeholder="Phone Number"
-                                                                name="phone_number" 
-                                                                value="<?php echo e(old('phone_number')); ?>" required>
+                                                                name="phone_number" value="<?php echo e(old('phone_number')); ?>"
+                                                                required>
                                                             <?php $__errorArgs = ['phone_number'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -58,7 +58,13 @@ unset($__errorArgs, $__bag); ?>
                                                             <select class="custom-select text-center" id="inputGroupSelect01"
                                                                 name="gender"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
-                                                                <option value="<?php echo e(old('gender')); ?>" selected>Select gender...
+                                                                <option value="<?php echo e(old('gender')); ?>" selected>
+                                                                    <?php if(empty(old('gender'))): ?>
+                                                                       Select gender...
+                                                                    <?php else: ?>
+                                                                        <?php echo e(old('gender')); ?>
+
+                                                                    <?php endif; ?>
                                                                 </option>
                                                                 <option value="Male">
                                                                     Male
@@ -86,7 +92,7 @@ unset($__errorArgs, $__bag); ?>
                                                             <input type="password"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                                 class="form-control ml-2 text-center" placeholder="Password"
-                                                                name="password" value="<?php echo e(old('password')); ?>" 
+                                                                name="password" value="<?php echo e(old('password')); ?>"
                                                                 autocomplete="password" required>
                                                             <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -94,7 +100,7 @@ if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
                                                                 <span class="text-danger">
-                                                                    <strong>Password  minimum 8 characters!</strong>
+                                                                    <strong>Password minimum 8 characters!</strong>
                                                                 </span>
                                                             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
@@ -106,14 +112,21 @@ unset($__errorArgs, $__bag); ?>
                                                             <select class="custom-select text-center" id="inputGroupSelect01"
                                                                 name="assigned_staff"
                                                                 style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
-                                                                <option name="id" value="<?php echo e(old('assigned_staff')); ?>" selected>Assign to...</option>
+                                                                     <option  name="id" value="<?php echo e(old('assigned_staff')); ?>" selected>
+                                                                    <?php if(empty(old('assigned_staff'))): ?>
+                                                                       Assign to...
+                                                                    <?php else: ?>
+                                                                        <?php echo e(old('assigned_staff')); ?>
+
+                                                                    <?php endif; ?>
+                                                                </option>
                                                                 <?php $__currentLoopData = $resorts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $resort): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <option value="<?php echo e(json_encode($resort)); ?>">
                                                                         <?php echo e($resort->resort_name); ?>
 
                                                                     </option>
                                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                <option value="not applicable">
+                                                                <option value="Not applicable to assign">
                                                                     Not applicable to assign
                                                                 </option>
                                                             </select>

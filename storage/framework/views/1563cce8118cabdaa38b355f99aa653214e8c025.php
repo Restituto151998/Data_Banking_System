@@ -163,17 +163,17 @@
                                 class="rounded-circle" style="width:30px; height: 30px;" alt="img">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-center" href="<?php echo e(route('logout')); ?>"
-                                onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                  document.getElementById('logout-form').submit();">
-                                <?php echo e(__('Logout')); ?> <i data-feather="log-out" class="ml-2"></i>
-                            </a>
-                            <a class="dropdown-item text-center" href="/profile"
+                            <a class="dropdown-item text-center" style="color:#21791A;" href="/profile"
                                 document.getElementById('logout-form').submit();">
                                 <?php echo e(__('Profile')); ?>
 
                                 <img src="<?php echo e(Auth::user()->image ?? asset('storage/images/default_profile.jpg')); ?>"
                                     class="rounded-circle ml-2" style="width:20px; height: 20px;" alt="img">
+                            </a>
+                            <a class="dropdown-item text-center" style="color:#21791A;" href="<?php echo e(route('logout')); ?>"
+                                onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                          document.getElementById('logout-form').submit();">
+                                <?php echo e(__('Logout')); ?> <i data-feather="log-out" class="ml-2"></i>
                             </a>
                             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
                                 <?php echo csrf_field(); ?>
@@ -194,48 +194,57 @@
                     <li class="menu-header">Main</li>
                     <?php if(Auth::user()->type == 'ADMIN'): ?>
                         <li class="dropdown">
-                            <a href="/admin_dashboard" class="nav-link"><i
+                            <a href="/admin_dashboard" class="nav-link"
+                                style="<?php echo e(request()->routeIs('admin.dashboard') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                     data-feather="monitor"></i><span><?php echo e(__('Dashboard')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <?php if(Auth::user()->type == 'STAFF'): ?>
                         <li class="dropdown">
-                            <a href="/staff_dashboard" class="nav-link"><i
+                            <a href="/staff_dashboard" class="nav-link"
+                                style="<?php echo e(request()->routeIs('staff.dashboard') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                     data-feather="monitor"></i><span><?php echo e(__('Dashboard')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <li class="dropdown">
-                        <a href="/profile" class="nav-link"><i
+                        <a href="/profile" class="nav-link"
+                            style="<?php echo e(request()->routeIs('admin.profile') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                 data-feather="user"></i><span><?php echo e(__('Profile')); ?></span></a>
                     </li>
                     <?php if(Auth::user()->type == 'STAFF'): ?>
                         <li class="dropdown">
-                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>" class="nav-link"><i
+                            <a href="/resort_guest/<?php echo e(Auth::user()->resortList->resort_id); ?>" class="nav-link"
+                                style="<?php echo e(request()->is('resort_guest*') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                     data-feather="list"></i><span><?php echo e(Auth::user()->resortList->resort_name); ?></span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="/staff_register" class="nav-link"><i
+                            <a href="/staff_register" class="nav-link"
+                                style="<?php echo e(request()->routeIs('staff.staff_register') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                     data-feather="edit"></i><span><?php echo e(__('Direct Register')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <?php if(Auth::user()->type == 'ADMIN'): ?>
                         <li class="dropdown">
-                            <a href="/add_resort" class="nav-link"><i
+                            <a href="/add_resort" class="nav-link"
+                                style="<?php echo e(request()->routeIs('admin.add_resort') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                     data-feather="image"></i><span><?php echo e(__('Add Resort')); ?></span></a>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/add_user" class="nav-link"><i
+                            <a href="/add_user" class="nav-link"
+                                style="<?php echo e(request()->is('add_user*') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                     data-feather="users"></i><span><?php echo e(__('Users')); ?></span></a>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/resort_list" class="nav-link"><i
+                            <a href="/resort_list" class="nav-link"
+                                style="<?php echo e(request()->is('resort_list*') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                     data-feather="list"></i><span><?php echo e(__('Resort Assignee')); ?></span></a>
                         </li>
                     <?php endif; ?>
                     <li class="dropdown">
-                        <a href="/generate_qrcode" class="nav-link"><i
+                        <a href="/generate_qrcode" class="nav-link"
+                            style="<?php echo e(request()->routeIs('resorts.generate_qrcode') ? '  border-right: 10px solid green;' : ''); ?>"><i
                                 data-feather="code"></i><span><?php echo e(__('QRcode')); ?></span></a>
                     </li>
                 </ul>
@@ -343,6 +352,52 @@
         $('#inputGroupSelect01').change(function() {
             $('#btn-edit').attr('disabled', false);
         });
+
+        const name = $('#name').val();
+        $('#name').on('input change', function() {
+            if ($(this).val() != name) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+
+        const username = $('#username').val();
+        $('#username').on('input change', function() {
+            if ($(this).val() != username) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+
+        const phone_number = $('#phone_number').val();
+        $('#phone_number').on('input change', function() {
+            if ($(this).val() != phone_number) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+
+        const gender = $('#gender').val();
+        $('#gender').on('input change', function() {
+            if ($(this).val() != gender) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+
+        const address = $('#address').val();
+        $('#address').on('input change', function() {
+            if ($(this).val() != address) {
+                $('#edit').prop('disabled', false);
+            } else {
+                $('#edit').prop('disabled', true);
+            }
+        });
+        
 
     </script>
 </body>

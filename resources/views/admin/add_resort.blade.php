@@ -18,15 +18,15 @@
                                             <div class="row">
                                                 <div class="col text-center">
                                                     <div class="form-group">
-                                                        <img id="preview-image-before-upload" src="/assets/img/no_image.png"
-                                                            alt="preview image" style="height: 400px; width:450px;">
+                                                        <img id="preview-image-before-upload" src="/assets/img/resort_no_image.png"
+                                                            alt="preview image" class="rounded" style="height: 400px; width:450px;">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <input type="file" name="image" placeholder="Choose image"
                                                                     id="image" data-toggle="tooltip" data-placement="bottom"
                                                                     title="Choose Image">
                                                                 @error('image')
-                                                                    <div class="alert alert-danger mt-1 mb-1">
+                                                                    <div class="alert alert-danger mt-4">
                                                                         {{ $message }}</div>
                                                                 @enderror
                                                             </div>

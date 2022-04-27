@@ -1,7 +1,7 @@
 @extends('sideNav.resort_nav')
 
 @section('editUser')
-@include('sweetalert::alert')
+    @include('sweetalert::alert')
     @auth
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
@@ -21,35 +21,40 @@
                                             <input type="id" class="form-control" name="id" value="{{ $user->id }}" hidden>
                                             <div class="row mb-3">
                                                 <div class="col text-center">
-                                                    <input type="name"
+                                                    <input type="name" id="name"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                        class="form-control text-center" name="name"
-                                                        value="{{ $user->name }}">
+                                                        class="form-control text-center" name="name" value="{{ $user->name }}"
+                                                        required>
                                                     <strong><label for="name"
                                                             class="col-form-label mb-1 text-black">Name</label></strong>
                                                 </div>
                                                 <div class="col text-center">
 
-                                                    <input type="address"
+                                                    <input type="text" id="username"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                        class="form-control text-center" name="email"
-                                                        value="{{ $user->email }}">
-                                                    <strong><label for="email" class="col-form-label mb-1 text-black">
-                                                            Email Address</label></strong>
+                                                        class="form-control text-center" name="username"
+                                                        value="{{ $user->username }}" required>
+                                                    <strong><label for="username" class="col-form-label mb-1 text-black">
+                                                            Username</label></strong>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col text-center">
-                                                    <input type="phone_number"
+                                                    <input type="number" id="phone_number"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                         class="form-control text-center" name="phone_number"
-                                                        value="{{ $user->phone_number }}">
+                                                        value="{{ $user->phone_number }}" required>
                                                     <strong><label for="phone" class="col-form-label mb-1 text-black">Phone
                                                             Number</label></strong>
+                                                    @error('phone_number')
+
+                                                        <span class="text-danger ml-3">
+                                                            <strong>Invalid phone number!</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                                 <div class="col text-center">
-                                                    <select class="custom-select text-center" id="inputGroupSelect01"
-                                                        name="gender"
+                                                    <select class="custom-select text-center" id="gender" name="gender"
                                                         style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
                                                         <option selected>{{ $user->gender }}</option>
                                                         @if ($user->gender == 'Male')
@@ -68,10 +73,10 @@
                                             </div>
                                             <div class="row">
                                                 <div class="text-center ">
-                                                    <input type="phone_number"
+                                                    <input type="address" id="address"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                         class="form-control text-center " name="address"
-                                                        value="{{ $user->address }}">
+                                                        value="{{ $user->address }}" required>
                                                     <strong><label for="address"
                                                             class="col-form-label mb-1 text-black">Address</label></strong>
                                                 </div>
@@ -81,7 +86,7 @@
                                                     <input type="password"
                                                         style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                         class="form-control text-center" name="new_password">
-                                                    <strong><label for="email" class="col-form-label mb-1 text-black">New
+                                                    <strong><label for="password" class="col-form-label mb-1 text-black">New
                                                             Password</label></strong>
                                                 </div>
                                                 <div class="col text-center">
@@ -93,7 +98,8 @@
                                                 </div>
                                             </div>
                                             <div class="col text-center mt-3">
-                                                <button type="submit" class="btn w-50 text-white" id="btn-edit" style="background-color: #21791A;">Save
+                                                <button type="submit" class="btn w-50 text-white" id="edit"
+                                                    style="background-color: #21791A;" disabled>Save
                                                     changes</button>
                                             </div>
                                             <div class="text-center mt-2"> <a href="#" id="btn-password">Change

@@ -61,10 +61,10 @@
                                                     <label class="col-form-label mb-1 text-black">Name</label>
                                                 </div>
                                                 <div class="col text-center">
-                                                    <input type="text" value="{{ Auth::user()->email }} "
+                                                    <input type="text" value="{{ Auth::user()->username }} "
                                                         style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
                                                         class="form-control ml-2 text-center" disabled>
-                                                    <label class="col-form-label mb-1 text-black">Email Address</label>
+                                                    <label class="col-form-label mb-1 text-black">Username</label>
                                                 </div>
                                             </div>
                                             <div class="row mt-2">
@@ -138,12 +138,12 @@
                                                                         class="col-form-label mb-1 text-black"><small>Name</small></label>
                                                                 </div>
                                                                 <div class="col text-center">
-                                                                    <input type="value" value="{{ Auth::user()->email }}"
+                                                                    <input type="value" value="{{ Auth::user()->username }}"
                                                                         style="font-size:15px;background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                                        class="form-control ml-2 text-center" name="email"
-                                                                        placeholder="Email address" required>
-                                                                    <label class="col-form-label mb-1 text-black"><small>Email
-                                                                            Adress</small></label>
+                                                                        class="form-control ml-2 text-center" name="username"
+                                                                        placeholder="Username" required>
+                                                                    <label class="col-form-label mb-1 text-black"><small>Username
+                                                                            </small></label>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-2">

@@ -17,35 +17,35 @@ class SaveUserController extends Controller {
         }
         $validatedData = $request->validate( [
             'name' => 'required',
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ] );
 
-        $email = $request->input( 'email' );
+        $username = $request->input( 'username' );
 
         $validator = Validator::make(
             array(
-                'email' => $email
+                'username' => $username
             ),
             array(
-                'email' => 'required|email|unique:users'
+                'username' => 'required|username|unique:users'
             )
         );
 
         if ( $validator->fails() ) {
-            return redirect()->back()->with( 'message_fail', 'Duplicate email please try again.' );
+            return redirect()->back()->with( 'message_fail', 'Duplicate username please try again.' );
         }
 
         $save = new User;
         $status = 'enable';
         $name = $request->input( 'name' );
-        $email = $request->input( 'email' );
+        $username = $request->input( 'username' );
         $type = 'STAFF';
         $password = Hash::make( $request->input( 'password' ) );
 
         $save->name = $name;
         $save->type = $type;
-        $save->email = $email;
+        $save->username = $username;
         $save->status = $status;
         $save->password = $password;
 

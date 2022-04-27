@@ -18,8 +18,8 @@
                                             <div class="row">
                                                 <div class="col text-center">
                                                     <div class="form-group">
-                                                        <img id="preview-image-before-upload" src="/assets/img/no_image.png"
-                                                            alt="preview image" style="height: 400px; width:450px;">
+                                                        <img id="preview-image-before-upload" src="/assets/img/resort_no_image.png"
+                                                            alt="preview image" class="rounded" style="height: 400px; width:450px;">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <input type="file" name="image" placeholder="Choose image"
@@ -30,7 +30,7 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                                    <div class="alert alert-danger mt-1 mb-1">
+                                                                    <div class="alert alert-danger mt-4">
                                                                         <?php echo e($message); ?></div>
                                                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }

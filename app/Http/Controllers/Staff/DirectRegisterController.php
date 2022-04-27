@@ -22,6 +22,13 @@ class DirectRegisterController extends Controller
     }
 
     public function register(Request $request){
+
+        $validatedData = $request->validate( [
+            'gender' => 'required',
+            'phone_number' => 'required|min:11|max:11',
+            'time_use' => 'required',                 
+        ] );
+
         $status = 'accepted';
 
         $resort_id = $request->user()->resortList->resort_id;

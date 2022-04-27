@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('editUser'); ?>
-<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php if(auth()->guard()->check()): ?>
         <div class="main-wrapper main-wrapper-1">
             <div class="main-content">
@@ -21,35 +21,47 @@
                                             <input type="id" class="form-control" name="id" value="<?php echo e($user->id); ?>" hidden>
                                             <div class="row mb-3">
                                                 <div class="col text-center">
-                                                    <input type="name"
+                                                    <input type="name" id="name"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                        class="form-control text-center" name="name"
-                                                        value="<?php echo e($user->name); ?>">
+                                                        class="form-control text-center" name="name" value="<?php echo e($user->name); ?>"
+                                                        required>
                                                     <strong><label for="name"
                                                             class="col-form-label mb-1 text-black">Name</label></strong>
                                                 </div>
                                                 <div class="col text-center">
 
-                                                    <input type="address"
+                                                    <input type="text" id="username"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                        class="form-control text-center" name="email"
-                                                        value="<?php echo e($user->email); ?>">
-                                                    <strong><label for="email" class="col-form-label mb-1 text-black">
-                                                            Email Address</label></strong>
+                                                        class="form-control text-center" name="username"
+                                                        value="<?php echo e($user->username); ?>" required>
+                                                    <strong><label for="username" class="col-form-label mb-1 text-black">
+                                                            Username</label></strong>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col text-center">
-                                                    <input type="phone_number"
+                                                    <input type="number" id="phone_number"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                         class="form-control text-center" name="phone_number"
-                                                        value="<?php echo e($user->phone_number); ?>">
+                                                        value="<?php echo e($user->phone_number); ?>" required>
                                                     <strong><label for="phone" class="col-form-label mb-1 text-black">Phone
                                                             Number</label></strong>
+                                                    <?php $__errorArgs = ['phone_number'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+
+                                                        <span class="text-danger ml-3">
+                                                            <strong>Invalid phone number!</strong>
+                                                        </span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                 </div>
                                                 <div class="col text-center">
-                                                    <select class="custom-select text-center" id="inputGroupSelect01"
-                                                        name="gender"
+                                                    <select class="custom-select text-center" id="gender" name="gender"
                                                         style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white">
                                                         <option selected><?php echo e($user->gender); ?></option>
                                                         <?php if($user->gender == 'Male'): ?>
@@ -68,10 +80,10 @@
                                             </div>
                                             <div class="row">
                                                 <div class="text-center ">
-                                                    <input type="phone_number"
+                                                    <input type="address" id="address"
                                                         style="font-size:20px; background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                         class="form-control text-center " name="address"
-                                                        value="<?php echo e($user->address); ?>">
+                                                        value="<?php echo e($user->address); ?>" required>
                                                     <strong><label for="address"
                                                             class="col-form-label mb-1 text-black">Address</label></strong>
                                                 </div>
@@ -81,7 +93,7 @@
                                                     <input type="password"
                                                         style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
                                                         class="form-control text-center" name="new_password">
-                                                    <strong><label for="email" class="col-form-label mb-1 text-black">New
+                                                    <strong><label for="password" class="col-form-label mb-1 text-black">New
                                                             Password</label></strong>
                                                 </div>
                                                 <div class="col text-center">
@@ -93,7 +105,8 @@
                                                 </div>
                                             </div>
                                             <div class="col text-center mt-3">
-                                                <button type="submit" class="btn w-50 text-white" id="btn-edit" style="background-color: #21791A;">Save
+                                                <button type="submit" class="btn w-50 text-white" id="edit"
+                                                    style="background-color: #21791A;" disabled>Save
                                                     changes</button>
                                             </div>
                                             <div class="text-center mt-2"> <a href="#" id="btn-password">Change
