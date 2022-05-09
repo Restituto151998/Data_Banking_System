@@ -121,44 +121,19 @@ class AddUserController extends Controller
 
     }
 
+    public function changePass(Request $request, $id){
+       if ($request->new_password == $request->confirm_password) {
+           User::where('id', $request->id_pass)->update(['password' => Hash::make($request->new_password)]);
+           Alert::success('Success', 'Password changed successfully!');
+           return back();
+       }else{
+        Alert::error('Failed', 'Password not match!');
+        return back();
+       }
+    }
+
     public function updateUser( Request $request )
  {
-        if ( !empty( $request->new_password ) ) {
-            if ( $request->new_password == $request->confirm_password ) {
-                $updateData = $request->validate( [
-                    'name' => [ 'required' ],
-                    'address' => [ 'required' ],
-                    'phone_number' => [ 'required|min:11|max:11' ],
-                    'gender' => [ 'required' ],
-                    'username' => [ 'required' ],
-                    'new_password' => [ 'required' ],
-                    'confirm_password' => [ 'same:new_password' ],
-                ] );
-
-                $user = User::find( $request->id );
-
-                $name = $request->input( 'name' );
-                $address = $request->input( 'address' );
-                $phone_number = $request->input( 'phone_number' );
-                $gender = $request->input( 'gender' );
-                $username = $request->input( 'username' );
-                $password = Hash::make( $request->input('new_password') );
-
-                $user->name = $name;
-                $user->address = $address;
-                $user->phone_number = $phone_number;
-                $user->gender = $gender;
-                $user->username = $username;
-                $user->password = $password;
-
-                $user->save();
-           
-            }else{
-                Alert::error('Failed', 'Password doesnt match!');
-                return back();
-            }
-        }
-
         $updateData = $request->validate( [
             'name' => 'required|max:255',
             'username' => 'required|max:255',

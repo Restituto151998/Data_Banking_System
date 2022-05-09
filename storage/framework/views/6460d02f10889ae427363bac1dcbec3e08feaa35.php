@@ -88,35 +88,65 @@ unset($__errorArgs, $__bag); ?>
                                                             class="col-form-label mb-1 text-black">Address</label></strong>
                                                 </div>
                                             </div>
-                                            <div class="row mb-3" id="change-password" hidden="true">
-                                                <div class="col text-center">
-                                                    <input type="password"
-                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                        class="form-control text-center" name="new_password">
-                                                    <strong><label for="password" class="col-form-label mb-1 text-black">New
-                                                            Password</label></strong>
-                                                </div>
-                                                <div class="col text-center">
-                                                    <input type="password"
-                                                        style="background-color:white;border-left-color:white; border-bottom-color:green;border-right-color:white;border-top-color:white"
-                                                        class="form-control text-center" name="confirm_password">
-                                                    <strong><label for="password" class="col-form-label mb-1 text-black">Confirm
-                                                            Password</label></strong>
-                                                </div>
-                                            </div>
                                             <div class="col text-center mt-3">
                                                 <button type="submit" class="btn w-50 text-white" id="edit"
                                                     style="background-color: #21791A;" disabled>Save
                                                     changes</button>
                                             </div>
-                                            <div class="text-center mt-2"> <a href="#" id="btn-password">Change
+                                            <div class="text-center mt-2"> <a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal-newpass">Change
                                                     password?</a></div>
-                                        </form>
+
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            
+            <div class="modal fade" id="exampleModal-newpass" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Changing password of <?php echo e($user->name); ?></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <center>
+                            <form method="POST" action="<?php echo e(route('admin.add_user.change',$user->id )); ?>">
+                                <?php echo csrf_field(); ?>
+                                 <?php echo method_field('PUT'); ?>
+                                <div class="modal-body w-50">
+                                 <input type="id" class="form-control" name="id_pass" value="<?php echo e($user->id); ?>" hidden>
+                                    <div class="input-group mb-3" style="position: relative;">
+                                        <span class="input-group-text"><i class="fa fa-key" style="font-size:24px"></i></span>
+                                        <input type="password" id="new" class="form-control" placeholder="New Password"
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                                            name="new_password" required>
+                                        <i class="fa fa-eye-slash mt-1" id="newpass" onclick="newpass()"
+                                            style="font-size:24px; z-index:5; margin-left:90%;  position:absolute;"></i>
+                                    </div>
+                                    <div class="input-group mb-3" style="position: relative;">
+                                        <span class="input-group-text"><i class="fa fa-key" style="font-size:24px"></i></span>
+                                        <input type="password" id="confirm" class="form-control" placeholder="Confirm Password"
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                                            name="confirm_password" required>
+                                        <i class="fa fa-eye-slash mt-1" id="conf" onclick="confirm()"
+                                            style="font-size:24px; z-index:5; margin-left:90%;  position:absolute;"></i>
+                                    </div>
+                                    <div>
+                                        <button id="change_button" type="submit" class="btn w-50 text-white"
+                                            style="background:#21791A;">Update Password</button>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                        </center>
+                    </div>
+
                 </div>
             </div>
         </div>

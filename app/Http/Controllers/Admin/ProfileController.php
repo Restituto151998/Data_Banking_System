@@ -54,12 +54,4 @@ class ProfileController extends Controller
         Alert::success('Success', 'Profile information updated successfully!');
         return back();
     }
-
-    public function reset(){
-        $password = "password";
-        $default_password = array('password' => Hash::make($password));
-        User::whereId(Auth::user()->id)->update($default_password);
-        Alert::success('Congrats', 'Your password successfully reset!');
-        return back();
-    }
 }

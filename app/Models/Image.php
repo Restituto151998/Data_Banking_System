@@ -11,6 +11,7 @@ class Image extends Model
     use HasFactory;
     protected $fillable = [
         'resort_id',
+        'title',
         'image_description',
         'image',
     ];

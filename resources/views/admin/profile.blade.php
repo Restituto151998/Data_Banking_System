@@ -106,11 +106,7 @@
                                                 <a href="{{ route('auth.passwords.changePassword') }}">
                                                     Change password?
                                                 </a>
-                                                @if (Auth::user()->type == 'ADMIN')
-                                                    <a class="text-danger ml-5" href="{{ url('reset_password') }}">
-                                                        Reset password?
-                                                    </a>
-                                                @endif
+                                                
                                             </div>
                                         </div>
                                         <div class="modal fade" id="exampleModal{{ Auth::user()->id }}" tabindex="-1"

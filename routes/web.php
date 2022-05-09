@@ -36,6 +36,7 @@ Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'pr
 Route::get('/add_resort', [App\Http\Controllers\Admin\AddResortController::class, 'addResort'])->name('admin.add_resort');
 Route::post('/add_resort', [App\Http\Controllers\Admin\AddResortController::class, 'save']);
 Route::any('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'show'])->name('admin.add_user');
+Route::put('/add_user/changepass/{id}', [App\Http\Controllers\Admin\AddUserController::class, 'changePass'])->name('admin.add_user.change');
 Route::get('/add_users', [App\Http\Controllers\Admin\AddUserController::class, 'redirectToAddUser'])->name('admin.add_users');
 Route::post('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'saveUser']);
 Route::any('/add_user/search', [App\Http\Controllers\Admin\AddUserController::class, 'search']);
@@ -52,7 +53,7 @@ Route::get('/status_accept/{id}', [App\Http\Controllers\Staff\DirectRegisterCont
 Route::get('/status_cancel/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'cancel']);
 Route::get('/status_leave_delete/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'leave']);
 Route::get('/resort_list/resort_list_edit/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.resort_list_edit');
-Route::put('/resort_list/resort_list_edit/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'updateImage']);
+Route::put('resort_list/resort_list_edit/updateSubImage/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'updateImage']);
 Route::post('/resort_list/resort_list_edit/add-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'addImage'])->name('admin.resort_list_edit.add');
 Route::get('/resort_list/resort_list_edit/delete-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'deleteImage']);
 Route::put('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'update']);
@@ -66,7 +67,8 @@ Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'up
 
 Route::get('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'redirectTo'])->name('auth.passwords.changePassword');
 Route::post('/change_password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'updatePassword']);;
-Route::get('/reset_password', [App\Http\Controllers\Admin\ProfileController::class, 'reset']);
+Route::get('/reset_password', [App\Http\Controllers\Controller::class, 'reset'])->name('auth.passwords.reset');
+Route::post('/reset_password', [App\Http\Controllers\Controller::class, 'updatePass']);
 
 Route::get('/not_found', [App\Http\Controllers\HomeController::class, 'notFound'])->name('error_code.not_found');
 

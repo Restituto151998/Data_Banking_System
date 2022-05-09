@@ -395,6 +395,27 @@
             }
         });
         
+        function newpass() {
+        var x = document.getElementById("new");
+        if (x.type === "password") {
+            x.type = "text";
+            $('#newpass').toggleClass('fa fa-eye fa fa-eye-slash');
+        } else {
+            x.type = "password";
+            $('#newpass').toggleClass('fa fa-eye-slash fa fa-eye');
+        }
+    }
+
+    function confirm() {
+        var x = document.getElementById("confirm");
+        if (x.type === "password") {
+            x.type = "text";
+            $('#conf').toggleClass('fa fa-eye fa fa-eye-slash');
+        } else {
+            x.type = "password";
+            $('#conf').toggleClass('fa fa-eye-slash fa fa-eye');
+        }
+    }
 
     </script>
 </body>

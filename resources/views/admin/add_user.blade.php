@@ -25,7 +25,6 @@
                                                         <a class="btn p-2 text-white" id="btn_add"
                                                             style="background-color:  #21791A"
                                                             href="{{ route('admin.add_users') }}">+ Add New User</a>
-                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

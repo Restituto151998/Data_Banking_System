@@ -60,6 +60,7 @@
                                             style="width:100%; height: 100%;">
                                     </div>
                                     <div class="col-sm-8 mt-3">
+                                    <strong><h2>{{ $image->title }}</h2></strong>
                                         <p>{{ $image->image_description }}</p>
                                     </div>
                                 </div>

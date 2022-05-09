@@ -107,8 +107,8 @@ class ResortListController extends Controller
         }
     }
 
-    public function updateImage(Request $request){
-        Image::where('id', $request->imageId)->update(['image_description' => $request->description.''.$request->imageId]);
+    public function updateImage(Request $request, $id){
+        Image::where('id', $id)->update(['title' => $request->title, 'image_description' => $request->description]);
         Alert::success('Success', 'Image description updated successfully!');
         return back();
     }
@@ -121,9 +121,6 @@ class ResortListController extends Controller
             Alert::success('Success', 'Image successfully deleted!');
             return back();  
         }
-      
-        
-
     }
 
     public function addImage(Request $request, $id ){
@@ -132,6 +129,7 @@ class ResortListController extends Controller
             $image = 'data:image/' .  pathinfo($request->image, PATHINFO_EXTENSION) . ';base64,' . base64_encode(file_get_contents($request->image));    
             $images = new Image;
             $images->resort_id = $id;
+            $images->title = $request->title;
             $images->image_description = $request->image_description;
             $images->image = $image;                 
             $images->save();
@@ -141,8 +139,6 @@ class ResortListController extends Controller
             Alert::error('Failed', 'Image is required!');
             return back();
            }
-
-
     }
 
     public function changeResortStatus( $id )

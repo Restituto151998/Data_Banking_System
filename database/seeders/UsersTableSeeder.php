@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
     'address'=> 'Alcoy',
     'phone_number'=>'09123456789',
     'gender'=>'Male',
-    'username' => 'resty.admin',
+    'username' => 'admin.admin',
     'status' => 'enable',
     'type' => 'ADMIN',
     'password' => Hash::make('password'),

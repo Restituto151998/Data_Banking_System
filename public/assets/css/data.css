@@ -1,11 +1,22 @@
-    input#email.form-control {
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+input#email.form-control {
         background-color: green;
     }
     
     #login {
         /* position: relative; */
         max-width: 321px;
-        height: 382px;
+        height: 420px;
         background: #F4EBEB;
         border-radius: 100px 0px;
         box-shadow: 0 0 0 0;
@@ -29,7 +40,6 @@
     .login-btn {
         position: absolute;
         height: 40px;
-        margin-top: 14px;
         margin-left: 55px;
         border-radius: 100px 0px;
         font-size: larger;

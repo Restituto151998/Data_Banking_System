@@ -113,11 +113,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <a href="<?php echo e(route('auth.passwords.changePassword')); ?>">
                                                     Change password?
                                                 </a>
-                                                <?php if(Auth::user()->type == 'ADMIN'): ?>
-                                                    <a class="text-danger ml-5" href="<?php echo e(url('reset_password')); ?>">
-                                                        Reset password?
-                                                    </a>
-                                                <?php endif; ?>
+                                                
                                             </div>
                                         </div>
                                         <div class="modal fade" id="exampleModal<?php echo e(Auth::user()->id); ?>" tabindex="-1"

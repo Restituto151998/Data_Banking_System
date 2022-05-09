@@ -101,15 +101,17 @@
                                                 Add Image
                                             </a>
                                             <a type="button" id="btn-edit" class="btn w-50 text-white ml-5"
-                                            style=" background-image: linear-gradient(to right, rgba(0, 128, 0), rgba(255,0,0,1));"
+                                                style=" background-image: linear-gradient(to right, rgba(0, 128, 0), rgba(255,0,0,1));"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal-delete{{ $resort->id }}">
-                                               Edit & Delete Image
+                                                Edit & Delete Image
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </form>
+
+                            {{-- addImage --}}
                             <div class="modal fade" id="exampleModal{{ $resort->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -144,8 +146,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="col">
+                                                        <input type="text" name="title"
+                                                            style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
+                                                            class="form-control ml-2 text-center"
+                                                            placeholder="Enter image title" required>
+                                                        <strong><label for="title"
+                                                                class="col-form-label mb-4 text-black">Title</label></strong>
                                                         <textarea name="image_description"
-                                                            style="min-height:300px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
+                                                            style="min-height:250px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
                                                             class="form-control ml-2" placeholder="Enter resort description"
                                                             required></textarea>
                                                         <strong><label for="name" class="col-form-label mb-1 text-black">Image
@@ -164,7 +172,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             {{-- //edit & delete --}}
                             <div class="modal fade" id="exampleModal-delete{{ $resort->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -175,13 +183,14 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form method="post"
-                                            action="{{ url('resort_list/resort_list_edit', $resort->resort_id) }} "
-                                            enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PUT')
-                                            <div class="modal-body pl-5 pr-5">
-                                                @foreach ($images as $image)
+
+                                        <div class="modal-body pl-5 pr-5">
+                                            @foreach ($images as $image)
+                                                <form method="post"
+                                                    action="{{ url('resort_list/resort_list_edit/updateSubImage', $image->id) }} "
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
                                                     @if ($image->resort_id == $resort->id)
                                                         <div class="row mt-5 text-center">
                                                             <div class="col ">
@@ -191,42 +200,46 @@
                                                                         alt="preview image" style="width:90px; height: 60px;">
                                                                 </div>
                                                             </div>
-                                                            <input name="imageId" value="{{ $image->id }}" hidden>
                                                             <div class="col">
-                                                                <textarea name="description" 
+                                                                <input type="text" name="title" value="{{ $image->title }}"
+                                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
+                                                                    class="form-control ml-2 text-center" required>
+                                                                <strong><label for="title"
+                                                                        class="col-form-label mb-1 text-black">Title</label></strong>
+                                                            </div>
+                                                            <div class="col">
+                                                                <textarea name="description"
                                                                     style="min-width:120%;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
                                                                     class="form-control ml-2"
                                                                     placeholder="Enter resort description"
-                                                                    required >{{ $image->image_description }}</textarea>
+                                                                    required>{{ $image->image_description }}</textarea>
                                                                 <strong><label for="name"
                                                                         class="col-form-label mb-1 text-black">Image
                                                                         Description</label></strong>
                                                             </div>
-                                                       
                                                             <div class="col mt-4">
-                                                              <button type="submit" class="btn ml-5" style="color:#21791A;"
+                                                                <button type="submit" class="btn ml-5" style="color:#21791A;"
                                                                     data-toggle="tooltip" data-placement="bottom"
-                                                                    title="save description changes" ><i data-feather="check" ></i></button>
-                                                                  <span class="mr-2">|</span>  
+                                                                    title="save changes"><i data-feather="check"></i></button>
+                                                                <span class="mr-2">|</span>
                                                                 <a
                                                                     href="{{ url('resort_list/resort_list_edit/delete-image', $image->id) }}">
                                                                     <i data-feather="trash" style="color: red;"
                                                                         data-toggle="tooltip" data-placement="bottom"
-                                                                        title="Delete"></i>
+                                                                        title="Delete {{ $image->title }}"></i>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     @endif
-                                                @endforeach
-                                                @if ($images->count() == 0)
-                                                    <div class="text-center" id="no_data">
-                                                        <img src="{{ asset('assets/img/no_datas.PNG') }}" alt=""
-                                                            srcset=""><br>
-                                                        <p>No images to delete.</p>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </form>
+                                                </form>
+                                            @endforeach
+                                            @if ($images->count() == 0)
+                                                <div class="text-center" id="no_data">
+                                                    <img src="{{ asset('assets/img/no_datas.PNG') }}" alt="" srcset=""><br>
+                                                    <p>No Image.</p>
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
