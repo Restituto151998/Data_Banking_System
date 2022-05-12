@@ -32,6 +32,18 @@
                                                                 class="form-control ml-2 text-center" placeholder="Username"
                                                                 name="username" value="<?php echo e(old('username')); ?>"
                                                                 autocomplete="username" required>
+                                                                    <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                <span class="text-danger">
+                                                                    <strong>This username already exist!</strong>
+                                                                </span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                         </div>
                                                     </div>
                                                     <div class="row mt-5">

@@ -37,7 +37,7 @@ class Controller extends BaseController
                     return back(); 
                 }          
             }else{
-                Alert::error('Failed', 'Incorrect Username!');
+                Alert::error('Failed', 'Username does not exist!');
                 return back();
             }
         }

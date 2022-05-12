@@ -119,7 +119,7 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </form>
 
-
+                            
                             <div class="modal fade" id="exampleModal<?php echo e($resort->id); ?>" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -161,10 +161,12 @@ unset($__errorArgs, $__bag); ?>
                                                         </div>
                                                     </div>
                                                     <div class="col">
-                                                     <input type="text" name="title"
-                                                        style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
-                                                        class="form-control ml-2 text-center" placeholder="Enter image title" required>
-                                                           <strong><label for="title" class="col-form-label mb-4 text-black">Title</label></strong>
+                                                        <input type="text" name="title"
+                                                            style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
+                                                            class="form-control ml-2 text-center"
+                                                            placeholder="Enter image title" required>
+                                                        <strong><label for="title"
+                                                                class="col-form-label mb-4 text-black">Title</label></strong>
                                                         <textarea name="image_description"
                                                             style="min-height:250px;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
                                                             class="form-control ml-2" placeholder="Enter resort description"
@@ -214,13 +216,12 @@ unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col">
-                                                            <input type="text" name="title" value="<?php echo e($image->title); ?>"
-                                                        style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
-                                                        class="form-control ml-2 text-center" required>
-                                                          <strong><label for="title"
+                                                                <input type="text" name="title" value="<?php echo e($image->title); ?>"
+                                                                    style="font-size:20px; background-color:transparent;border-left-color:transparent; border-bottom-color:green;border-right-color:transparent;border-top-color:transparent"
+                                                                    class="form-control ml-2 text-center" required>
+                                                                <strong><label for="title"
                                                                         class="col-form-label mb-1 text-black">Title</label></strong>
-                                                        </div>
-                                                            
+                                                            </div>
                                                             <div class="col">
                                                                 <textarea name="description"
                                                                     style="min-width:120%;background-color:white;border-left-color:green; border-bottom-color:green;border-right-color:green;border-top-color:green"
@@ -231,11 +232,10 @@ unset($__errorArgs, $__bag); ?>
                                                                         class="col-form-label mb-1 text-black">Image
                                                                         Description</label></strong>
                                                             </div>
-
                                                             <div class="col mt-4">
                                                                 <button type="submit" class="btn ml-5" style="color:#21791A;"
                                                                     data-toggle="tooltip" data-placement="bottom"
-                                                                    title="save changes" ><i data-feather="check" ></i></button>
+                                                                    title="save changes"><i data-feather="check"></i></button>
                                                                 <span class="mr-2">|</span>
                                                                 <a
                                                                     href="<?php echo e(url('resort_list/resort_list_edit/delete-image', $image->id)); ?>">
@@ -248,7 +248,6 @@ unset($__errorArgs, $__bag); ?>
                                                     <?php endif; ?>
                                                 </form>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                             <?php if($images->count() == 0): ?>
                                                 <div class="text-center" id="no_data">
                                                     <img src="<?php echo e(asset('assets/img/no_datas.PNG')); ?>" alt="" srcset=""><br>
@@ -256,7 +255,6 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

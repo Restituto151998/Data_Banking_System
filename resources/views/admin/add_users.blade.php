@@ -32,6 +32,11 @@
                                                                 class="form-control ml-2 text-center" placeholder="Username"
                                                                 name="username" value="{{ old('username') }}"
                                                                 autocomplete="username" required>
+                                                                    @error('username')
+                                                                <span class="text-danger">
+                                                                    <strong>This username already exist!</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="row mt-5">
