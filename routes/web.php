@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Route::get('/resorts-overview', [App\Http\Controllers\GuestController::class, 'overview'])->name('online_registration.resorts_overview');
-Route::get('/resorts-more-info/{id}', [App\Http\Controllers\GuestController::class, 'info'])->name('online_registration.more_info');
-Route::get('/resort-alcoy-registration/{id}', [App\Http\Controllers\GuestController::class, 'redirectTo'])->name('online_registration.guest_registration');
+Route::get('/resorts-more-info/kYl_J9c43{id}0Wnw0P-LkqL8', [App\Http\Controllers\GuestController::class, 'info'])->name('online_registration.more_info');
+Route::get('/resort-alcoy-registration/vbF5CLGrc4DHQSppjwrkdG3b5{id}5', [App\Http\Controllers\GuestController::class, 'redirectTo'])->name('online_registration.guest_registration');
 Route::post('/guest_register', [App\Http\Controllers\GuestController::class, 'onlineRegister']);
 
 Route::get('/forbidden', [App\Http\Controllers\HomeController::class, 'forbidden'])->name('error_code.forbidden');
@@ -40,19 +40,19 @@ Route::put('/add_user/changepass/{id}', [App\Http\Controllers\Admin\AddUserContr
 Route::get('/add_users', [App\Http\Controllers\Admin\AddUserController::class, 'redirectToAddUser'])->name('admin.add_users');
 Route::post('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'saveUser']);
 Route::any('/add_user/search', [App\Http\Controllers\Admin\AddUserController::class, 'search']);
-Route::get('/add_user/{id}/edit', [App\Http\Controllers\Admin\AddUserController::class, 'editUser'])->name('admin.add_user_edit');
+Route::get('/add_user/rRZJajI4ajIRZJajI44{id}RZJajI4/edit', [App\Http\Controllers\Admin\AddUserController::class, 'editUser'])->name('admin.add_user_edit');
 Route::put('/add_user', [App\Http\Controllers\Admin\AddUserController::class, 'updateUser']);
 Route::get('/resort_list', [App\Http\Controllers\Admin\ResortListController::class, 'show'])->name('admin.resort_list');
 Route::get('/resorts_status_update/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'changeResortStatus']);
 Route::post('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'uploadProfile']);
-Route::get('/resort_list/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
+Route::get('/resort_list/resort_guest/jI{id}35I4afhdIRZJaI', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest');
 Route::post('/resort_list/resort_guest/{id}', [App\Http\Controllers\DateController::class, 'updateDate'])->name('resorts.resort_guest.update');
 Route::get('/resort_guest/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'guest'])->name('resorts.resort_guest.staff');;
 Route::get('/status_update/{id}', [App\Http\Controllers\Admin\AddUserController::class, 'changeUserStatus']);
 Route::get('/status_accept/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'accept']);
 Route::get('/status_cancel/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'cancel']);
 Route::get('/status_leave_delete/{id}', [App\Http\Controllers\Staff\DirectRegisterController::class, 'leave']);
-Route::get('/resort_list/resort_list_edit/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.resort_list_edit');
+Route::get('/resort_list/resort_list_edit/AHm5kYl_J9cl1p23{id}kYl_J9c', [App\Http\Controllers\Admin\ResortListController::class, 'edit'])->name('admin.resort_list_edit');
 Route::put('resort_list/resort_list_edit/updateSubImage/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'updateImage']);
 Route::post('/resort_list/resort_list_edit/add-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'addImage'])->name('admin.resort_list_edit.add');
 Route::get('/resort_list/resort_list_edit/delete-image/{id}', [App\Http\Controllers\Admin\ResortListController::class, 'deleteImage']);

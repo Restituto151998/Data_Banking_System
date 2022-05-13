@@ -39,7 +39,7 @@
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                                <a href="<?php echo e(url('resort-alcoy-registration', $resort->id)); ?>"
+                                <a href="<?php echo e(route('online_registration.guest_registration', $resort->id)); ?>"
                                     class="btn w-50 text-white" style="background-color:  #21791A">Register
                                     Now</a>
                             </div>
